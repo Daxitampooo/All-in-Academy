@@ -1,0 +1,18 @@
+› Installing 4 SDK 57.0.0 compatible native modules and 5 other packages using npm
+> npm install --save @expo-google-fonts/space-grotesk @expo-google-fonts/inter i18next react-i18next zustand
+
+added 24 packages, and audited 632 packages in 8s
+
+59 packages are looking for funding
+  run `npm fund` for details
+
+29 vulnerabilities (11 moderate, 18 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+› Added config plugins: expo-localization, expo-font

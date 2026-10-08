@@ -1,0 +1,19 @@
+Creating mobile using the default template.
+
+- Locating project files.
+✔ Downloaded and extracted project files.
+
+✅ Your project is ready!
+
+To run your project, navigate to the directory and run one of the following npm commands.
+
+- cd mobile
+- npm run android
+- npm run ios # you need to use macOS to build the iOS project - use the Expo app if you need to do iOS development without a Mac
+- npm run web
+
+⚠️  Before running your app, make sure you have modules installed:
+
+  cd mobile/
+  npm install
+

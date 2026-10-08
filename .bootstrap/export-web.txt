@@ -1,0 +1,21 @@
+Using src/app as the root directory for Expo Router.
+React Compiler enabled
+Expo Autolinking module resolution enabled
+Starting Metro Bundler
+
+Static rendering is enabled. Learn more: https://docs.expo.dev/router/web/static-rendering/
+λ Bundled 37780ms apps/mobile/node_modules/expo/node_modules/@expo/cli/node_modules/@expo/router-server/node/render.js (1243 modules)
+Web Bundled 38136ms apps/mobile/node_modules/expo-router/entry.js (1213 modules)
+
+› web bundles (3):
+_expo/static/css/animated-icon.module-eec65aa47fc61787231f45ae14d688f6.css (121B)
+_expo/static/css/global-87fd0564cfa78f37afcb8d7603e15d75.css (397B)
+_expo/static/js/web/entry-fb9e293ef469e63ef1133513a3a3d41a.js (2.1MB)
+
+› Static routes (4):
+/ (index) (24KB)
+/explore (25KB)
+/_sitemap (20KB)
+/+not-found (20KB)
+
+Exported: /tmp/web

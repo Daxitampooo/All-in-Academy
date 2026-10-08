@@ -1,0 +1,15 @@
+Scope: all 2 workspace projects
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 111, reused 0, downloaded 0, added 0
+Progress: resolved 428, reused 0, downloaded 0, added 0
+ WARN  1 deprecated subdependencies found: uuid@7.0.3
+Progress: resolved 603, reused 0, downloaded 0, added 0
+
+Packages: +629
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 603, reused 0, downloaded 25, added 8
+Progress: resolved 603, reused 0, downloaded 65, added 21
+Progress: resolved 603, reused 0, downloaded 185, added 80
+Progress: resolved 603, reused 0, downloaded 543, added 562
+Progress: resolved 603, reused 0, downloaded 589, added 629, done
+Done in 8.1s using pnpm v10.28.0
