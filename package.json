@@ -1,0 +1,17 @@
+{
+  "name": "all-in-academy",
+  "private": true,
+  "packageManager": "pnpm@10.28.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "typecheck": "turbo run typecheck",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "check:locales": "node scripts/check-locales.mjs"
+  },
+  "devDependencies": {
+    "turbo": "^2"
+  }
+}

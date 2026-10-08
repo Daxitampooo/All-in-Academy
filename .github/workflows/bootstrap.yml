@@ -1,0 +1,48 @@
+# One-time helper: generates the Expo app with the current SDK and resolves
+# compatible dependency versions, then commits the result back to the branch.
+# The cloud session that writes code has no npm access, so this runs here.
+name: bootstrap
+on:
+  push:
+    branches: [feat/scaffold]
+    paths: [".github/workflows/bootstrap.yml"]
+permissions:
+  contents: write
+jobs:
+  bootstrap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Enable pnpm
+        run: corepack enable
+      - name: Create Expo app
+        env:
+          CI: "1"
+        run: |
+          mkdir -p .bootstrap apps
+          cd apps
+          npx -y create-expo-app@latest mobile --template default --no-install 2>&1 | tee ../.bootstrap/create.txt
+      - name: Resolve dependency versions
+        working-directory: apps/mobile
+        env:
+          CI: "1"
+        run: |
+          npm install --no-audit --no-fund 2>&1 | tail -20 | tee ../../.bootstrap/npm-install.txt
+          npx expo install expo-localization react-native-svg expo-font @expo-google-fonts/space-grotesk @expo-google-fonts/inter expo-linear-gradient i18next react-i18next zustand 2>&1 | tee ../../.bootstrap/expo-install.txt
+          npx -y expo-doctor@latest 2>&1 | tee ../../.bootstrap/doctor.txt || true
+          npx expo config --type public --json > ../../.bootstrap/expo-config.json 2>&1 || true
+          ls -la node_modules/expo-router/build 2>/dev/null | head -50 > ../../.bootstrap/router-build.txt || true
+          (npx expo export --platform web --output-dir /tmp/web 2>&1 | tail -30 | tee ../../.bootstrap/export-web.txt) || true
+          rm -rf node_modules package-lock.json
+      - name: Install workspace with pnpm
+        run: pnpm install --no-frozen-lockfile 2>&1 | tail -30 | tee .bootstrap/pnpm-install.txt
+      - name: Commit generated files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Bootstrap Expo app (generated in CI)"
+          git push
