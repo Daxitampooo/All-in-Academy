@@ -63,5 +63,5 @@ export function AppText({
 
 const styles = StyleSheet.create({
   numeric: { fontVariant: ['tabular-nums'] },
-  tight: { letterSpacing: -0.6 },
+  tight: { letterSpacing: -0.3 },
 });
