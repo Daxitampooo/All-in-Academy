@@ -3,6 +3,6 @@
   "tasks": {
     "typecheck": {},
     "lint": {},
-    "test": {}
+    "test": { "outputs": [] }
   }
 }
