@@ -78,6 +78,36 @@ export const palettes = {
 
 export type PaletteName = keyof typeof palettes;
 
+/** Extra neon hues that give each bot its own color (portrait strokes, rings). */
+export type HueName = 'cyan' | 'magenta' | 'lime' | 'amber' | 'violet' | 'orange' | 'aqua' | 'rose' | 'gold' | 'ice';
+
+export const hues: Record<PaletteName, Record<HueName, string>> = {
+  neon: {
+    cyan: '#00F0FF',
+    magenta: '#FF2BD6',
+    lime: '#B6FF3B',
+    amber: '#FFC23D',
+    violet: '#A97BFF',
+    orange: '#FF8A3D',
+    aqua: '#3DFFC5',
+    rose: '#FF6B9A',
+    gold: '#FFE066',
+    ice: '#9AD8FF',
+  },
+  daylight: {
+    cyan: '#007E9C',
+    magenta: '#B3168F',
+    lime: '#3A7D00',
+    amber: '#9A6200',
+    violet: '#6A3FD1',
+    orange: '#B5530F',
+    aqua: '#00866A',
+    rose: '#B8285A',
+    gold: '#8A6D00',
+    ice: '#2C6FA3',
+  },
+};
+
 /** Palette entries that hold a color (everything except numeric settings). */
 export type ColorKey = Exclude<keyof Palette, 'glow'>;
 

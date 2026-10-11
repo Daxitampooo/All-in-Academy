@@ -2,17 +2,19 @@ import { createContext, useContext, type ReactNode } from 'react';
 import { useColorScheme } from 'react-native';
 
 import { useSettings } from '@/store/settings';
-import { palettes, type Palette, type PaletteName } from '@/theme/tokens';
+import { hues, palettes, type HueName, type Palette, type PaletteName } from '@/theme/tokens';
 
 type Theme = {
   name: PaletteName;
   colors: Palette;
+  hues: Record<HueName, string>;
   dark: boolean;
 };
 
 const ThemeContext = createContext<Theme>({
   name: 'neon',
   colors: palettes.neon,
+  hues: hues.neon,
   dark: true,
 });
 
@@ -23,7 +25,7 @@ export function AppThemeProvider({ children }: { children: ReactNode }) {
     preference === 'system' ? (system === 'light' ? 'daylight' : 'neon') : preference;
 
   return (
-    <ThemeContext.Provider value={{ name, colors: palettes[name], dark: name === 'neon' }}>
+    <ThemeContext.Provider value={{ name, colors: palettes[name], hues: hues[name], dark: name === 'neon' }}>
       {children}
     </ThemeContext.Provider>
   );

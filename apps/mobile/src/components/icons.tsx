@@ -101,3 +101,55 @@ export function CheckIcon({ color, size = 18 }: IconProps) {
     </Svg>
   );
 }
+
+export function LockIcon({ color, size = 16 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <Path d="M7 10.5V8a5 5 0 0 1 10 0v2.5" stroke={color} {...stroke} />
+      <Path d="M5.5 10.5h13v9.5h-13z" stroke={color} {...stroke} />
+      <Path d="M12 14.5v2" stroke={color} {...stroke} />
+    </Svg>
+  );
+}
+
+export function EyeIcon({ color, size = 16 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <Path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" stroke={color} {...stroke} />
+      <Circle cx={12} cy={12} r={3} stroke={color} {...stroke} />
+    </Svg>
+  );
+}
+
+export function CloseIcon({ color, size = 22 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <Path d="M6 6l12 12M18 6 6 18" stroke={color} {...stroke} strokeWidth={2.2} />
+    </Svg>
+  );
+}
+
+export function ChevronUpIcon({ color, size = 18 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <Path d="M5.5 14.5 12 8l6.5 6.5" stroke={color} {...stroke} strokeWidth={2.2} />
+    </Svg>
+  );
+}
+
+export function ChevronDownIcon({ color, size = 18 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <Path d="M5.5 9.5 12 16l6.5-6.5" stroke={color} {...stroke} strokeWidth={2.2} />
+    </Svg>
+  );
+}
+
+export function ChartIcon({ color, size = 18 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <Path d="M4 19.5h16" stroke={color} {...stroke} />
+      <Path d="m5 15 4.5-5 3.5 3 6-7" stroke={color} {...stroke} />
+    </Svg>
+  );
+}

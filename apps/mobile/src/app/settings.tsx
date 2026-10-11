@@ -16,7 +16,7 @@ const themeOptions: ThemePreference[] = ['neon', 'daylight', 'system'];
 export default function SettingsScreen() {
   const { t } = useTranslation();
   const { colors } = useTheme();
-  const { language, theme, setLanguage, setTheme } = useSettings();
+  const { language, theme, haptics, setLanguage, setTheme, setHaptics } = useSettings();
 
   const goBack = () => (router.canGoBack() ? router.back() : router.replace('/profile'));
 
@@ -47,6 +47,15 @@ export default function SettingsScreen() {
         options={themeOptions.map((value) => ({ value, label: t(`settings.themes.${value}`) }))}
         selected={theme}
         onSelect={setTheme}
+      />
+      <OptionGroup
+        title={t('settings.haptics')}
+        options={[
+          { value: 'on', label: t('settings.hapticsOn') },
+          { value: 'off', label: t('settings.hapticsOff') },
+        ]}
+        selected={haptics ? 'on' : 'off'}
+        onSelect={(v) => setHaptics(v === 'on')}
       />
       <View style={styles.group}>
         <AppText variant="heading">{t('settings.about')}</AppText>
