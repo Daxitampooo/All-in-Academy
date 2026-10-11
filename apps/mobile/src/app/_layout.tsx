@@ -78,6 +78,10 @@ function Navigation() {
       <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.bg } }}>
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="settings" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="bots/index" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="bots/[id]" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="table" options={{ animation: 'fade', gestureEnabled: false }} />
+        <Stack.Screen name="analysis" options={{ animation: 'slide_from_right' }} />
       </Stack>
     </ThemeProvider>
   );

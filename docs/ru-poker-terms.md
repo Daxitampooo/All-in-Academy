@@ -63,7 +63,7 @@
 | Overbet | Овербет |
 | Block bet | Блок-бет |
 | Slowplay | Слоуплей |
-| Value bet, thin value | Вэлью-бет, тонкое вэлью |
+| Value bet, thin value | Велью-бет, тонкое велью (так пишет владелец) |
 | Bluff, semi-bluff | Блеф, полублеф |
 | Bet sizing | Сайзинг |
 

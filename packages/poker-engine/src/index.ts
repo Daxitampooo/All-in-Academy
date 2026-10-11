@@ -8,3 +8,8 @@ export * from './history';
 export * from './ranges';
 export * from './equity';
 export * from './arrange';
+export * from './view';
+export * from './spots';
+export * from './stats';
+export * from './review';
+export * from './allin';

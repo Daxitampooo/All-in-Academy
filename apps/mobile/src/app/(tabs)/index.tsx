@@ -1,5 +1,6 @@
+import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import { StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 
 import { AppText } from '@/components/AppText';
 import { Badge } from '@/components/Badge';
@@ -25,7 +26,13 @@ export default function PlayScreen() {
       <AppText variant="heading" style={styles.section}>
         {t('play.modes')}
       </AppText>
-      <FeatureRow accent="cyan" title={t('play.bots.title')} body={t('play.bots.body')} badges={soon} />
+      <Pressable
+        onPress={() => router.push('/bots')}
+        accessibilityRole="button"
+        accessibilityHint={t('play.bots.open')}
+        style={({ pressed }) => pressed && styles.pressed}>
+        <FeatureRow accent="cyan" title={t('play.bots.title')} body={t('play.bots.body')} badges={<Badge label={t('play.bots.open')} tone="cyan" />} />
+      </Pressable>
       <FeatureRow accent="magenta" title={t('play.ranked.title')} body={t('play.ranked.body')} badges={soon} />
       <FeatureRow accent="lime" title={t('play.casual.title')} body={t('play.casual.body')} badges={soon} />
 
@@ -37,6 +44,9 @@ export default function PlayScreen() {
 }
 
 const styles = StyleSheet.create({
+  pressed: {
+    opacity: 0.75,
+  },
   intro: {
     gap: space.sm,
   },

@@ -20,7 +20,8 @@
     "modes": "Game modes",
     "bots": {
       "title": "Practice vs bots",
-      "body": "Heads-up and 6-max against bots with three playing styles. Works offline."
+      "body": "30 bots in six leagues, from Barsik the cat to Neon. Works offline.",
+      "open": "Choose a bot"
     },
     "ranked": {
       "title": "Ranked",
@@ -112,10 +113,524 @@
       "system": "Same as phone"
     },
     "about": "About",
-    "version": "Version {{version}}"
+    "version": "Version {{version}}",
+    "haptics": "Vibration",
+    "hapticsOn": "On",
+    "hapticsOff": "Off"
   },
   "notFound": {
     "title": "This screen doesn't exist",
     "action": "Go to Play"
+  },
+  "bots": {
+    "title": "Bots",
+    "subtitle": "Pick an opponent. Winning a heads-up match to the bust opens the next league.",
+    "back": "Back",
+    "leagues": {
+      "novices": "Novices",
+      "amateurs": "Amateurs",
+      "regulars": "Regulars",
+      "pros": "Pros",
+      "masters": "Masters",
+      "secret": "Secret"
+    },
+    "range": "Rating {{from}}–{{to}}",
+    "progress": "{{count}} of {{need}} beaten to open {{league}}",
+    "lockedRule": "Beat 3 bots in {{league}} to open",
+    "secretRule": "Opens after you beat Neon",
+    "soon": "Soon",
+    "hiddenRating": "???",
+    "rating": "Rating {{rating}}",
+    "cheater": "Cheater bot",
+    "beaten": "Beaten",
+    "record": "Your record: {{wins}} wins, {{losses}} losses",
+    "noRecord": "You haven't played this bot yet.",
+    "playHeadsUp": "Heads-up to the bust",
+    "playHeadsUpHint": "100 big blinds each, until someone is out. An all-in before the river splits the pot by equity.",
+    "playTable": "6-max table with this league",
+    "playTableHint": "Practice without a score: busted bots rebuy.",
+    "notReady": "This bot arrives in a coming update.",
+    "lockedBot": "Open the {{league}} league first.",
+    "list": {
+      "barsik": {
+        "name": "Barsik the Cat",
+        "short": "Barsik"
+      },
+      "timokha": {
+        "name": "Timokha",
+        "short": "Timokha",
+        "nickname": "Rookie"
+      },
+      "kolyan": {
+        "name": "Kolyan",
+        "short": "Kolyan",
+        "nickname": "Calling Station"
+      },
+      "gosha": {
+        "name": "Gosha",
+        "short": "Gosha",
+        "nickname": "Limper"
+      },
+      "zina": {
+        "name": "Granny Zina",
+        "short": "Granny Zina"
+      },
+      "liza": {
+        "name": "Liza",
+        "short": "Liza",
+        "nickname": "Fish"
+      },
+      "max": {
+        "name": "Max",
+        "short": "Max",
+        "nickname": "Maniac"
+      },
+      "dasha": {
+        "name": "Dasha",
+        "short": "Dasha",
+        "nickname": "Scaredy"
+      },
+      "stas": {
+        "name": "Stas",
+        "short": "Stas",
+        "nickname": "Trap"
+      },
+      "roma": {
+        "name": "Roma",
+        "short": "Roma",
+        "nickname": "Draw Hunter"
+      },
+      "katya": {
+        "name": "Katya",
+        "short": "Katya",
+        "nickname": "Value Only"
+      },
+      "vadim": {
+        "name": "Vadim",
+        "short": "Vadim",
+        "nickname": "Tilter"
+      },
+      "oleg": {
+        "name": "Oleg",
+        "short": "Oleg",
+        "nickname": "Rock"
+      },
+      "igor": {
+        "name": "Igor",
+        "short": "Igor",
+        "nickname": "Shortstack"
+      },
+      "vera": {
+        "name": "Vera",
+        "short": "Vera",
+        "nickname": "Bluffer"
+      },
+      "nina": {
+        "name": "Nina",
+        "short": "Nina",
+        "nickname": "Check-Raise"
+      },
+      "denis": {
+        "name": "Denis",
+        "short": "Denis",
+        "nickname": "Stealer"
+      },
+      "yulia": {
+        "name": "Yulia",
+        "short": "Yulia",
+        "nickname": "Reader"
+      },
+      "artem": {
+        "name": "Artem",
+        "short": "Artem",
+        "nickname": "Calculator"
+      },
+      "borya": {
+        "name": "Borya",
+        "short": "Borya",
+        "nickname": "Overbet"
+      },
+      "sonya": {
+        "name": "Sonya",
+        "short": "Sonya",
+        "nickname": "Exploiter"
+      },
+      "marina": {
+        "name": "Marina",
+        "short": "Marina",
+        "nickname": "Heads-Up"
+      },
+      "gleb": {
+        "name": "Gleb",
+        "short": "Gleb",
+        "nickname": "ICM"
+      },
+      "alisa": {
+        "name": "Alisa",
+        "short": "Alisa",
+        "nickname": "Chameleon"
+      },
+      "fedor": {
+        "name": "Fedor",
+        "short": "Fedor",
+        "nickname": "Sizing"
+      },
+      "arkady": {
+        "name": "Professor Arkady",
+        "short": "Arkady"
+      },
+      "nika": {
+        "name": "Nika",
+        "short": "Nika",
+        "nickname": "Solver"
+      },
+      "neon": {
+        "name": "Neon",
+        "short": "Neon"
+      },
+      "lekha": {
+        "name": "Lyokha",
+        "short": "Lyokha",
+        "nickname": "Lucky"
+      },
+      "danil": {
+        "name": "Danil",
+        "short": "Danil"
+      }
+    },
+    "phrases": {
+      "barsik": {
+        "greet": [
+          "Meow."
+        ],
+        "win": [
+          "Purr… my chips.",
+          "*knocks the pot off the table toward himself*"
+        ],
+        "lose": [
+          "Hiss!"
+        ],
+        "allin": [
+          "*jumps onto all the chips*"
+        ],
+        "bust": [
+          "*goes to sleep on the felt*"
+        ],
+        "victory": [
+          "Meow! The cat wins."
+        ],
+        "idle": [
+          "*bats a chip around*",
+          "*stares at the river*"
+        ]
+      },
+      "timokha": {
+        "greet": [
+          "Hi! I learned the hand rankings just yesterday."
+        ],
+        "win": [
+          "Whoa, I won? What did I have?"
+        ],
+        "lose": [
+          "Wait, a flush beats a straight?",
+          "But I had a pair!"
+        ],
+        "allin": [
+          "I've got a pair! All-in!"
+        ],
+        "bust": [
+          "Okay, I'll go reread the rules."
+        ],
+        "victory": [
+          "Beginner's luck!"
+        ],
+        "idle": [
+          "Is a pair of deuces good?"
+        ]
+      },
+      "kolyan": {
+        "greet": [
+          "Go on, surprise me."
+        ],
+        "win": [
+          "Told you. You just call.",
+          "See? Never fold."
+        ],
+        "lose": [
+          "No worries, the next call will hit."
+        ],
+        "allin": [
+          "Call. Always call."
+        ],
+        "bust": [
+          "Oh well. Still not folding."
+        ],
+        "victory": [
+          "Call, call, call, and I win."
+        ],
+        "idle": [
+          "Wonder what you've got… Call, let's find out."
+        ]
+      },
+      "gosha": {
+        "greet": [
+          "I'll just see the flop."
+        ],
+        "win": [
+          "Cheap flop, big pot!"
+        ],
+        "lose": [
+          "Raising isn't very friendly."
+        ],
+        "allin": [
+          "Fine, if that's how it is…"
+        ],
+        "bust": [
+          "Too many raises at this table."
+        ],
+        "victory": [
+          "Limped my way to the win!"
+        ],
+        "idle": [
+          "Can I just call the big blind?",
+          "One more limp, then I'll think about it."
+        ]
+      },
+      "zina": {
+        "greet": [
+          "Sit down, dear. And no nonsense."
+        ],
+        "win": [
+          "Patience, dear. Patience."
+        ],
+        "lose": [
+          "In my day nobody bluffed like that."
+        ],
+        "allin": [
+          "Granny has aces, sorry, dear."
+        ],
+        "bust": [
+          "I'll go check on the pies."
+        ],
+        "victory": [
+          "Granny's done her job."
+        ],
+        "idle": [
+          "Junk again… Fold.",
+          "I've folded forty hands. I'm fine."
+        ]
+      },
+      "liza": {
+        "greet": [
+          "Ooh, can I play every hand?"
+        ],
+        "win": [
+          "The river! I knew it would come!"
+        ],
+        "lose": [
+          "I was just one card short…"
+        ],
+        "allin": [
+          "I have a flush draw, that's almost a flush!"
+        ],
+        "bust": [
+          "Oh well, it was fun anyway."
+        ],
+        "victory": [
+          "Blub-blub! The fish wins."
+        ],
+        "idle": [
+          "Two cards of the same suit, so pretty.",
+          "I'll call, I want to see the flop!"
+        ]
+      }
+    },
+    "seriesRule": "To beat this bot, win {{target}} matches before it does.",
+    "seriesRuleOne": "To beat this bot, win one match against it.",
+    "seriesNow": "Current series: {{wins}}–{{losses}}",
+    "beatenTimes_one": "Beaten {{count}} time",
+    "beatenTimes_other": "Beaten {{count}} times",
+    "withNickname": "{{name}} “{{nickname}}”",
+    "nicknameHint": "The bot's nickname opens once you beat it."
+  },
+  "hands": {
+    "high-card": "High card",
+    "pair": "Pair",
+    "two-pair": "Two pair",
+    "set": "Set",
+    "trips": "Trips",
+    "straight": "Straight",
+    "flush": "Flush",
+    "full-house": "Full house",
+    "quads": "Quads",
+    "straight-flush": "Straight flush",
+    "royal-flush": "Royal flush"
+  },
+  "table": {
+    "you": "You",
+    "pot": "Pot {{amount}}",
+    "headsUpTitle": "Heads-up vs {{name}}",
+    "tableTitle": "6-max: {{league}}",
+    "handNumber": "Hand {{n}}",
+    "actions": {
+      "fold": "Fold",
+      "check": "Check",
+      "call": "Call",
+      "bet": "Bet",
+      "raise": "Raise to",
+      "allIn": "All-in"
+    },
+    "said": {
+      "fold": "Fold",
+      "check": "Check",
+      "call": "Call",
+      "bet": "Bet",
+      "raise": "Raise",
+      "allIn": "All-in"
+    },
+    "amount": "Bet size",
+    "less": "Smaller",
+    "more": "Bigger",
+    "thinking": "thinking…",
+    "folded": "Folded",
+    "allInLabel": "All-in",
+    "dealer": "Dealer button",
+    "yourHand": "You have: {{hand}}",
+    "winner": "{{name}} wins {{amount}}",
+    "winnerWith": "{{name}} wins {{amount}} with {{hand}}",
+    "split": "Split pot",
+    "next": "Next hand",
+    "exit": "Leave table",
+    "exitTitle": "Leave the match?",
+    "exitBody": "The match won't count.",
+    "stay": "Keep playing",
+    "leave": "Leave",
+    "victoryTitle": "Victory!",
+    "victoryBody": "All the chips are yours. Hands played: {{hands}}.",
+    "defeatTitle": "Defeat",
+    "defeatBody": "{{name}} takes all the chips. Hands played: {{hands}}.",
+    "unlocked": "League opened: {{league}}",
+    "playAgain": "Play again",
+    "toBots": "Back to bots",
+    "bustedTitle": "You're out of chips",
+    "bustedBody": "This is practice, so you can rebuy for free.",
+    "rebuy": "Rebuy 100 BB",
+    "youWin": "You win {{amount}}",
+    "youWinWith": "You win {{amount}} with {{hand}}",
+    "waiting": "{{name}} is thinking…",
+    "unavailable": "This table isn't available yet.",
+    "sizing": {
+      "title": "Sizing",
+      "show": "Show bet sizes",
+      "hide": "Hide bet sizes",
+      "percent": "{{n}}%",
+      "pot": "Pot",
+      "allIn": "All-in",
+      "readoutBB": "{{bb}} BB",
+      "readoutPot": "{{pct}}% of pot ({{bb}} BB)",
+      "bb": "{{n}} BB",
+      "times": "{{n}}x"
+    },
+    "runout": "All-in! Running out the board…",
+    "splitResult": "All-in by equity: you get {{pct}}% of the pot ({{amount}})",
+    "analysis": "Analysis",
+    "exitTitleSix": "Leave the table?",
+    "exitBodySix": "You can review the hands you played in the analysis.",
+    "matchWonTitle": "Match won!",
+    "botBeatenTitle": "Bot beaten!",
+    "seriesLostTitle": "Series lost",
+    "seriesScore": "Series {{wins}}–{{losses}}, first to {{target}} wins.",
+    "seriesWon": "Series won {{wins}}–{{losses}}.",
+    "seriesLost": "{{name}} takes the series {{losses}}–{{wins}}. Your next match starts a new one.",
+    "splitNoteLost": "By the board this pot would have gone to your opponent.",
+    "splitNoteWon": "By the board the whole pot would have been yours.",
+    "nicknameRevealed": "Nickname revealed: “{{nickname}}”",
+    "spot": {
+      "open": "Open-raise",
+      "iso": "Iso-raise",
+      "threeBet": "3-bet",
+      "squeeze": "Squeeze",
+      "fourBet": "4-bet",
+      "fiveBet": "5-bet",
+      "bet": "Bet",
+      "raise": "Raise"
+    },
+    "raiseAs": {
+      "open": "Raise to",
+      "iso": "Iso-raise to",
+      "threeBet": "3-bet to",
+      "squeeze": "Squeeze to",
+      "fourBet": "4-bet to",
+      "fiveBet": "5-bet to",
+      "raise": "Raise to"
+    }
+  },
+  "analysis": {
+    "title": "Match analysis",
+    "sessionTitle": "Session analysis",
+    "back": "Back",
+    "opponent": "Opponent: {{name}}",
+    "table": "Table: {{league}}",
+    "won": "Win",
+    "lost": "Loss",
+    "unfinished": "Match not finished",
+    "practice": "Practice, no score",
+    "netBB": "{{bb}} BB",
+    "hands": "Hands",
+    "potsWon": "Pots won",
+    "splits": "All-ins by equity",
+    "byEquity": "by equity",
+    "chartTitle": "Result by hand",
+    "chartUnit": "In big blinds, after each hand",
+    "statsTitle": "Your stats",
+    "smallSample": "Too few hands for exact numbers yet: they become reliable from about {{n}} hands.",
+    "noData": "—",
+    "stats": {
+      "vpip": {
+        "name": "VPIP",
+        "desc": "How often you put chips in before the flop by choice"
+      },
+      "pfr": {
+        "name": "PFR",
+        "desc": "How often you raised before the flop"
+      },
+      "threeBet": {
+        "name": "3-bet",
+        "desc": "How often you re-raised when facing one raise"
+      },
+      "af": {
+        "name": "AF",
+        "desc": "Aggression after the flop: bets and raises per call"
+      },
+      "wtsd": {
+        "name": "WTSD",
+        "desc": "How often you reached showdown after seeing the flop"
+      },
+      "wsd": {
+        "name": "W$SD",
+        "desc": "How often you won at showdown"
+      }
+    },
+    "handsTitle": "Hands",
+    "handsNote": "Equity here is counted with open cards: after the match everyone's cards are known. At the table you didn't see them, so think about how the decision looked with what you knew then. Green means your equity covered the price of a call, magenta means it didn't.",
+    "hand": "Hand {{n}}",
+    "blinds": "Blinds {{sb}}/{{bb}}",
+    "streets": {
+      "preflop": "Preflop",
+      "flop": "Flop",
+      "turn": "Turn",
+      "river": "River"
+    },
+    "act": {
+      "fold": "Fold",
+      "check": "Check",
+      "call": "Call {{amount}}",
+      "bet": "Bet {{amount}}",
+      "raise": "Raise to {{amount}}",
+      "allIn": "All-in {{amount}}"
+    },
+    "potOdds": "Pot odds: call {{call}} into {{pot}}, needs {{need}}% equity",
+    "equity": "Equity with open cards: {{pct}}%",
+    "empty": "Nothing to review yet: play at least one hand."
   }
 }
