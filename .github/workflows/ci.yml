@@ -81,6 +81,11 @@ jobs:
           set -o pipefail
           pnpm lint 2>&1 | tee -a ci.log
 
+      - name: Unit tests
+        run: |
+          set -o pipefail
+          pnpm test 2>&1 | tee -a ci.log
+
       - name: Check translations
         run: |
           set -o pipefail

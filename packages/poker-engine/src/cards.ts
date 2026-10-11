@@ -36,7 +36,8 @@ export function parseCard(text: string): Card {
   const suitText = t[t.length - 1]?.toLowerCase();
   const rank = rankText ? RANKS.indexOf(rankText) : -1;
   const suit = suitText ? SUITS.indexOf(suitText) : -1;
-  if ((t.length !== 2 && t.length !== 3) || rank < 0 || suit < 0) {
+  const validLength = t.length === 2 || (t.length === 3 && t.startsWith('10'));
+  if (!validLength || rank < 0 || suit < 0) {
     throw new Error(`Can't read card "${text}"`);
   }
   return makeCard(rank, suit);

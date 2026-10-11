@@ -240,12 +240,17 @@ function continueHand(state: HandState, from: number): HandState {
   for (;;) {
     if (liveCount(state) === 1) return finishHand(state);
 
-    // When at most one player can still bet and nobody faces a bet, there's nothing to decide.
+    // When nobody else can bet any more, the last player only decides if
+    // someone actually put in more chips than they have.
     const bettors = canStillBetCount(state);
     const pending = seatsFrom(from, n).find((seat) => needsToAct(state, state.players[seat]!));
-    if (pending !== undefined && !(bettors <= 1 && state.players[pending]!.streetBet >= state.currentBet)) {
-      state.toAct = pending;
-      return state;
+    if (pending !== undefined) {
+      const p = state.players[pending]!;
+      const othersTop = Math.max(0, ...state.players.filter((o) => o !== p).map((o) => o.streetBet));
+      if (!(bettors <= 1 && p.streetBet >= othersTop)) {
+        state.toAct = pending;
+        return state;
+      }
     }
 
     // The betting round is over.
