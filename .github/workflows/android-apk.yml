@@ -1,7 +1,7 @@
 # Builds an installable Android APK and attaches it to a GitHub Release.
 #
 # - Run it by hand (Actions → android-apk → Run workflow) for any branch,
-#   or push a tag like v0.1.0.
+#   push a tag like v0.1.0, or push a commit whose message contains [apk].
 # - The release tag is preview-<branch> (or the version tag), so each branch
 #   keeps one stable download page that's replaced on every build.
 # - Signed with the React Native debug key: fine for testing on your own phone,
@@ -11,6 +11,7 @@ on:
   workflow_dispatch:
   push:
     tags: ["v*"]
+    branches: ["main", "feat/**", "fix/**"]
 permissions:
   contents: write
 concurrency:
@@ -21,6 +22,10 @@ defaults:
     shell: bash
 jobs:
   apk:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      startsWith(github.ref, 'refs/tags/') ||
+      contains(github.event.head_commit.message, '[apk]')
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
