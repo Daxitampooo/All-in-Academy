@@ -1,15 +1,15 @@
 {
   "expo": {
-    "name": "All-in Academy",
-    "slug": "all-in-academy",
+    "name": "Pokero",
+    "slug": "pokero",
     "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "allinacademy",
+    "scheme": "pokero",
     "userInterfaceStyle": "automatic",
     "backgroundColor": "#07070D",
     "android": {
-      "package": "com.allinacademy.app",
+      "package": "com.pokero.app",
       "adaptiveIcon": {
         "backgroundColor": "#07070D",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -26,7 +26,7 @@
     "web": {
       "output": "single",
       "favicon": "./assets/images/favicon.png",
-      "name": "All-in Academy",
+      "name": "Pokero",
       "themeColor": "#07070D",
       "backgroundColor": "#07070D"
     },

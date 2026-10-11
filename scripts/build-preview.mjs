@@ -3,7 +3,7 @@
 // claude.ai artifact). The JS bundle is inlined, fonts become data: URIs, and
 // the router starts at "/" whatever path the page is served from.
 //
-// Usage (after `pnpm --filter @all-in-academy/mobile export:web`):
+// Usage (after `pnpm --filter @pokero/mobile export:web`):
 //   node scripts/build-preview.mjs [outFile]
 import { readFileSync, writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
@@ -38,7 +38,7 @@ const fontFaces = Object.entries(fonts)
   })
   .join('\n');
 
-const html = `<title>All-in Academy</title>
+const html = `<title>Pokero</title>
 <meta name="theme-color" content="#07070D">
 <style id="expo-generated-fonts">
 ${fontFaces}
