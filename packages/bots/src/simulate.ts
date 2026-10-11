@@ -1,4 +1,5 @@
 import {
+  allInSplit,
   applyAction,
   shuffledDeck,
   startHand,
@@ -74,6 +75,7 @@ export function simulateTable(options: {
 
 /**
  * Heads-up match to the bust, both players starting with the same stack.
+ * With `byEquity`, an all-in before the river is settled by the players' equity, as in the app's matches.
  * Returns the index (0 or 1) of the winner, or null if `maxHands` ran out.
  */
 export function playHeadsUpMatch(options: {
@@ -82,6 +84,7 @@ export function playHeadsUpMatch(options: {
   bigBlind?: number;
   startingBigBlinds?: number;
   maxHands?: number;
+  byEquity?: boolean;
 }): { winner: 0 | 1 | null; hands: number } {
   const bb = options.bigBlind ?? 100;
   const start = bb * (options.startingBigBlinds ?? 100);
@@ -90,8 +93,11 @@ export function playHeadsUpMatch(options: {
   const maxHands = options.maxHands ?? 1000;
   for (let h = 1; h <= maxHands; h++) {
     const state = playBotHand(options.bots, stacks, button, bb, options.rng);
-    stacks[0] = state.players[0]!.stack;
-    stacks[1] = state.players[1]!.stack;
+    const split = options.byEquity ? allInSplit(state, { rng: options.rng, iterations: 4000 }) : null;
+    for (const seat of [0, 1] as const) {
+      const p = state.players[seat]!;
+      stacks[seat] = split ? p.stack - state.result!.won[seat]! + split.won[seat]! : p.stack;
+    }
     if (stacks[0] === 0) return { winner: 1, hands: h };
     if (stacks[1] === 0) return { winner: 0, hands: h };
     button = 1 - button;

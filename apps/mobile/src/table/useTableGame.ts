@@ -1,4 +1,4 @@
-import { getBot, type Bot } from '@pokerall/bots';
+import { createBot, type Bot } from '@pokerall/bots';
 import {
   allInSplit,
   applyAction,
@@ -109,7 +109,8 @@ function createSetup(mode: TableMode): Setup {
     mode.kind === 'hu'
       ? [{ kind: 'hero' }, { kind: 'bot', botId: mode.botId }]
       : [{ kind: 'hero' }, ...pickTableBots(mode.league, rng).map((botId) => ({ kind: 'bot' as const, botId }))];
-  const bots = seats.map((s) => (s.kind === 'bot' ? getBot(s.botId) : null));
+  // A fresh bot per seat and match: some bots remember the match (tilt, impatience, your habits).
+  const bots = seats.map((s) => (s.kind === 'bot' ? createBot(s.botId) : null));
   const firstHand = dealHand(
     seats.map(() => STARTING_STACK),
     rng.nextInt(seats.length),
@@ -211,6 +212,8 @@ export function useTableGame(mode: TableMode, onMatchOver?: (result: MatchResult
     (record: HandRecord) => {
       const state = record.hand;
       const showdown = state.events.some((e) => e.type === 'showdown');
+      // Bots see how the hand ended (shown cards included) and learn from it.
+      bots.forEach((bot, seat) => bot?.handFinished?.(viewFor(state, seat)));
       setSettled(record);
       setHistory((h) => [...h, record]);
 
@@ -244,7 +247,7 @@ export function useTableGame(mode: TableMode, onMatchOver?: (result: MatchResult
       setStatus('hand-over');
       dealTimer.current = setTimeout(() => deal(record), pause);
     },
-    [deal, handNumber, later, mode.kind, say, seats],
+    [bots, deal, handNumber, later, mode.kind, say, seats],
   );
 
   /** Applies an action and moves the hand forward. */

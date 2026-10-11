@@ -53,6 +53,30 @@ export type BotProfile = {
   sizes: { open: number; bet: number; raise: number };
   /** Runouts sampled for each equity estimate. */
   samples: number;
+  /**
+   * How much it reads opponents' ranges from their actions (0 = treats every opponent as holding a
+   * random hand; 1 = a raise preflop and every bet after it make their range clearly stronger).
+   */
+  rangeAware: number;
+  /** As the preflop raiser, chance to bet the flop when checked to, whatever it holds (a continuation bet). */
+  cbet: number;
+  /** Chance to only check and call a very strong hand on the flop and turn, to raise or bet big on the river. */
+  slowplay: number;
+  /** Facing a bet with a strong hand or a draw, chance to raise instead of calling (a check-raise when it checked first). */
+  checkRaise: number;
+  /** Chance to bet or raise with a draw (a semi-bluff). */
+  semiBluff: number;
+  /** Extra chance to bluff when the board gets scary: a third card of a suit, four to a straight, an ace or king. */
+  scareBluff: number;
+  /** Facing a bet of 70% of the pot or more, chance to fold anything but a very strong hand. */
+  foldToBigBet: number;
+  /** Late-position aggression: opens and 3-bets wider from the cutoff, button and small blind. */
+  steal: number;
+  /**
+   * Plays preflop push or fold: moves all-in with the top `share` of hands when it raises at all, and
+   * calls all-ins with the top `callShare`. Null for normal play.
+   */
+  pushFold: { share: number; callShare: number } | null;
 };
 
 export const DEFAULT_PROFILE: BotProfile = {
@@ -74,4 +98,13 @@ export const DEFAULT_PROFILE: BotProfile = {
   valueThreshold: 0.6,
   sizes: { open: 2.5, bet: 0.6, raise: 0.8 },
   samples: 250,
+  rangeAware: 0,
+  cbet: 0,
+  slowplay: 0,
+  checkRaise: 0,
+  semiBluff: 0,
+  scareBluff: 0,
+  foldToBigBet: 0,
+  steal: 0,
+  pushFold: null,
 };

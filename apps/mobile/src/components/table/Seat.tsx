@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 
 import type { PortraitKind } from '@/bots/catalog';
+import type { FaceSpec } from '@/components/FacePortrait';
 import { AppText } from '@/components/AppText';
 import { BotPortrait } from '@/components/BotPortrait';
 import { PersonIcon } from '@/components/icons';
@@ -85,7 +86,7 @@ function CardsRow({
 export type BotSeatProps = {
   name: string;
   color: string;
-  portrait: PortraitKind;
+  portrait: PortraitKind | FaceSpec;
   portraitSize: number;
   /** Name and stack under the portrait, or to its left (seats at the top edge, to save height). */
   textSide: 'below' | 'left';
