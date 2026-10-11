@@ -1,0 +1,121 @@
+{
+  "tabs": {
+    "play": "Play",
+    "academy": "Academy",
+    "train": "Train",
+    "profile": "Profile"
+  },
+  "common": {
+    "soon": "Soon",
+    "noRealMoney": "No real money. Chips have no value and can't be withdrawn."
+  },
+  "levels": {
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced"
+  },
+  "play": {
+    "title": "All-in Academy",
+    "subtitle": "Learn the game, drill your decisions, climb the ranked ladder.",
+    "modes": "Game modes",
+    "bots": {
+      "title": "Practice vs bots",
+      "body": "Heads-up and 6-max against bots with three playing styles. Works offline."
+    },
+    "ranked": {
+      "title": "Ranked",
+      "body": "Heads-up and 6-max Sit & Go. Everyone starts with the same stack, only rating is at stake."
+    },
+    "casual": {
+      "title": "Casual tables",
+      "body": "Play other people for free practice chips."
+    }
+  },
+  "academy": {
+    "title": "Academy",
+    "subtitle": "Short lessons with interactive charts and a quiz at the end.",
+    "tracks": {
+      "basics": {
+        "title": "Basics",
+        "body": "Hand rankings, rules, streets, blinds and antes."
+      },
+      "positions": {
+        "title": "Positions",
+        "body": "Every seat at 6-max and 9-max tables, and why acting last wins more."
+      },
+      "ranges": {
+        "title": "Ranges",
+        "body": "The 13×13 grid, opening ranges for each position, combos and blockers."
+      },
+      "sizing": {
+        "title": "Bet sizing",
+        "body": "Preflop opens and 3-bets, c-bet sizes for dry and wet boards."
+      },
+      "math": {
+        "title": "Poker math",
+        "body": "Outs, pot odds, equity, EV and minimum defense frequency."
+      },
+      "strategy": {
+        "title": "Strategy",
+        "body": "Board texture, bluffing, ICM and adjusting to opponents."
+      },
+      "glossary": {
+        "title": "Glossary",
+        "body": "Every poker term explained in English and Russian."
+      }
+    }
+  },
+  "train": {
+    "title": "Train",
+    "subtitle": "Fast drills with instant feedback. Mistakes come back until you fix them.",
+    "drills": {
+      "preflop": {
+        "title": "Preflop trainer",
+        "body": "Get a hand and a position, choose fold, call or raise, see the correct play."
+      },
+      "potOdds": {
+        "title": "Pot odds quiz",
+        "body": "Decide whether a call is profitable before the timer runs out."
+      },
+      "daily": {
+        "title": "Daily challenge",
+        "body": "Ten new spots every day and a leaderboard for the best score."
+      }
+    }
+  },
+  "profile": {
+    "title": "Profile",
+    "guest": "Guest",
+    "guestHint": "Progress is saved on this phone. Accounts arrive with online play.",
+    "level": "Level {{level}}",
+    "xp": "{{current}} / {{next}} XP",
+    "stats": {
+      "hands": "Hands played",
+      "lessons": "Lessons done",
+      "accuracy": "Trainer accuracy"
+    },
+    "settings": "Settings"
+  },
+  "settings": {
+    "title": "Settings",
+    "back": "Back",
+    "language": "Language",
+    "theme": "Theme",
+    "languages": {
+      "system": "Same as phone",
+      "en": "English",
+      "ru": "Русский"
+    },
+    "themes": {
+      "neon": "Neon (dark)",
+      "daylight": "Daylight (light)",
+      "system": "Same as phone"
+    },
+    "about": "About",
+    "version": "Version {{version}}"
+  },
+  "notFound": {
+    "title": "This screen doesn't exist",
+    "action": "Go to Play"
+  }
+}
