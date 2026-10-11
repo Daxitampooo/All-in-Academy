@@ -4,28 +4,27 @@
 
 ## Сейчас
 - Архитектура утверждена владельцем (docs/ARCHITECTURE.md).
-- Идёт MVP, шаг 1 «Каркас» (раздел 13 архитектуры). Ветка `feat/scaffold`, PR ещё не открыт.
+- MVP, шаг 1 «Каркас» (раздел 13 архитектуры) готов к проверке: ветка `feat/scaffold`, открыт PR в `main`.
+- Следующий шаг после мёржа: шаг 2 «Движок» (`packages/poker-engine` с тестами) в новой ветке `feat/poker-engine`.
 
-## Что уже есть в ветке `feat/scaffold`
-- Корень монорепо: `package.json` (pnpm + turbo), `pnpm-workspace.yaml`, `.npmrc` (`node-linker=hoisted`), `.gitignore`.
-- `apps/mobile` сгенерирован `create-expo-app` (default template) на **Expo SDK 57** (React Native 0.86, React 19.2, expo-router 57, Reanimated 4.5, TypeScript 6). Корень маршрутов — `src/app`.
-- Уже добавлены зависимости: expo-localization, react-native-svg, expo-font, @expo-google-fonts/space-grotesk, @expo-google-fonts/inter, expo-linear-gradient, i18next, react-i18next, zustand.
-- `pnpm-lock.yaml` сгенерирован.
-- Экраны и компоненты шаблона удалены. Сейчас в `src/app` только `_layout.tsx` из шаблона, он ссылается на удалённые компоненты: его нужно переписать.
-- `.github/workflows/bootstrap.yml` — одноразовый костыль, созданный, когда в облачной сессии не было доступа к npm. **Удалить** в этом шаге.
-- `.bootstrap/` — логи генерации из CI. **Удалить** в этом шаге.
+## Что сделано в шаге 1
+- Монорепо: pnpm workspaces + Turborepo; `apps/mobile` на Expo SDK 57 (React Native 0.86, expo-router 57, TypeScript 6).
+- Тема Neon (тёмная) и Daylight (светлая): `apps/mobile/src/theme/tokens.ts`. Шрифты Unbounded (заголовки) и Inter (текст), оба с кириллицей.
+- i18n EN/RU (i18next + expo-localization), язык и тема выбираются в настройках и сохраняются (Zustand + AsyncStorage).
+- Вкладки Играть / Академия / Тренировка / Профиль с заглушками «Скоро», экран настроек, неоновый стол на главной, дисклеймер «без реальных денег».
+- Иконка приложения, adaptive icon и сплэш (неоновая пика).
+- CI: install, typecheck, lint, check:locales, веб-сборка; архив зависимостей для сессий без npm.
+- APK: workflow `android-apk`, релиз `preview-feat-scaffold`.
+- Веб-превью: приватный артефакт https://claude.ai/artifact/CPRx4cuNmAPekziDnf66qT (обновлять публикацией того же артефакта по URL).
 
-## Что осталось сделать в шаге 1
-1. Удалить `bootstrap.yml` и `.bootstrap/`; в `app.json` задать имя «All-in Academy», slug, scheme, package (`com.allinacademy.app`), цвета сплэша и иконки под тему Neon, `userInterfaceStyle`, edge-to-edge и predictive back (targetSdk 36).
-2. Тема Neon (раздел 3 архитектуры): токены цветов тёмной и светлой темы, шрифты, типографическая шкала; ни одного «сырого» цвета в компонентах.
-3. i18n: i18next + expo-localization, `src/locales/en.json` и `ru.json`, переключение языка и темы в настройках (Zustand, с сохранением).
-4. Вкладки: Играть, Академия, Тренировка, Профиль — экраны-заглушки в стиле Neon с понятным текстом, что появится дальше.
-5. Скрипт проверки локалей (`scripts/check-locales.mjs`): одинаковые ключи в en и ru.
-6. `.github/workflows/ci.yml`: install, typecheck, lint, check:locales.
-7. `.github/workflows/android-apk.yml`: по кнопке (workflow_dispatch) и по тегу — `expo prebuild` + Gradle, release APK в GitHub Release (pre-release). Пока ключа подписи нет — подписывать debug-ключом и явно пометить это в описании релиза.
-8. Веб-превью: `npx expo export --platform web`, опубликовать как приватную страницу и дать владельцу ссылку.
-9. Открыть PR в main, коротко описать владельцу, что проверить на телефоне.
+## Как работать в сессии без доступа к npm
+1. `scripts/fetch-deps.sh` — скачать `node_modules` для текущего `pnpm-lock.yaml`.
+2. Если менял `package.json`: закоммитить и запушить, дождаться workflow `ci` (он закоммитит lockfile и выложит архив), сделать `git pull` и снова `scripts/fetch-deps.sh`.
+3. Проверки: `pnpm typecheck`, `pnpm lint`, `pnpm check:locales`.
+4. Превью: `cd apps/mobile && CI=1 EXPO_OFFLINE=1 npx expo export --platform web --output-dir dist`, затем `node scripts/build-preview.mjs <файл>` и публикация файла как артефакта.
+5. Логи упавшего CI: аннотации check-run (`gh api repos/<repo>/check-runs/<id>/annotations`).
 
 ## Заметки
 - Владелец работает только с Android-телефона, опыта мало: объяснять просто.
 - Визуальный стиль — «Neon», неоновый и игровой.
+- Аккаунта Google Play пока нет; тестовые APK подписаны debug-ключом.
