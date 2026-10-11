@@ -12,6 +12,7 @@
     "export:web": "expo export --platform web --output-dir dist"
   },
   "dependencies": {
+    "@all-in-academy/poker-engine": "workspace:*",
     "@expo-google-fonts/inter": "^0.4.2",
     "@expo-google-fonts/unbounded": "^0.4.1",
     "@react-native-async-storage/async-storage": "2.2.0",
