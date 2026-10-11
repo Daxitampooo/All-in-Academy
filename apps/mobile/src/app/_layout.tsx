@@ -1,18 +1,17 @@
-import '@/i18n';
-
 import { useFonts } from 'expo-font';
 import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect, useState } from 'react';
+import { useEffect, useSyncExternalStore } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { Inter_400Regular } from '@expo-google-fonts/inter/400Regular';
 import { Inter_500Medium } from '@expo-google-fonts/inter/500Medium';
 import { Inter_600SemiBold } from '@expo-google-fonts/inter/600SemiBold';
-import { SpaceGrotesk_600SemiBold } from '@expo-google-fonts/space-grotesk/600SemiBold';
-import { SpaceGrotesk_700Bold } from '@expo-google-fonts/space-grotesk/700Bold';
+import { Unbounded_600SemiBold } from '@expo-google-fonts/unbounded/600SemiBold';
+import { Unbounded_700Bold } from '@expo-google-fonts/unbounded/700Bold';
 
+// Importing i18n also initializes it before the first screen renders.
 import i18n, { deviceLanguage } from '@/i18n';
 import { useSettings } from '@/store/settings';
 import { AppThemeProvider, useTheme } from '@/theme/ThemeProvider';
@@ -21,13 +20,10 @@ SplashScreen.preventAutoHideAsync();
 
 /** True once saved settings have been read from storage. */
 function useSettingsHydrated() {
-  const [hydrated, setHydrated] = useState(() => useSettings.persist.hasHydrated());
-  useEffect(() => {
-    const unsubscribe = useSettings.persist.onFinishHydration(() => setHydrated(true));
-    setHydrated(useSettings.persist.hasHydrated());
-    return unsubscribe;
-  }, []);
-  return hydrated;
+  return useSyncExternalStore(
+    (onChange) => useSettings.persist.onFinishHydration(onChange),
+    () => useSettings.persist.hasHydrated(),
+  );
 }
 
 export default function RootLayout() {
@@ -35,8 +31,8 @@ export default function RootLayout() {
     Inter_400Regular,
     Inter_500Medium,
     Inter_600SemiBold,
-    SpaceGrotesk_600SemiBold,
-    SpaceGrotesk_700Bold,
+    Unbounded_600SemiBold,
+    Unbounded_700Bold,
   });
   const hydrated = useSettingsHydrated();
   const language = useSettings((s) => s.language);

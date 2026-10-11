@@ -99,9 +99,10 @@ export const radius = {
   pill: 999,
 } as const;
 
+// Unbounded (display) and Inter (body) both cover Latin and Cyrillic.
 export const fonts = {
-  display: 'SpaceGrotesk_700Bold',
-  displayMedium: 'SpaceGrotesk_600SemiBold',
+  display: 'Unbounded_700Bold',
+  displayMedium: 'Unbounded_600SemiBold',
   body: 'Inter_400Regular',
   bodyMedium: 'Inter_500Medium',
   bodySemiBold: 'Inter_600SemiBold',
@@ -109,9 +110,9 @@ export const fonts = {
 
 /** Type scale: [fontSize, lineHeight]. */
 export const typeScale = {
-  display: [34, 38],
-  title: [24, 30],
-  heading: [18, 24],
+  display: [28, 36],
+  title: [21, 28],
+  heading: [16, 22],
   body: [15, 22],
   label: [13, 18],
   caption: [12, 16],

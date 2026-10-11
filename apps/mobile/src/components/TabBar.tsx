@@ -35,7 +35,11 @@ type TabButtonProps = TabTriggerSlotProps & {
   Icon: ComponentType<IconProps>;
 };
 
-/** One tab. Receives `isFocused` and press handlers from `TabTrigger asChild`. */
+/**
+ * One tab. Receives `isFocused` and press handlers from `TabTrigger asChild`.
+ * The trigger merges styles by object spread, so this component passes a single
+ * plain style object and ignores the incoming `style` (a row layout by default).
+ */
 export const TabButton = forwardRef<View, TabButtonProps>(function TabButton(
   { label, Icon, isFocused, style, ...rest },
   ref,
@@ -50,11 +54,8 @@ export const TabButton = forwardRef<View, TabButtonProps>(function TabButton(
       accessibilityRole="tab"
       accessibilityLabel={label}
       accessibilityState={{ selected: !!isFocused }}
-      style={(state) => [
-        styles.button,
-        state.pressed && { opacity: 0.7 },
-        typeof style === 'function' ? style(state) : style,
-      ]}>
+      android_ripple={{ color: withAlpha(colors.cyan, 0.15), borderless: true }}
+      style={styles.button}>
       {/* Lit strip above the active tab. */}
       <View
         style={[
@@ -83,6 +84,8 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     gap: space.xxs,
     paddingTop: space.sm,
