@@ -27,6 +27,10 @@ export type Palette = {
   onAccent: string;
   /** Felt of the poker table. */
   felt: string;
+  /** Playing card face and inks (black suits, red suits). */
+  cardFace: string;
+  cardInk: string;
+  cardRed: string;
   /** How strong neon glows are in this palette (0 disables them). */
   glow: number;
 };
@@ -46,6 +50,9 @@ export const palettes = {
     danger: '#FF4D6D',
     onAccent: '#04040A',
     felt: '#0B1420',
+    cardFace: '#F6F6FB',
+    cardInk: '#14141F',
+    cardRed: '#E8204A',
     glow: 1,
   },
   daylight: {
@@ -62,11 +69,17 @@ export const palettes = {
     danger: '#C2203B',
     onAccent: '#FFFFFF',
     felt: '#E3F1F4',
+    cardFace: '#FFFFFF',
+    cardInk: '#14141F',
+    cardRed: '#D0183E',
     glow: 0,
   },
 } satisfies Record<string, Palette>;
 
 export type PaletteName = keyof typeof palettes;
+
+/** Palette entries that hold a color (everything except numeric settings). */
+export type ColorKey = Exclude<keyof Palette, 'glow'>;
 
 export const space = {
   xxs: 2,

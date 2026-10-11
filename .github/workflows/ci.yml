@@ -1,32 +1,24 @@
-# Installs workspace dependencies and publishes them as a cache archive.
+# Checks every push: installs dependencies, then typecheck, lint, locale check
+# and a web build.
 #
-# Why this exists: the cloud coding session that writes this project has no
-# access to the npm registry, so it cannot run `pnpm install` itself. This
-# workflow resolves dependencies (updating pnpm-lock.yaml when package.json
-# changed), then attaches node_modules as a release asset. The coding session
-# downloads that archive to typecheck, lint, test and render web previews.
-name: deps
+# It also keeps a dependency archive for the cloud coding session, which has no
+# npm registry access: when package.json changes, this workflow resolves
+# dependencies, commits the updated pnpm-lock.yaml and publishes node_modules as
+# a release asset (tag deps-<lockfile hash>). scripts/fetch-deps.sh downloads it.
+name: ci
 on:
   push:
     branches: ["main", "feat/**", "fix/**"]
-    paths:
-      - "package.json"
-      - "pnpm-lock.yaml"
-      - "pnpm-workspace.yaml"
-      - ".npmrc"
-      - "apps/*/package.json"
-      - "packages/*/package.json"
-      - ".github/workflows/deps.yml"
 permissions:
   contents: write
 concurrency:
-  group: deps-${{ github.ref }}
+  group: ci-${{ github.ref }}
   cancel-in-progress: true
 defaults:
   run:
     shell: bash
 jobs:
-  install:
+  ci:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
@@ -36,10 +28,12 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
+
       - name: Install dependencies
         run: |
           set -o pipefail
           pnpm install --no-frozen-lockfile 2>&1 | tee -a ci.log
+
       - name: Commit updated lockfile
         run: |
           if git diff --quiet -- pnpm-lock.yaml; then
@@ -51,34 +45,55 @@ jobs:
             git commit -m "Update pnpm-lock.yaml (resolved in CI)"
             git push 2>&1 | tee -a ci.log
           fi
-      - name: Pack node_modules
+
+      - name: Publish dependency archive (if missing)
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -o pipefail
+          tag="deps-$(sha256sum pnpm-lock.yaml | cut -c1-12)"
+          if gh release view "$tag" >/dev/null 2>&1; then
+            echo "Archive $tag already exists"
+            exit 0
+          fi
           dirs=()
           for d in node_modules apps/*/node_modules packages/*/node_modules; do
             [ -d "$d" ] && dirs+=("$d")
           done
           tar -czf deps-linux-x64.tgz "${dirs[@]}" 2>&1 | tee -a ci.log
-          ls -lh deps-linux-x64.tgz
-      - name: Publish dependency archive
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          set -o pipefail
-          hash=$(sha256sum pnpm-lock.yaml | cut -c1-12)
-          tag="deps-$hash"
-          if gh release view "$tag" >/dev/null 2>&1; then
-            gh release upload "$tag" deps-linux-x64.tgz --clobber 2>&1 | tee -a ci.log
-          else
-            gh release create "$tag" deps-linux-x64.tgz \
-              --target "$GITHUB_SHA" --prerelease \
-              --title "Internal: dependency cache $hash" \
-              --notes "Служебный архив зависимостей для облачной сессии разработки. Не для установки на телефон." 2>&1 | tee -a ci.log
-          fi
+          gh release create "$tag" deps-linux-x64.tgz \
+            --target "$GITHUB_SHA" --prerelease \
+            --title "Internal: dependency cache ${tag#deps-}" \
+            --notes "Служебный архив зависимостей для облачной сессии разработки. Не для установки на телефон." 2>&1 | tee -a ci.log
+          rm deps-linux-x64.tgz
           # keep only the 3 newest dependency archives
           gh release list --limit 100 --json tagName,createdAt \
             --jq '[.[] | select(.tagName | startswith("deps-"))] | sort_by(.createdAt) | reverse | .[3:] | .[].tagName' |
             while read -r old; do gh release delete "$old" --yes --cleanup-tag; done
+
+      - name: Typecheck
+        run: |
+          set -o pipefail
+          pnpm typecheck 2>&1 | tee -a ci.log
+
+      - name: Lint
+        run: |
+          set -o pipefail
+          pnpm lint 2>&1 | tee -a ci.log
+
+      - name: Check translations
+        run: |
+          set -o pipefail
+          pnpm check:locales 2>&1 | tee -a ci.log
+
+      - name: Web build
+        working-directory: apps/mobile
+        env:
+          CI: "1"
+        run: |
+          set -o pipefail
+          pnpm export:web 2>&1 | tee -a ../../ci.log
+
       - name: Report failure
         if: failure()
         run: .github/scripts/report-failure.sh ci.log
