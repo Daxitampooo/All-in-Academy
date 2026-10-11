@@ -70,12 +70,12 @@ jobs:
           version=$(node -p "require('./apps/mobile/app.json').expo.version")
           short=$(git rev-parse --short HEAD)
           if [[ "$GITHUB_REF" == refs/tags/* ]]; then
-            tag="$GITHUB_REF_NAME"; title="Pokero $GITHUB_REF_NAME"
+            tag="$GITHUB_REF_NAME"; title="PokerALL $GITHUB_REF_NAME"
           else
             slug=$(echo "$GITHUB_REF_NAME" | tr '/' '-' | tr -cd '[:alnum:]-._')
             tag="preview-$slug"; title="Тестовая сборка: $GITHUB_REF_NAME"
           fi
-          apk="pokero-$version-$short.apk"
+          apk="pokerall-$version-$short.apk"
           cp apps/mobile/android/app/build/outputs/apk/release/app-release.apk "$apk"
           notes="Сборка для проверки на телефоне. Ветка: $GITHUB_REF_NAME, коммит: $short, версия: $version.
 
