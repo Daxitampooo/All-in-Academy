@@ -178,3 +178,22 @@ describe('ending a hand', () => {
     expect(legalActions(s)).toMatchObject({ seat: 0, callAmount: 100 });
   });
 });
+
+describe('player view', () => {
+  it("shows a player their own cards and hides everyone else's until showdown", async () => {
+    const { viewFor } = await import('../src');
+    let s = deal([1000, 1000, 1000], { holes: ['AsAh', 'KsKh', 'QsQh'], board: '2c7d9hJs3c' });
+    const v = viewFor(s, 1);
+    expect(v.players[1]!.holeCards).toEqual(s.players[1]!.holeCards);
+    expect(v.players[0]!.holeCards).toBeNull();
+    expect(v.players[2]!.holeCards).toBeNull();
+    expect(v.legal).toBeNull();
+    expect(viewFor(s, 0).legal).not.toBeNull();
+    expect(JSON.stringify(v)).not.toContain(JSON.stringify(s.deck));
+
+    s = play(s, 'allin', 'allin', 'allin');
+    const after = viewFor(s, 1);
+    expect(after.players[0]!.holeCards).toEqual(s.players[0]!.holeCards);
+    expect(after.phase).toBe('complete');
+  });
+});
