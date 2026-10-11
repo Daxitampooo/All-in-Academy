@@ -1,4 +1,4 @@
-# All-in Academy
+# Pokero
 
 Android app for learning and training No-Limit Texas Hold'em: lessons, drills, games against bots and a ranked mode. No real money: chips have no value and can't be withdrawn.
 

@@ -1,4 +1,4 @@
-# All-in Academy — mobile app
+# Pokero — mobile app
 
 Expo (React Native) app for Android, with a web build used for previews.
 
@@ -9,7 +9,7 @@ Expo (React Native) app for Android, with a web build used for previews.
 Commands (from the repo root, after `pnpm install`):
 
 ```bash
-pnpm --filter @all-in-academy/mobile typecheck
-pnpm --filter @all-in-academy/mobile lint
-pnpm --filter @all-in-academy/mobile export:web
+pnpm --filter @pokero/mobile typecheck
+pnpm --filter @pokero/mobile lint
+pnpm --filter @pokero/mobile export:web
 ```
