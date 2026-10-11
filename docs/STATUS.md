@@ -25,7 +25,8 @@
 5. Логи упавшего CI: аннотации check-run (`gh api repos/<repo>/check-runs/<id>/annotations`).
 
 ## Заметки
-- Приложение переименовано в Pokero (Android-пакет `com.pokero.app`). Репозиторий пока называется All-in-Academy.
+- Название приложения — PokerALL (раньше Pokero и All-in Academy), Android-пакет `com.pokerall.app`. Репозиторий пока называется All-in-Academy.
+- Русские покерные термины — по словарю docs/ru-poker-terms.md (Фулл хаус, а не «полный дом»).
 - Владелец работает только с Android-телефона, опыта мало: объяснять просто.
 - Визуальный стиль — «Neon», неоновый и игровой.
 - Аккаунта Google Play пока нет; тестовые APK подписаны debug-ключом.

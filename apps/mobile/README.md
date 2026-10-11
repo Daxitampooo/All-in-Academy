@@ -1,4 +1,4 @@
-# Pokero — mobile app
+# PokerALL — mobile app
 
 Expo (React Native) app for Android, with a web build used for previews.
 
@@ -9,7 +9,7 @@ Expo (React Native) app for Android, with a web build used for previews.
 Commands (from the repo root, after `pnpm install`):
 
 ```bash
-pnpm --filter @pokero/mobile typecheck
-pnpm --filter @pokero/mobile lint
-pnpm --filter @pokero/mobile export:web
+pnpm --filter @pokerall/mobile typecheck
+pnpm --filter @pokerall/mobile lint
+pnpm --filter @pokerall/mobile export:web
 ```

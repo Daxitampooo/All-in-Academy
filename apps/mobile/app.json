@@ -1,15 +1,15 @@
 {
   "expo": {
-    "name": "Pokero",
-    "slug": "pokero",
+    "name": "PokerALL",
+    "slug": "pokerall",
     "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "pokero",
+    "scheme": "pokerall",
     "userInterfaceStyle": "automatic",
     "backgroundColor": "#07070D",
     "android": {
-      "package": "com.pokero.app",
+      "package": "com.pokerall.app",
       "adaptiveIcon": {
         "backgroundColor": "#F7F6F6",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -26,7 +26,7 @@
     "web": {
       "output": "single",
       "favicon": "./assets/images/favicon.png",
-      "name": "Pokero",
+      "name": "PokerALL",
       "themeColor": "#07070D",
       "backgroundColor": "#07070D"
     },
