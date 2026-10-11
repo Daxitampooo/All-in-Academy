@@ -60,7 +60,7 @@ export function createSeededRng(seed: Uint8Array): Rng {
   }
   const nonce = new Uint32Array(3);
   let counter = 0;
-  let block = new Uint32Array(0);
+  let block: Uint32Array = new Uint32Array(0);
   let pos = 0;
 
   const nextUint32 = () => {
