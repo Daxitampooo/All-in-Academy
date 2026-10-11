@@ -1,5 +1,5 @@
 {
-  "name": "@pokero/poker-engine",
+  "name": "@pokerall/poker-engine",
   "version": "0.1.0",
   "private": true,
   "description": "No-Limit Texas Hold'em rules, hand evaluation and equity. Pure TypeScript, no I/O.",

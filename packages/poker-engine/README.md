@@ -1,4 +1,4 @@
-# @pokero/poker-engine
+# @pokerall/poker-engine
 
 No-Limit Texas Hold'em logic in plain TypeScript, with no I/O. The phone app uses it
 for offline games, drills and analysis; the future server will use the same code.
@@ -15,7 +15,7 @@ for offline games, drills and analysis; the future server will use the same code
 | `arrange` | Builds a deck that deals chosen cards (tests, lessons, drills). |
 
 ```ts
-import { startHand, applyAction, legalActions, shuffledDeck, createSeededRng } from '@pokero/poker-engine';
+import { startHand, applyAction, legalActions, shuffledDeck, createSeededRng } from '@pokerall/poker-engine';
 
 let hand = startHand(
   { players: [{ id: 'me', stack: 10_000 }, { id: 'bot', stack: 10_000 }], button: 0, smallBlind: 50, bigBlind: 100 },
@@ -30,5 +30,5 @@ add at least the previous full raise; an all-in for less than a full raise does 
 betting for players who already acted (several short all-ins that add up to a full raise do);
 uncalled chips go back before pots are built; odd chips go to the first winner left of the button.
 
-Tests: `pnpm --filter @pokero/poker-engine test` (every 5-card hand is enumerated, 3000
+Tests: `pnpm --filter @pokerall/poker-engine test` (every 5-card hand is enumerated, 3000
 random hands check that no chip is lost and every hand replays identically).
