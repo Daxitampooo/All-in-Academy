@@ -11,7 +11,7 @@
     "android": {
       "package": "com.pokero.app",
       "adaptiveIcon": {
-        "backgroundColor": "#07070D",
+        "backgroundColor": "#F7F6F6",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
