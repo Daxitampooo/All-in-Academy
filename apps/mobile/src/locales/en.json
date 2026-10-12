@@ -185,6 +185,11 @@
         "short": "Max",
         "nickname": "Maniac"
       },
+      "gena": {
+        "name": "Gena",
+        "short": "Gena",
+        "nickname": "On the Line"
+      },
       "dasha": {
         "name": "Dasha",
         "short": "Dasha",
@@ -214,6 +219,11 @@
         "name": "Oleg",
         "short": "Oleg",
         "nickname": "Rock"
+      },
+      "armen": {
+        "name": "Armen",
+        "short": "Armen",
+        "nickname": "Last Hand"
       },
       "igor": {
         "name": "Igor",
@@ -442,6 +452,392 @@
         "idle": [
           "Two cards of the same suit, so pretty.",
           "I'll call, I want to see the flop!"
+        ]
+      },
+      "max": {
+        "greet": [
+          "Let's go! This won't be boring!",
+          "I bet on anything that moves!"
+        ],
+        "win": [
+          "Pressure wins!",
+          "Now that's poker!"
+        ],
+        "lose": [
+          "Fine, the next one is mine.",
+          "Whatever, one pot."
+        ],
+        "allin": [
+          "All-in! How else?",
+          "Everything in!"
+        ],
+        "bust": [
+          "Out of chips. Where's the “again” button?"
+        ],
+        "victory": [
+          "No risk, no reward!"
+        ],
+        "idle": [
+          "What are we waiting for? Raise!",
+          "So slow, so slow…"
+        ]
+      },
+      "gena": {
+        "greet": [
+          "Hello? Yeah, one sec… Hi! I'm playing poker, go on."
+        ],
+        "win": [
+          "Whoa, I won something while talking!",
+          "Mom, I won! No, not money, chips."
+        ],
+        "lose": [
+          "I pressed the wrong button, honest.",
+          "Wait, something just happened…"
+        ],
+        "allin": [
+          "Oops. Did I just go all-in?",
+          "Hello, can't hear you… all-in!"
+        ],
+        "bust": [
+          "My phone died… I mean my chips."
+        ],
+        "victory": [
+          "I'll call you back, I just won!"
+        ],
+        "idle": [
+          "Yes, Mom, I ate.",
+          "Hold on, I have a hand.",
+          "Hello? Hello? Can't hear you!"
+        ]
+      },
+      "dasha": {
+        "greet": [
+          "Hi! Just no big bets, please…"
+        ],
+        "win": [
+          "Oh, is that pot really mine?",
+          "Wow!"
+        ],
+        "lose": [
+          "I knew it…",
+          "That was too scary."
+        ],
+        "allin": [
+          "Oh… okay, all-in. Scary!"
+        ],
+        "bust": [
+          "I can't watch this anymore."
+        ],
+        "victory": [
+          "I won? Seriously?"
+        ],
+        "idle": [
+          "Can I just watch?",
+          "Oh, those bets…"
+        ]
+      },
+      "stas": {
+        "greet": [
+          "Hi. Let's see who wins."
+        ],
+        "win": [
+          "Patience pays.",
+          "Thanks for the bet."
+        ],
+        "lose": [
+          "It happens. Not this time."
+        ],
+        "allin": [
+          "All-in."
+        ],
+        "bust": [
+          "Well played, I admit."
+        ],
+        "victory": [
+          "Sometimes you just have to wait."
+        ],
+        "idle": [
+          "Check.",
+          "I'm in no hurry."
+        ]
+      },
+      "roma": {
+        "greet": [
+          "Hey! Hunting for a card?"
+        ],
+        "win": [
+          "It came! I knew it would!",
+          "The river is mine!"
+        ],
+        "lose": [
+          "One out short…",
+          "Why do they always miss?"
+        ],
+        "allin": [
+          "All-in! I have every draw!"
+        ],
+        "bust": [
+          "Didn't get there. Oh well."
+        ],
+        "victory": [
+          "The river loves the brave!"
+        ],
+        "idle": [
+          "Just one more card…",
+          "I can feel it coming."
+        ]
+      },
+      "katya": {
+        "greet": [
+          "Good evening. Let's play carefully."
+        ],
+        "win": [
+          "As expected.",
+          "Thanks for the call."
+        ],
+        "lose": [
+          "Unpleasant, but it happens."
+        ],
+        "allin": [
+          "All-in. I have a hand."
+        ],
+        "bust": [
+          "I give up. Good game."
+        ],
+        "victory": [
+          "Thanks for the game."
+        ],
+        "idle": [
+          "No extra risk.",
+          "I'll wait for a good hand."
+        ]
+      },
+      "vadim": {
+        "greet": [
+          "Hi! I'm in shape today."
+        ],
+        "win": [
+          "Yes! Got it back!",
+          "Finally!"
+        ],
+        "lose": [
+          "How?! The river again!",
+          "That's just unfair!"
+        ],
+        "allin": [
+          "All-in! I don't care anymore!"
+        ],
+        "bust": [
+          "That's it, no more chasing losses. Probably."
+        ],
+        "victory": [
+          "Told you I would win it back!"
+        ],
+        "idle": [
+          "Calm down, Vadim, calm down…",
+          "Breathe. Just breathe."
+        ]
+      },
+      "oleg": {
+        "greet": [
+          "Good evening. By the book."
+        ],
+        "win": [
+          "Standard.",
+          "As it should be."
+        ],
+        "lose": [
+          "Variance."
+        ],
+        "allin": [
+          "All-in."
+        ],
+        "bust": [
+          "Well played."
+        ],
+        "victory": [
+          "Discipline wins."
+        ],
+        "idle": [
+          "Nothing fancy."
+        ]
+      },
+      "armen": {
+        "greet": [
+          "Okay, one hand and I go home. Honest."
+        ],
+        "win": [
+          "There! Now I can go home.",
+          "Fine, then one more."
+        ],
+        "lose": [
+          "That was a sign. I should have left an hour ago.",
+          "My wife was right…"
+        ],
+        "allin": [
+          "All-in! The sooner we finish, the sooner I go home."
+        ],
+        "bust": [
+          "Finally! Home!"
+        ],
+        "victory": [
+          "Thanks for the game, they're waiting for me at home!"
+        ],
+        "idle": [
+          "What time is it? Oh no…",
+          "My wife has called three times already.",
+          "Last hand. Really the last one.",
+          "One more and that’s it, I’m leaving."
+        ]
+      },
+      "igor": {
+        "greet": [
+          "Hi. All or nothing."
+        ],
+        "win": [
+          "It worked.",
+          "No words needed."
+        ],
+        "lose": [
+          "That was the right call, I admit."
+        ],
+        "allin": [
+          "All-in.",
+          "Shove."
+        ],
+        "bust": [
+          "The math is on your side today."
+        ],
+        "victory": [
+          "Short and sweet."
+        ],
+        "idle": [
+          "Fold. Waiting for my hand."
+        ]
+      },
+      "vera": {
+        "greet": [
+          "Hi! I hope you trust me."
+        ],
+        "win": [
+          "Want to know what I had?",
+          "I won't show."
+        ],
+        "lose": [
+          "Fine, this one's yours."
+        ],
+        "allin": [
+          "All-in. Want to check?"
+        ],
+        "bust": [
+          "Bluffing is an art, not a science."
+        ],
+        "victory": [
+          "Sometimes it's better to believe."
+        ],
+        "idle": [
+          "Pretty board, isn’t it?",
+          "Cards don't mean anything."
+        ]
+      },
+      "nina": {
+        "greet": [
+          "Hi. Bet if you want to."
+        ],
+        "win": [
+          "You shouldn't have bet.",
+          "Thanks for the bet."
+        ],
+        "lose": [
+          "Fine, you got me."
+        ],
+        "allin": [
+          "All-in!"
+        ],
+        "bust": [
+          "Good game."
+        ],
+        "victory": [
+          "Careful with those bets next time."
+        ],
+        "idle": [
+          "Check.",
+          "Your move."
+        ]
+      },
+      "denis": {
+        "greet": [
+          "Hey. Let's go."
+        ],
+        "win": [
+          "Thanks for the blinds.",
+          "Small, but nice."
+        ],
+        "lose": [
+          "Okay."
+        ],
+        "allin": [
+          "All-in."
+        ],
+        "bust": [
+          "Fine, today is yours."
+        ],
+        "victory": [
+          "Bit by bit, it all becomes mine."
+        ],
+        "idle": [
+          "Raise. Again.",
+          "Don't sit on your blinds."
+        ]
+      },
+      "yulia": {
+        "greet": [
+          "Hi. I'm watching closely."
+        ],
+        "win": [
+          "I thought so.",
+          "Your bet said it all."
+        ],
+        "lose": [
+          "Hm, interesting."
+        ],
+        "allin": [
+          "All-in."
+        ],
+        "bust": [
+          "You hide your hands well."
+        ],
+        "victory": [
+          "Your bets say more than you think."
+        ],
+        "idle": [
+          "Interesting bet size…",
+          "I'll remember that."
+        ]
+      },
+      "artem": {
+        "greet": [
+          "Hi. Let's do the math."
+        ],
+        "win": [
+          "It all adds up.",
+          "Plus EV."
+        ],
+        "lose": [
+          "I was ahead on equity."
+        ],
+        "allin": [
+          "All-in, the odds are on my side."
+        ],
+        "bust": [
+          "Variance, nothing personal."
+        ],
+        "victory": [
+          "Numbers don't lie."
+        ],
+        "idle": [
+          "Pot odds three to one…",
+          "Nine outs, two cards: about 35%."
         ]
       }
     },

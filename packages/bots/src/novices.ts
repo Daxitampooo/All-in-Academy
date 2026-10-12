@@ -1,5 +1,5 @@
 import { profileBot } from './brain';
-import { DEFAULT_PROFILE, type BotProfile } from './types';
+import { DEFAULT_PROFILE, type Bot, type BotProfile } from './types';
 
 // Novices don't adjust to position or table size: that's part of their character.
 const profile = (overrides: Partial<BotProfile>): BotProfile => ({ ...DEFAULT_PROFILE, positionAware: false, ...overrides });
@@ -89,5 +89,5 @@ export const NOVICE_PROFILES = {
 export type NoviceId = keyof typeof NOVICE_PROFILES;
 
 export const NOVICE_BOTS = Object.fromEntries(
-  Object.entries(NOVICE_PROFILES).map(([id, p]) => [id, profileBot(id, p)]),
-) as Record<NoviceId, ReturnType<typeof profileBot>>;
+  Object.entries(NOVICE_PROFILES).map(([id, p]) => [id, () => profileBot(id, p)]),
+) as Record<NoviceId, () => Bot>;

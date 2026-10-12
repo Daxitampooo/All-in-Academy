@@ -1,12 +1,14 @@
-import type { ReactNode } from 'react';
+import { useId, type ReactNode } from 'react';
 import Svg, { Circle, ClipPath, Defs, Ellipse, G, Line, Path, Text as SvgText } from 'react-native-svg';
 
 import type { PortraitKind } from '@/bots/catalog';
+import { FaceDrawing, type FaceSpec } from '@/components/FacePortrait';
 import { useTheme } from '@/theme/ThemeProvider';
 import { fonts } from '@/theme/tokens';
 
 type Props = {
-  kind: PortraitKind;
+  /** A drawing of its own, or a face put together from parts. */
+  kind: PortraitKind | FaceSpec;
   /** Bot color: ring and main lines. */
   color: string;
   size?: number;
@@ -22,7 +24,8 @@ export function BotPortrait({ kind, color, size = 64, muted = false, active = fa
   const glow = colors.glow;
   const ink = muted ? colors.textMuted : color;
   const detail = muted ? colors.border : colors.text;
-  const clipId = `clip-${kind}`;
+  // Unique per portrait on screen; colons from useId aren't safe inside url(#…).
+  const clipId = `clip${useId().replace(/[^a-zA-Z0-9]/g, '')}`;
 
   return (
     <Svg width={size} height={size} viewBox="0 0 100 100" opacity={muted ? 0.55 : 1}>
@@ -36,7 +39,11 @@ export function BotPortrait({ kind, color, size = 64, muted = false, active = fa
       ) : null}
       <Circle cx={50} cy={50} r={46} fill={colors.surfaceRaised} stroke={ink} strokeWidth={active ? 3.2 : 2.4} />
       <G clipPath={`url(#${clipId})`} stroke={ink} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" fill="none">
-        {drawings[kind]({ ink, detail, text: colors.textMuted })}
+        {typeof kind === 'string' ? (
+          drawings[kind]({ ink, detail, text: colors.textMuted })
+        ) : (
+          <FaceDrawing spec={kind} ink={ink} detail={detail} />
+        )}
       </G>
     </Svg>
   );

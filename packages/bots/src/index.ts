@@ -1,7 +1,11 @@
 export * from './types';
 export * from './strength';
+export * from './reads';
 export * from './brain';
+export * from './tracked';
 export * from './novices';
+export * from './amateurs';
+export * from './regulars';
 export * from './registry';
 export { PREFLOP_TABLE } from './preflop-table';
 export * from './simulate';

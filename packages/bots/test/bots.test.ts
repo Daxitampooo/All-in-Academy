@@ -61,7 +61,7 @@ describe('hand strength helpers', () => {
 
 describe('novice bots', () => {
   const ids = ['barsik', 'timokha', 'kolyan', 'gosha', 'zina', 'liza'] as const;
-  const table: Bot[] = ids.map((id) => NOVICE_BOTS[id]);
+  const table: Bot[] = ids.map((id) => NOVICE_BOTS[id]());
 
   it('only ever take legal actions and never see other players cards', () => {
     const seen: string[] = [];
@@ -95,13 +95,13 @@ describe('novice bots', () => {
 
   it('lose chips to a solid regular heads-up', () => {
     for (const id of ids) {
-      const stats = simulateTable({ bots: [regular, NOVICE_BOTS[id]], hands: 1500, rng: rng('05') });
+      const stats = simulateTable({ bots: [regular, NOVICE_BOTS[id]()], hands: 1500, rng: rng('05') });
       expect(stats[0]!.net, `regular vs ${id}`).toBeGreaterThan(0);
     }
   }, 120_000);
 
   it('can finish a heads-up match to the bust', () => {
-    const result = playHeadsUpMatch({ bots: [regular, NOVICE_BOTS.kolyan], rng: rng('06'), maxHands: 2000 });
+    const result = playHeadsUpMatch({ bots: [regular, NOVICE_BOTS.kolyan()], rng: rng('06'), maxHands: 2000 });
     expect(result.winner).not.toBeNull();
   });
 

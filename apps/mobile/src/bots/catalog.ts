@@ -1,5 +1,6 @@
 import { isPlayable } from '@pokerall/bots';
 
+import type { FaceSpec } from '@/components/FacePortrait';
 import type { HueName } from '@/theme/tokens';
 
 export type LeagueId = 'novices' | 'amateurs' | 'regulars' | 'pros' | 'masters' | 'secret';
@@ -13,7 +14,8 @@ export type BotEntry = {
   /** Strength on the rating scale; null for the bot whose rating is hidden. */
   rating: number | null;
   hue: HueName;
-  portrait: PortraitKind;
+  /** A drawing of its own, or a face put together from parts. */
+  portrait: PortraitKind | FaceSpec;
   /** Plays with information other players don't have (training only). */
   cheater?: boolean;
 };
@@ -60,20 +62,22 @@ export const BOTS: BotEntry[] = [
   { id: 'zina', league: 'novices', rating: 500, hue: 'violet', portrait: 'granny' },
   { id: 'liza', league: 'novices', rating: 600, hue: 'aqua', portrait: 'fish' },
 
-  { id: 'max', league: 'amateurs', rating: 700, hue: 'magenta', portrait: 'unknown' },
-  { id: 'dasha', league: 'amateurs', rating: 800, hue: 'rose', portrait: 'unknown' },
-  { id: 'stas', league: 'amateurs', rating: 900, hue: 'ice', portrait: 'unknown' },
-  { id: 'roma', league: 'amateurs', rating: 950, hue: 'lime', portrait: 'unknown' },
-  { id: 'katya', league: 'amateurs', rating: 1000, hue: 'gold', portrait: 'unknown' },
-  { id: 'vadim', league: 'amateurs', rating: 1100, hue: 'orange', portrait: 'unknown' },
+  { id: 'max', league: 'amateurs', rating: 700, hue: 'magenta', portrait: { hair: 'spiky', eyes: 'wide', brows: 'angry', mouth: 'grin' } },
+  { id: 'gena', league: 'amateurs', rating: 750, hue: 'lime', portrait: { hair: 'short', eyes: 'dots', brows: 'raised', mouth: 'open', extra: 'phone' } },
+  { id: 'dasha', league: 'amateurs', rating: 800, hue: 'rose', portrait: { hair: 'long', eyes: 'wide', brows: 'worried', mouth: 'small' } },
+  { id: 'stas', league: 'amateurs', rating: 900, hue: 'ice', portrait: { hair: 'side', eyes: 'narrow', brows: 'flat', mouth: 'smirk', extra: 'collar' } },
+  { id: 'roma', league: 'amateurs', rating: 950, hue: 'lime', portrait: { hair: 'short', hat: 'capBack', eyes: 'dots', mouth: 'grin', beard: 'stubble' } },
+  { id: 'katya', league: 'amateurs', rating: 1000, hue: 'gold', portrait: { hair: 'bun', eyes: 'glasses', brows: 'flat', mouth: 'flat', extra: 'earrings' } },
+  { id: 'vadim', league: 'amateurs', rating: 1100, hue: 'orange', portrait: { hair: 'messy', eyes: 'dots', brows: 'angry', mouth: 'frown', extra: 'looseTie' } },
 
-  { id: 'oleg', league: 'regulars', rating: 1200, hue: 'ice', portrait: 'unknown' },
-  { id: 'igor', league: 'regulars', rating: 1300, hue: 'amber', portrait: 'unknown' },
-  { id: 'vera', league: 'regulars', rating: 1400, hue: 'magenta', portrait: 'unknown' },
-  { id: 'nina', league: 'regulars', rating: 1500, hue: 'violet', portrait: 'unknown' },
-  { id: 'denis', league: 'regulars', rating: 1600, hue: 'cyan', portrait: 'unknown' },
-  { id: 'yulia', league: 'regulars', rating: 1700, hue: 'rose', portrait: 'unknown' },
-  { id: 'artem', league: 'regulars', rating: 1800, hue: 'aqua', portrait: 'unknown' },
+  { id: 'oleg', league: 'regulars', rating: 1200, hue: 'ice', portrait: { hair: 'buzz', eyes: 'dots', brows: 'flat', mouth: 'flat', extra: 'collar' } },
+  { id: 'armen', league: 'regulars', rating: 1250, hue: 'gold', portrait: { hair: 'short', eyes: 'sleepy', brows: 'worried', mouth: 'hidden', beard: 'mustache', extra: 'watch' } },
+  { id: 'igor', league: 'regulars', rating: 1300, hue: 'amber', portrait: { hair: 'buzz', hat: 'beanie', eyes: 'narrow', brows: 'angry', mouth: 'flat', beard: 'beard' } },
+  { id: 'vera', league: 'regulars', rating: 1400, hue: 'magenta', portrait: { hair: 'long', eyes: 'dots', brows: 'raised', mouth: 'smirk', extra: 'earrings' } },
+  { id: 'nina', league: 'regulars', rating: 1500, hue: 'violet', portrait: { hair: 'ponytail', eyes: 'dots', brows: 'angry', mouth: 'smile' } },
+  { id: 'denis', league: 'regulars', rating: 1600, hue: 'cyan', portrait: { hair: 'short', hat: 'hood', eyes: 'narrow', mouth: 'smirk' } },
+  { id: 'yulia', league: 'regulars', rating: 1700, hue: 'rose', portrait: { hair: 'bob', eyes: 'wide', brows: 'raised', mouth: 'small', hat: 'headphones' } },
+  { id: 'artem', league: 'regulars', rating: 1800, hue: 'aqua', portrait: { hair: 'side', eyes: 'squareGlasses', brows: 'flat', mouth: 'flat', extra: 'pencil' } },
 
   { id: 'borya', league: 'pros', rating: 1900, hue: 'orange', portrait: 'unknown' },
   { id: 'sonya', league: 'pros', rating: 2000, hue: 'violet', portrait: 'unknown' },
