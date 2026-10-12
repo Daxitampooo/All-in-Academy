@@ -73,10 +73,13 @@ export type BotProfile = {
   /** Late-position aggression: opens and 3-bets wider from the cutoff, button and small blind. */
   steal: number;
   /**
-   * Plays preflop push or fold: moves all-in with the top `share` of hands when it raises at all, and
-   * calls all-ins with the top `callShare`. Null for normal play.
+   * Plays preflop push or fold once the effective stack is `maxDepth` big blinds or less: moves all-in
+   * with the top `share` of hands when it raises at all, and calls all-ins with the top `callShare`.
+   * Null for normal play.
    */
-  pushFold: { share: number; callShare: number } | null;
+  pushFold: { share: number; callShare: number; maxDepth: number } | null;
+  /** Its 3-bets are all-in. */
+  jamThreeBets: boolean;
 };
 
 export const DEFAULT_PROFILE: BotProfile = {
@@ -107,4 +110,5 @@ export const DEFAULT_PROFILE: BotProfile = {
   foldToBigBet: 0,
   steal: 0,
   pushFold: null,
+  jamThreeBets: false,
 };

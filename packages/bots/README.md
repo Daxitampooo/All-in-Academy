@@ -10,7 +10,14 @@ or the deck.
 - `brain` — one decision function driven by a style profile (`BotProfile`):
   ranges, aggression, bluffing, calling tendency, love of pairs and draws,
   precision, panic folds. Position-aware profiles widen ranges late and short-handed.
-- `novices` — league "Novices" (100–600).
+- `reads` — what a bot believes about opponents: ranges from their actions,
+  range-aware equity, a match-long model of their habits (VPIP, PFR) and
+  bet-size tells learned from showdowns.
+- `novices`, `amateurs`, `regulars` — leagues "Novices" (100–600), "Amateurs"
+  (700–1100) and "Regulars" (1200–1800), plus two fun bots: Gena (always on
+  the phone) and Armen (every hand is his last, and he gets reckless).
+- `tracked` — bots that change over a match (tilt, impatience, learning you).
+- `registry` — `createBot(id)` gives a fresh bot for every match.
 - `simulate` — bot-vs-bot tables and heads-up matches for tests and calibration.
 
 Cheating training bots (a rigged deck, seeing all cards) are deliberately **not**
@@ -31,3 +38,45 @@ A tight-aggressive yardstick bot played 8000 heads-up hands against each novice
 | Gosha | 400 | 37 bb/100 |
 | Zina | 500 | 34 bb/100 |
 | Liza | 600 | 32 bb/100 |
+
+### Match calibration (all leagues)
+
+Since stage 2b, strength is measured the way players meet bots in the app:
+heads-up matches to the bust, 100 big blinds each, all-ins before the river
+settled by equity, a fresh bot every match. The yardstick played 200–300
+matches against each bot; the share it won (higher means an easier bot). The
+spread of each number is about ±3 points.
+
+Run it with `CALIBRATE=1 BOTS=max,dasha MATCHES=250 OUT=/tmp/cal.txt npx vitest run`
+in this package (see `calibration/calibrate.ts`).
+
+| Bot | Rating | Yardstick wins |
+|---|---|---|
+| Barsik | 100 | 87% |
+| Timokha | 200 | 58% |
+| Kolyan | 300 | 93% |
+| Gosha | 400 | 100% |
+| Zina | 500 | 98% |
+| Liza | 600 | 70% |
+| Max | 700 | 68% |
+| Gena | 750 | 68% |
+| Dasha | 800 | 58% |
+| Stas | 900 | 55% |
+| Roma | 950 | 58% |
+| Katya | 1000 | 49% |
+| Vadim | 1100 | 48% |
+| Oleg | 1200 | 41% |
+| Armen | 1250 | 44% |
+| Igor | 1300 | 31% |
+| Vera | 1400 | 36% |
+| Nina | 1500 | 29% |
+| Denis | 1600 | 21% |
+| Yulia | 1700 | 21% |
+| Artem | 1800 | 21% |
+
+Novices lose matches very differently from how they lose chips: passive bots
+(Gosha, Zina) bleed slowly and nearly always bust, while aggressive ones
+(Timokha) sometimes win a match on a lucky run. Their ratings follow the chip
+calibration above. The top three regulars beat this simple yardstick about
+four times out of five; telling them apart needs a stronger yardstick, which
+comes with the Pros league.

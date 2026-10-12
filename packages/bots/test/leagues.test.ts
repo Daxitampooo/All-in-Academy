@@ -107,15 +107,36 @@ describe('amateurs and regulars', () => {
     expect(pfr.gena).toBeLessThan(0.12);
   });
 
-  it('Igor only ever moves all-in or folds before the flop', () => {
+  it('Igor jams his 3-bets and plays push or fold when stacks are short', () => {
     const log = { views: [] as ReturnType<typeof viewFor>[], finished: [] as ReturnType<typeof viewFor>[] };
     const igor = watched(createBot('igor'), log);
-    simulateTable({ bots: [yardstick(), igor], hands: 600, rng: rng('13') });
-    const raises = log.finished
-      .flatMap((v) => v.events.filter((e) => e.type === 'action' && e.seat === v.seat && e.street === 'preflop'))
-      .filter((e) => e.type === 'action' && e.action === 'raise');
-    expect(raises.length).toBeGreaterThan(20);
-    expect(raises.every((e) => e.type === 'action' && e.allIn)).toBe(true);
+    simulateTable({ bots: [yardstick(), igor], hands: 1500, rng: rng('13') });
+    // A re-raise over someone else's raise is always all-in.
+    let reRaises = 0;
+    for (const v of log.finished) {
+      let raisesBefore = 0;
+      for (const e of v.events) {
+        if (e.type !== 'action' || e.street !== 'preflop') continue;
+        if (e.seat === v.seat && e.action === 'raise' && raisesBefore >= 1) {
+          reRaises += 1;
+          expect(e.allIn).toBe(true);
+        }
+        if (e.action === 'raise') raisesBefore += 1;
+      }
+    }
+    expect(reRaises).toBeGreaterThan(5);
+    // With 20 big blinds he only ever moves all-in or folds.
+    const short = createBot('igor');
+    const r = rng('18');
+    for (let i = 0; i < 40; i++) {
+      const s = startHand(
+        { players: [{ id: 'a', stack: 2000 }, { id: 'b', stack: 2000 }], button: 1, smallBlind: 50, bigBlind: 100 },
+        arrangeDeck({ playerCount: 2, button: 1, rng: r }),
+      );
+      const action = short.decide(viewFor(s, 1), r);
+      expect(['fold', 'raise']).toContain(action.type);
+      if (action.type === 'raise') expect(action.amount).toBe(2000);
+    }
   });
 
   it('Armen plays looser the longer the evening goes', () => {

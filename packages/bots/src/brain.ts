@@ -119,7 +119,10 @@ function preflopDecision(p: BotProfile, view: PlayerView, legal: LegalActions, c
   const bb = view.bigBlind;
   const widen = rangeWidening(p, view);
 
-  if (p.pushFold) {
+  // Effective stack: the smaller of its own and the biggest opponent's, in big blinds.
+  const deepest = Math.max(...view.players.filter((o) => o.seat !== view.seat && !o.folded).map((o) => o.stack + o.streetBet));
+  const effective = Math.min(me.stack + me.streetBet, deepest) / bb;
+  if (p.pushFold && effective <= p.pushFold.maxDepth) {
     // Push or fold: all-in or nothing, ranges a little wider in position.
     if (raises === 0) {
       if (percentile <= Math.min(0.9, p.pushFold.share * Math.sqrt(widen.open))) return allIn(legal);
@@ -157,7 +160,7 @@ function preflopDecision(p: BotProfile, view: PlayerView, legal: LegalActions, c
   if (raises === 1) {
     const threeBet = p.threeBet * widen.defend * exploit * (1 + p.steal);
     if (percentile <= threeBet) {
-      const raise = clampRaise(legal, view.currentBet * 3);
+      const raise = p.jamThreeBets ? allIn(legal) : clampRaise(legal, view.currentBet * 3);
       if (raise) return raise;
     }
     if (percentile <= callLimit) return callOrCheck(legal);

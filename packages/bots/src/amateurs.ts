@@ -28,28 +28,29 @@ export const AMATEUR_PROFILES = {
   /** Gena "On the line": always on the phone, plays half-distracted and misclicks now and then. */
   gena: profile({
     positionAware: false,
-    randomness: 0.06,
+    randomness: 0.04,
     vpip: 0.4,
-    pfr: 0.08,
+    pfr: 0.1,
     threeBet: 0.03,
-    foldToRaise: 0.35,
-    aggression: 0.35,
+    foldToRaise: 0.38,
+    aggression: 0.42,
     bluff: 0.05,
-    stickiness: 0.2,
-    accuracy: 0.6,
+    stickiness: 0.15,
+    accuracy: 0.72,
     samples: 140,
   }),
 
   /** Dasha "Scaredy": folds to any serious bet. Teaches bluffing and fold equity. */
   dasha: profile({
-    vpip: 0.32,
-    pfr: 0.18,
+    positionAware: false,
+    vpip: 0.35,
+    pfr: 0.2,
     threeBet: 0.03,
-    foldToRaise: 0.6,
-    aggression: 0.55,
+    foldToRaise: 0.5,
+    aggression: 0.6,
     bluff: 0.06,
     stickiness: -0.1,
-    foldToBigBet: 0.6,
+    foldToBigBet: 0.8,
     accuracy: 0.72,
     samples: 160,
   }),
@@ -85,15 +86,15 @@ export const AMATEUR_PROFILES = {
 
   /** Katya "Value only": never bluffs and bets only strong hands. Teaches folding to such players. */
   katya: profile({
-    vpip: 0.22,
-    pfr: 0.17,
+    vpip: 0.2,
+    pfr: 0.15,
     threeBet: 0.05,
-    foldToRaise: 0.5,
-    aggression: 0.75,
+    foldToRaise: 0.6,
+    aggression: 0.6,
     valueOnly: true,
     valueThreshold: 0.7,
     bluff: 0,
-    accuracy: 0.76,
+    accuracy: 0.72,
     samples: 220,
   }),
 } satisfies Record<string, BotProfile>;
@@ -107,8 +108,8 @@ const VADIM_CALM = profile({
   aggression: 0.6,
   bluff: 0.1,
   cbet: 0.55,
-  accuracy: 0.8,
-  rangeAware: 0.2,
+  accuracy: 0.84,
+  rangeAware: 0.3,
   samples: 220,
 });
 
@@ -137,7 +138,7 @@ function vadim(): Bot {
     profile: () => (tilt > 0 ? VADIM_TILTED : VADIM_CALM),
     afterHand: (memory) => {
       if (tilt > 0) tilt -= 1;
-      if (memory.lastNetBB <= -25) tilt = TILT_HANDS;
+      if (memory.lastNetBB <= -30) tilt = TILT_HANDS;
     },
   });
 }
