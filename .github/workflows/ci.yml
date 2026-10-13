@@ -91,6 +91,11 @@ jobs:
           set -o pipefail
           pnpm check:locales 2>&1 | tee -a ci.log
 
+      - name: Check training bots isolation
+        run: |
+          set -o pipefail
+          pnpm check:training 2>&1 | tee -a ci.log
+
       - name: Web build
         working-directory: apps/mobile
         env:

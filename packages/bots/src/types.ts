@@ -80,6 +80,15 @@ export type BotProfile = {
   pushFold: { share: number; callShare: number; maxDepth: number } | null;
   /** Its 3-bets are all-in. */
   jamThreeBets: boolean;
+  /** Bets only very strong hands and bluffs, big; checks everything in between. */
+  polarized: boolean;
+  /** Picks bet sizes from a spread (a third of the pot to an overbet) whatever it holds, so sizes give nothing away. */
+  mixedSizes: boolean;
+  /**
+   * Facing a 3-bet after opening: 0 keeps only premium hands (the usual habit), 1 defends a large part of
+   * the opening range with calls and some 4-bets, as strong heads-up players do.
+   */
+  defend3Bet: number;
 };
 
 export const DEFAULT_PROFILE: BotProfile = {
@@ -111,4 +120,7 @@ export const DEFAULT_PROFILE: BotProfile = {
   steal: 0,
   pushFold: null,
   jamThreeBets: false,
+  polarized: false,
+  mixedSizes: false,
+  defend3Bet: 0,
 };

@@ -56,7 +56,14 @@ export type OpponentRead = {
 };
 
 /** What a bot has seen an opponent do over a match. */
-export type OpponentStats = { hands: number; vpip: number; pfr: number };
+export type OpponentStats = {
+  hands: number;
+  vpip: number;
+  pfr: number;
+  /** Times they faced a bet after the flop, and folded to it. */
+  facedBets: number;
+  foldedToBets: number;
+};
 
 /** Remembers each opponent's habits over a match: how many hands they play and raise. */
 export class OpponentModel {
@@ -66,15 +73,41 @@ export class OpponentModel {
   observe(view: PlayerView): void {
     for (const p of view.players) {
       if (p.seat === view.seat) continue;
-      const s = this.stats.get(p.seat) ?? { hands: 0, vpip: 0, pfr: 0 };
+      const s = this.stats.get(p.seat) ?? { hands: 0, vpip: 0, pfr: 0, facedBets: 0, foldedToBets: 0 };
       const pre = view.events.filter(
         (e): e is ActionEvent => e.type === 'action' && e.street === 'preflop' && e.seat === p.seat,
       );
       s.hands += 1;
       if (pre.some((e) => e.action === 'call' || e.action === 'raise' || e.action === 'bet')) s.vpip += 1;
       if (pre.some((e) => e.action === 'raise' || e.action === 'bet')) s.pfr += 1;
+      // After the flop: every time they acted with a bet in front of them.
+      let street = '';
+      let betMade = false;
+      for (const e of view.events) {
+        if (e.type !== 'action' || e.street === 'preflop') continue;
+        if (e.street !== street) {
+          street = e.street;
+          betMade = false;
+        }
+        if (e.seat === p.seat && betMade) {
+          s.facedBets += 1;
+          if (e.action === 'fold') s.foldedToBets += 1;
+        }
+        if (e.action === 'bet' || e.action === 'raise') betMade = true;
+      }
       this.stats.set(p.seat, s);
     }
+  }
+
+  /** Share of bets after the flop that opponents folded to, over everyone seen; null until there's enough. */
+  foldToBet(): number | null {
+    let faced = 0;
+    let folded = 0;
+    for (const s of this.stats.values()) {
+      faced += s.facedBets;
+      folded += s.foldedToBets;
+    }
+    return faced >= 10 ? folded / faced : null;
   }
 
   /** Share of hands the opponent raises preflop, once there's enough to go on. */

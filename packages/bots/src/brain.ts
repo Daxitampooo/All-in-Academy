@@ -74,6 +74,14 @@ function preflopRaiser(view: PlayerView): number {
   return seat;
 }
 
+/** This seat made the first raise preflop. */
+function openedThisHand(view: PlayerView): boolean {
+  for (const e of view.events) {
+    if (e.type === 'action' && e.street === 'preflop' && (e.action === 'raise' || e.action === 'bet')) return e.seat === view.seat;
+  }
+  return false;
+}
+
 /** Players still to act after this seat preflop, up to and including the big blind. */
 function playersBehind(view: PlayerView): number {
   const n = view.players.length;
@@ -167,6 +175,17 @@ function preflopDecision(p: BotProfile, view: PlayerView, legal: LegalActions, c
     return passive(legal);
   }
 
+  // Facing a 3-bet after opening: strong players keep a good part of the opening range.
+  if (raises === 2 && p.defend3Bet > 0 && openedThisHand(view)) {
+    const opened = Math.min(0.95, p.pfr * widen.open);
+    if (percentile <= opened * 0.08) {
+      const raise = clampRaise(legal, view.currentBet * 2.3);
+      if (raise) return raise;
+    }
+    if (percentile <= opened * (0.25 + 0.4 * p.defend3Bet)) return callOrCheck(legal);
+    return passive(legal);
+  }
+
   // Facing a 3-bet or more: only premium hands continue.
   if (percentile <= p.threeBet * 0.35 * exploit) {
     const raise = clampRaise(legal, view.currentBet * 2.5);
@@ -201,14 +220,23 @@ function postflopDecision(p: BotProfile, view: PlayerView, legal: LegalActions, 
   const pot = view.pot;
   const river = view.phase === 'river';
   const monster = equity >= 0.8;
-  const betSize = (fraction: number) => clampRaise(legal, view.currentBet + pot * fraction);
-  const raiseSize = (fraction: number) => clampRaise(legal, view.currentBet + (pot + toCall) * fraction);
+  const spread = [0.33, 0.66, 1, 1.5];
+  const betSize = (fraction: number) =>
+    clampRaise(legal, view.currentBet + pot * (p.mixedSizes ? spread[rng.nextInt(spread.length)]! : fraction));
+  const raiseSize = (fraction: number) =>
+    clampRaise(legal, view.currentBet + (pot + toCall) * (p.mixedSizes ? (chance(rng) < 0.5 ? 0.6 : 1) : fraction));
 
   if (toCall === 0) {
     // Trapping: check a monster on the flop and turn, then bet big on the river.
     if (monster && !river && chance(rng) < p.slowplay) return { type: 'check' };
     if (monster && river && p.slowplay > 0) return betSize(p.sizes.bet * 1.5) ?? { type: 'check' };
 
+    if (p.polarized) {
+      // The nuts or nothing: big bets with very strong hands and with air, checks in between.
+      if (equity >= Math.max(p.valueThreshold, 0.75) && chance(rng) < p.aggression) return betSize(p.sizes.bet) ?? { type: 'check' };
+      if (equity < 0.3 && chance(rng) < p.bluff) return betSize(p.sizes.bet) ?? { type: 'check' };
+      return { type: 'check' };
+    }
     const threshold = p.valueOnly ? Math.max(p.valueThreshold, 0.7) : p.valueThreshold;
     if (equity >= threshold && chance(rng) < p.aggression) return betSize(p.sizes.bet) ?? { type: 'check' };
     if (p.valueOnly) return { type: 'check' };

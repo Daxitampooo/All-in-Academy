@@ -18,6 +18,13 @@ export type BotEntry = {
   portrait: PortraitKind | FaceSpec;
   /** Plays with information other players don't have (training only). */
   cheater?: boolean;
+  /**
+   * A training bot that cheats on purpose (a rigged deck, seeing every card). It lives in the offline
+   * training module, plays heads-up only, and its all-ins aren't split by equity.
+   */
+  training?: boolean;
+  /** Match wins that beat this bot, when not the league's usual series. */
+  series?: number;
 };
 
 export type League = {
@@ -51,6 +58,11 @@ export const SERIES_TARGET: Record<LeagueId, number> = {
   secret: 3,
 };
 
+/** Match wins that beat this bot: its own number, or its league's series. */
+export function seriesTarget(bot: BotEntry): number {
+  return bot.series ?? SERIES_TARGET[bot.league];
+}
+
 /** Beating this bot opens the secret league. */
 export const SECRET_KEY_BOT = 'neon';
 
@@ -79,19 +91,19 @@ export const BOTS: BotEntry[] = [
   { id: 'yulia', league: 'regulars', rating: 1700, hue: 'rose', portrait: { hair: 'bob', eyes: 'wide', brows: 'raised', mouth: 'small', hat: 'headphones' } },
   { id: 'artem', league: 'regulars', rating: 1800, hue: 'aqua', portrait: { hair: 'side', eyes: 'squareGlasses', brows: 'flat', mouth: 'flat', extra: 'pencil' } },
 
-  { id: 'borya', league: 'pros', rating: 1900, hue: 'orange', portrait: 'unknown' },
-  { id: 'sonya', league: 'pros', rating: 2000, hue: 'violet', portrait: 'unknown' },
-  { id: 'marina', league: 'pros', rating: 2100, hue: 'magenta', portrait: 'unknown' },
-  { id: 'gleb', league: 'pros', rating: 2200, hue: 'gold', portrait: 'unknown' },
-  { id: 'alisa', league: 'pros', rating: 2300, hue: 'aqua', portrait: 'unknown' },
-  { id: 'fedor', league: 'pros', rating: 2400, hue: 'ice', portrait: 'unknown' },
+  { id: 'borya', league: 'pros', rating: 1900, hue: 'orange', portrait: { hair: 'buzz', eyes: 'shades', brows: 'raised', mouth: 'grin', beard: 'stubble', extra: 'watch' } },
+  { id: 'sonya', league: 'pros', rating: 2000, hue: 'violet', portrait: { hair: 'bun', eyes: 'narrow', brows: 'raised', mouth: 'smirk', extra: 'earrings' } },
+  { id: 'marina', league: 'pros', rating: 2100, hue: 'magenta', portrait: { hair: 'curly', eyes: 'narrow', brows: 'angry', mouth: 'grin' } },
+  { id: 'gleb', league: 'pros', rating: 2200, hue: 'gold', portrait: { hair: 'short', eyes: 'squareGlasses', brows: 'flat', mouth: 'flat', extra: 'tie' } },
+  { id: 'alisa', league: 'pros', rating: 2300, hue: 'aqua', portrait: { hair: 'long', eyes: 'wide', brows: 'raised', mouth: 'smile', extra: 'earrings' } },
+  { id: 'fedor', league: 'pros', rating: 2400, hue: 'ice', portrait: { hair: 'side', eyes: 'narrow', brows: 'flat', mouth: 'smirk', beard: 'beard', extra: 'collar' } },
 
-  { id: 'arkady', league: 'masters', rating: 2500, hue: 'gold', portrait: 'unknown' },
-  { id: 'nika', league: 'masters', rating: 2700, hue: 'cyan', portrait: 'unknown' },
-  { id: 'neon', league: 'masters', rating: 2900, hue: 'magenta', portrait: 'unknown' },
+  { id: 'arkady', league: 'masters', rating: 2500, hue: 'gold', portrait: { hair: 'bald', eyes: 'glasses', brows: 'raised', mouth: 'hidden', beard: 'mustache', extra: 'tie' } },
+  { id: 'nika', league: 'masters', rating: 2700, hue: 'cyan', portrait: { hair: 'ponytail', eyes: 'squareGlasses', brows: 'flat', mouth: 'small', hat: 'headphones' } },
+  { id: 'neon', league: 'masters', rating: 2900, hue: 'magenta', portrait: { hair: 'spiky', eyes: 'shades', brows: 'flat', mouth: 'smirk', extra: 'collar' } },
 
-  { id: 'lekha', league: 'secret', rating: null, hue: 'lime', portrait: 'unknown' },
-  { id: 'danil', league: 'secret', rating: 3500, hue: 'rose', portrait: 'unknown', cheater: true },
+  { id: 'lekha', league: 'secret', rating: null, hue: 'lime', portrait: { hair: 'messy', hat: 'capBack', eyes: 'wide', brows: 'raised', mouth: 'grin', beard: 'stubble' }, training: true, series: 1 },
+  { id: 'danil', league: 'secret', rating: 3500, hue: 'rose', portrait: { hair: 'short', hat: 'hood', eyes: 'shades', mouth: 'flat' }, cheater: true, training: true, series: 1 },
 ];
 
 export function botById(id: string): BotEntry | undefined {
@@ -104,7 +116,7 @@ export function botsInLeague(league: LeagueId): BotEntry[] {
 
 /** The bot's strategy exists in this version of the app. */
 export function botIsReady(id: string): boolean {
-  return isPlayable(id);
+  return isPlayable(id) || !!botById(id)?.training;
 }
 
 /** Series won against each bot, by id; a bot counts as beaten from the first one. */

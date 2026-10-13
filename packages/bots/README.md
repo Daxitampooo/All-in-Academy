@@ -16,6 +16,10 @@ or the deck.
 - `novices`, `amateurs`, `regulars` — leagues "Novices" (100–600), "Amateurs"
   (700–1100) and "Regulars" (1200–1800), plus two fun bots: Gena (always on
   the phone) and Armen (every hand is his last, and he gets reckless).
+- `pros`, `masters` — leagues "Pros" (1900–2400) and "Masters" (2500–2900):
+  overbets, exploiting the opponent's folds (`exploit`), push/fold, style
+  changes, mixed sizes, heads-up 3-bet pressure and 3-bet defence. Strong
+  heuristics, not a solver.
 - `tracked` — bots that change over a match (tilt, impatience, learning you).
 - `registry` — `createBot(id)` gives a fresh bot for every match.
 - `simulate` — bot-vs-bot tables and heads-up matches for tests and calibration.
@@ -80,3 +84,29 @@ Novices lose matches very differently from how they lose chips: passive bots
 calibration above. The top three regulars beat this simple yardstick about
 four times out of five; telling them apart needs a stronger yardstick, which
 comes with the Pros league.
+
+### Pros and Masters (yardstick: Artem)
+
+The stronger leagues are measured against Artem, the strongest regular
+(`YARD=artem`), 200–250 matches each. Artem's share of matches won (lower
+means a stronger bot; Artem against himself is about 50%):
+
+| Bot | Rating | Artem wins |
+|---|---|---|
+| Borya | 1900 | 55% |
+| Sonya | 2000 | 45% |
+| Marina | 2100 | 42% |
+| Gleb | 2200 | 39% |
+| Alisa | 2300 | 49% |
+| Fedor | 2400 | 45% |
+| Arkady | 2500 | 37% |
+| Nika | 2700 | 38% |
+| Neon | 2900 | 33% |
+
+Bots copy each other's blind spots, so bot-against-bot gaps are small. The
+biggest heads-up lever turned out to be preflop: wide 3-bets and defending
+3-bets with a good part of the opening range (`defend3Bet`). Borya's
+polarized overbets and Alisa's style changes cost a little against another
+bot but are hard for people to read; Sonya and Neon get stronger the longer
+a match goes, as they learn the opponent. Pros and Masters also need three
+match wins to be beaten.

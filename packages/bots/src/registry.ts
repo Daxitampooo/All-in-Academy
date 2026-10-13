@@ -1,5 +1,7 @@
 import { AMATEUR_BOTS } from './amateurs';
+import { MASTER_BOTS } from './masters';
 import { NOVICE_BOTS } from './novices';
+import { PRO_BOTS } from './pros';
 import { REGULAR_BOTS } from './regulars';
 import type { Bot } from './types';
 
@@ -15,6 +17,8 @@ export const BOT_FACTORIES: Record<string, () => Bot> = {
   ...NOVICE_BOTS,
   ...AMATEUR_BOTS,
   ...REGULAR_BOTS,
+  ...PRO_BOTS,
+  ...MASTER_BOTS,
 };
 
 /** A fresh bot for one match. */

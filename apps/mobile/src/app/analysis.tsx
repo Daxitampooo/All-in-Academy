@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, View } from 'react-native';
 
-import { botById, SERIES_TARGET } from '@/bots/catalog';
+import { botById, seriesTarget } from '@/bots/catalog';
 import { HandReview } from '@/components/analysis/HandReview';
 import { ResultChart } from '@/components/analysis/ResultChart';
 import { AppText } from '@/components/AppText';
@@ -58,7 +58,7 @@ export default function AnalysisScreen() {
   }
 
   const { mode, result, series } = match;
-  const target = mode.kind === 'hu' ? SERIES_TARGET[botById(mode.botId)!.league] : 1;
+  const target = mode.kind === 'hu' ? seriesTarget(botById(mode.botId)!) : 1;
   const where =
     mode.kind === 'hu'
       ? t('analysis.opponent', { name: seatName(match.seats[1]!, t) })

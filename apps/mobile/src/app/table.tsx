@@ -7,7 +7,7 @@ import { BackHandler, Platform, Pressable, StyleSheet, View, type ViewStyle } fr
 import Animated, { FadeIn, FadeInUp, FadeOut } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { LEAGUES, SERIES_TARGET, botById, botIsReady, leagueUnlocked, type LeagueId } from '@/bots/catalog';
+import { LEAGUES, botById, botIsReady, leagueUnlocked, seriesTarget, type LeagueId } from '@/bots/catalog';
 import { AppText } from '@/components/AppText';
 import { Button } from '@/components/Button';
 import { CloseIcon } from '@/components/icons';
@@ -18,6 +18,7 @@ import { DealtCard } from '@/components/table/DealtCard';
 import type { CardSize } from '@/components/table/PlayingCard';
 import { BotSeat, HeroSeat, type SeatStatus } from '@/components/table/Seat';
 import { TableFelt } from '@/components/table/TableFelt';
+import { TrainingReveal } from '@/components/table/TrainingReveal';
 import { formatChips } from '@/lib/format';
 import { beatenById, useBotProgress, type SeriesUpdate } from '@/store/botProgress';
 import { useMatchReview } from '@/store/matchReview';
@@ -158,7 +159,7 @@ function TableGameView({ mode, params }: { mode: TableMode; params: Record<strin
 
   const game = useTableGame(mode, (r: MatchResult) => {
     if (mode.kind !== 'hu') return;
-    setSeries(recordMatch(mode.botId, r.heroWon, SERIES_TARGET[botById(mode.botId)!.league]));
+    setSeries(recordMatch(mode.botId, r.heroWon, seriesTarget(botById(mode.botId)!)));
   });
   const { hand, seats, status, settled } = game;
   const matchRunning = status !== 'match-over' && game.result === null;
@@ -271,7 +272,7 @@ function TableGameView({ mode, params }: { mode: TableMode; params: Record<strin
   const bottomPad = Math.max(insets.bottom, space.md);
 
   // The match result: the series decides whether the bot is beaten.
-  const target = mode.kind === 'hu' ? SERIES_TARGET[botById(mode.botId)!.league] : 1;
+  const target = mode.kind === 'hu' ? seriesTarget(botById(mode.botId)!) : 1;
   let resultTitle = '';
   let seriesLine: string | null = null;
   if (game.result) {
@@ -496,6 +497,7 @@ function TableGameView({ mode, params }: { mode: TableMode; params: Record<strin
               ? t('table.victoryBody', { hands: game.result.hands })
               : t('table.defeatBody', { name: seatName(seats[1]!), hands: game.result.hands })}
           </AppText>
+          {game.result.training ? <TrainingReveal report={game.result.training} bigBlind={hand.config.bigBlind} /> : null}
           {seriesLine ? (
             <AppText variant="label" tone="cyan" style={styles.centerText}>
               {seriesLine}

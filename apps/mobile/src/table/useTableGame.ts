@@ -10,6 +10,7 @@ import {
   viewFor,
   type AllInSplit,
   type HandState,
+  type Card,
   type PlayerAction,
   type Rng,
 } from '@pokerall/poker-engine';
@@ -17,6 +18,15 @@ import { getRandomBytes } from 'expo-crypto';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { botIsReady, botsInLeague, type LeagueId } from '@/bots/catalog';
+// The only place outside the training module allowed to use it (checked in CI): offline practice matches.
+import {
+  createTrainingBot,
+  evNetOf,
+  isBadBeat,
+  isTrainingBot,
+  type TrainingBot,
+  type TrainingReport,
+} from '@/training';
 
 export const SMALL_BLIND = 50;
 export const BIG_BLIND = 100;
@@ -41,7 +51,12 @@ export type Speech = { category: PhraseCategory; pick: number; key: number };
 /** `runout`: the hand is decided by an all-in and the rest of the board is being opened. */
 export type TableStatus = 'acting' | 'runout' | 'hand-over' | 'match-over' | 'hero-busted';
 
-export type MatchResult = { heroWon: boolean; hands: number };
+export type MatchResult = {
+  heroWon: boolean;
+  hands: number;
+  /** Against a training bot: what the match showed, revealed at the end. */
+  training: TrainingReport | null;
+};
 
 /** A finished hand as the table settled it. */
 export type HandRecord = {
@@ -54,6 +69,8 @@ export type HandRecord = {
   net: number[];
   /** Stacks after the hand; the next hand starts with them. */
   stacks: number[];
+  /** Against a training bot: the hero's result counting all-ins by equity; all-ins there aren't split. */
+  heroEvNet: number | null;
 };
 
 export type TableGame = {
@@ -80,27 +97,39 @@ export type TableGame = {
 };
 
 const HERO = 0;
+const TRAINER_SEAT = 1;
 
-type Setup = { rng: Rng; seats: SeatInfo[]; bots: (Bot | null)[]; firstHand: HandState };
+type Setup = {
+  rng: Rng;
+  seats: SeatInfo[];
+  bots: (Bot | null)[];
+  /** A training bot in seat 1 (heads-up only): it gets the whole hand state, not a player's view. */
+  trainer: TrainingBot | null;
+  firstHand: HandState;
+};
 
 /** Bots at a practice table: up to five different playable bots of the league, filling with repeats. */
 function pickTableBots(league: LeagueId, rng: Rng): string[] {
-  const pool = botsInLeague(league).filter((b) => botIsReady(b.id)).map((b) => b.id);
+  const pool = botsInLeague(league)
+    .filter((b) => botIsReady(b.id) && !isTrainingBot(b.id))
+    .map((b) => b.id);
   const fallback = botsInLeague('novices').map((b) => b.id);
   const shuffled = shuffle(pool.length ? pool : fallback, rng);
   return Array.from({ length: 5 }, (_, i) => shuffled[i % shuffled.length]!);
 }
 
-function dealHand(stacks: number[], button: number, rng: Rng): HandState {
-  return startHand(
-    {
-      players: stacks.map((stack, i) => ({ id: String(i), stack })),
-      button,
-      smallBlind: SMALL_BLIND,
-      bigBlind: BIG_BLIND,
-    },
-    shuffledDeck(rng),
-  );
+function dealHand(stacks: number[], button: number, rng: Rng, trainer: TrainingBot | null): HandState {
+  const deal = (deck: Card[]) =>
+    startHand(
+      {
+        players: stacks.map((stack, i) => ({ id: String(i), stack })),
+        button,
+        smallBlind: SMALL_BLIND,
+        bigBlind: BIG_BLIND,
+      },
+      deck,
+    );
+  return trainer ? trainer.dealHand(deal, TRAINER_SEAT, rng) : deal(shuffledDeck(rng));
 }
 
 function createSetup(mode: TableMode): Setup {
@@ -109,38 +138,53 @@ function createSetup(mode: TableMode): Setup {
     mode.kind === 'hu'
       ? [{ kind: 'hero' }, { kind: 'bot', botId: mode.botId }]
       : [{ kind: 'hero' }, ...pickTableBots(mode.league, rng).map((botId) => ({ kind: 'bot' as const, botId }))];
+  const trainer = mode.kind === 'hu' && isTrainingBot(mode.botId) ? createTrainingBot(mode.botId) : null;
   // A fresh bot per seat and match: some bots remember the match (tilt, impatience, your habits).
-  const bots = seats.map((s) => (s.kind === 'bot' ? createBot(s.botId) : null));
+  const bots = seats.map((s) => (s.kind === 'bot' && !trainer ? createBot(s.botId) : null));
   const firstHand = dealHand(
     seats.map(() => STARTING_STACK),
     rng.nextInt(seats.length),
     rng,
+    trainer,
   );
-  return { rng, seats, bots, firstHand };
+  return { rng, seats, bots, trainer, firstHand };
 }
 
 /**
  * Settles a finished hand. In heads-up matches an all-in before the river is settled by equity, so the
  * cards that come after it don't decide the match; practice tables keep the usual rules.
  */
-function settle(hand: HandState, byEquity: boolean, rng: Rng): HandRecord {
+function settle(hand: HandState, byEquity: boolean, rng: Rng, trainer: TrainingBot | null): HandRecord {
   const result = hand.result!;
-  const split = byEquity ? allInSplit(hand, { rng }) : null;
+  const split = byEquity && !trainer ? allInSplit(hand, { rng }) : null;
   const won = split ? split.won : result.won;
   const net = split ? split.net : result.net;
   // The engine already paid the pots by the runout; swap that for the split.
   const stacks = hand.players.map((p) => p.stack - result.won[p.seat]! + won[p.seat]!);
-  return { hand, split, won, net, stacks };
+  return { hand, split, won, net, stacks, heroEvNet: trainer ? evNetOf(hand, HERO, rng) : null };
+}
+
+/** The end-of-match reveal against a training bot. */
+function reportOf(trainer: TrainingBot, records: HandRecord[]): TrainingReport {
+  let realNet = 0;
+  let evNet = 0;
+  let badBeats = 0;
+  for (const r of records) {
+    realNet += r.net[HERO]!;
+    evNet += r.heroEvNet ?? r.net[HERO]!;
+    if (isBadBeat(r.hand, HERO)) badBeats += 1;
+  }
+  return { botId: trainer.id as TrainingReport['botId'], realNet, evNet, badBeats, riggedHands: trainer.riggedHands() };
 }
 
 /**
  * Runs a match against bots on the device: deals hands, lets bots act after a short pause, opens all-in
  * runouts street by street and keeps the stacks between hands. Bots only ever see `viewFor(hand, seat)`,
- * never other players' cards.
+ * never other players' cards; the one exception is a training bot that cheats on purpose, offline.
  */
 export function useTableGame(mode: TableMode, onMatchOver?: (result: MatchResult) => void): TableGame {
   // The table is fixed for the whole match; the screen remounts for a new one.
-  const [{ rng, seats, bots, firstHand }] = useState(() => createSetup(mode));
+  const [{ rng, seats, bots, trainer, firstHand }] = useState(() => createSetup(mode));
   const [hand, setHand] = useState<HandState>(firstHand);
   const [handNumber, setHandNumber] = useState(1);
   const [status, setStatus] = useState<TableStatus>('acting');
@@ -199,13 +243,13 @@ export function useTableGame(mode: TableMode, onMatchOver?: (result: MatchResult
         return i === HERO ? (rebuyHero ? STARTING_STACK : 0) : STARTING_STACK;
       });
       if (stacks[HERO] === 0) return;
-      setHand(dealHand(stacks, (prev.hand.button + 1) % seats.length, rng));
+      setHand(dealHand(stacks, (prev.hand.button + 1) % seats.length, rng, trainer));
       setHandNumber((n) => n + 1);
       setBoardShown(0);
       setSettled(null);
       setStatus('acting');
     },
-    [rng, seats.length],
+    [rng, seats.length, trainer],
   );
 
   const finishHand = useCallback(
@@ -214,6 +258,7 @@ export function useTableGame(mode: TableMode, onMatchOver?: (result: MatchResult
       const showdown = state.events.some((e) => e.type === 'showdown');
       // Bots see how the hand ended (shown cards included) and learn from it.
       bots.forEach((bot, seat) => bot?.handFinished?.(viewFor(state, seat)));
+      trainer?.handFinished(state, TRAINER_SEAT);
       setSettled(record);
       setHistory((h) => [...h, record]);
 
@@ -231,7 +276,11 @@ export function useTableGame(mode: TableMode, onMatchOver?: (result: MatchResult
       if (mode.kind === 'hu') {
         const botStack = record.stacks[1]!;
         if (heroStack === 0 || botStack === 0) {
-          const outcome: MatchResult = { heroWon: botStack === 0, hands: handNumber };
+          const outcome: MatchResult = {
+            heroWon: botStack === 0,
+            hands: handNumber,
+            training: trainer ? reportOf(trainer, [...history, record]) : null,
+          };
           say(1, outcome.heroWon ? 'bust' : 'victory');
           setStatus('match-over');
           later(pause, () => {
@@ -247,7 +296,7 @@ export function useTableGame(mode: TableMode, onMatchOver?: (result: MatchResult
       setStatus('hand-over');
       dealTimer.current = setTimeout(() => deal(record), pause);
     },
-    [bots, deal, handNumber, later, mode.kind, say, seats],
+    [bots, deal, handNumber, history, later, mode.kind, say, seats, trainer],
   );
 
   /** Applies an action and moves the hand forward. */
@@ -262,7 +311,7 @@ export function useTableGame(mode: TableMode, onMatchOver?: (result: MatchResult
         setBoardShown(next.board.length);
         return;
       }
-      const record = settle(next, mode.kind === 'hu', rng);
+      const record = settle(next, mode.kind === 'hu', rng, trainer);
       const from = boardAtLastDecision(next).length;
       if (from >= next.board.length) {
         setBoardShown(next.board.length);
@@ -276,20 +325,23 @@ export function useTableGame(mode: TableMode, onMatchOver?: (result: MatchResult
       streets.forEach((count, i) => later(RUNOUT_FIRST + i * RUNOUT_STEP, () => setBoardShown(count)));
       later(RUNOUT_FIRST + (streets.length - 1) * RUNOUT_STEP + RUNOUT_RESULT, () => finishHand(record));
     },
-    [finishHand, later, mode.kind, rng, say, seats],
+    [finishHand, later, mode.kind, rng, say, seats, trainer],
   );
 
   // Bots take their turns after a short, human-looking pause.
   useEffect(() => {
     if (status !== 'acting' || hand.toAct === null || hand.toAct === HERO) return;
     const seat = hand.toAct;
-    const bot = bots[seat]!;
+    const bot = bots[seat];
     const freshStreet = hand.events[hand.events.length - 1]?.type === 'street';
     const thinking =
       550 + rng.nextInt(750) + (hand.phase === 'preflop' ? 0 : 250) + (freshStreet ? NEW_STREET_PAUSE : 0);
-    const timer = setTimeout(() => advance(hand, bot.decide(viewFor(hand, seat), rng)), thinking);
+    // A training bot gets the whole hand (Danil sees every card); every other bot only its own view.
+    const decide = () =>
+      trainer && seat === TRAINER_SEAT ? trainer.decide(hand, seat, rng) : bot!.decide(viewFor(hand, seat), rng);
+    const timer = setTimeout(() => advance(hand, decide()), thinking);
     return () => clearTimeout(timer);
-  }, [advance, bots, hand, rng, status]);
+  }, [advance, bots, hand, rng, status, trainer]);
 
   const act = useCallback(
     (action: PlayerAction) => {
