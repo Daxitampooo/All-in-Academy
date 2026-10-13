@@ -6,9 +6,10 @@ import type { PortraitKind } from '@/bots/catalog';
 import type { FaceSpec } from '@/components/FacePortrait';
 import { AppText } from '@/components/AppText';
 import { BotPortrait } from '@/components/BotPortrait';
-import { PersonIcon } from '@/components/icons';
 import { FlipCard } from '@/components/table/DealtCard';
+import { PlayerAvatar } from '@/components/PlayerAvatar';
 import type { CardSize } from '@/components/table/PlayingCard';
+import type { AvatarSpec } from '@/profile/avatar';
 import { formatChips } from '@/lib/format';
 import { useTheme } from '@/theme/ThemeProvider';
 import { radius, space, withAlpha } from '@/theme/tokens';
@@ -141,6 +142,7 @@ export function BotSeat(props: BotSeatProps) {
 
 export type HeroSeatProps = {
   name: string;
+  avatar: AvatarSpec;
   stack: number;
   cards: Card[];
   folded: boolean;
@@ -156,7 +158,6 @@ export type HeroSeatProps = {
 
 /** The hero's seat at the bottom of the table: big cards, then the avatar, name, stack and status. */
 export function HeroSeat(props: HeroSeatProps) {
-  const { colors } = useTheme();
   const { name, stack, folded, isTurn, isButton, status, hint } = props;
   const size = 40;
   return (
@@ -164,19 +165,7 @@ export function HeroSeat(props: HeroSeatProps) {
       <CardsRow cards={props.cards} size="lg" highlight={props.highlight} dimLosers={props.dimLosers} dimAll={folded} dealtFaceUp />
       <View style={styles.heroRow}>
         <View>
-          <View
-            style={[
-              styles.heroRing,
-              {
-                width: size,
-                height: size,
-                borderColor: isTurn ? colors.cyan : withAlpha(colors.cyan, 0.5),
-                backgroundColor: colors.surfaceRaised,
-                boxShadow: isTurn && colors.glow > 0 ? `0 0 16px ${withAlpha(colors.cyan, 0.7)}` : undefined,
-              },
-            ]}>
-            <PersonIcon color={colors.cyan} size={size * 0.55} />
-          </View>
+          <PlayerAvatar avatar={props.avatar} size={size} active={isTurn} />
           {isButton ? <DealerButton label={props.dealerLabel} /> : null}
         </View>
         <View style={styles.heroTexts}>
@@ -262,12 +251,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: space.sm,
-  },
-  heroRing: {
-    borderRadius: radius.pill,
-    borderWidth: 2.5,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   heroTexts: {
     maxWidth: 170,

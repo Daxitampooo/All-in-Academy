@@ -17,11 +17,14 @@ import { BetChip } from '@/components/table/BetChip';
 import { DealtCard } from '@/components/table/DealtCard';
 import type { CardSize } from '@/components/table/PlayingCard';
 import { BotSeat, HeroSeat, type SeatStatus } from '@/components/table/Seat';
+import { RoomBackdrop } from '@/components/table/RoomBackdrop';
 import { TableFelt } from '@/components/table/TableFelt';
 import { TrainingReveal } from '@/components/table/TrainingReveal';
 import { formatChips } from '@/lib/format';
+import { LookScope, usePersonalLook, useTableLook } from '@/looks/LookProvider';
 import { beatenById, useBotProgress, type SeriesUpdate } from '@/store/botProgress';
 import { useMatchReview } from '@/store/matchReview';
+import { useProfile } from '@/store/profile';
 import { useSettings } from '@/store/settings';
 import { handNameKey, handOutcome, seatName as nameOfSeat, splitNote } from '@/table/describe';
 import { useTableGame, type MatchResult, type SeatInfo, type TableMode } from '@/table/useTableGame';
@@ -34,6 +37,7 @@ export default function TableScreen() {
   const params = useLocalSearchParams<{ mode?: string; bot?: string; league?: string; r?: string }>();
   const { t } = useTranslation();
   const beaten = beatenById(useBotProgress((s) => s.records));
+  const look = usePersonalLook();
 
   let mode: TableMode | null = null;
   const bot = params.bot ? botById(params.bot) : undefined;
@@ -52,7 +56,12 @@ export default function TableScreen() {
       </View>
     );
   }
-  return <TableGameView key={params.r ?? 'first'} mode={mode} params={params} />;
+  // The player's own table look; ranked play and tournaments will use the official one instead.
+  return (
+    <LookScope look={look}>
+      <TableGameView key={params.r ?? 'first'} mode={mode} params={params} />
+    </LookScope>
+  );
 }
 
 type Point = { x: number; y: number };
@@ -146,6 +155,9 @@ function bubblePlacement(
 function TableGameView({ mode, params }: { mode: TableMode; params: Record<string, string | undefined> }) {
   const { t, i18n } = useTranslation();
   const { colors, hues } = useTheme();
+  const tableLook = useTableLook();
+  const nickname = useProfile((s) => s.nickname);
+  const avatar = useProfile((s) => s.avatar);
   const insets = useSafeAreaInsets();
   const recordMatch = useBotProgress((s) => s.recordMatch);
   const records = useBotProgress((s) => s.records);
@@ -297,6 +309,7 @@ function TableGameView({ mode, params }: { mode: TableMode; params: Record<strin
 
   return (
     <View style={[styles.screen, { backgroundColor: colors.bg, paddingTop: insets.top }]}>
+      <RoomBackdrop room={tableLook.room} />
       <View style={styles.topBar}>
         <Pressable
           onPress={() => (matchRunning ? setConfirmExit(true) : leave())}
@@ -408,7 +421,8 @@ function TableGameView({ mode, params }: { mode: TableMode; params: Record<strin
 
             <View style={styles.heroBox}>
               <HeroSeat
-                name={t('table.you')}
+                name={nickname ?? t('table.you')}
+                avatar={avatar}
                 stack={stackOf(HERO)}
                 cards={hero.holeCards}
                 folded={hero.folded}

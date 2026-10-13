@@ -82,6 +82,9 @@ function Navigation() {
         <Stack.Screen name="bots/[id]" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="table" options={{ animation: 'fade', gestureEnabled: false }} />
         <Stack.Screen name="analysis" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="looks" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="avatar" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="edit-profile" options={{ animation: 'slide_from_right' }} />
       </Stack>
     </ThemeProvider>
   );

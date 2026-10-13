@@ -86,16 +86,30 @@
   },
   "profile": {
     "title": "Profile",
-    "guest": "Guest",
-    "guestHint": "Progress is saved on this phone. Accounts arrive with online play.",
-    "level": "Level {{level}}",
-    "xp": "{{current}} / {{next}} XP",
+    "noNickname": "Player without a nickname",
+    "setUp": "Pick a nickname and tell others about yourself",
+    "localHint": "Your profile lives on this phone. With accounts it will follow you to every device.",
+    "favoriteHand": "Favorite hand",
     "stats": {
-      "hands": "Hands played",
-      "lessons": "Lessons done",
-      "accuracy": "Trainer accuracy"
+      "matches": "Bot matches",
+      "wins": "Wins",
+      "beaten": "Bots beaten"
     },
-    "settings": "Settings"
+    "comingStats": "Rating, rank, title and stats (VPIP, PFR, tournaments) arrive with hand history, achievements and ranked play.",
+    "edit": "Edit profile",
+    "editHint": "Nickname, about, country, favorite hand, style",
+    "avatar": "Avatar",
+    "avatarHint": "Face, background, frame, outline, badge",
+    "settings": "Settings",
+    "settingsHint": "Language, theme, vibration",
+    "styles": {
+      "tag": "Tight-aggressive (TAG)",
+      "lag": "Loose-aggressive (LAG)",
+      "nit": "Nit",
+      "station": "Calling station",
+      "maniac": "Maniac",
+      "balanced": "Balanced"
+    }
   },
   "settings": {
     "title": "Settings",
@@ -1334,5 +1348,249 @@
     "potOdds": "Pot odds: call {{call}} into {{pot}}, needs {{need}}% equity",
     "equity": "Equity with open cards: {{pct}}%",
     "empty": "Nothing to review yet: play at least one hand."
+  },
+  "looks": {
+    "title": "Table look",
+    "categories": {
+      "felt": "Felt",
+      "room": "Room",
+      "back": "Card back",
+      "deck": "Deck",
+      "chips": "Chips",
+      "neon": "Neon"
+    },
+    "items": {
+      "felt": {
+        "midnight": "Midnight",
+        "emerald": "Emerald",
+        "wine": "Burgundy",
+        "ocean": "Ocean",
+        "graphite": "Graphite",
+        "amethyst": "Amethyst",
+        "neonGold": "Neon's gold",
+        "carbon": "Carbon",
+        "aurora": "Aurora"
+      },
+      "room": {
+        "void": "Void",
+        "synth": "Synthwave",
+        "city": "Night city",
+        "stars": "Stars",
+        "sunset": "Sunset",
+        "deep": "Deep sea"
+      },
+      "back": {
+        "neon": "Neon",
+        "red": "Classic red",
+        "blue": "Classic blue",
+        "stripes": "Stripes",
+        "club": "Club",
+        "gold": "Gold",
+        "holo": "Hologram"
+      },
+      "deck": {
+        "classic": "Classic",
+        "large": "Large index",
+        "paper": "Vintage",
+        "night": "Night",
+        "outline": "Neon outline"
+      },
+      "chips": {
+        "amber": "Amber",
+        "cyan": "Cyan",
+        "classic": "Classic",
+        "lime": "Lime",
+        "magenta": "Magenta",
+        "gold": "Gold",
+        "onyx": "Onyx"
+      },
+      "neon": {
+        "cyan": "Cyan",
+        "magenta": "Magenta",
+        "calm": "No glow",
+        "lime": "Lime",
+        "amber": "Amber",
+        "ice": "Ice",
+        "synthwave": "Synthwave"
+      }
+    },
+    "worn": "Equipped",
+    "proShort": "With Pro",
+    "unlock": {
+      "pro": "Comes with the Pro subscription",
+      "bot": "Beat {{name}}",
+      "league_one": "Beat {{count}} bot in the {{league}} league",
+      "league_other": "Beat {{count}} bots in the {{league}} league",
+      "leagueAll": "Beat every bot in the {{league}} league"
+    },
+    "trying": "Trying on \"{{name}}\". {{how}}",
+    "onlyYou": "Only you see your table look: other players see their own table.",
+    "fourColor": "Four-color suits",
+    "fourColorHint": "Clubs green, diamonds blue, so suits never get mixed up. Works in ranked too.",
+    "official": "Official style",
+    "officialToggleHint": "How the table looks in ranked play and tournaments",
+    "officialHint": "In ranked play and tournaments everyone gets the same strict table. Of your settings, only the four-color deck stays.",
+    "progressNote": "New looks open as you beat bots; achievements will add more later. You can already try on Pro looks.",
+    "open": "Table look",
+    "openHint": "Felt, room, card backs, decks, chips",
+    "proBadge": "PRO"
+  },
+  "editProfile": {
+    "title": "Edit profile",
+    "nickname": "Nickname",
+    "nicknamePlaceholder": "For example, River_Rat",
+    "nicknameHint": "3 to 16 characters: letters, digits, \"_\", \"-\" and \".\". Without one, the table says \"You\".",
+    "nickProblem": {
+      "short": "Too short: at least 3 characters.",
+      "long": "Too long: 16 characters at most.",
+      "chars": "Letters and digits only, with \"_\", \"-\" or \".\" between them. No spaces or emoji.",
+      "profanity": "This nickname won't do: remove the rude words.",
+      "reserved": "This nickname is reserved. Pick another one."
+    },
+    "about": "About me",
+    "aboutPlaceholder": "A few words about your game",
+    "aboutProblem": {
+      "long": "Too long: 140 characters at most.",
+      "profanity": "Remove the rude words.",
+      "link": "Links and contacts aren't allowed in profiles."
+    },
+    "country": "Country",
+    "countryTitle": "Country",
+    "countrySearch": "Search countries",
+    "noCountry": "Don't show",
+    "hand": "Favorite hand",
+    "handTitle": "Favorite hand",
+    "handHint": "Pairs on the diagonal, suited hands above it, offsuit below.",
+    "style": "Playing style",
+    "notSet": "Not set",
+    "change": "Choose",
+    "done": "Done",
+    "clear": "Remove",
+    "close": "Close",
+    "save": "Save"
+  },
+  "avatar": {
+    "title": "Avatar",
+    "save": "Save avatar",
+    "trying": "Trying on. {{how}}",
+    "sections": {
+      "face": "Face",
+      "background": "Background",
+      "frame": "Frame",
+      "outline": "Outline",
+      "badge": "Badge"
+    },
+    "parts": {
+      "hair": "Hair",
+      "hat": "Headwear",
+      "eyes": "Eyes",
+      "brows": "Brows",
+      "mouth": "Mouth",
+      "beard": "Beard",
+      "extra": "Details"
+    },
+    "options": {
+      "hair": {
+        "short": "Short",
+        "buzz": "Buzz cut",
+        "bald": "Bald",
+        "spiky": "Spiky",
+        "side": "Side part",
+        "messy": "Messy",
+        "curly": "Curly",
+        "long": "Long",
+        "bob": "Bob",
+        "bun": "Bun",
+        "ponytail": "Ponytail"
+      },
+      "hat": {
+        "none": "None",
+        "cap": "Cap",
+        "capBack": "Cap backwards",
+        "beanie": "Beanie",
+        "hood": "Hood",
+        "headphones": "Headphones"
+      },
+      "eyes": {
+        "dots": "Dots",
+        "wide": "Wide",
+        "narrow": "Narrow",
+        "sleepy": "Sleepy",
+        "glasses": "Glasses",
+        "squareGlasses": "Square glasses",
+        "shades": "Shades"
+      },
+      "brows": {
+        "none": "None",
+        "flat": "Flat",
+        "angry": "Angry",
+        "worried": "Surprised",
+        "raised": "Raised"
+      },
+      "mouth": {
+        "smile": "Smile",
+        "grin": "Grin",
+        "flat": "Poker face",
+        "smirk": "Smirk",
+        "frown": "Frown",
+        "open": "Open",
+        "small": "Small"
+      },
+      "beard": {
+        "none": "None",
+        "stubble": "Stubble",
+        "mustache": "Mustache",
+        "beard": "Beard"
+      },
+      "extra": {
+        "none": "None",
+        "earrings": "Earrings",
+        "tie": "Tie",
+        "collar": "Collar",
+        "watch": "Watch",
+        "pencil": "Pencil",
+        "phone": "Phone"
+      },
+      "background": {
+        "plain": "Plain",
+        "dusk": "Dusk",
+        "ocean": "Ocean",
+        "grid": "Grid",
+        "stars": "Stars",
+        "sunburst": "Sunburst",
+        "gold": "Gold"
+      },
+      "frame": {
+        "ring": "Ring",
+        "double": "Double",
+        "dashed": "Dashed",
+        "studs": "Studs",
+        "notched": "Crosshair",
+        "crown": "Crown",
+        "prism": "Prism"
+      },
+      "badge": {
+        "none": "None",
+        "star": "Star",
+        "spade": "Spade",
+        "heart": "Heart",
+        "flame": "Flame",
+        "bolt": "Bolt",
+        "crown": "Crown",
+        "diamond": "Diamond"
+      }
+    },
+    "outlines": {
+      "cyan": "Cyan",
+      "magenta": "Magenta",
+      "lime": "Lime",
+      "amber": "Amber",
+      "violet": "Violet",
+      "orange": "Orange",
+      "aqua": "Aqua",
+      "rose": "Rose",
+      "gold": "Gold",
+      "ice": "Ice"
+    }
   }
 }
