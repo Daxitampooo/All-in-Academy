@@ -1,8 +1,11 @@
 import { RANKS, rankOf, suitOf, type Card } from '@pokerall/poker-engine';
+import { useId, type ReactNode } from 'react';
 import { StyleSheet, View } from 'react-native';
-import Svg, { Circle, G, Path, Rect } from 'react-native-svg';
+import Svg, { Circle, Defs, G, LinearGradient, Path, Pattern, Rect, Stop } from 'react-native-svg';
 
 import { AppText } from '@/components/AppText';
+import type { BackStyle } from '@/looks/catalog';
+import { useTableLook } from '@/looks/LookProvider';
 import { useTheme } from '@/theme/ThemeProvider';
 import { withAlpha } from '@/theme/tokens';
 
@@ -53,31 +56,105 @@ type Props = {
   dim?: boolean;
 };
 
+const CLUB_PATH =
+  'M12 2.5a4 4 0 0 0-3.6 5.7 4 4 0 1 0 2.9 6.9L9.4 21h5.2l-1.9-5.9a4 4 0 1 0 2.9-6.9A4 4 0 0 0 12 2.5Z';
+
+/** The back of a card in the current look. */
+function CardBack({ w, h, corner, back }: { w: number; h: number; corner: number; back: BackStyle }) {
+  const id = useId().replace(/[^a-zA-Z0-9]/g, '');
+  const inner = { x: 4, y: 4, width: w - 8, height: h - 8, rx: Math.max(1, corner - 2) };
+  const diamond = `M${w / 2} ${h * 0.28} L${w * 0.68} ${h / 2} L${w / 2} ${h * 0.72} L${w * 0.32} ${h / 2} Z`;
+  let art: ReactNode = null;
+  switch (back.pattern) {
+    case 'neon':
+      art = (
+        <>
+          <Rect {...inner} fill="none" stroke={withAlpha(back.accent, 0.45)} strokeWidth={1} />
+          <Path d={diamond} fill="none" stroke={withAlpha(back.line, 0.6)} strokeWidth={1.2} />
+        </>
+      );
+      break;
+    case 'lattice':
+      art = (
+        <>
+          <Defs>
+            <Pattern id={`lat-${id}`} width={5} height={5} patternUnits="userSpaceOnUse">
+              <Path d="M0 0L5 5M5 0L0 5" stroke={back.accent} strokeOpacity={0.55} strokeWidth={0.7} />
+            </Pattern>
+          </Defs>
+          <Rect {...inner} fill={`url(#lat-${id})`} stroke={back.line} strokeWidth={1} />
+        </>
+      );
+      break;
+    case 'stripes':
+      art = (
+        <>
+          <Defs>
+            <Pattern id={`str-${id}`} width={6} height={6} patternUnits="userSpaceOnUse">
+              <Path d="M0 6L6 0" stroke={back.line} strokeOpacity={0.7} strokeWidth={1.6} />
+            </Pattern>
+          </Defs>
+          <Rect {...inner} fill={`url(#str-${id})`} stroke={back.accent} strokeWidth={1} />
+        </>
+      );
+      break;
+    case 'club': {
+      const size = Math.min(w, h) * 0.55;
+      art = (
+        <>
+          <Rect {...inner} fill="none" stroke={withAlpha(back.accent, 0.5)} strokeWidth={1} />
+          <G transform={`translate(${(w - size) / 2} ${(h - size) / 2}) scale(${size / 24})`}>
+            <Path d={CLUB_PATH} fill="none" stroke={back.line} strokeWidth={1.6} />
+          </G>
+        </>
+      );
+      break;
+    }
+    case 'holo':
+      art = (
+        <>
+          <Defs>
+            <LinearGradient id={`holo-${id}`} x1="0" y1="0" x2="1" y2="1">
+              <Stop offset="0" stopColor={back.line} stopOpacity={0.55} />
+              <Stop offset="0.5" stopColor="#A97BFF" stopOpacity={0.35} />
+              <Stop offset="1" stopColor={back.accent} stopOpacity={0.55} />
+            </LinearGradient>
+          </Defs>
+          <Rect {...inner} fill={`url(#holo-${id})`} />
+          <Path d={diamond} fill="none" stroke="#FFFFFF" strokeOpacity={0.75} strokeWidth={1.2} />
+        </>
+      );
+      break;
+  }
+  return (
+    <Svg width={w} height={h} viewBox={`0 0 ${w} ${h}`}>
+      <Rect x={0.75} y={0.75} width={w - 1.5} height={h - 1.5} rx={corner} fill={back.base} stroke={withAlpha(back.line, 0.7)} strokeWidth={1.5} />
+      {art}
+    </Svg>
+  );
+}
+
 export function PlayingCard({ card, size = 'md', highlight = false, dim = false }: Props) {
   const { colors } = useTheme();
+  const look = useTableLook();
   const s = SIZES[size];
 
   if (card === null) {
     return (
       <View style={{ width: s.w, height: s.h }} accessibilityLabel="Card">
-        <Svg width={s.w} height={s.h} viewBox={`0 0 ${s.w} ${s.h}`}>
-          <Rect x={0.75} y={0.75} width={s.w - 1.5} height={s.h - 1.5} rx={s.corner} fill={colors.surfaceRaised} stroke={withAlpha(colors.cyan, 0.7)} strokeWidth={1.5} />
-          <Rect x={4} y={4} width={s.w - 8} height={s.h - 8} rx={s.corner - 2} fill="none" stroke={withAlpha(colors.magenta, 0.45)} strokeWidth={1} />
-          <Path
-            d={`M${s.w / 2} ${s.h * 0.28} L${s.w * 0.68} ${s.h / 2} L${s.w / 2} ${s.h * 0.72} L${s.w * 0.32} ${s.h / 2} Z`}
-            fill="none"
-            stroke={withAlpha(colors.cyan, 0.6)}
-            strokeWidth={1.2}
-          />
-        </Svg>
+        <CardBack w={s.w} h={s.h} corner={s.corner} back={look.back} />
       </View>
     );
   }
 
   const suit = suitOf(card);
-  const red = suit === 1 || suit === 2;
-  const ink = red ? colors.cardRed : colors.cardInk;
+  const { deck } = look;
+  const ink = look.suits[suit]!;
   const rank = RANKS[rankOf(card)]!;
+  const large = deck.large;
+  const rankSize = large ? Math.round(s.rank * 1.3) : s.rank;
+  const suitSize = large ? Math.round(s.suit * 1.3) : s.suit;
+  const glow = colors.glow > 0;
 
   return (
     <View
@@ -88,18 +165,25 @@ export function PlayingCard({ card, size = 'md', highlight = false, dim = false 
           width: s.w,
           height: s.h,
           borderRadius: s.corner,
-          backgroundColor: colors.cardFace,
-          borderColor: highlight ? colors.lime : colors.glow > 0 ? colors.cardFace : colors.border,
+          backgroundColor: deck.face,
+          borderColor: highlight ? colors.lime : deck.outline ? ink : deck.border,
           transform: [{ translateY: highlight ? -6 : 0 }],
           opacity: dim ? 0.45 : 1,
-          boxShadow: highlight && colors.glow > 0 ? `0 0 14px ${withAlpha(colors.lime, 0.7)}` : undefined,
+          boxShadow:
+            highlight && glow
+              ? `0 0 14px ${withAlpha(colors.lime, 0.7)}`
+              : deck.outline && glow
+                ? `0 0 8px ${withAlpha(ink, 0.6)}`
+                : undefined,
         },
       ]}>
-      <AppText variant="heading" style={[styles.rank, { color: ink, fontSize: s.rank, lineHeight: s.rank * 1.1 }]}>
+      <AppText
+        variant="heading"
+        style={[styles.rank, { color: ink, fontSize: rankSize, lineHeight: rankSize * 1.1, letterSpacing: rank === 'T' && large ? -1.5 : -0.5 }]}>
         {rank === 'T' ? '10' : rank}
       </AppText>
       <View style={styles.suit}>
-        <SuitShape suit={suit} color={ink} size={s.suit} />
+        <SuitShape suit={suit} color={ink} size={suitSize} />
       </View>
     </View>
   );
