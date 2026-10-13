@@ -23,6 +23,9 @@ importers:
       '@pokerall/bots':
         specifier: workspace:*
         version: link:../../packages/bots
+      '@pokerall/coach':
+        specifier: workspace:*
+        version: link:../../packages/coach
       '@pokerall/moderation':
         specifier: workspace:*
         version: link:../../packages/moderation
@@ -126,6 +129,22 @@ importers:
 
   packages/bots:
     dependencies:
+      '@pokerall/poker-engine':
+        specifier: workspace:*
+        version: link:../poker-engine
+    devDependencies:
+      typescript:
+        specifier: ~6.0.3
+        version: 6.0.3
+      vitest:
+        specifier: ^4.0.0
+        version: 4.1.11(@types/node@26.6.4)(vite@8.3.4(@types/node@26.6.4)(terser@5.51.2)(yaml@2.9.1))
+
+  packages/coach:
+    dependencies:
+      '@pokerall/bots':
+        specifier: workspace:*
+        version: link:../bots
       '@pokerall/poker-engine':
         specifier: workspace:*
         version: link:../poker-engine

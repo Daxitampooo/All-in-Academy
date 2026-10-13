@@ -4,6 +4,7 @@ import {
   applyAction,
   boardAtLastDecision,
   createSeededRng,
+  historyOf,
   shuffle,
   shuffledDeck,
   startHand,
@@ -18,6 +19,7 @@ import { getRandomBytes } from 'expo-crypto';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { botIsReady, botsInLeague, type LeagueId } from '@/bots/catalog';
+import { useHands } from '@/store/hands';
 // The only place outside the training module allowed to use it (checked in CI): offline practice matches.
 import {
   createTrainingBot,
@@ -60,6 +62,8 @@ export type MatchResult = {
 
 /** A finished hand as the table settled it. */
 export type HandRecord = {
+  /** Id of the hand in "My hands". */
+  id: string;
   hand: HandState;
   /** Set when an all-in before the river was settled by equity (heads-up matches). */
   split: AllInSplit | null;
@@ -100,6 +104,8 @@ const HERO = 0;
 const TRAINER_SEAT = 1;
 
 type Setup = {
+  /** Id of the match, shared by its hands in "My hands". */
+  matchId: string;
   rng: Rng;
   seats: SeatInfo[];
   bots: (Bot | null)[];
@@ -147,21 +153,42 @@ function createSetup(mode: TableMode): Setup {
     rng,
     trainer,
   );
-  return { rng, seats, bots, trainer, firstHand };
+  const matchId = `${Date.now().toString(36)}${rng.nextInt(1 << 30).toString(36)}`;
+  return { matchId, rng, seats, bots, trainer, firstHand };
 }
 
 /**
  * Settles a finished hand. In heads-up matches an all-in before the river is settled by equity, so the
  * cards that come after it don't decide the match; practice tables keep the usual rules.
  */
-function settle(hand: HandState, byEquity: boolean, rng: Rng, trainer: TrainingBot | null): HandRecord {
+function settle(id: string, hand: HandState, byEquity: boolean, rng: Rng, trainer: TrainingBot | null): HandRecord {
   const result = hand.result!;
   const split = byEquity && !trainer ? allInSplit(hand, { rng }) : null;
   const won = split ? split.won : result.won;
   const net = split ? split.net : result.net;
   // The engine already paid the pots by the runout; swap that for the split.
   const stacks = hand.players.map((p) => p.stack - result.won[p.seat]! + won[p.seat]!);
-  return { hand, split, won, net, stacks, heroEvNet: trainer ? evNetOf(hand, HERO, rng) : null };
+  return { id, hand, split, won, net, stacks, heroEvNet: trainer ? evNetOf(hand, HERO, rng) : null };
+}
+
+/** Keeps a finished hand in "My hands". */
+function saveHand(record: HandRecord, matchId: string, mode: TableMode, seats: SeatInfo[]) {
+  const hand = record.hand;
+  useHands.getState().add({
+    id: record.id,
+    matchId,
+    at: Date.now(),
+    mode: mode.kind,
+    botId: mode.kind === 'hu' ? mode.botId : null,
+    league: mode.kind === 'six' ? mode.league : null,
+    seats,
+    hero: HERO,
+    position: hand.players[HERO]!.position,
+    history: historyOf(hand),
+    net: record.net[HERO]!,
+    equity: record.split ? record.split.equity : null,
+    flagged: false,
+  });
 }
 
 /** The end-of-match reveal against a training bot. */
@@ -184,7 +211,7 @@ function reportOf(trainer: TrainingBot, records: HandRecord[]): TrainingReport {
  */
 export function useTableGame(mode: TableMode, onMatchOver?: (result: MatchResult) => void): TableGame {
   // The table is fixed for the whole match; the screen remounts for a new one.
-  const [{ rng, seats, bots, trainer, firstHand }] = useState(() => createSetup(mode));
+  const [{ matchId, rng, seats, bots, trainer, firstHand }] = useState(() => createSetup(mode));
   const [hand, setHand] = useState<HandState>(firstHand);
   const [handNumber, setHandNumber] = useState(1);
   const [status, setStatus] = useState<TableStatus>('acting');
@@ -259,6 +286,7 @@ export function useTableGame(mode: TableMode, onMatchOver?: (result: MatchResult
       // Bots see how the hand ended (shown cards included) and learn from it.
       bots.forEach((bot, seat) => bot?.handFinished?.(viewFor(state, seat)));
       trainer?.handFinished(state, TRAINER_SEAT);
+      saveHand(record, matchId, mode, seats);
       setSettled(record);
       setHistory((h) => [...h, record]);
 
@@ -296,7 +324,7 @@ export function useTableGame(mode: TableMode, onMatchOver?: (result: MatchResult
       setStatus('hand-over');
       dealTimer.current = setTimeout(() => deal(record), pause);
     },
-    [bots, deal, handNumber, history, later, mode.kind, say, seats, trainer],
+    [bots, deal, handNumber, history, later, matchId, mode, say, seats, trainer],
   );
 
   /** Applies an action and moves the hand forward. */
@@ -311,7 +339,7 @@ export function useTableGame(mode: TableMode, onMatchOver?: (result: MatchResult
         setBoardShown(next.board.length);
         return;
       }
-      const record = settle(next, mode.kind === 'hu', rng, trainer);
+      const record = settle(`${matchId}-${handNumber}`, next, mode.kind === 'hu', rng, trainer);
       const from = boardAtLastDecision(next).length;
       if (from >= next.board.length) {
         setBoardShown(next.board.length);
@@ -325,7 +353,7 @@ export function useTableGame(mode: TableMode, onMatchOver?: (result: MatchResult
       streets.forEach((count, i) => later(RUNOUT_FIRST + i * RUNOUT_STEP, () => setBoardShown(count)));
       later(RUNOUT_FIRST + (streets.length - 1) * RUNOUT_STEP + RUNOUT_RESULT, () => finishHand(record));
     },
-    [finishHand, later, mode.kind, rng, say, seats, trainer],
+    [finishHand, handNumber, later, matchId, mode.kind, rng, say, seats, trainer],
   );
 
   // Bots take their turns after a short, human-looking pause.

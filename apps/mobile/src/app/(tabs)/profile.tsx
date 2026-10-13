@@ -4,12 +4,13 @@ import { Pressable, StyleSheet, View } from 'react-native';
 
 import { AppText } from '@/components/AppText';
 import { Badge } from '@/components/Badge';
-import { GearIcon, PersonIcon, SpadeIcon, TargetIcon } from '@/components/icons';
+import { GearIcon, ListIcon, PersonIcon, SpadeIcon, TargetIcon } from '@/components/icons';
 import { PlayerAvatar } from '@/components/PlayerAvatar';
 import { Screen } from '@/components/Screen';
 import { PlayingCard } from '@/components/table/PlayingCard';
 import { countryName, flagOf } from '@/profile/countries';
 import { showCards } from '@/profile/hands';
+import { useHandStats } from '@/hands/stats';
 import { useBotProgress } from '@/store/botProgress';
 import { useProfile } from '@/store/profile';
 import { useTheme } from '@/theme/ThemeProvider';
@@ -22,13 +23,21 @@ export default function ProfileScreen() {
   const records = useBotProgress((s) => s.records);
 
   const all = Object.values(records);
+  const handStats = useHandStats();
+  const percent = (v: number | null) => (v === null ? '—' : `${Math.round(v * 100)}%`);
   const stats = [
-    { label: t('profile.stats.matches'), value: all.reduce((n, r) => n + r.wins + r.losses, 0) },
-    { label: t('profile.stats.wins'), value: all.reduce((n, r) => n + r.wins, 0) },
-    { label: t('profile.stats.beaten'), value: all.filter((r) => r.beaten > 0).length },
+    { label: t('profile.stats.matches'), value: String(all.reduce((n, r) => n + r.wins + r.losses, 0)) },
+    { label: t('profile.stats.wins'), value: String(all.reduce((n, r) => n + r.wins, 0)) },
+    { label: t('profile.stats.beaten'), value: String(all.filter((r) => r.beaten > 0).length) },
+  ];
+  const playStats = [
+    { label: t('profile.stats.hands'), value: String(handStats.hands) },
+    { label: t('analysis.stats.vpip.name'), value: percent(handStats.vpip) },
+    { label: t('analysis.stats.pfr.name'), value: percent(handStats.pfr) },
   ];
 
   const links: { label: string; hint: string; href: Href; icon: React.ReactNode }[] = [
+    { label: t('hands.title'), hint: t('hands.linkHint'), href: '/hands', icon: <ListIcon color={colors.text} /> },
     { label: t('profile.edit'), hint: t('profile.editHint'), href: '/edit-profile', icon: <PersonIcon color={colors.text} size={22} /> },
     { label: t('profile.avatar'), hint: t('profile.avatarHint'), href: '/avatar', icon: <TargetIcon color={colors.text} size={22} /> },
     { label: t('looks.open'), hint: t('looks.openHint'), href: '/looks', icon: <SpadeIcon color={colors.text} size={22} /> },
@@ -83,18 +92,20 @@ export default function ProfileScreen() {
         </AppText>
       </View>
 
-      <View style={styles.stats}>
-        {stats.map((stat) => (
-          <View key={stat.label} style={[styles.stat, { backgroundColor: colors.surface, borderColor: colors.border }]}>
-            <AppText variant="title" numeric>
-              {String(stat.value)}
-            </AppText>
-            <AppText variant="caption" tone="muted">
-              {stat.label}
-            </AppText>
-          </View>
-        ))}
-      </View>
+      {[stats, playStats].map((row, r) => (
+        <View key={r} style={styles.stats}>
+          {row.map((stat) => (
+            <View key={stat.label} style={[styles.stat, { backgroundColor: colors.surface, borderColor: colors.border }]}>
+              <AppText variant="title" numeric>
+                {stat.value}
+              </AppText>
+              <AppText variant="caption" tone="muted">
+                {stat.label}
+              </AppText>
+            </View>
+          ))}
+        </View>
+      ))}
       <AppText variant="caption" tone="muted">
         {t('profile.comingStats')}
       </AppText>

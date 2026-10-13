@@ -153,3 +153,35 @@ export function ChartIcon({ color, size = 18 }: IconProps) {
     </Svg>
   );
 }
+
+/** Replayer controls: to the start, one step back, one step forward, to the end. */
+export function StepIcon({ color, size = 22, kind }: IconProps & { kind: 'first' | 'prev' | 'next' | 'last' }) {
+  const flip = kind === 'first' || kind === 'prev';
+  const bar = kind === 'first' || kind === 'last';
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none" style={flip ? { transform: [{ scaleX: -1 }] } : undefined}>
+      <Path d={bar ? 'M6 6.5 13.5 12 6 17.5Z' : 'M8 6.5 15.5 12 8 17.5Z'} fill={color} stroke={color} {...stroke} />
+      {bar ? <Path d="M17.5 6.5v11" stroke={color} {...stroke} strokeWidth={2.4} /> : null}
+    </Svg>
+  );
+}
+
+export function FlagIcon({ color, size = 18, filled }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <Path d="M6 21V4" stroke={color} {...stroke} strokeWidth={2} />
+      <Path d="M6 4.5h11l-2.5 4 2.5 4H6" stroke={color} fill={filled ? color : 'none'} {...stroke} />
+    </Svg>
+  );
+}
+
+export function ListIcon({ color, size = 22 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <Path d="M9 6.5h11M9 12h11M9 17.5h11" stroke={color} {...stroke} />
+      <Circle cx={4.5} cy={6.5} r={1.2} fill={color} />
+      <Circle cx={4.5} cy={12} r={1.2} fill={color} />
+      <Circle cx={4.5} cy={17.5} r={1.2} fill={color} />
+    </Svg>
+  );
+}

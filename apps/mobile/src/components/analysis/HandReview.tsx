@@ -8,6 +8,7 @@ import {
   type HandState,
   type Street,
 } from '@pokerall/poker-engine';
+import { router } from 'expo-router';
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, StyleSheet, View } from 'react-native';
@@ -198,6 +199,14 @@ export function HandReview({ record, number, seats, hero }: Props) {
               </AppText>
             ) : null}
           </View>
+          <Pressable
+            onPress={() => router.push({ pathname: '/hand/[id]', params: { id: record.id } })}
+            accessibilityRole="button"
+            style={({ pressed }) => [styles.open, { borderColor: colors.cyan, backgroundColor: pressed ? withAlpha(colors.cyan, 0.15) : 'transparent' }]}>
+            <AppText variant="label" strong tone="cyan">
+              {t('hands.openReplay')}
+            </AppText>
+          </Pressable>
         </View>
       ) : null}
     </View>
@@ -259,6 +268,13 @@ const styles = StyleSheet.create({
   },
   outcome: {
     gap: 2,
+  },
+  open: {
+    alignSelf: 'flex-start',
+    borderWidth: 1,
+    borderRadius: radius.pill,
+    paddingHorizontal: space.md,
+    paddingVertical: space.sm,
   },
   line: {
     borderLeftWidth: 2,
