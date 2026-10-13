@@ -85,6 +85,8 @@ function Navigation() {
         <Stack.Screen name="looks" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="avatar" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="edit-profile" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="hands" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="hand/[id]" options={{ animation: 'slide_from_right' }} />
       </Stack>
     </ThemeProvider>
   );

@@ -93,7 +93,8 @@
     "stats": {
       "matches": "Bot matches",
       "wins": "Wins",
-      "beaten": "Bots beaten"
+      "beaten": "Bots beaten",
+      "hands": "Hands played"
     },
     "comingStats": "Rating, rank, title and stats (VPIP, PFR, tournaments) arrive with hand history, achievements and ranked play.",
     "edit": "Edit profile",
@@ -1151,17 +1152,68 @@
     "playTrainingHint": "A training match to the bust with no equity split: all-ins are played out to the river."
   },
   "hands": {
-    "high-card": "High card",
-    "pair": "Pair",
-    "two-pair": "Two pair",
-    "set": "Set",
-    "trips": "Trips",
-    "straight": "Straight",
-    "flush": "Flush",
-    "full-house": "Full house",
-    "quads": "Quads",
-    "straight-flush": "Straight flush",
-    "royal-flush": "Royal flush"
+    "title": "My hands",
+    "handTitle": "Hand",
+    "linkHint": "History, replayer and decision review",
+    "trainBody": "Every hand you played with bots: a street-by-street replayer, a \"to review\" flag and decision analysis.",
+    "count_one": "{{count}} hand",
+    "count_other": "{{count}} hands",
+    "quotaHint": "Analyzing a hand uses one try; opening it again is free. The count starts over at midnight.",
+    "filters": {
+      "period": "Period",
+      "mode": "Mode",
+      "position": "Position",
+      "result": "Result"
+    },
+    "periods": {
+      "all": "All",
+      "today": "Today",
+      "week": "7 days",
+      "month": "30 days"
+    },
+    "modes": {
+      "all": "All",
+      "hu": "Heads-up",
+      "six": "6-max"
+    },
+    "all": "All",
+    "results": {
+      "all": "All",
+      "won": "Won",
+      "lost": "Lost",
+      "flagged": "To review",
+      "reviewed": "Analyzed"
+    },
+    "tableOf": "{{league}} table",
+    "today": "Today {{time}}",
+    "yesterday": "Yesterday {{time}}",
+    "bb": "{{bb}} BB",
+    "clean": "No mistakes",
+    "mistakes_one": "{{count}} mistake",
+    "mistakes_other": "{{count}} mistakes",
+    "inaccuracies_one": "{{count}} inaccuracy",
+    "inaccuracies_other": "{{count}} inaccuracies",
+    "empty": "Hands you play with bots will show up here. The phone keeps the last 1000.",
+    "noMatch": "No hands match these filters.",
+    "play": "Play bots",
+    "notFound": "Hand not found: it may have been removed as an old one.",
+    "splitNote": "All-in before the river: the pot was split by equity, your share {{pct}}%.",
+    "flag": "Flag \"to review\"",
+    "flagged": "Flagged \"to review\"",
+    "flagHint": "Flagged hands are easy to filter and are kept longer than the rest.",
+    "toList": "Back to my hands",
+    "openReplay": "Replayer and review",
+    "replay": {
+      "deal": "Cards dealt",
+      "end": "End of the hand",
+      "step": "Step {{n}} of {{total}}",
+      "first": "To the start",
+      "prev": "Step back",
+      "next": "Step forward",
+      "last": "To the end",
+      "result": "Result",
+      "openCards": "Opponents' cards"
+    }
   },
   "table": {
     "you": "You",
@@ -1591,6 +1643,93 @@
       "rose": "Rose",
       "gold": "Gold",
       "ice": "Ice"
+    }
+  },
+  "coach": {
+    "title": "Hand analysis",
+    "intro": "I'll go through every decision you made: good, inaccuracy or mistake, what it cost and what was better. Judged by what you knew at the table, not by your opponent's cards.",
+    "analyze": "Analyze this hand",
+    "left": "Analyses left today: {{left}} of {{total}}",
+    "unlimited": "Pro: unlimited analyses",
+    "limitReached": "Today's free analyses are used up ({{total}} a day). New ones come after midnight; Pro has no limit.",
+    "working": "Working…",
+    "totalLoss": "Lost ≈{{bb}} BB in EV",
+    "noLoss": "No EV lost",
+    "disclaimer": "Grades follow a simplified baseline strategy and estimated opponent ranges. It's a guide, not a solver.",
+    "showInReplay": "Show this moment in the replayer",
+    "better": "Better: {{move}}",
+    "equityNeed": "Equity against the likely range ≈{{eq}}% · needed {{need}}%",
+    "equityOnly": "Equity against the likely range ≈{{eq}}%",
+    "loss": "Cost ≈{{bb}} BB",
+    "lesson": "Lesson: {{name}} · coming to the Academy",
+    "moves": {
+      "fold": "fold",
+      "check": "check",
+      "call": "call",
+      "bet": "bet",
+      "raise": "raise"
+    },
+    "grades": {
+      "good": "Good",
+      "inaccuracy": "Inaccuracy",
+      "mistake": "Mistake"
+    },
+    "gradesPlural": {
+      "good": "Good",
+      "inaccuracy": "Inaccuracies",
+      "mistake": "Mistakes"
+    },
+    "lessons": {
+      "preflop-rfi": "Opening by position",
+      "preflop-vs-open": "Playing against a raise",
+      "preflop-3bet": "3-bets and 4-bets",
+      "sizing-preflop": "Preflop sizing",
+      "math-pot-odds": "Pot odds",
+      "postflop-value": "Value betting",
+      "postflop-bluff": "Bluffing",
+      "postflop-draws": "Playing draws"
+    },
+    "reasons": {
+      "openGood": "{{hand}} is a good hand to open from {{pos}}: about {{share}}% of hands are opened there.",
+      "openLoose": "{{hand}} is too weak to open from {{pos}}: only about the best {{share}}% of hands are opened there.",
+      "jamDeep": "Moving all-in with a deep stack risks everything to win the blinds: strong hands call, weak ones fold. A normal open-raise is better.",
+      "limp": "Limping gives up the initiative and lets the blinds in cheaply. Raise this hand or fold it.",
+      "limpHu": "Limping the button heads-up is fine, but a raise wins the blinds outright more often.",
+      "foldOpenable": "{{hand}} should be opened from {{pos}}: it is in the best {{share}}% of hands for this seat.",
+      "foldWeak": "Fold is right: {{hand}} is too weak to play from {{pos}}.",
+      "isoRaise": "An iso-raise over limpers is a good move: you take the initiative against weak ranges.",
+      "isoLoose": "Iso-raising too weak a hand: against several limpers {{hand}} is often behind.",
+      "overlimp": "A cheap call behind limpers is fine with this hand: you see a cheap flop.",
+      "limpStrong": "With {{hand}}, raise: a strong hand wants a big pot and fewer opponents.",
+      "checkStrong": "With {{hand}} in the big blind, raise the limpers instead of checking.",
+      "checkBB": "Checking the big blind is fine: a free flop.",
+      "threeBetValue": "A value 3-bet: {{hand}} beats the raiser's range (≈{{eq}}% equity).",
+      "threeBetBluff": "A bluff 3-bet with {{hand}} is a sound choice: it has blockers and can improve.",
+      "threeBetLoose": "3-betting too weak a hand: against the hands that continue, {{hand}} is often behind.",
+      "fourBetValue": "A value 4-bet with {{hand}} is right.",
+      "fourBetBluff": "A bluff 4-bet with an ace blocker works, but use it rarely.",
+      "fourBetLoose": "A 4-bet with {{hand}} is too risky: against a 3-betting range it has ≈{{eq}}%.",
+      "jamGood": "The all-in is justified: {{hand}} has ≈{{eq}}% equity against the opponent's range.",
+      "jamBad": "The all-in with {{hand}} loses money: against the hands that continue it has only ≈{{eq}}%.",
+      "callGood": "The call pays: you needed {{need}}% equity and had ≈{{eq}}% against the opponent's likely range.",
+      "callBad": "The call doesn't pay: you needed {{need}}% equity and had ≈{{eq}}% against the likely range.",
+      "foldGood": "Fold is right: you needed {{need}}% equity and had only ≈{{eq}}%.",
+      "foldBad": "Folded too soon: you needed {{need}}% equity and had ≈{{eq}}% against the likely range. A call would make money.",
+      "callClose": "A close call: needed {{need}}%, had ≈{{eq}}%. Both options are about equal.",
+      "foldClose": "A close fold: needed {{need}}%, had ≈{{eq}}%. Both options are about equal.",
+      "valueBet": "A value bet: you are ahead about {{eq}}% of the time, and worse hands will pay.",
+      "betThin": "A thin bet with a medium hand (≈{{eq}}%): it protects your hand, but be careful against a raise.",
+      "semiBluff": "A semi-bluff: the opponent may fold, and if they call you still have outs.",
+      "bluff": "A bluff: the hand is weak (≈{{eq}}%) and wins when the opponent folds. Good against players who fold a lot.",
+      "bluffMultiway": "Bluffing {{opponents}} opponents rarely works: someone usually calls. Checking is better.",
+      "check": "Checking is fine: a bet with this hand gains little.",
+      "slowplay": "Checking a very strong hand (≈{{eq}}%) sets a trap. Good against aggressive players; against passive ones, bet.",
+      "missedValue": "Checking a strong hand (≈{{eq}}%) on the river misses value: the opponent would often call a bet.",
+      "raiseValue": "A value raise: the hand is strong (≈{{eq}}%), the pot grows while you are ahead.",
+      "raiseSemi": "Raising a draw is a semi-bluff: you win the pot now or get there later.",
+      "raiseOk": "The raise is justified: your equity (≈{{eq}}%) would cover a call anyway.",
+      "raiseBluff": "A bluff raise with a weak hand (≈{{eq}}%) is expensive: players who bet rarely fold.",
+      "missedRaise": "With a hand this strong (≈{{eq}}%) on the river, raise: a call leaves value behind."
     }
   }
 }
