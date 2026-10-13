@@ -6,6 +6,8 @@ export * from './tracked';
 export * from './novices';
 export * from './amateurs';
 export * from './regulars';
+export * from './pros';
+export * from './masters';
 export * from './registry';
 export { PREFLOP_TABLE } from './preflop-table';
 export * from './simulate';

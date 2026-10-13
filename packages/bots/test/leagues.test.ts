@@ -73,7 +73,7 @@ describe('amateurs and regulars', () => {
       expect(isPlayable(id)).toBe(true);
       expect(createBot(id)).not.toBe(createBot(id));
     }
-    expect(Object.keys(BOT_FACTORIES)).toHaveLength(6 + amateurs.length + regulars.length);
+    expect(Object.keys(BOT_FACTORIES)).toHaveLength(6 + amateurs.length + regulars.length + 6 + 3);
     expect(() => createBot('nobody')).toThrow();
   });
 

@@ -10,7 +10,7 @@ import { Button } from '@/components/Button';
 import { EyeIcon } from '@/components/icons';
 import { Screen } from '@/components/Screen';
 import { SpeechBubble } from '@/components/SpeechBubble';
-import { LEAGUES, SERIES_TARGET, botById, botIsReady, leagueUnlocked } from '@/bots/catalog';
+import { LEAGUES, botById, botIsReady, leagueUnlocked, seriesTarget } from '@/bots/catalog';
 import { beatenById, useBotProgress } from '@/store/botProgress';
 import { useTheme } from '@/theme/ThemeProvider';
 import { space } from '@/theme/tokens';
@@ -36,7 +36,7 @@ export default function BotScreen() {
   const record = records[bot.id];
   const greet = ready ? (t(`bots.phrases.${bot.id}.greet`, { returnObjects: true }) as string[])[0] : null;
   const previous = LEAGUES[LEAGUES.findIndex((l) => l.id === bot.league) - 1];
-  const target = SERIES_TARGET[bot.league];
+  const target = seriesTarget(bot);
   const name = t(`bots.list.${bot.id}.name`);
   // The nickname gives away how the bot plays, so it opens only once the bot is beaten.
   const nicknameKey = `bots.list.${bot.id}.nickname`;
@@ -109,17 +109,19 @@ export default function BotScreen() {
       <View style={styles.actions}>
         <Button
           label={t('bots.playHeadsUp')}
-          hint={t('bots.playHeadsUpHint')}
+          hint={t(bot.training ? 'bots.playTrainingHint' : 'bots.playHeadsUpHint')}
           disabled={!!blocked}
           onPress={() => router.push({ pathname: '/table', params: { mode: 'hu', bot: bot.id } })}
         />
-        <Button
-          kind="secondary"
-          label={t('bots.playTable')}
-          hint={t('bots.playTableHint')}
-          disabled={!!blocked}
-          onPress={() => router.push({ pathname: '/table', params: { mode: 'six', league: bot.league } })}
-        />
+        {bot.training ? null : (
+          <Button
+            kind="secondary"
+            label={t('bots.playTable')}
+            hint={t('bots.playTableHint')}
+            disabled={!!blocked}
+            onPress={() => router.push({ pathname: '/table', params: { mode: 'six', league: bot.league } })}
+          />
+        )}
       </View>
     </Screen>
   );

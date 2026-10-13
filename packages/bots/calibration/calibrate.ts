@@ -43,6 +43,9 @@ function counting(bot: Bot, tally: { hands: number; vpip: number; pfr: number })
   };
 }
 
+/** YARD=artem measures against a played bot instead, for the stronger leagues. */
+const opponent = (): Bot => (process.env.YARD ? createBot(process.env.YARD) : yardstick());
+
 it('calibrates', () => {
   const ids = (process.env.BOTS ?? '').split(',').filter(Boolean);
   const matches = Number(process.env.MATCHES ?? 300);
@@ -56,7 +59,7 @@ it('calibrates', () => {
       const bot = counting(createBot(id), tally);
       // Alternate seats so the first button doesn't favour anyone.
       const flip = m % 2 === 1;
-      const result = playHeadsUpMatch({ bots: flip ? [bot, yardstick()] : [yardstick(), bot], rng, maxHands: 600, byEquity: true });
+      const result = playHeadsUpMatch({ bots: flip ? [bot, opponent()] : [opponent(), bot], rng, maxHands: 600, byEquity: true });
       hands += result.hands;
       if (result.winner !== null && (result.winner === 0) !== flip) yardstickWins += 1;
     }
