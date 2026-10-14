@@ -1,11 +1,37 @@
+import { termSegments } from '@pokerall/content';
 import { Text, View, StyleSheet } from 'react-native';
 
 import { AppText } from '@/components/AppText';
 import { useTheme } from '@/theme/ThemeProvider';
 import { fonts, space } from '@/theme/tokens';
 
+type OnTerm = ((id: string) => void) | undefined;
+
+/** Text with "[[id|word]]" glossary marks: a marked word opens its glossary entry. */
+function Terms({ text, onTerm }: { text: string; onTerm: OnTerm }) {
+  const { colors } = useTheme();
+  return (
+    <>
+      {termSegments(text).map((seg, i) =>
+        seg.term && onTerm ? (
+          <Text
+            key={i}
+            onPress={() => onTerm(seg.term!)}
+            accessibilityRole="link"
+            suppressHighlighting={false}
+            style={[styles.term, { color: colors.cyan, textDecorationColor: colors.cyan }]}>
+            {seg.text}
+          </Text>
+        ) : (
+          <Text key={i}>{seg.text}</Text>
+        ),
+      )}
+    </>
+  );
+}
+
 /** "**bold**" inside a line becomes bold. */
-function Inline({ text }: { text: string }) {
+function Inline({ text, onTerm }: { text: string; onTerm: OnTerm }) {
   const { colors } = useTheme();
   const parts = text.split(/(\*\*[^*]+\*\*)/g).filter(Boolean);
   return (
@@ -13,18 +39,21 @@ function Inline({ text }: { text: string }) {
       {parts.map((part, i) =>
         part.startsWith('**') && part.endsWith('**') ? (
           <Text key={i} style={{ fontFamily: fonts.bodySemiBold, color: colors.text }}>
-            {part.slice(2, -2)}
+            <Terms text={part.slice(2, -2)} onTerm={onTerm} />
           </Text>
         ) : (
-          <Text key={i}>{part}</Text>
+          <Terms key={i} text={part} onTerm={onTerm} />
         ),
       )}
     </>
   );
 }
 
-/** Lesson text: paragraphs separated by blank lines, "- " bullets, **bold**. */
-export function RichText({ text }: { text: string }) {
+/**
+ * Lesson text: paragraphs separated by blank lines, "- " bullets, **bold**, and glossary terms marked as
+ * "[[id|word]]" that call `onTerm` when tapped.
+ */
+export function RichText({ text, onTerm }: { text: string; onTerm?: (id: string) => void }) {
   const { colors } = useTheme();
   const paragraphs = text.split(/\n\s*\n/);
   return (
@@ -40,7 +69,7 @@ export function RichText({ text }: { text: string }) {
                   <View key={j} style={styles.bullet}>
                     <View style={[styles.dot, { backgroundColor: colors.cyan }]} />
                     <AppText style={styles.flex}>
-                      <Inline text={l.slice(2)} />
+                      <Inline text={l.slice(2)} onTerm={onTerm} />
                     </AppText>
                   </View>
                 ))}
@@ -53,13 +82,13 @@ export function RichText({ text }: { text: string }) {
           return (
             <View key={i} style={styles.list}>
               <AppText>
-                <Inline text={lines.slice(0, first).join('\n')} />
+                <Inline text={lines.slice(0, first).join('\n')} onTerm={onTerm} />
               </AppText>
               {lines.slice(first).filter((l) => l.trim()).map((l, j) => (
                 <View key={j} style={styles.bullet}>
                   <View style={[styles.dot, { backgroundColor: colors.cyan }]} />
                   <AppText style={styles.flex}>
-                    <Inline text={l.replace(/^- /, '')} />
+                    <Inline text={l.replace(/^- /, '')} onTerm={onTerm} />
                   </AppText>
                 </View>
               ))}
@@ -68,7 +97,7 @@ export function RichText({ text }: { text: string }) {
         }
         return (
           <AppText key={i}>
-            <Inline text={p} />
+            <Inline text={p} onTerm={onTerm} />
           </AppText>
         );
       })}
@@ -96,5 +125,9 @@ const styles = StyleSheet.create({
   },
   flex: {
     flex: 1,
+  },
+  term: {
+    textDecorationLine: 'underline',
+    textDecorationStyle: 'dotted',
   },
 });

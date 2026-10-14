@@ -160,6 +160,10 @@
       "search": "Find a term",
       "nothing": "Nothing found.",
       "lesson": "Lesson: {{title}}"
+    },
+    "term": {
+      "close": "Close",
+      "all": "Full glossary"
     }
   },
   "train": {
@@ -275,7 +279,9 @@
     "tableHints": "Hints at the table",
     "tableHintsHint": "Your hand, draws with outs and the price of a call.",
     "coach": "Coach",
-    "coachHint": "After each decision at a bot table: was it right and why."
+    "coachHint": "After each decision at a bot table: was it right and why.",
+    "lessonTerms": "Terms in lessons",
+    "lessonTermsHint": "Tap an underlined term in a lesson to see what it means."
   },
   "notFound": {
     "title": "This screen doesn't exist",
