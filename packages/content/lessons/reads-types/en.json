@@ -1,0 +1,51 @@
+{
+  "title": "Player types",
+  "summary": "Tight and loose, passive and aggressive: the four main styles.",
+  "blocks": {
+    "axes": {
+      "text": "Two axes describe a player's style:\n- **Tight or loose**: how many hands they play. Tight plays few, loose plays many.\n- **Passive or aggressive**: how they play them. Passive checks and calls more, aggressive bets and raises."
+    },
+    "four": {
+      "text": "That gives four types:\n- **TAG** (tight-aggressive): plays few hands, but aggressively. The most common style among strong regulars.\n- **LAG** (loose-aggressive): many hands and a lot of pressure. Dangerous, but makes mistakes in big pots.\n- **Nit** (very tight and passive): waits for strong hands. Their bet almost always means strength.\n- **Calling station** (loose-passive): calls too often and rarely raises. The main source of profit.\n\nThere is also the **maniac**, who bets and raises almost everything."
+    },
+    "q-type": {
+      "q": "A player joins almost every hand but rarely raises and nearly always calls. Who is it?",
+      "options": [
+        "Calling station",
+        "TAG",
+        "Nit",
+        "LAG"
+      ],
+      "explain": "Many hands and little aggression: the loose-passive style, a calling station."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "What does \"aggressive\" mean?",
+      "options": [
+        "Plays many hands",
+        "Bets and raises more than calls",
+        "Tilts often"
+      ],
+      "explain": "Aggression is about how hands are played: with bets and raises."
+    },
+    "t2": {
+      "q": "A nit suddenly raises the turn. What does it usually mean?",
+      "options": [
+        "A strong hand",
+        "A bluff",
+        "Nothing"
+      ],
+      "explain": "A nit bets and raises almost only with strong hands."
+    },
+    "t3": {
+      "q": "Which style do most strong regulars play?",
+      "options": [
+        "Maniac",
+        "TAG",
+        "Calling station"
+      ],
+      "explain": "Tight-aggressive: few hands, played actively."
+    }
+  }
+}

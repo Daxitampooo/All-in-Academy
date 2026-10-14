@@ -1,0 +1,50 @@
+{
+  "title": "Tilt",
+  "summary": "How emotions break your game and what to do about it.",
+  "blocks": {
+    "what": {
+      "text": "**Tilt** is when emotions start making decisions for you. After a bad beat or a losing streak a player widens ranges, calls \"on principle\" and tries to win it back with big bluffs.\n\nTilt can follow wins too: overconfidence also pushes towards weak decisions."
+    },
+    "signs": {
+      "text": "Signs of tilt:\n- You play hands you usually fold.\n- You want to \"punish\" a specific opponent.\n- You decide faster than usual, without thinking.\n- You are angry at the cards or other players.\n\nWhat helps:\n- **A break**: step away from the table for a few minutes and breathe.\n- **Limits set in advance**: for example, stop after three lost matches in a row.\n- **Review later**: flag the hand \"to review\" and come back to it with a fresh head."
+    },
+    "q-tilt": {
+      "q": "You lost a big pot on the river and want to win it back from the same opponent right away. What is better?",
+      "options": [
+        "Play more hands against them",
+        "Take a break and flag the hand for review",
+        "Shove the next hand"
+      ],
+      "explain": "Wanting to \"win it back\" is a classic sign of tilt. A break puts decisions back under control."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "What is tilt?",
+      "options": [
+        "The river card",
+        "Emotions making decisions for you",
+        "A special bet"
+      ],
+      "explain": "Tilt is losing control over decisions because of emotions."
+    },
+    "t2": {
+      "q": "Which of these is a sign of tilt?",
+      "options": [
+        "Folding weak hands",
+        "Calling \"on principle\"",
+        "Thinking over a decision"
+      ],
+      "explain": "A call \"on principle\" is driven by emotion, not by calculation."
+    },
+    "t3": {
+      "q": "Can tilt follow wins?",
+      "options": [
+        "Yes: overconfidence also leads to mistakes",
+        "No, never",
+        "Only for beginners"
+      ],
+      "explain": "Overconfidence after wins pushes you to play extra hands and take risks for no reason."
+    }
+  }
+}

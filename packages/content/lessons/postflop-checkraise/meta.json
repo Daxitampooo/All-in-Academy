@@ -1,0 +1,49 @@
+{
+  "id": "postflop-checkraise",
+  "module": "postflop",
+  "level": "intermediate",
+  "free": false,
+  "minutes": 6,
+  "pass": 0.67,
+  "blocks": [
+    {
+      "id": "idea",
+      "type": "text"
+    },
+    {
+      "id": "with-what",
+      "type": "text"
+    },
+    {
+      "id": "examples",
+      "type": "cards",
+      "rows": [
+        "7s 7d | Ks 7c 2h",
+        "Th 9h | Jh 8h 3c"
+      ]
+    },
+    {
+      "id": "q-cr",
+      "type": "quiz",
+      "answer": 0,
+      "options": 3
+    }
+  ],
+  "test": [
+    {
+      "id": "t1",
+      "answer": 1,
+      "options": 3
+    },
+    {
+      "id": "t2",
+      "answer": 2,
+      "options": 3
+    },
+    {
+      "id": "t3",
+      "answer": 1,
+      "options": 3
+    }
+  ]
+}

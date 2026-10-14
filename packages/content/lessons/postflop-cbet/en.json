@@ -1,0 +1,59 @@
+{
+  "title": "The continuation bet",
+  "summary": "When the preflop raiser should bet the flop, and how much.",
+  "blocks": {
+    "what": {
+      "text": "A **continuation bet** (c-bet) is a flop bet by the player who raised preflop. It works because the opponent usually misses the flop: they make a pair or better only about a third of the time. When they fold, you win the pot without a hand."
+    },
+    "size": {
+      "text": "The size depends on the texture:\n- A **dry board** where you have the range advantage (K♠ 7♦ 2♣): a small c-bet of **25–33% of the pot** with almost your whole range. The opponent has little to defend with, and a cheap bet risks little.\n- A **wet board** (J♥ T♥ 8♣): bet less often but bigger, **60–75% of the pot**. You charge draws and protect made hands.\n- Against **several opponents**, bet less often and mostly for value: the chance that everyone folds drops a lot."
+    },
+    "spots": {
+      "labels": [
+        "Dry board, ace-queen: a small c-bet (⅓ pot)",
+        "Wet board, ace-king without a pair: check, or a big bet using the backdoor draws"
+      ]
+    },
+    "when-not": {
+      "text": "When to skip the c-bet: the board suits the opponent's range (8♠ 7♦ 6♣ after a big blind call), there are two or more opponents and you have neither a hand nor a draw, or the opponent hardly ever folds on the flop."
+    },
+    "q-size": {
+      "q": "You opened from the CO and the BB called. Flop K♠ 7♦ 2♣. Which c-bet is usually better?",
+      "options": [
+        "About ⅓ of the pot",
+        "All-in",
+        "Never bet"
+      ],
+      "explain": "A dry king-high board favors the raiser: a small c-bet with almost the whole range."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "Who makes a c-bet?",
+      "options": [
+        "Any player who bets the flop first",
+        "The player who raised preflop",
+        "Only the big blind"
+      ],
+      "explain": "A c-bet continues the preflop raise with the same aggression on the flop."
+    },
+    "t2": {
+      "q": "Flop J♥ T♥ 8♣. Which c-bet approach is more sensible?",
+      "options": [
+        "A small bet with the whole range",
+        "Always check",
+        "Bet less often but bigger"
+      ],
+      "explain": "A wet board is full of draws: a big bet charges them, and weak hands are better off checking."
+    },
+    "t3": {
+      "q": "Why does a bluff c-bet work worse against three opponents?",
+      "options": [
+        "The rules forbid it",
+        "The pot is smaller",
+        "It is unlikely that all of them fold"
+      ],
+      "explain": "Each opponent can hit the flop, and the chance that all three fold is small."
+    }
+  }
+}

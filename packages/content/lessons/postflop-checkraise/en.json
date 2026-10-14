@@ -1,0 +1,56 @@
+{
+  "title": "Check-raising and playing out of position",
+  "summary": "The main weapon out of position: when and with what to check-raise.",
+  "blocks": {
+    "idea": {
+      "text": "A **check-raise** is a check followed by a raise after the opponent bets. Out of position you act first and see less; a check-raise lets you build a big pot when it suits you and punish an opponent who bets too often."
+    },
+    "with-what": {
+      "text": "What to check-raise with:\n- **For value**: sets, two pair, strong top pair on wet boards that need protection.\n- **As a semi-bluff**: strong draws, especially combo draws (flush draw plus straight draw) with lots of outs.\n\nDon't check-raise middle pairs: the opponent's strong hands won't fold, and their weak ones you already beat."
+    },
+    "examples": {
+      "labels": [
+        "A set of sevens: a value check-raise",
+        "A combo draw: 15 outs, a semi-bluff check-raise"
+      ]
+    },
+    "q-cr": {
+      "q": "Which hand suits a check-raise worst on K♠ 8♦ 3♣?",
+      "options": [
+        "8♥ 7♥ (middle pair)",
+        "K♦ 8♣ (two pair)",
+        "3♠ 3♥ (a set)"
+      ],
+      "explain": "A middle pair loses to the hands that call a raise and gains nothing by raising the weak ones."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "What is a check-raise?",
+      "options": [
+        "Raising without checking",
+        "Checking, then raising after the opponent bets",
+        "Checking down to the river"
+      ],
+      "explain": "A check-raise is checking first, then raising the opponent's bet."
+    },
+    "t2": {
+      "q": "Which draw is best for a semi-bluff check-raise?",
+      "options": [
+        "A gutshot with 4 outs",
+        "A backdoor flush",
+        "A combo draw with 15 outs"
+      ],
+      "explain": "The more outs, the more often a semi-bluff wins even when called."
+    },
+    "t3": {
+      "q": "Why does the out-of-position player need the check-raise?",
+      "options": [
+        "To play passively",
+        "To grow the pot with strong hands and punish frequent bets",
+        "To save chips"
+      ],
+      "explain": "The check-raise gives the out-of-position player a way to win more and keep the opponent's aggression in check."
+    }
+  }
+}

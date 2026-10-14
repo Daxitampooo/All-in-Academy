@@ -1,0 +1,54 @@
+{
+  "id": "postflop-bluff",
+  "module": "postflop",
+  "level": "intermediate",
+  "free": true,
+  "minutes": 8,
+  "pass": 0.67,
+  "blocks": [
+    {
+      "id": "idea",
+      "type": "text"
+    },
+    {
+      "id": "how-often",
+      "type": "text"
+    },
+    {
+      "id": "picks",
+      "type": "cards",
+      "rows": [
+        "Ah 5h | Kh 9h 2c",
+        "Jc Tc | 9d 8s 2c",
+        "Ac 4d | Kh Qs 7h 6c 2d"
+      ]
+    },
+    {
+      "id": "pick",
+      "type": "text"
+    },
+    {
+      "id": "q-folds",
+      "type": "quiz",
+      "answer": 0,
+      "options": 3
+    }
+  ],
+  "test": [
+    {
+      "id": "t1",
+      "answer": 1,
+      "options": 3
+    },
+    {
+      "id": "t2",
+      "answer": 1,
+      "options": 3
+    },
+    {
+      "id": "t3",
+      "answer": 2,
+      "options": 3
+    }
+  ]
+}

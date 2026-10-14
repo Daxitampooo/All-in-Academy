@@ -1,0 +1,60 @@
+{
+  "title": "Bluffs and semi-bluffs",
+  "summary": "Which hands to bluff with, how often, and why a semi-bluff beats a pure bluff.",
+  "blocks": {
+    "idea": {
+      "text": "A **bluff** is a bet with a weak hand that wins only if the opponent folds. A **semi-bluff** is a bet with a draw: if the opponent calls, you still have outs to make the best hand.\n\nA semi-bluff wins two ways (a fold or hitting), so on the flop and turn it is almost always better than a pure bluff."
+    },
+    "how-often": {
+      "text": "How many folds a bluff needs to pay: **bet / (pot + bet)**.\n- A half-pot bet: the opponent must fold **33%** of the time.\n- A pot-size bet: **50%**.\n\nOn the river, a balanced betting range keeps bluffs at **bet / (pot + 2 × bet)** of it: with a pot-size bet that is a third, one bluff for every two value hands."
+    },
+    "picks": {
+      "labels": [
+        "Semi-bluff: nut flush draw",
+        "Semi-bluff: open-ended straight draw",
+        "River bluff with a blocker: the ace makes AK and AQ less likely for the opponent"
+      ]
+    },
+    "pick": {
+      "text": "Good bluffing hands: draws (semi-bluffs), hands with **blockers** to the opponent's strong hands, hands with no showdown value. Bad ones: middle pairs that already beat some of the opponent's bluffs; check those.\n\nBluff one opponent who is able to fold, on boards where your range looks stronger. Against calling stations and several opponents, bluffs hardly work."
+    },
+    "q-folds": {
+      "q": "You bet the pot on the river as a bluff. How often must the opponent fold for it to pay?",
+      "options": [
+        "50%",
+        "25%",
+        "33%"
+      ],
+      "explain": "Bet / (pot + bet) = 1 / 2 = 50%."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "Why is a semi-bluff better than a pure bluff?",
+      "options": [
+        "It cannot be called",
+        "It wins both by a fold and by hitting",
+        "It always works"
+      ],
+      "explain": "A semi-bluff is a bet with a draw: if called, you can still make your hand."
+    },
+    "t2": {
+      "q": "How many folds does a half-pot bluff need?",
+      "options": [
+        "20%",
+        "33%",
+        "50%"
+      ],
+      "explain": "½ / (1 + ½) = 1/3 ≈ 33%."
+    },
+    "t3": {
+      "q": "Against whom is bluffing worst?",
+      "options": [
+        "A nit",
+        "A single opponent",
+        "A calling station"
+      ],
+      "explain": "A calling station hardly ever folds, so bluffing them loses money."
+    }
+  }
+}
