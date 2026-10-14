@@ -19,7 +19,16 @@ type LifetimeState = {
   addAnalysis: (clean: boolean) => void;
   addDrillAnswer: (right: boolean) => void;
   notePreflopStreak: (streak: number) => void;
+  /** Sets counters to totals across the account's phones (they only go up). */
+  applyTotals: (totals: Partial<Record<LifetimeCounter, number>>) => void;
+  reset: () => void;
 };
+
+/** Counters that add up across phones; preflopBestStreak is a best value instead. */
+export const LIFETIME_COUNTERS = ['hands', 'showdownWins', 'analyses', 'cleanAnalyses', 'drillRight'] as const;
+export type LifetimeCounter = (typeof LIFETIME_COUNTERS)[number];
+
+const ZERO = { hands: 0, showdownWins: 0, analyses: 0, cleanAnalyses: 0, drillRight: 0, preflopBestStreak: 0 };
 
 export const useLifetime = create<LifetimeState>()(
   persist(
@@ -34,6 +43,13 @@ export const useLifetime = create<LifetimeState>()(
       addAnalysis: (clean) => set((s) => ({ analyses: s.analyses + 1, cleanAnalyses: s.cleanAnalyses + (clean ? 1 : 0) })),
       addDrillAnswer: (right) => set((s) => (right ? { drillRight: s.drillRight + 1 } : s)),
       notePreflopStreak: (streak) => set((s) => (streak > s.preflopBestStreak ? { preflopBestStreak: streak } : s)),
+      applyTotals: (totals) =>
+        set((s) => {
+          const next: Partial<Record<LifetimeCounter, number>> = {};
+          for (const key of LIFETIME_COUNTERS) next[key] = Math.max(s[key], totals[key] ?? 0);
+          return next;
+        }),
+      reset: () => set(ZERO),
     }),
     {
       name: 'lifetime',

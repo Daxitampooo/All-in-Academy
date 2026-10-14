@@ -1,3 +1,4 @@
+import { mergeEarliest } from '@pokerall/shared/client';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
@@ -13,6 +14,9 @@ type AchievementsState = {
   /** Saves newly opened achievements; `announce` queues them for the banner. */
   record: (ids: string[], announce: boolean) => void;
   dismiss: () => void;
+  /** Takes unlocks from the account; the earliest date of each stays. */
+  applyRemote: (unlockedAt: Record<string, number>) => void;
+  reset: () => void;
 };
 
 export const useAchievementLog = create<AchievementsState>()(
@@ -29,6 +33,9 @@ export const useAchievementLog = create<AchievementsState>()(
           return { unlockedAt: next, initialized: true, pending: announce ? [...s.pending, ...ids] : s.pending };
         }),
       dismiss: () => set((s) => ({ pending: s.pending.slice(1) })),
+      applyRemote: (remote) => set((s) => ({ unlockedAt: mergeEarliest(s.unlockedAt, remote) })),
+      // Stays initialized: there is nothing earned to announce after a reset.
+      reset: () => set({ unlockedAt: {}, pending: [] }),
     }),
     {
       name: 'achievements',

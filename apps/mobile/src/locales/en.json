@@ -185,7 +185,7 @@
     "title": "Profile",
     "noNickname": "Player without a nickname",
     "setUp": "Pick a nickname and tell others about yourself",
-    "localHint": "Your profile lives on this phone. With accounts it will follow you to every device.",
+    "localHint": "The profile is kept on this phone. Sign in to an account to bring it to your other phones.",
     "favoriteHand": "Favorite hand",
     "stats": {
       "matches": "Bot matches",
@@ -207,7 +207,8 @@
       "station": "Calling station",
       "maniac": "Maniac",
       "balanced": "Balanced"
-    }
+    },
+    "syncedHint": "The profile is saved in your account."
   },
   "settings": {
     "title": "Settings",
@@ -1595,7 +1596,8 @@
       "long": "Too long: 16 characters at most.",
       "chars": "Letters and digits only, with \"_\", \"-\" or \".\" between them. No spaces or emoji.",
       "profanity": "This nickname won't do: remove the rude words.",
-      "reserved": "This nickname is reserved. Pick another one."
+      "reserved": "This nickname is reserved. Pick another one.",
+      "taken": "Someone already has this nickname."
     },
     "about": "About me",
     "aboutPlaceholder": "A few words about your game",
@@ -2001,5 +2003,112 @@
         "desc": "Pass every Academy lesson open to you."
       }
     }
+  },
+  "ageGate": {
+    "title": "Are you 18 or older?",
+    "body": "PokerALL is a poker trainer and a place to play against bots and other players. It's for adults only.",
+    "yes": "Yes, I'm 18 or older",
+    "no": "No",
+    "underageTitle": "PokerALL is for adults",
+    "underageBody": "You can use PokerALL from the age of 18. See you then!",
+    "back": "I answered wrong"
+  },
+  "account": {
+    "title": "Account",
+    "subtitle": "An account keeps your profile, Academy progress, achievements and wins against bots on the server and brings them to your other phones. You can play without one.",
+    "noServer": "The server isn't running yet. Signing in will work once it's on hosting; until then everything is saved on this phone.",
+    "deleted": "The account and its data have been deleted.",
+    "sessionExpired": "The session has ended (you signed out on another device or the account was deleted). Sign in again: progress on this phone is kept.",
+    "login": "Sign in",
+    "register": "Create account",
+    "email": "Email",
+    "password": "Password",
+    "passwordHint_one": "At least {{count}} character",
+    "passwordHint_other": "At least {{count}} characters",
+    "wait": "Just a moment…",
+    "loginButton": "Sign in",
+    "registerButton": "Create account",
+    "or": "or",
+    "guest": "Continue as guest",
+    "guestHint": "The account is tied to this phone. You can add an email later.",
+    "signedInAs": "Signed in",
+    "guestAccount": "Guest account",
+    "syncing": "Syncing…",
+    "notSynced": "Not synced yet",
+    "syncedNow": "Synced just now",
+    "syncedMinutes_one": "Synced {{count}} minute ago",
+    "syncedMinutes_other": "Synced {{count}} minutes ago",
+    "syncedAt": "Synced {{time}}",
+    "dateLocale": "en-US",
+    "syncNow": "Sync now",
+    "nicknameTaken": "Someone already has the nickname \"{{nickname}}\". Pick another one: until then your profile isn't saved in the account.",
+    "changeNickname": "Change nickname",
+    "addEmailTitle": "Add an email",
+    "addEmailHint": "A guest account lives only on this phone. With an email and password you can sign in on any phone and won't lose your progress.",
+    "addEmail": "Add email",
+    "signOut": "Sign out",
+    "signOutConfirmTitle": "Sign out?",
+    "signOutBody": "Your progress stays in the account and comes back when you sign in. This phone will start clean.",
+    "signOutGuestBody": "A guest account can only be opened again on this phone with \"Continue as guest\". Your progress stays in it. This phone will start clean.",
+    "deleteTitle": "Delete account",
+    "deleteHint": "Deletes your profile, progress, achievements, settings and hand history from the server and this phone. It can't be undone.",
+    "delete": "Delete account",
+    "deleteConfirmTitle": "Delete the account for good?",
+    "deleteConfirmBody": "Your profile, progress, achievements and hand history will be deleted from the server and this phone. This can't be undone.",
+    "deleteConfirm": "Delete for good",
+    "cancel": "Cancel",
+    "status": {
+      "noServer": "Coming with the server",
+      "signedOut": "Not signed in",
+      "email": "Signed in: {{email}}",
+      "guest": "Guest account"
+    },
+    "errors": {
+      "bad_request": "Something in the form is wrong. Check it and try again.",
+      "unauthorized": "Please sign in again.",
+      "token_expired": "Please sign in again.",
+      "invalid_credentials": "Wrong email or password.",
+      "age_required": "PokerALL is for adults (18+).",
+      "email_taken": "This email already has an account. Sign in instead.",
+      "nickname_taken": "Someone already has this nickname.",
+      "nickname_invalid": "This nickname can't be used.",
+      "about_invalid": "The \"About me\" text can't be saved.",
+      "identity_in_use": "This sign-in method belongs to another account.",
+      "already_linked": "This account already has an email.",
+      "last_identity": "That's the only way to sign in to this account.",
+      "google_disabled": "Google sign-in isn't available yet.",
+      "google_invalid": "Google didn't confirm the sign-in. Try again.",
+      "not_found": "The account wasn't found.",
+      "rate_limited": "Too many attempts. Wait a minute and try again.",
+      "payload_too_large": "Too much data to save at once.",
+      "internal": "Something went wrong on the server. Try again later.",
+      "network": "No connection to the server. Check the internet and try again.",
+      "not_configured": "The server isn't running yet.",
+      "session_lost": "The session has ended. Sign in again.",
+      "badEmail": "Enter an email like name@example.com.",
+      "badPassword": "The password needs at least 8 characters."
+    }
+  },
+  "privacy": {
+    "title": "Privacy",
+    "linkHint": "Who sees your profile and can write to you",
+    "subtitle": "Saved in your account right away.",
+    "signInFirst": "Sign in to your account to change these settings.",
+    "profile": "Who can see my profile",
+    "profileHint": "Your nickname, avatar and rating are always visible at a table.",
+    "messages": "Who can write to me",
+    "friendRequests": "Friend requests",
+    "audience": {
+      "everyone": "Everyone",
+      "friends": "Friends only",
+      "nobody": "Nobody"
+    },
+    "requests": {
+      "everyone": "From everyone",
+      "nobody": "From nobody"
+    },
+    "showOnline": "Show friends when I'm online",
+    "showOnlineHint": "Friends see a green dot next to your name.",
+    "later": "Friends and messages come in the next stage; these settings will already apply then."
   }
 }

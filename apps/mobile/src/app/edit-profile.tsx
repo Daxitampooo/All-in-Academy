@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, StyleSheet, TextInput, View } from 'react-native';
 
+import { api } from '@/account/api';
 import { AppText } from '@/components/AppText';
 import { BackButton } from '@/components/BackButton';
 import { Button } from '@/components/Button';
@@ -14,6 +15,7 @@ import { PlayingCard } from '@/components/table/PlayingCard';
 import { PLAY_STYLES, type PlayStyle } from '@/profile/avatar';
 import { countryName, flagOf } from '@/profile/countries';
 import { showCards } from '@/profile/hands';
+import { useAccount } from '@/store/account';
 import { useProfile } from '@/store/profile';
 import { useTheme } from '@/theme/ThemeProvider';
 import { fonts, radius, space, withAlpha } from '@/theme/tokens';
@@ -28,15 +30,29 @@ export default function EditProfileScreen() {
   const [hand, setHand] = useState(profile.favoriteHand);
   const [style, setStyle] = useState<PlayStyle | null>(profile.style);
   const [picker, setPicker] = useState<'country' | 'hand' | null>(null);
+  const me = useAccount((s) => s.me);
+  const [checking, setChecking] = useState(false);
+  /** The nickname the server said someone else has. */
+  const [takenNick, setTakenNick] = useState<string | null>(null);
 
   const nick = nickname.trim();
   // An empty nickname is allowed: the player simply stays "You".
-  const nickProblem = nick ? checkNickname(nick) : null;
+  const nickProblem = nick ? (checkNickname(nick) ?? (takenNick === nick ? 'taken' : null)) : null;
   const aboutProblem = checkAbout(about);
   const canSave = !nickProblem && !aboutProblem;
 
-  const save = () => {
-    if (!canSave) return;
+  const save = async () => {
+    if (!canSave || checking) return;
+    // With an account the nickname must be free; without a connection it is saved and checked on the next sync.
+    if (me && nick && nick !== profile.nickname) {
+      setChecking(true);
+      const answer = await api.checkNickname(nick).catch(() => null);
+      setChecking(false);
+      if (answer && !answer.available) {
+        setTakenNick(nick);
+        return;
+      }
+    }
     profile.saveFields({ nickname: nick || null, about: about.trim(), country, favoriteHand: hand, style });
     if (router.canGoBack()) router.back();
     else router.replace('/profile');
@@ -147,7 +163,7 @@ export default function EditProfileScreen() {
         </View>
       </View>
 
-      <Button label={t('editProfile.save')} onPress={save} disabled={!canSave} />
+      <Button label={checking ? t('account.wait') : t('editProfile.save')} onPress={save} disabled={!canSave || checking} />
 
       <CountryPicker
         visible={picker === 'country'}

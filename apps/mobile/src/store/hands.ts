@@ -39,6 +39,8 @@ type HandsState = {
   add: (hand: SavedHand) => void;
   toggleFlag: (id: string) => void;
   saveReview: (id: string, review: HandReview) => void;
+  /** Forgets every hand (when the account is deleted). */
+  reset: () => void;
 };
 
 /** Drops the oldest hands over the limit, flagged ones last. */
@@ -71,6 +73,7 @@ export const useHands = create<HandsState>()(
       add: (hand) => set((s) => prune([...s.hands, hand], s.reviews)),
       toggleFlag: (id) => set((s) => ({ hands: s.hands.map((h) => (h.id === id ? { ...h, flagged: !h.flagged } : h)) })),
       saveReview: (id, review) => set((s) => ({ reviews: { ...s.reviews, [id]: review } })),
+      reset: () => set({ hands: [], reviews: {} }),
     }),
     {
       name: 'hand-history',

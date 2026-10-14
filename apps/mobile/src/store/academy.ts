@@ -1,3 +1,4 @@
+import { mergeLessons } from '@pokerall/shared/client';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
@@ -16,9 +17,12 @@ type AcademyState = {
   lessons: Record<string, LessonProgress>;
   /** Saves a test result; the best score and "passed" never go down. */
   recordTest: (lessonId: string, score: number, passed: boolean) => void;
+  /** Takes progress from the account: a lesson stays passed and keeps its best score. */
+  applyRemote: (lessons: Record<string, LessonProgress>) => void;
+  reset: () => void;
 };
 
-/** Academy progress on this phone; with accounts it syncs to the server (stage 7). */
+/** Academy progress; with an account it syncs to the server. */
 export const useAcademy = create<AcademyState>()(
   persist(
     (set) => ({
@@ -33,6 +37,8 @@ export const useAcademy = create<AcademyState>()(
             },
           };
         }),
+      applyRemote: (remote) => set((s) => ({ lessons: mergeLessons(s.lessons, remote) })),
+      reset: () => set({ lessons: {} }),
     }),
     {
       name: 'academy-progress',

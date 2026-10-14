@@ -2,16 +2,18 @@ import { router, type Href } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Pressable, StyleSheet, View } from 'react-native';
 
+import { accountLine } from '@/account/status';
 import { useAchievements } from '@/achievements/useAchievements';
 import { AppText } from '@/components/AppText';
 import { Badge } from '@/components/Badge';
-import { GearIcon, ListIcon, PersonIcon, SpadeIcon, StarIcon, TargetIcon } from '@/components/icons';
+import { CloudIcon, GearIcon, ListIcon, PersonIcon, SpadeIcon, StarIcon, TargetIcon } from '@/components/icons';
 import { PlayerAvatar } from '@/components/PlayerAvatar';
 import { Screen } from '@/components/Screen';
 import { PlayingCard } from '@/components/table/PlayingCard';
 import { countryName, flagOf } from '@/profile/countries';
 import { showCards } from '@/profile/hands';
 import { useHandStats } from '@/hands/stats';
+import { useAccount } from '@/store/account';
 import { useBotProgress } from '@/store/botProgress';
 import { useProfile } from '@/store/profile';
 import { useTheme } from '@/theme/ThemeProvider';
@@ -22,6 +24,7 @@ export default function ProfileScreen() {
   const { colors } = useTheme();
   const profile = useProfile();
   const records = useBotProgress((s) => s.records);
+  const me = useAccount((s) => s.me);
 
   const all = Object.values(records);
   const handStats = useHandStats();
@@ -49,6 +52,7 @@ export default function ProfileScreen() {
     { label: t('profile.edit'), hint: t('profile.editHint'), href: '/edit-profile', icon: <PersonIcon color={colors.text} size={22} /> },
     { label: t('profile.avatar'), hint: t('profile.avatarHint'), href: '/avatar', icon: <TargetIcon color={colors.text} size={22} /> },
     { label: t('looks.open'), hint: t('looks.openHint'), href: '/looks', icon: <SpadeIcon color={colors.text} size={22} /> },
+    { label: t('account.title'), hint: accountLine(t, me), href: '/account', icon: <CloudIcon color={colors.text} /> },
     { label: t('profile.settings'), hint: t('profile.settingsHint'), href: '/settings', icon: <GearIcon color={colors.text} /> },
   ];
 
@@ -101,7 +105,7 @@ export default function ProfileScreen() {
           </AppText>
         ) : null}
         <AppText variant="caption" tone="muted">
-          {t('profile.localHint')}
+          {me ? t('profile.syncedHint') : t('profile.localHint')}
         </AppText>
       </View>
 

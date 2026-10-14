@@ -1,0 +1,12 @@
+**/node_modules
+**/dist
+**/.turbo
+**/.expo
+.git
+.github
+apps/mobile/android
+apps/mobile/ios
+apps/mobile/assets
+docs
+deploy/.env
+*.log

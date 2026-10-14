@@ -1,0 +1,24 @@
+{
+  "name": "@pokerall/shared",
+  "version": "0.1.0",
+  "private": true,
+  "description": "What the app and the server agree on: request and response shapes (zod schemas), error codes and the rules for merging synced progress.",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "typescript": "~6.0.3",
+    "vitest": "^4.0.0"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./client": "./src/client.ts"
+  }
+}
