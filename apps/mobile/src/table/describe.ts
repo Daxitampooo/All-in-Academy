@@ -6,8 +6,8 @@ import type { HandRecord, SeatInfo } from '@/table/useTableGame';
 
 /** Translation key of a hand name; three of a kind is a set with a pocket pair, trips otherwise. */
 export function handNameKey(categoryId: CategoryId, hole: readonly Card[]): string {
-  if (categoryId === 'trips') return rankOf(hole[0]!) === rankOf(hole[1]!) ? 'hands.set' : 'hands.trips';
-  return `hands.${categoryId}`;
+  if (categoryId === 'trips') return rankOf(hole[0]!) === rankOf(hole[1]!) ? 'handNames.set' : 'handNames.trips';
+  return `handNames.${categoryId}`;
 }
 
 /** "You" for the hero, the bot's short name otherwise. */

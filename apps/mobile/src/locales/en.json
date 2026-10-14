@@ -1731,5 +1731,18 @@
       "raiseBluff": "A bluff raise with a weak hand (≈{{eq}}%) is expensive: players who bet rarely fold.",
       "missedRaise": "With a hand this strong (≈{{eq}}%) on the river, raise: a call leaves value behind."
     }
+  },
+  "handNames": {
+    "high-card": "High card",
+    "pair": "Pair",
+    "two-pair": "Two pair",
+    "set": "Set",
+    "trips": "Trips",
+    "straight": "Straight",
+    "flush": "Flush",
+    "full-house": "Full house",
+    "quads": "Quads",
+    "straight-flush": "Straight flush",
+    "royal-flush": "Royal flush"
   }
 }
