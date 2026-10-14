@@ -11,6 +11,7 @@ import { Inter_600SemiBold } from '@expo-google-fonts/inter/600SemiBold';
 import { Unbounded_600SemiBold } from '@expo-google-fonts/unbounded/600SemiBold';
 import { Unbounded_700Bold } from '@expo-google-fonts/unbounded/700Bold';
 
+import { AchievementWatcher } from '@/achievements/AchievementWatcher';
 // Importing i18n also initializes it before the first screen renders.
 import i18n, { deviceLanguage } from '@/i18n';
 import { useSettings } from '@/store/settings';
@@ -94,7 +95,9 @@ function Navigation() {
         <Stack.Screen name="drill/pot-odds" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="drill/outs" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="drill/showdown" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="achievements" options={{ animation: 'slide_from_right' }} />
       </Stack>
+      <AchievementWatcher />
     </ThemeProvider>
   );
 }

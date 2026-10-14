@@ -11,6 +11,7 @@ import { Button } from '@/components/Button';
 import { addAnswer, EMPTY_SCORE, ScoreBar } from '@/components/drills/ScoreBar';
 import { useDrillRng } from '@/components/drills/useDrillRng';
 import { Screen } from '@/components/Screen';
+import { useLifetime } from '@/store/lifetime';
 import { PlayingCard } from '@/components/table/PlayingCard';
 import { handNameKey } from '@/table/describe';
 import { useTheme } from '@/theme/ThemeProvider';
@@ -69,6 +70,7 @@ export default function ShowdownDrill() {
             : t('drills.showdown.explain', { n: q.winner + 1, winner: names[q.winner], loser: names[1 - q.winner] })
         }
         onAnswer={(right) => {
+          useLifetime.getState().addDrillAnswer(right);
           setScore((s) => addAnswer(s, right));
           setAnswered(true);
         }}

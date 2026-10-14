@@ -142,6 +142,8 @@ export function BotSeat(props: BotSeatProps) {
 
 export type HeroSeatProps = {
   name: string;
+  /** Achievement title under the name, when the player shows it. */
+  title?: string | null;
   avatar: AvatarSpec;
   stack: number;
   cards: Card[];
@@ -172,6 +174,11 @@ export function HeroSeat(props: HeroSeatProps) {
           <AppText variant="caption" strong numberOfLines={1}>
             {name}
           </AppText>
+          {props.title ? (
+            <AppText variant="caption" tone="amber" numberOfLines={1}>
+              {props.title}
+            </AppText>
+          ) : null}
           <AppText variant="caption" tone="muted" numeric numberOfLines={1}>
             {formatChips(stack)}
           </AppText>

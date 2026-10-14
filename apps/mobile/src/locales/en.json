@@ -193,7 +193,7 @@
       "beaten": "Bots beaten",
       "hands": "Hands played"
     },
-    "comingStats": "Rating, rank, title and stats (VPIP, PFR, tournaments) arrive with hand history, achievements and ranked play.",
+    "comingStats": "Rating, rank and tournaments arrive with online play.",
     "edit": "Edit profile",
     "editHint": "Nickname, about, country, favorite hand, style",
     "avatar": "Avatar",
@@ -1570,7 +1570,8 @@
       "bot": "Beat {{name}}",
       "league_one": "Beat {{count}} bot in the {{league}} league",
       "league_other": "Beat {{count}} bots in the {{league}} league",
-      "leagueAll": "Beat every bot in the {{league}} league"
+      "leagueAll": "Beat every bot in the {{league}} league",
+      "achievement": "Earn the \"{{name}}\" achievement"
     },
     "trying": "Trying on \"{{name}}\". {{how}}",
     "onlyYou": "Only you see your table look: other players see their own table.",
@@ -1579,7 +1580,7 @@
     "official": "Official style",
     "officialToggleHint": "How the table looks in ranked play and tournaments",
     "officialHint": "In ranked play and tournaments everyone gets the same strict table. Of your settings, only the four-color deck stays.",
-    "progressNote": "New looks open as you beat bots; achievements will add more later. You can already try on Pro looks.",
+    "progressNote": "New looks open as you beat bots and earn achievements. You can already try on Pro looks.",
     "open": "Table look",
     "openHint": "Felt, room, card backs, decks, chips",
     "proBadge": "PRO"
@@ -1887,6 +1888,118 @@
       "question": "Who wins?",
       "explain": "Hand {{n}} wins: {{winner}} against \"{{loser}}\".",
       "explainSplit": "A split: both have the same best five ({{name}})."
+    }
+  },
+  "achievements": {
+    "title": "Achievements",
+    "subtitle": "Each achievement gives a title you can show under your nickname.",
+    "count": "Earned: {{done}} of {{total}}",
+    "currentTitle": "Your title: {{title}}",
+    "noTitle": "No title chosen: earn an achievement and tap \"Use as title\".",
+    "showTitle": "Show the title at the table",
+    "showTitleHint": "The title shows under your nickname, ranked play and tournaments included.",
+    "rarity": {
+      "common": "Common",
+      "rare": "Rare",
+      "epic": "Epic",
+      "legendary": "Legendary"
+    },
+    "rarityPlural": {
+      "common": "Common",
+      "rare": "Rare",
+      "epic": "Epic",
+      "legendary": "Legendary"
+    },
+    "unlocked": "{{rarity}} achievement",
+    "titleGained": "A new title is open. Tap to see it.",
+    "chooseTitle": "Use as title",
+    "titleChosen": "Your title",
+    "linkHint": "{{done}} of {{total}} earned, titles",
+    "list": {
+      "first-blood": {
+        "name": "First blood",
+        "desc": "Win your first match against a bot."
+      },
+      "first-lesson": {
+        "name": "Student",
+        "desc": "Pass your first Academy lesson."
+      },
+      "warm-up": {
+        "name": "Warm-up",
+        "desc": "Give 50 right answers in the trainers."
+      },
+      "self-review": {
+        "name": "Analyst",
+        "desc": "Analyze your first hand."
+      },
+      "stylist": {
+        "name": "Stylist",
+        "desc": "Change the table look or build your avatar."
+      },
+      "regular-guest": {
+        "name": "Regular guest",
+        "desc": "Play 100 hands."
+      },
+      "novice-slayer": {
+        "name": "Novice slayer",
+        "desc": "Beat every bot in the Novices league."
+      },
+      "maniac-tamer": {
+        "name": "Maniac tamer",
+        "desc": "Beat Max."
+      },
+      "rules-expert": {
+        "name": "Rules expert",
+        "desc": "Pass every lesson of the Basics module."
+      },
+      "river-master": {
+        "name": "River master",
+        "desc": "Win 25 pots at showdown."
+      },
+      "cool-head": {
+        "name": "Cool head",
+        "desc": "Play 10 hands whose analysis shows no inaccuracies or mistakes."
+      },
+      "veteran": {
+        "name": "Veteran",
+        "desc": "Play 1000 hands."
+      },
+      "regular": {
+        "name": "Regular",
+        "desc": "Beat 5 bots in the Regulars league."
+      },
+      "pro": {
+        "name": "Pro",
+        "desc": "Beat 3 bots in the Pros league."
+      },
+      "theorist": {
+        "name": "Theorist",
+        "desc": "Pass every intermediate lesson open to you."
+      },
+      "iron-nerves": {
+        "name": "Iron nerves",
+        "desc": "Get 20 right in a row in the preflop trainer."
+      },
+      "luck-tamer": {
+        "name": "Luck tamer",
+        "desc": "Beat Lyokha \"Lucky\"."
+      },
+      "master": {
+        "name": "Master",
+        "desc": "Beat every bot in the Masters league."
+      },
+      "neon-out": {
+        "name": "Neon out",
+        "desc": "Beat Neon."
+      },
+      "sees-through": {
+        "name": "Sees through",
+        "desc": "Beat Danil, who sees every card."
+      },
+      "academic": {
+        "name": "Academic",
+        "desc": "Pass every Academy lesson open to you."
+      }
     }
   }
 }

@@ -2,9 +2,10 @@ import { router, type Href } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Pressable, StyleSheet, View } from 'react-native';
 
+import { useAchievements } from '@/achievements/useAchievements';
 import { AppText } from '@/components/AppText';
 import { Badge } from '@/components/Badge';
-import { GearIcon, ListIcon, PersonIcon, SpadeIcon, TargetIcon } from '@/components/icons';
+import { GearIcon, ListIcon, PersonIcon, SpadeIcon, StarIcon, TargetIcon } from '@/components/icons';
 import { PlayerAvatar } from '@/components/PlayerAvatar';
 import { Screen } from '@/components/Screen';
 import { PlayingCard } from '@/components/table/PlayingCard';
@@ -24,6 +25,7 @@ export default function ProfileScreen() {
 
   const all = Object.values(records);
   const handStats = useHandStats();
+  const achievements = useAchievements();
   const percent = (v: number | null) => (v === null ? '—' : `${Math.round(v * 100)}%`);
   const stats = [
     { label: t('profile.stats.matches'), value: String(all.reduce((n, r) => n + r.wins + r.losses, 0)) },
@@ -38,6 +40,12 @@ export default function ProfileScreen() {
 
   const links: { label: string; hint: string; href: Href; icon: React.ReactNode }[] = [
     { label: t('hands.title'), hint: t('hands.linkHint'), href: '/hands', icon: <ListIcon color={colors.text} /> },
+    {
+      label: t('achievements.title'),
+      hint: t('achievements.linkHint', { done: achievements.filter((a) => a.done).length, total: achievements.length }),
+      href: '/achievements',
+      icon: <StarIcon color={colors.amber} />,
+    },
     { label: t('profile.edit'), hint: t('profile.editHint'), href: '/edit-profile', icon: <PersonIcon color={colors.text} size={22} /> },
     { label: t('profile.avatar'), hint: t('profile.avatarHint'), href: '/avatar', icon: <TargetIcon color={colors.text} size={22} /> },
     { label: t('looks.open'), hint: t('looks.openHint'), href: '/looks', icon: <SpadeIcon color={colors.text} size={22} /> },
@@ -55,6 +63,11 @@ export default function ProfileScreen() {
             <AppText variant="title" numberOfLines={1}>
               {profile.nickname ?? t('profile.noNickname')}
             </AppText>
+            {profile.title ? (
+              <AppText variant="label" strong tone="amber" numberOfLines={1}>
+                {t(`achievements.list.${profile.title}.name`)}
+              </AppText>
+            ) : null}
             {profile.country ? (
               <AppText variant="label" tone="muted" numberOfLines={1}>
                 {`${flagOf(profile.country)}  ${countryName(profile.country, i18n.language)}`}

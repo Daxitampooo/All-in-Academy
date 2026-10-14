@@ -158,6 +158,8 @@ function TableGameView({ mode, params }: { mode: TableMode; params: Record<strin
   const tableLook = useTableLook();
   const nickname = useProfile((s) => s.nickname);
   const avatar = useProfile((s) => s.avatar);
+  const titleId = useProfile((s) => s.title);
+  const showTitle = useProfile((s) => s.showTitle);
   const insets = useSafeAreaInsets();
   const recordMatch = useBotProgress((s) => s.recordMatch);
   const records = useBotProgress((s) => s.records);
@@ -422,6 +424,7 @@ function TableGameView({ mode, params }: { mode: TableMode; params: Record<strin
             <View style={styles.heroBox}>
               <HeroSeat
                 name={nickname ?? t('table.you')}
+                title={showTitle && titleId ? t(`achievements.list.${titleId}.name`) : null}
                 avatar={avatar}
                 stack={stackOf(HERO)}
                 cards={hero.holeCards}

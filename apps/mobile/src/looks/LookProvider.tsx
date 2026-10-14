@@ -1,11 +1,10 @@
 import { createContext, useContext, useMemo, type ReactNode } from 'react';
 
-import { beatenById, useBotProgress } from '@/store/botProgress';
 import { useLook } from '@/store/look';
-import { usePro } from '@/store/pro';
 import { PaletteOverride, useTheme } from '@/theme/ThemeProvider';
 
 import { effectiveSelection, resolveLook, type TableLook } from './resolve';
+import { useUnlockProgress } from './useUnlockProgress';
 
 const LookContext = createContext<TableLook | null>(null);
 
@@ -14,12 +13,8 @@ export function usePersonalLook(): TableLook {
   const { name } = useTheme();
   const selected = useLook((s) => s.selected);
   const fourColor = useLook((s) => s.fourColor);
-  const records = useBotProgress((s) => s.records);
-  const pro = usePro();
-  return useMemo(
-    () => resolveLook(effectiveSelection(selected, beatenById(records), pro), fourColor, name),
-    [fourColor, name, pro, records, selected],
-  );
+  const progress = useUnlockProgress();
+  return useMemo(() => resolveLook(effectiveSelection(selected, progress), fourColor, name), [fourColor, name, progress, selected]);
 }
 
 /** The look cards, chips and the table are drawn with here: a provided one, or the player's own. */

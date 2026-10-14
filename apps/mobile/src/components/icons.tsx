@@ -185,3 +185,11 @@ export function ListIcon({ color, size = 22 }: IconProps) {
     </Svg>
   );
 }
+
+export function StarIcon({ color, size = 22 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <Path d="M12 3.2l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.6l-5.2 2.7 1-5.8-4.3-4.1 5.9-.8Z" stroke={color} {...stroke} />
+    </Svg>
+  );
+}

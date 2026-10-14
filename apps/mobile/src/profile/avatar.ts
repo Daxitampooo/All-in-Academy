@@ -69,7 +69,7 @@ export const BADGES: AvatarOption[] = [
   { id: 'star', unlock: FREE },
   { id: 'spade', unlock: FREE },
   { id: 'heart', unlock: FREE },
-  { id: 'flame', unlock: { kind: 'league', league: 'amateurs', count: 3 } },
+  { id: 'flame', unlock: { kind: 'achievement', id: 'iron-nerves' } },
   { id: 'bolt', unlock: { kind: 'league', league: 'regulars', count: 3 } },
   { id: 'crown', unlock: { kind: 'bot', botId: 'neon' } },
   { id: 'diamond', unlock: PRO },

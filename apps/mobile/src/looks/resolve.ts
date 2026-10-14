@@ -35,25 +35,30 @@ export type TableLook = {
 
 export type LookSelection = Record<LookCategory, string>;
 
-export function isUnlocked(unlock: Unlock, beaten: BeatenById, pro: boolean): boolean {
+/** What unlocks depend on: bots beaten, achievements earned, Pro. */
+export type UnlockProgress = { beaten: BeatenById; achieved: Record<string, number>; pro: boolean };
+
+export function isUnlocked(unlock: Unlock, progress: UnlockProgress): boolean {
   switch (unlock.kind) {
     case 'free':
       return true;
     case 'pro':
-      return pro;
+      return progress.pro;
     case 'bot':
-      return (beaten[unlock.botId] ?? 0) > 0;
+      return (progress.beaten[unlock.botId] ?? 0) > 0;
     case 'league':
-      return beatenCount(unlock.league, beaten) >= unlock.count;
+      return beatenCount(unlock.league, progress.beaten) >= unlock.count;
+    case 'achievement':
+      return !!progress.achieved[unlock.id];
   }
 }
 
 /** The items a player actually gets: a locked choice (e.g. Pro ran out) falls back to the default. */
-export function effectiveSelection(selection: Partial<LookSelection>, beaten: BeatenById, pro: boolean): LookSelection {
+export function effectiveSelection(selection: Partial<LookSelection>, progress: UnlockProgress): LookSelection {
   const out = { ...DEFAULT_LOOK };
   for (const category of LOOK_CATEGORIES) {
     const item = lookItem(category, selection[category] ?? '');
-    if (item && isUnlocked(item.unlock, beaten, pro)) out[category] = item.id;
+    if (item && isUnlocked(item.unlock, progress)) out[category] = item.id;
   }
   return out;
 }

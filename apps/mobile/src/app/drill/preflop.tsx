@@ -15,6 +15,7 @@ import { Screen } from '@/components/Screen';
 import { PlayingCard } from '@/components/table/PlayingCard';
 import { DRILL_CONFIG } from '@/config/drills';
 import { useDrillQuota, usePreflopLeft } from '@/store/drillQuota';
+import { useLifetime } from '@/store/lifetime';
 import { usePro } from '@/store/pro';
 import { useTheme } from '@/theme/ThemeProvider';
 import { radius, space, withAlpha } from '@/theme/tokens';
@@ -42,7 +43,10 @@ export default function PreflopDrill() {
     }
     const v = checkPreflop(question, move);
     setVerdict({ move, ...v });
-    setScore((s) => addAnswer(s, v.correct));
+    const nextScore = addAnswer(score, v.correct);
+    setScore(nextScore);
+    useLifetime.getState().addDrillAnswer(v.correct);
+    useLifetime.getState().notePreflopStreak(nextScore.streak);
     if (!v.correct) setRepeats((r) => [...r, { q: question, in: DRILL_CONFIG.repeatAfter }]);
   };
 

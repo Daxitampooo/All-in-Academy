@@ -12,6 +12,7 @@ import { OptionTile } from '@/components/OptionTile';
 import { PlayerAvatar } from '@/components/PlayerAvatar';
 import { Screen } from '@/components/Screen';
 import { isUnlocked } from '@/looks/resolve';
+import { useUnlockProgress } from '@/looks/useUnlockProgress';
 import {
   BACKGROUNDS,
   BADGES,
@@ -24,8 +25,6 @@ import {
   type FacePart,
 } from '@/profile/avatar';
 import { unlockText } from '@/profile/unlockText';
-import { beatenById, useBotProgress } from '@/store/botProgress';
-import { usePro } from '@/store/pro';
 import { useProfile } from '@/store/profile';
 import { useTheme } from '@/theme/ThemeProvider';
 import { radius, space, withAlpha } from '@/theme/tokens';
@@ -55,8 +54,7 @@ export default function AvatarScreen() {
   const { colors, hues } = useTheme();
   const saved = useProfile((s) => s.avatar);
   const saveAvatar = useProfile((s) => s.saveAvatar);
-  const beaten = beatenById(useBotProgress((s) => s.records));
-  const pro = usePro();
+  const progress = useUnlockProgress();
   const [draft, setDraft] = useState<AvatarSpec>(saved);
   const [trying, setTrying] = useState<{ kind: Pickable; id: string } | null>(null);
   const [section, setSection] = useState<Section>('face');
@@ -65,7 +63,7 @@ export default function AvatarScreen() {
   const triedOption = trying ? OPTIONS[trying.kind].find((o) => o.id === trying.id) : undefined;
 
   const pick = (kind: Pickable, option: AvatarOption) => {
-    if (isUnlocked(option.unlock, beaten, pro)) {
+    if (isUnlocked(option.unlock, progress)) {
       setDraft((d) => withOption(d, kind, option.id));
       setTrying(null);
     } else {
@@ -149,7 +147,7 @@ export default function AvatarScreen() {
       {section === 'background' || section === 'frame' || section === 'badge' ? (
         <View style={styles.grid} accessibilityRole="radiogroup">
           {OPTIONS[section].map((option) => {
-            const locked = !isUnlocked(option.unlock, beaten, pro);
+            const locked = !isUnlocked(option.unlock, progress);
             return (
               <OptionTile
                 key={option.id}

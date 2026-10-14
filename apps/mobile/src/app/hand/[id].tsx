@@ -18,6 +18,7 @@ import { formatDecimal } from '@/lib/format';
 import { LookScope, usePersonalLook } from '@/looks/LookProvider';
 import { useAnalysesLeft, useAnalysisQuota } from '@/store/analysisQuota';
 import { useHands } from '@/store/hands';
+import { useLifetime } from '@/store/lifetime';
 import { usePro } from '@/store/pro';
 import { useProfile } from '@/store/profile';
 import { useTheme } from '@/theme/ThemeProvider';
@@ -70,6 +71,7 @@ export default function HandScreen() {
     setTimeout(() => {
       const result = reviewHand(hand.history, hand.hero, { rng: createSeededRng(seedOf(hand.id)), samples: ANALYSIS_CONFIG.samples });
       saveReview(hand.id, result);
+      useLifetime.getState().addAnalysis(result.counts.mistake === 0 && result.counts.inaccuracy === 0);
       setBusy(false);
     }, 60);
   };
