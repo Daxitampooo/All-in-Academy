@@ -1,0 +1,17 @@
+{
+  "id": "6max-100bb-rfi-SB",
+  "format": "6max",
+  "stackBb": 100,
+  "spot": {
+    "type": "RFI",
+    "hero": "SB"
+  },
+  "actions": {
+    "raise": {
+      "sizeBb": 3,
+      "range": "22+, A2s+, K2s+, Q6s+, J7s+, T7s+, 96s+, 86s+, 75s+, 64s+, 54s, A2o+, K9o+, QTo+, JTo"
+    }
+  },
+  "free": true,
+  "source": "simplified-educational"
+}

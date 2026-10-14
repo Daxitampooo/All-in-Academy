@@ -1,0 +1,68 @@
+{
+  "title": "Starting hands and the 13×13 grid",
+  "summary": "Combos, range notation and what makes a hand strong.",
+  "blocks": {
+    "combos": {
+      "text": "A deck gives **1326** different two-card hands: **combos**. Suits don't matter before the flop, so they are grouped into **169 hand classes**:\n- **Pairs** (AA, 77): 6 combos each.\n- **Suited** hands (AKs): 4 combos.\n- **Offsuit** hands (AKo): 12 combos.\n- Plain \"AK\" means AKs and AKo together, 16 combos."
+    },
+    "grid": {
+      "text": "All 169 classes fit into a **13×13 grid**: pairs on the diagonal, suited hands above it, offsuit hands below. Ranges are written in short **notation**:\n- **77+**: sevens and every higher pair.\n- **ATs+**: ATs, AJs, AQs, AKs.\n- **KJo+**: KJo and KQo.\n- **A5s-A2s**: from A5s down to A2s.\n- **98o:0.5**: 98o half of the time."
+    },
+    "notation": {
+      "caption": "The range \"77+, ATs+, KJo+\" on the grid."
+    },
+    "strength": {
+      "text": "What makes a starting hand strong:\n- **High cards and pairs** make top pair or a set more often.\n- **Suitedness** adds about 3% equity from flushes.\n- **Connectedness**: 87s makes straights far more often than 82s.\n- **Domination**: AQ against AK usually loses on the kicker and has only about 26%."
+    },
+    "equities": {
+      "labels": [
+        "AA vs KK: 81%",
+        "KK vs AA: 19%",
+        "AK vs 77: 44%, close to a coin flip",
+        "77 vs AK: 56%",
+        "AK vs AQ: 74%",
+        "AQ vs AK: 26%, dominated"
+      ],
+      "caption": "Preflop equity with both hands face up and the whole board dealt."
+    },
+    "q-combos": {
+      "q": "How many combos of AKo are there?",
+      "options": [
+        "4",
+        "6",
+        "12",
+        "16"
+      ],
+      "explain": "4 aces times 4 kings is 16 combinations. 4 of them are suited, so 12 are offsuit."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "How many combos does any pocket pair, such as 88, have?",
+      "options": [
+        "4",
+        "6",
+        "12"
+      ],
+      "explain": "Two of four eights can be chosen in 4×3/2 = 6 ways."
+    },
+    "t2": {
+      "q": "What does \"KTs+\" mean?",
+      "options": [
+        "KTs, KJs, KQs",
+        "Every king",
+        "KTs and KTo"
+      ],
+      "explain": "\"+\" on a suited hand moves the lower card up to just below the higher one: KTs, KJs, KQs."
+    },
+    "t3": {
+      "q": "Why does AQ do badly against AK?",
+      "options": [
+        "Because of suits",
+        "Because of position",
+        "It's dominated: when an ace comes it loses on the kicker"
+      ],
+      "explain": "When both pair the ace the kicker decides, and the king beats the queen. That's why AQ has only about 26% against AK."
+    }
+  }
+}

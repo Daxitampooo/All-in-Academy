@@ -1,0 +1,210 @@
+{
+  "preflop": {
+    "term": "Preflop",
+    "definition": "The first betting round: players hold two cards and there is no board yet."
+  },
+  "flop": {
+    "term": "Flop",
+    "definition": "The first three community cards and the betting round after them."
+  },
+  "turn": {
+    "term": "Turn",
+    "definition": "The fourth community card."
+  },
+  "river": {
+    "term": "River",
+    "definition": "The fifth and last community card."
+  },
+  "board": {
+    "term": "Board",
+    "definition": "The community cards in the middle that every player uses."
+  },
+  "blinds": {
+    "term": "Blinds",
+    "definition": "Forced bets posted by the small blind (SB) and big blind (BB) before the deal."
+  },
+  "ante": {
+    "term": "Ante",
+    "definition": "A small forced bet from every player before the deal."
+  },
+  "button": {
+    "term": "Button",
+    "definition": "The dealer seat; it acts last after the flop."
+  },
+  "position": {
+    "term": "Position",
+    "definition": "Your seat relative to the button. \"In position\" means acting after your opponent."
+  },
+  "stack": {
+    "term": "Stack",
+    "definition": "A player's chips. The effective stack is the smallest stack among the players in the pot."
+  },
+  "pot": {
+    "term": "Pot",
+    "definition": "All the chips bet in a hand."
+  },
+  "side-pot": {
+    "term": "Side pot",
+    "definition": "A separate pot for players who bet more than an all-in player."
+  },
+  "split": {
+    "term": "Split pot",
+    "definition": "A pot shared between equal hands."
+  },
+  "showdown": {
+    "term": "Showdown",
+    "definition": "Showing the cards after the last betting round."
+  },
+  "kicker": {
+    "term": "Kicker",
+    "definition": "A card outside the made hand that decides between equal hands."
+  },
+  "nuts": {
+    "term": "Nuts",
+    "definition": "The best possible hand on a given board."
+  },
+  "set": {
+    "term": "Set",
+    "definition": "Three of a kind made with a pocket pair and one board card."
+  },
+  "trips": {
+    "term": "Trips",
+    "definition": "Three of a kind made with one hole card and a pair on the board."
+  },
+  "wheel": {
+    "term": "Wheel",
+    "definition": "The lowest straight: A-2-3-4-5."
+  },
+  "fold": {
+    "term": "Fold",
+    "definition": "Give up your cards and leave the hand."
+  },
+  "check": {
+    "term": "Check",
+    "definition": "Pass when nobody has bet on the street yet."
+  },
+  "call": {
+    "term": "Call",
+    "definition": "Match a bet."
+  },
+  "raise": {
+    "term": "Raise",
+    "definition": "Increase someone else's bet."
+  },
+  "all-in": {
+    "term": "All-in",
+    "definition": "Bet all your chips."
+  },
+  "limp": {
+    "term": "Limp",
+    "definition": "Enter the pot first by just calling the big blind."
+  },
+  "open-raise": {
+    "term": "Open-raise",
+    "definition": "The first raise of the hand after everyone before you folded (RFI)."
+  },
+  "iso-raise": {
+    "term": "Iso-raise",
+    "definition": "A raise over a limper to play heads-up against them."
+  },
+  "3-bet": {
+    "term": "3-bet",
+    "definition": "A re-raise of an open-raise."
+  },
+  "4-bet": {
+    "term": "4-bet",
+    "definition": "A re-raise of a 3-bet."
+  },
+  "squeeze": {
+    "term": "Squeeze",
+    "definition": "A 3-bet after an open-raise and a call."
+  },
+  "steal": {
+    "term": "Steal",
+    "definition": "A raise from a late seat to win the blinds."
+  },
+  "range": {
+    "term": "Range",
+    "definition": "All the hands a player can hold in a spot."
+  },
+  "combo": {
+    "term": "Combo",
+    "definition": "One specific two-card hand; there are 1326 of them."
+  },
+  "suited": {
+    "term": "Suited",
+    "definition": "Two cards of the same suit (s in notation: AKs)."
+  },
+  "offsuit": {
+    "term": "Offsuit",
+    "definition": "Two cards of different suits (o in notation: AKo)."
+  },
+  "domination": {
+    "term": "Domination",
+    "definition": "When your opponent shares your high card with a better kicker: AQ against AK."
+  },
+  "outs": {
+    "term": "Outs",
+    "definition": "Cards that will most likely make your hand the best."
+  },
+  "draw": {
+    "term": "Draw",
+    "definition": "A hand one card short of a straight or flush."
+  },
+  "gutshot": {
+    "term": "Gutshot",
+    "definition": "A straight draw missing a middle card: 4 outs."
+  },
+  "pot-odds": {
+    "term": "Pot odds",
+    "definition": "The price of a call compared with the pot: the equity a call needs to pay off."
+  },
+  "equity": {
+    "term": "Equity",
+    "definition": "The share of the pot a hand wins on average."
+  },
+  "ev": {
+    "term": "EV",
+    "definition": "Expected value: what a decision wins on average."
+  },
+  "implied-odds": {
+    "term": "Implied odds",
+    "definition": "Future winnings after your hand comes in."
+  },
+  "blocker": {
+    "term": "Blocker",
+    "definition": "A card you hold that reduces the combos of a hand your opponent can have."
+  },
+  "variance": {
+    "term": "Variance",
+    "definition": "The swing of results around the expected value: luck in the short run."
+  },
+  "c-bet": {
+    "term": "C-bet",
+    "definition": "A flop bet by the player who raised before the flop."
+  },
+  "value-bet": {
+    "term": "Value bet",
+    "definition": "A bet made to be called by worse hands."
+  },
+  "bluff": {
+    "term": "Bluff",
+    "definition": "A bet with a weak hand to make a better hand fold."
+  },
+  "semi-bluff": {
+    "term": "Semi-bluff",
+    "definition": "A bluff with a hand that has outs."
+  },
+  "check-raise": {
+    "term": "Check-raise",
+    "definition": "Check first, then raise your opponent's bet."
+  },
+  "tilt": {
+    "term": "Tilt",
+    "definition": "Playing on emotion after bad luck, usually worse than normal."
+  },
+  "bankroll": {
+    "term": "Bankroll",
+    "definition": "The chips or money set aside for playing. In this app, only play chips."
+  }
+}

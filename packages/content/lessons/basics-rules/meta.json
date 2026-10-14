@@ -1,0 +1,73 @@
+{
+  "id": "basics-rules",
+  "module": "basics",
+  "level": "beginner",
+  "free": true,
+  "minutes": 5,
+  "pass": 0.67,
+  "blocks": [
+    {
+      "id": "intro",
+      "type": "text"
+    },
+    {
+      "id": "seats",
+      "type": "table",
+      "seats": 6,
+      "highlight": [
+        "BTN",
+        "SB",
+        "BB"
+      ]
+    },
+    {
+      "id": "blinds",
+      "type": "text"
+    },
+    {
+      "id": "streets",
+      "type": "text"
+    },
+    {
+      "id": "board",
+      "type": "cards",
+      "rows": [
+        "Ah Kd",
+        "| Qs Jh 2c",
+        "| Qs Jh 2c 9d",
+        "| Qs Jh 2c 9d Th"
+      ]
+    },
+    {
+      "id": "actions",
+      "type": "text"
+    },
+    {
+      "id": "q-first",
+      "type": "quiz",
+      "answer": 0,
+      "options": 4
+    },
+    {
+      "id": "showdown",
+      "type": "text"
+    }
+  ],
+  "test": [
+    {
+      "id": "t1",
+      "answer": 2,
+      "options": 4
+    },
+    {
+      "id": "t2",
+      "answer": 0,
+      "options": 4
+    },
+    {
+      "id": "t3",
+      "answer": 1,
+      "options": 4
+    }
+  ]
+}

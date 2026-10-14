@@ -1,0 +1,89 @@
+{
+  "title": "Hand rankings",
+  "summary": "Which hand beats which, kickers, the wheel and split pots.",
+  "blocks": {
+    "intro": {
+      "text": "A hand is always **five cards**. Suits are equal: a spade flush is no better than a heart flush. Below are all the hands from strongest to weakest, with how often each one is made by the river from seven cards."
+    },
+    "ranking": {
+      "caption": "The rarer the hand, the stronger it is."
+    },
+    "kicker": {
+      "text": "When two players have the same kind of hand, the hands are compared by their highest cards, then by **kickers**: the cards that fill up the five without being part of the pair or set. A pair of aces with a king beats a pair of aces with a queen."
+    },
+    "kickers": {
+      "labels": [
+        "Pair of aces, king kicker: wins",
+        "Pair of aces, queen kicker"
+      ]
+    },
+    "wheel": {
+      "text": "In a straight the ace can be the highest or the lowest card. **A-2-3-4-5** is the lowest straight, called the wheel. A straight can't wrap around the ace: Q-K-A-2-3 is not a straight."
+    },
+    "wheel-cards": {
+      "labels": [
+        "The wheel: a five-high straight",
+        "Ace-high straight, Broadway"
+      ]
+    },
+    "ties": {
+      "text": "How to compare hands of the same kind:\n- **Flush**: by the highest card, then the next one.\n- **Full house**: by the three of a kind first, then the pair: aces full of kings beat kings full of aces.\n- **Two pair**: by the higher pair, then the lower one, then the kicker.\n- If the five cards are exactly equal, the pot is **split**."
+    },
+    "q-flush": {
+      "q": "Which is stronger, a straight or a flush?",
+      "options": [
+        "A straight",
+        "A flush",
+        "They're equal"
+      ],
+      "explain": "A flush beats a straight: it comes less often (about 3% against 4.6% by the river)."
+    },
+    "q-board-pairs": {
+      "q": "Board: Kh Kd 7c 7s 2h. You hold A3, your opponent Q8. Who wins?",
+      "options": [
+        "You",
+        "Your opponent",
+        "Split pot"
+      ],
+      "explain": "Both have two pair, kings and sevens from the board. The fifth card is the kicker: your ace beats their queen."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "Which is higher, a full house or a flush?",
+      "options": [
+        "A full house",
+        "A flush",
+        "They're equal"
+      ],
+      "explain": "A full house (three of a kind plus a pair) beats a flush."
+    },
+    "t2": {
+      "q": "A-2-3-4-5 is…",
+      "options": [
+        "No hand, just ace high",
+        "A straight, the lowest one",
+        "A straight, the highest one"
+      ],
+      "explain": "The ace can play low in a straight: A-2-3-4-5 is the wheel, the lowest straight."
+    },
+    "t3": {
+      "q": "The board is Ah Kh Qh Jh Th. You have 2c 2d, your opponent As Ks. Who wins?",
+      "options": [
+        "You",
+        "Your opponent",
+        "Split pot"
+      ],
+      "explain": "The board is a royal flush, nothing can beat it. Both players play the board: the pot is split."
+    },
+    "t4": {
+      "q": "How many cards make a hand?",
+      "options": [
+        "Seven",
+        "Five",
+        "Two"
+      ],
+      "explain": "From the seven cards available (two in your hand, five on the board) you pick the best five."
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "title": "Blind defence and the squeeze",
+  "summary": "Defending the big blind with pot odds, and when to squeeze.",
+  "blocks": {
+    "discount": {
+      "text": "The big blind has already put in 1 BB, so it gets a **discount** on calling. Against a 2.5 BB button open the pot is 2.5 + 0.5 + 1 = 4 BB and you need to add 1.5 BB. You need **1.5 / (4 + 1.5) ≈ 27%** equity. Many hands have that against a wide button range, so the big blind defends wide."
+    },
+    "bb-vs-btn": {
+      "caption": "Big blind against a button open: pink is a 3-bet, blue a call."
+    },
+    "caveats": {
+      "text": "Why not call everything with 27%:\n- Out of position you **don't keep all of your equity**: you fold to bets more often.\n- Against an early open (UTG) the range is stronger, so defend tighter.\n- From the **small blind** calling is worse: the big blind still acts and you are out of position after the flop. There it's mostly 3-bet or fold."
+    },
+    "squeeze": {
+      "text": "A **squeeze** is a 3-bet after an open and a call. The caller usually doesn't have a very strong hand (they would have 3-bet it), so the pot is often won right away.\n\nSqueeze size: **a normal 3-bet plus one open per caller**. Example: a 2.5 BB open, one call, you're in position: 7.5 + 2.5 = 10 BB."
+    },
+    "q-odds": {
+      "q": "The CO opens to 3 BB and it folds to the big blind. What equity do you need to call?",
+      "options": [
+        "20%",
+        "31%",
+        "40%"
+      ],
+      "explain": "The pot is 3 + 0.5 + 1 = 4.5 BB and you add 2 BB: 2 / (4.5 + 2) ≈ 31%."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "Why does the big blind defend wider than other seats?",
+      "options": [
+        "It already put in 1 BB and gets a discount",
+        "It's in position",
+        "The rules say so"
+      ],
+      "explain": "The posted blind makes the call cheaper relative to the pot, so less equity is needed."
+    },
+    "t2": {
+      "q": "A 2.5 BB open and one call. How big is a squeeze in position?",
+      "options": [
+        "To 5 BB",
+        "To 7.5 BB",
+        "To 10 BB"
+      ],
+      "explain": "A 7.5 BB 3-bet plus one more 2.5 BB open for the caller = 10 BB."
+    },
+    "t3": {
+      "q": "How do you usually play from the small blind against an open?",
+      "options": [
+        "Call wide",
+        "3-bet or fold",
+        "Always fold"
+      ],
+      "explain": "Calling from the small blind is awkward: the big blind is still behind you and you're out of position after the flop."
+    }
+  }
+}

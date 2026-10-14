@@ -1,0 +1,21 @@
+{
+  "id": "6max-100bb-3bet-BTN-vs-CO",
+  "format": "6max",
+  "stackBb": 100,
+  "spot": {
+    "type": "vs-open",
+    "hero": "BTN",
+    "villain": "CO"
+  },
+  "actions": {
+    "raise": {
+      "sizeBb": 7.5,
+      "range": "QQ+, AQs+, AKo, A5s-A4s, KQs:0.5, JJ:0.5, 76s:0.5, 65s:0.5"
+    },
+    "call": {
+      "range": "22-TT, JJ:0.5, AJs-ATs, A9s:0.5, KJs-KTs, KQs:0.5, QTs+, JTs, T9s, 98s, 87s, AQo-AJo, KQo"
+    }
+  },
+  "free": false,
+  "source": "simplified-educational"
+}

@@ -22,3 +22,14 @@ export function formatChips(amount: number): string {
 export function formatDecimal(value: number): string {
   return formatter(1).format(value);
 }
+
+/** A number with up to `digits` decimals in the locale's style. */
+export function formatNumber(value: number, digits: number): string {
+  return formatter(digits).format(value);
+}
+
+/** A small percentage with enough decimals to not round to zero: 0.0032, 0.168, 2.6. */
+export function formatSmallPercent(value: number): string {
+  const digits = value < 0.01 ? 4 : value < 0.1 ? 3 : value < 1 ? 2 : 1;
+  return formatter(digits).format(value);
+}

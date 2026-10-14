@@ -87,6 +87,13 @@ function Navigation() {
         <Stack.Screen name="edit-profile" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="hands" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="hand/[id]" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="academy/[module]" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="lesson/[id]" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="glossary" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="drill/preflop" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="drill/pot-odds" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="drill/outs" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="drill/showdown" options={{ animation: 'slide_from_right' }} />
       </Stack>
     </ThemeProvider>
   );

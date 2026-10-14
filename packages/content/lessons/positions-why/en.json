@@ -1,0 +1,59 @@
+{
+  "title": "Why position matters",
+  "summary": "Playing in and out of position, and why ranges widen towards the button.",
+  "blocks": {
+    "info": {
+      "text": "The player who acts last is **in position**. They see what their opponents did before deciding. That gives them:\n- **Information**: a check often means weakness, a bet strength.\n- **Pot control**: they can check behind and see the next card for free.\n- **Better bluffs**: when the opponent checks, a bet often takes the pot.\n- **More of their equity turns into chips**: they are forced to fold less often."
+    },
+    "behind": {
+      "text": "The second reason is **how many players are behind you**. From UTG five opponents still act, and one of them may hold a strong hand. From the button only the blinds remain, and you will be in position after the flop. That's why players open about 14% of hands from UTG and 40% or more from the button."
+    },
+    "utg": {
+      "caption": "Open-raise from UTG: strong hands only."
+    },
+    "btn": {
+      "caption": "Open-raise from the button: several times wider."
+    },
+    "oop": {
+      "text": "Playing **out of position** is harder: you act first without knowing what your opponent will do. So out of position you play fewer hands, lead or check-raise more, and fold marginal hands more often.\n\nThis is also why the blinds are the worst seats: after the flop they almost always act first."
+    },
+    "q-wider": {
+      "q": "Why do players open more hands from the button than from UTG?",
+      "options": [
+        "The button has more chips",
+        "Fewer players are left behind, and you are in position after the flop",
+        "The rules say so"
+      ],
+      "explain": "Fewer opponents behind means less chance to run into a strong hand. Position after the flop helps you play medium hands too."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "What does being in position mean?",
+      "options": [
+        "Acting last on a street",
+        "Acting first on a street",
+        "Sitting in a blind"
+      ],
+      "explain": "In position you act after your opponent and see their decision first."
+    },
+    "t2": {
+      "q": "Which 6-max seat is best after the flop?",
+      "options": [
+        "UTG",
+        "BB",
+        "BTN"
+      ],
+      "explain": "The button acts last on the flop, turn and river against anyone."
+    },
+    "t3": {
+      "q": "How should you play out of position?",
+      "options": [
+        "Wider, to make up for it",
+        "Tighter, folding marginal hands more often",
+        "The same as in position"
+      ],
+      "explain": "Out of position you have less information and keep less of your equity, so you choose hands more strictly."
+    }
+  }
+}

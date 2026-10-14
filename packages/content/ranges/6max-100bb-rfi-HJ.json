@@ -1,0 +1,17 @@
+{
+  "id": "6max-100bb-rfi-HJ",
+  "format": "6max",
+  "stackBb": 100,
+  "spot": {
+    "type": "RFI",
+    "hero": "HJ"
+  },
+  "actions": {
+    "raise": {
+      "sizeBb": 2.5,
+      "range": "22+, A8s+, A5s-A3s, K9s+, Q9s+, J9s+, T9s, 98s, 87s, ATo+, KJo+, QJo"
+    }
+  },
+  "free": true,
+  "source": "simplified-educational"
+}

@@ -16,6 +16,7 @@
     "@expo-google-fonts/unbounded": "^0.4.1",
     "@pokerall/bots": "workspace:*",
     "@pokerall/coach": "workspace:*",
+    "@pokerall/content": "workspace:*",
     "@pokerall/moderation": "workspace:*",
     "@pokerall/poker-engine": "workspace:*",
     "@react-native-async-storage/async-storage": "2.2.0",

@@ -1,0 +1,53 @@
+{
+  "title": "Implied and reverse implied odds",
+  "summary": "Future winnings that justify a call, and future losses.",
+  "blocks": {
+    "implied": {
+      "text": "**Implied odds** count what you win **after** you make your hand. With deep stacks and an opponent who will keep paying, a call can be profitable even when the current pot odds aren't enough.\n\nHow much more you need: call C, pot with their bet P, chance to hit e. The extra winnings F must be at least\n\n**F = C / e − P − C**"
+    },
+    "example": {
+      "text": "Example: the turn, a flush draw (e ≈ 19.6%). The pot is 100 and your opponent bets 50: P = 150, C = 50. You need 25% equity now and have less. But:\n\nF = 50 / 0.196 − 150 − 50 ≈ **56**\n\nIf, after making your flush, you win at least 56 more on the river on average, the call pays."
+    },
+    "reverse": {
+      "text": "**Reverse implied odds** are the other side: your hand gets there but often loses a big pot. Typical cases:\n- A low flush against a higher one.\n- A pair with a weak kicker (A3 on an ace-high board).\n- The low end of a straight.\n\nPlay such hands carefully: they win small pots and lose big ones."
+    },
+    "q-implied": {
+      "q": "When are implied odds better?",
+      "options": [
+        "Short stacks and a careful opponent",
+        "Deep stacks and an opponent who pays a lot",
+        "They are always the same"
+      ],
+      "explain": "To win more after hitting you need chips in the stacks and an opponent willing to pay them off."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "What are implied odds?",
+      "options": [
+        "Future winnings after you hit",
+        "The current price of a call",
+        "The chance your opponent folds"
+      ],
+      "explain": "They are the chips you expect to win on later streets once you make your hand."
+    },
+    "t2": {
+      "q": "Which hand suffers from reverse implied odds?",
+      "options": [
+        "The nut flush draw",
+        "A set",
+        "A low flush draw"
+      ],
+      "explain": "When the low flush comes in, you sometimes lose a big pot to a higher flush."
+    },
+    "t3": {
+      "q": "On the turn you hit 20% of the time; the pot with the bet is 150 and the call 50. About how much must you win on the river?",
+      "options": [
+        "0",
+        "about 50",
+        "about 200"
+      ],
+      "explain": "F = 50 / 0.2 − 150 − 50 = 50."
+    }
+  }
+}

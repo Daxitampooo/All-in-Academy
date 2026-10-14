@@ -1,0 +1,64 @@
+{
+  "title": "Reading the board",
+  "summary": "The best five of seven cards, the nuts and playing the board.",
+  "blocks": {
+    "best5": {
+      "text": "Your hand is the best five of seven cards. You may use both hole cards, one of them, or none. Unlike Omaha, Hold'em has no rule that you must use two of your own cards."
+    },
+    "one-card": {
+      "labels": [
+        "Ace-high flush: only the ace from your hand plays",
+        "The board is a queen-high straight: your sevens add nothing, you play the board"
+      ]
+    },
+    "nuts": {
+      "text": "**The nuts** is the best possible hand on a given board. To find it, go down the list: is a straight flush possible? Quads? A full house (is the board paired)? A flush (three cards of one suit)? A straight?\n\nWith no pair on the board there can be no quads or full house. Without three cards of one suit there can be no flush."
+    },
+    "nuts-example": {
+      "labels": [
+        "Unpaired board with three spades. The nuts: the ace-high flush, As plus any spade"
+      ]
+    },
+    "q-nuts": {
+      "q": "Board: Jh Tc 9d 4s 2h. What is the nut hand?",
+      "options": [
+        "A set of jacks",
+        "Two pair",
+        "A K-Q straight"
+      ],
+      "explain": "No flush is possible (no three of one suit) and the board isn't paired, so a straight is the best hand. The highest straight is king-high: K-Q-J-T-9."
+    },
+    "counterfeit": {
+      "text": "Sometimes the board takes the value out of your hand. You hold 7-6 on a 7-6-2 flop: two pair. A K and a K come on the turn and river. Your best five is now K-K-7-7 with a six, and you lose to any pocket pair above sevens (K-K-8-8) and to any seven with a kicker above a six."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "In Hold'em, can you use only one of your hole cards?",
+      "options": [
+        "Yes",
+        "No, you need both",
+        "Only on the river"
+      ],
+      "explain": "Hold'em uses any five of the seven cards: both hole cards, one or none."
+    },
+    "t2": {
+      "q": "The board has no pair. Which hands are impossible?",
+      "options": [
+        "Flush and straight",
+        "Quads and a full house",
+        "Two pair"
+      ],
+      "explain": "Quads and a full house need three or four cards of one rank. With an unpaired board you can't make them: you only hold two cards."
+    },
+    "t3": {
+      "q": "Board: 8c 9d Tc Jh Qs. You have 2c 2d, your opponent 3h 3s. Who wins?",
+      "options": [
+        "You",
+        "Your opponent",
+        "Split pot"
+      ],
+      "explain": "The board is a queen-high straight and neither pair improves it. Both play the board: split pot."
+    }
+  }
+}

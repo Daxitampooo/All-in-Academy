@@ -1,0 +1,45 @@
+{
+  "id": "preflop-limpers",
+  "module": "preflop",
+  "level": "intermediate",
+  "free": true,
+  "minutes": 5,
+  "pass": 0.67,
+  "blocks": [
+    {
+      "id": "limpers",
+      "type": "text"
+    },
+    {
+      "id": "size",
+      "type": "text"
+    },
+    {
+      "id": "overlimp",
+      "type": "text"
+    },
+    {
+      "id": "q-size",
+      "type": "quiz",
+      "answer": 1,
+      "options": 3
+    }
+  ],
+  "test": [
+    {
+      "id": "t1",
+      "answer": 0,
+      "options": 3
+    },
+    {
+      "id": "t2",
+      "answer": 2,
+      "options": 3
+    },
+    {
+      "id": "t3",
+      "answer": 1,
+      "options": 3
+    }
+  ]
+}
