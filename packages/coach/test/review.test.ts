@@ -13,7 +13,7 @@ import {
   type PlayerAction,
 } from '@pokerall/poker-engine';
 
-import { openShare, reviewHand, seatsBehind } from '../src';
+import { openShare, reviewHand, reviewLastDecision, seatsBehind } from '../src';
 
 const rng = () => createSeededRng(seedFromHex('ab'.repeat(32)));
 const two = (t: string) => parseCards(t) as unknown as [Card, Card];
@@ -135,5 +135,17 @@ describe('after the flop', () => {
     const r = review(s, 0);
     expect(r.decisions.map((d) => d.step)).toEqual([0, 3]);
     expect(r.counts.good + r.counts.inaccuracy + r.counts.mistake).toBe(r.decisions.length);
+  });
+});
+
+describe('coaching at the table', () => {
+  it('reviews the latest decision of a hand still in progress, like the full review', () => {
+    // UTG folds aces; the hand goes on without them.
+    const s = play(6, 0, ['2c 3d', '4c 5d', '6c 7d', 'As Ah', 'Tc Jd', 'Qc Kd'], '', [{ type: 'fold' }]);
+    expect(s.phase).toBe('preflop');
+    const last = reviewLastDecision(historyOf(s), 3, { rng: rng(), samples: 500 });
+    expect(last?.grade).toBe('mistake');
+    expect(last?.reason).toBe(review(s, 3).decisions[0]!.reason);
+    expect(reviewLastDecision(historyOf(s), 4, { rng: rng(), samples: 500 })).toBeNull();
   });
 });

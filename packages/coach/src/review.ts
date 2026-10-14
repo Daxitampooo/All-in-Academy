@@ -286,29 +286,7 @@ export function reviewHand(history: HandHistory, seat: number, options: ReviewOp
   const samples = options.samples ?? 1500;
   const states = replay(history);
   const final = states[states.length - 1]!;
-  const decisions = decisionsOf(final, seat);
-  const out: DecisionReview[] = [];
-  for (const d of decisions) {
-    const step = d.before.events.filter((e) => e.type === 'action').length;
-    const after = states[step + 1] ?? final;
-    const { verdict, equity } = d.street === 'preflop' ? reviewPreflop(d, seat, options.rng, samples) : reviewPostflop(d, after, seat, options.rng, samples);
-    const a = d.action;
-    out.push({
-      step,
-      street: d.street,
-      move: a.action,
-      amount: a.action === 'bet' || a.action === 'raise' ? a.streetBet : null,
-      allIn: a.allIn,
-      grade: verdict.grade,
-      evLossBB: verdict.evLossBB,
-      equity,
-      potOdds: d.potOdds,
-      better: verdict.better,
-      reason: verdict.reason,
-      params: { ...(verdict.params ?? {}), ...(verdict.evLossBB ? { loss: verdict.evLossBB } : {}) },
-      lesson: verdict.lesson,
-    });
-  }
+  const out = decisionsOf(final, seat).map((d) => reviewDecision(d, states, final, seat, options.rng, samples));
   const counts: Record<Grade, number> = { good: 0, inaccuracy: 0, mistake: 0 };
   let total = 0;
   for (const r of out) {
@@ -316,4 +294,37 @@ export function reviewHand(history: HandHistory, seat: number, options: ReviewOp
     total += r.evLossBB ?? 0;
   }
   return { version: 1, decisions: out, counts, totalLossBB: Math.round(total * 10) / 10 };
+}
+
+/**
+ * Reviews only the latest decision `seat` made, for coaching right at the table. Works on a hand in progress
+ * and, like the full review, never looks at the opponents' real cards.
+ */
+export function reviewLastDecision(history: HandHistory, seat: number, options: ReviewOptions): DecisionReview | null {
+  const states = replay(history);
+  const final = states[states.length - 1]!;
+  const last = decisionsOf(final, seat).at(-1);
+  return last ? reviewDecision(last, states, final, seat, options.rng, options.samples ?? 1500) : null;
+}
+
+function reviewDecision(d: Decision, states: HandState[], final: HandState, seat: number, rng: Rng, samples: number): DecisionReview {
+  const step = d.before.events.filter((e) => e.type === 'action').length;
+  const after = states[step + 1] ?? final;
+  const { verdict, equity } = d.street === 'preflop' ? reviewPreflop(d, seat, rng, samples) : reviewPostflop(d, after, seat, rng, samples);
+  const a = d.action;
+  return {
+    step,
+    street: d.street,
+    move: a.action,
+    amount: a.action === 'bet' || a.action === 'raise' ? a.streetBet : null,
+    allIn: a.allIn,
+    grade: verdict.grade,
+    evLossBB: verdict.evLossBB,
+    equity,
+    potOdds: d.potOdds,
+    better: verdict.better,
+    reason: verdict.reason,
+    params: { ...(verdict.params ?? {}), ...(verdict.evLossBB ? { loss: verdict.evLossBB } : {}) },
+    lesson: verdict.lesson,
+  };
 }

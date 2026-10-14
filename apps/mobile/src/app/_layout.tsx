@@ -15,6 +15,7 @@ import { Unbounded_700Bold } from '@expo-google-fonts/unbounded/700Bold';
 import { SyncManager } from '@/account/SyncManager';
 import { AchievementWatcher } from '@/achievements/AchievementWatcher';
 import { AgeGate } from '@/components/AgeGate';
+import { LevelPicker } from '@/components/LevelPicker';
 // Importing i18n also initializes it before the first screen renders.
 import i18n, { deviceLanguage } from '@/i18n';
 import { useSettings } from '@/store/settings';
@@ -64,6 +65,8 @@ export default function RootLayout() {
 function Navigation() {
   const { colors, dark } = useTheme();
   const ageConfirmed = useSettings((s) => s.ageConfirmedAt !== null);
+  const levelChosen = useSettings((s) => s.level !== null);
+  const firstLaunch = !ageConfirmed || !levelChosen;
   const base = dark ? DarkTheme : DefaultTheme;
   const navTheme = {
     ...base,
@@ -80,8 +83,8 @@ function Navigation() {
   return (
     <ThemeProvider value={navTheme}>
       <StatusBar style={dark ? 'light' : 'dark'} />
-      {/* Hidden from screen readers while the age question is open on top. */}
-      <View style={{ flex: 1 }} importantForAccessibility={ageConfirmed ? 'auto' : 'no-hide-descendants'}>
+      {/* Hidden from screen readers while a first-launch question is open on top. */}
+      <View style={{ flex: 1 }} importantForAccessibility={firstLaunch ? 'no-hide-descendants' : 'auto'}>
         <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.bg } }}>
           <Stack.Screen name="(tabs)" />
           <Stack.Screen name="settings" options={{ animation: 'slide_from_right' }} />
@@ -112,7 +115,7 @@ function Navigation() {
       </View>
       <AchievementWatcher />
       <SyncManager />
-      {ageConfirmed ? null : <AgeGate />}
+      {!ageConfirmed ? <AgeGate /> : !levelChosen ? <LevelPicker /> : null}
     </ThemeProvider>
   );
 }

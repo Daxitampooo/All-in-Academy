@@ -9,8 +9,9 @@ import { ChevronLeftIcon, CloudIcon } from '@/components/icons';
 import { NavRow } from '@/components/NavRow';
 import { OptionGroup } from '@/components/OptionGroup';
 import { Screen } from '@/components/Screen';
+import { ToggleRow } from '@/components/ToggleRow';
 import { useAccount } from '@/store/account';
-import { useSettings, type LanguagePreference, type ThemePreference } from '@/store/settings';
+import { PLAYER_LEVELS, useSettings, type LanguagePreference, type PlayerLevel, type ThemePreference } from '@/store/settings';
 import { useTheme } from '@/theme/ThemeProvider';
 import { space } from '@/theme/tokens';
 
@@ -21,6 +22,7 @@ export default function SettingsScreen() {
   const { t } = useTranslation();
   const { colors } = useTheme();
   const { language, theme, haptics, setLanguage, setTheme, setHaptics } = useSettings();
+  const { level, tableHints, coach, setLevel, setTableHints, setCoach } = useSettings();
   const me = useAccount((s) => s.me);
 
   const goBack = () => (router.canGoBack() ? router.back() : router.replace('/profile'));
@@ -47,6 +49,15 @@ export default function SettingsScreen() {
         hint={accountLine(t, me)}
         onPress={() => router.push('/account')}
       />
+      <OptionGroup
+        title={t('settings.level')}
+        hint={t('settings.levelHint')}
+        options={PLAYER_LEVELS.map((value) => ({ value, label: t(`levelPicker.levels.${value}.title`) }))}
+        selected={level ?? ('' as PlayerLevel)}
+        onSelect={(value) => setLevel(value, true)}
+      />
+      <ToggleRow title={t('settings.tableHints')} hint={t('settings.tableHintsHint')} value={tableHints} onChange={setTableHints} />
+      <ToggleRow title={t('settings.coach')} hint={t('settings.coachHint')} value={coach} onChange={setCoach} />
       <OptionGroup
         title={t('settings.language')}
         options={languageOptions.map((value) => ({ value, label: t(`settings.languages.${value}`) }))}

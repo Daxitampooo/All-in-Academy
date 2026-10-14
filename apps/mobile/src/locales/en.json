@@ -251,7 +251,13 @@
     "version": "Version {{version}}",
     "haptics": "Vibration",
     "hapticsOn": "On",
-    "hapticsOff": "Off"
+    "hapticsOff": "Off",
+    "level": "My level",
+    "levelHint": "Sets the hints and the coach to suit it; you can change them below.",
+    "tableHints": "Hints at the table",
+    "tableHintsHint": "Your hand, draws with outs and the price of a call.",
+    "coach": "Coach",
+    "coachHint": "After each decision at a bot table: was it right and why."
   },
   "notFound": {
     "title": "This screen doesn't exist",
@@ -1451,7 +1457,12 @@
         "reveal_other": "Danil saw your cards and the whole board in advance: he bet when he was winning and folded when he was losing.",
         "lesson": "This is what a cheater looks like: always right in big pots. Only discipline helps: don't pay off his big bets, and take the pots he gives up. In ranked play, the anti-cheat system catches players like this."
       }
-    }
+    },
+    "hintOuts_one": "{{count}} out ≈ {{pct}}% by the river",
+    "hintOuts_other": "{{count}} outs ≈ {{pct}}% by the river",
+    "hintPotOdds": "Call {{call}}: you need {{need}}% equity",
+    "coach": "Coach — {{grade}}.",
+    "coachHide": "Hides the tip"
   },
   "analysis": {
     "title": "Match analysis",
@@ -2261,6 +2272,29 @@
       "solving": "Working out the chart…",
       "drill": "Open the push/fold trainer",
       "note": "A simplified model, as in most push/fold charts: equal stacks, and only one player calls a push. The ranges are close to the equilibrium of that model, not a full tournament solver."
+    }
+  },
+  "levelPicker": {
+    "title": "How well do you know poker?",
+    "body": "PokerALL will start where it suits you and explain as much as you need.",
+    "later": "You can change this in the settings at any time.",
+    "levels": {
+      "beginner": {
+        "title": "I’m new to poker",
+        "body": "Learning the rules. The Academy from scratch, hints at the table and a coach after every decision."
+      },
+      "casual": {
+        "title": "I play sometimes",
+        "body": "I know the rules and want to play better. Bots to play against, hints and the coach."
+      },
+      "regular": {
+        "title": "Regular",
+        "body": "I know positions and ranges. Trainers and hand analysis, no hints at the table."
+      },
+      "pro": {
+        "title": "Pro",
+        "body": "A clean table without hints, analysis tools and stats."
+      }
     }
   }
 }

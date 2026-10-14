@@ -19,6 +19,7 @@ import type { CardSize } from '@/components/table/PlayingCard';
 import { BotSeat, HeroSeat, type SeatStatus } from '@/components/table/Seat';
 import { RoomBackdrop } from '@/components/table/RoomBackdrop';
 import { TableFelt } from '@/components/table/TableFelt';
+import { CoachTip, TableTip } from '@/components/table/CoachTip';
 import { TrainingReveal } from '@/components/table/TrainingReveal';
 import { formatChips } from '@/lib/format';
 import { LookScope, usePersonalLook, useTableLook } from '@/looks/LookProvider';
@@ -27,11 +28,15 @@ import { useMatchReview } from '@/store/matchReview';
 import { useProfile } from '@/store/profile';
 import { useSettings } from '@/store/settings';
 import { handNameKey, handOutcome, seatName as nameOfSeat, splitNote } from '@/table/describe';
+import { drawHint } from '@/table/hints';
+import { useCoach } from '@/table/useCoach';
 import { useTableGame, type MatchResult, type SeatInfo, type TableMode } from '@/table/useTableGame';
 import { useTheme } from '@/theme/ThemeProvider';
 import { maxContentWidth, radius, space, withAlpha } from '@/theme/tokens';
 
 const HERO = 0;
+/** Height of the coach and hints row above the action buttons. */
+const TIP_ROW = 66;
 
 export default function TableScreen() {
   const params = useLocalSearchParams<{ mode?: string; bot?: string; league?: string; r?: string }>();
@@ -165,6 +170,8 @@ function TableGameView({ mode, params }: { mode: TableMode; params: Record<strin
   const records = useBotProgress((s) => s.records);
   const haptics = useSettings((s) => s.haptics);
   const sizingOpen = useSettings((s) => s.sizingOpen);
+  const tableHints = useSettings((s) => s.tableHints);
+  const coachOn = useSettings((s) => s.coach);
   const showReview = useMatchReview((s) => s.show);
   const [beatenAtStart] = useState(() => beatenById(useBotProgress.getState().records));
   const [size, setSize] = useState({ w: 0, h: 0 });
@@ -176,6 +183,7 @@ function TableGameView({ mode, params }: { mode: TableMode; params: Record<strin
     setSeries(recordMatch(mode.botId, r.heroWon, seriesTarget(botById(mode.botId)!)));
   });
   const { hand, seats, status, settled } = game;
+  const coach = useCoach(hand, game.handNumber, HERO, coachOn);
   const matchRunning = status !== 'match-over' && game.result === null;
 
   // The Android back button asks before leaving a match in progress.
@@ -268,9 +276,27 @@ function TableGameView({ mode, params }: { mode: TableMode; params: Record<strin
 
   const board = hand.board.slice(0, game.boardShown);
   const heroHint =
-    !hero.folded && !complete && board.length >= 3
+    tableHints && !hero.folded && !complete && board.length >= 3
       ? t('table.yourHand', { hand: t(handNameKey(describeHand([...hero.holeCards, ...board]).categoryId, hero.holeCards)) })
       : null;
+  // On your turn, for players who keep hints on: the price of a call and the outs of a draw.
+  const draw = tableHints && legal ? drawHint(hero.holeCards, board) : null;
+  const turnTip =
+    tableHints && legal
+      ? [
+          legal.callAmount > 0
+            ? t('table.hintPotOdds', {
+                call: formatChips(legal.callAmount),
+                need: Math.round((legal.callAmount / (potSize(hand) + legal.callAmount)) * 100),
+              })
+            : null,
+          draw ? t('table.hintOuts', { count: draw.outs, pct: Math.round(draw.chance * 100) }) : null,
+        ]
+          .filter(Boolean)
+          .join(' · ') || null
+      : null;
+  // A fixed row above the buttons for the coach and hints, so the table never jumps when one appears.
+  const tipsOn = tableHints || coachOn;
 
   const newlyUnlocked = LEAGUES.filter((l) => !leagueUnlocked(l.id, beatenAtStart) && leagueUnlocked(l.id, beatenById(records)));
   const leave = () => (router.canGoBack() ? router.back() : router.replace('/bots'));
@@ -469,12 +495,22 @@ function TableGameView({ mode, params }: { mode: TableMode; params: Record<strin
           styles.actionArea,
           {
             // Same height whether or not it's your turn, so the table above never jumps.
-            minHeight: ACTION_AREA_HEIGHT[sizingOpen ? 'open' : 'closed'] + space.md + bottomPad,
+            minHeight: ACTION_AREA_HEIGHT[sizingOpen ? 'open' : 'closed'] + space.md + bottomPad + (tipsOn ? TIP_ROW + space.sm : 0),
             paddingBottom: bottomPad,
             borderTopColor: colors.border,
             backgroundColor: colors.surface,
           },
         ]}>
+        {tipsOn ? (
+          <View style={styles.tipRow}>
+            {/* On your turn the current numbers matter more than the coach's word on the last move. */}
+            {turnTip ? (
+              <TableTip text={turnTip} />
+            ) : coach.tip ? (
+              <CoachTip key={coach.tip.key} review={coach.tip.review} onDismiss={coach.dismiss} />
+            ) : null}
+          </View>
+        ) : null}
         {legal ? (
           <ActionBar key={`${game.handNumber}-${hand.events.length}`} hand={hand} legal={legal} heroStack={hero.stack} onAct={game.act} />
         ) : status === 'hand-over' ? (
@@ -653,6 +689,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: space.lg,
     paddingTop: space.md,
     borderTopWidth: StyleSheet.hairlineWidth,
+  },
+  tipRow: {
+    height: TIP_ROW,
+    marginBottom: space.sm,
+    justifyContent: 'flex-end',
   },
   waiting: {
     flex: 1,

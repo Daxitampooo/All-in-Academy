@@ -6,6 +6,15 @@ import { kvStorage } from '@/lib/storage';
 export type LanguagePreference = 'system' | 'en' | 'ru';
 export type ThemePreference = 'neon' | 'daylight' | 'system';
 
+/** What the player answered on the first launch: it picks the start screen and how much the app explains. */
+export type PlayerLevel = 'beginner' | 'casual' | 'regular' | 'pro';
+export const PLAYER_LEVELS: PlayerLevel[] = ['beginner', 'casual', 'regular', 'pro'];
+
+/** Hints at the table and the coach are on for newer players and off for experienced ones. */
+export function levelDefaults(level: PlayerLevel): { tableHints: boolean; coach: boolean } {
+  return { tableHints: level === 'beginner' || level === 'casual', coach: level === 'beginner' || level === 'casual' };
+}
+
 type SettingsState = {
   language: LanguagePreference;
   theme: ThemePreference;
@@ -15,7 +24,17 @@ type SettingsState = {
   sizingOpen: boolean;
   /** When the player confirmed being 18 or older on the first launch, ms since 1970. */
   ageConfirmedAt: number | null;
+  /** Null until the player answers on the first launch. */
+  level: PlayerLevel | null;
+  /** Your made hand, draws, outs and the price of a call, shown at the table. */
+  tableHints: boolean;
+  /** After each of your decisions at a bot table: was it right and why. */
+  coach: boolean;
   confirmAge: () => void;
+  /** Sets the level; `applyDefaults` also sets hints and the coach to suit it. */
+  setLevel: (level: PlayerLevel, applyDefaults: boolean) => void;
+  setTableHints: (on: boolean) => void;
+  setCoach: (on: boolean) => void;
   setLanguage: (language: LanguagePreference) => void;
   setTheme: (theme: ThemePreference) => void;
   setHaptics: (on: boolean) => void;
@@ -31,7 +50,13 @@ export const useSettings = create<SettingsState>()(
       haptics: true,
       sizingOpen: true,
       ageConfirmedAt: null,
+      level: null,
+      tableHints: true,
+      coach: true,
       confirmAge: () => set({ ageConfirmedAt: Date.now() }),
+      setLevel: (level, applyDefaults) => set(applyDefaults ? { level, ...levelDefaults(level) } : { level }),
+      setTableHints: (tableHints) => set({ tableHints }),
+      setCoach: (coach) => set({ coach }),
       setLanguage: (language) => set({ language }),
       setTheme: (theme) => set({ theme }),
       setHaptics: (haptics) => set({ haptics }),
@@ -41,12 +66,15 @@ export const useSettings = create<SettingsState>()(
       name: 'settings',
       version: 1,
       storage: createJSONStorage(() => kvStorage),
-      partialize: ({ language, theme, haptics, sizingOpen, ageConfirmedAt }) => ({
+      partialize: ({ language, theme, haptics, sizingOpen, ageConfirmedAt, level, tableHints, coach }) => ({
         language,
         theme,
         haptics,
         sizingOpen,
         ageConfirmedAt,
+        level,
+        tableHints,
+        coach,
       }),
     },
   ),
