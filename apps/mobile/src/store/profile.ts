@@ -1,3 +1,4 @@
+import type { StoredProfile } from '@pokerall/shared/client';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
@@ -21,37 +22,61 @@ type ProfileState = ProfileFields & {
   title: string | null;
   /** Show the title at the table. */
   showTitle: boolean;
+  /** Time of the last edit, ms since 1970; 0 for a profile never edited. The later edit wins between phones. */
+  updatedAt: number;
   setTitle: (id: string | null) => void;
   setShowTitle: (on: boolean) => void;
   saveFields: (fields: ProfileFields) => void;
   saveAvatar: (avatar: AvatarSpec) => void;
+  /** Takes the profile saved in the account (it was edited later on another phone). */
+  applyRemote: (profile: StoredProfile) => void;
+  /** Back to an empty profile (after signing out or deleting the account). */
+  reset: () => void;
+};
+
+const EMPTY: ProfileFields & { avatar: AvatarSpec; title: string | null; showTitle: boolean; updatedAt: number } = {
+  nickname: null,
+  about: '',
+  country: null,
+  favoriteHand: null,
+  style: null,
+  avatar: DEFAULT_AVATAR,
+  title: null,
+  showTitle: true,
+  updatedAt: 0,
 };
 
 /**
- * The player's profile, kept on the device for now. With accounts (stage 7) it syncs to the server, which
- * checks nicknames for uniqueness and runs the same text checks again.
+ * The player's profile. With an account it syncs to the server, which checks nicknames for uniqueness and runs
+ * the same text checks again.
  */
 export const useProfile = create<ProfileState>()(
   persist(
     (set) => ({
-      nickname: null,
-      about: '',
-      country: null,
-      favoriteHand: null,
-      style: null,
-      avatar: DEFAULT_AVATAR,
-      title: null,
-      showTitle: true,
-      setTitle: (title) => set({ title }),
-      setShowTitle: (showTitle) => set({ showTitle }),
-      saveFields: (fields) => set(fields),
-      saveAvatar: (avatar) => set({ avatar }),
+      ...EMPTY,
+      setTitle: (title) => set({ title, updatedAt: Date.now() }),
+      setShowTitle: (showTitle) => set({ showTitle, updatedAt: Date.now() }),
+      saveFields: (fields) => set({ ...fields, updatedAt: Date.now() }),
+      saveAvatar: (avatar) => set({ avatar, updatedAt: Date.now() }),
+      applyRemote: (p) =>
+        set({
+          nickname: p.nickname,
+          about: p.about,
+          country: p.country,
+          favoriteHand: p.favoriteHand,
+          style: p.style,
+          avatar: { ...DEFAULT_AVATAR, ...(p.avatar as Partial<AvatarSpec>), face: { ...DEFAULT_AVATAR.face, ...(p.avatar.face as Partial<AvatarSpec['face']>) } },
+          title: p.title,
+          showTitle: p.showTitle,
+          updatedAt: p.updatedAt,
+        }),
+      reset: () => set(EMPTY),
     }),
     {
       name: 'profile',
       version: 1,
       storage: createJSONStorage(() => kvStorage),
-      partialize: ({ nickname, about, country, favoriteHand, style, avatar, title, showTitle }) => ({
+      partialize: ({ nickname, about, country, favoriteHand, style, avatar, title, showTitle, updatedAt }) => ({
         nickname,
         about,
         country,
@@ -60,6 +85,7 @@ export const useProfile = create<ProfileState>()(
         avatar,
         title,
         showTitle,
+        updatedAt,
       }),
     },
   ),

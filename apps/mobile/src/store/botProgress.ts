@@ -26,6 +26,9 @@ type BotProgressState = {
   records: Record<string, BotRecord>;
   /** Records a match; `target` is the wins that take a series against this bot. */
   recordMatch: (botId: string, won: boolean, target: number) => SeriesUpdate;
+  /** Sets wins, losses and beaten series to totals across the account's phones (the current series stays). */
+  applyTotals: (totals: Record<string, Score & { beaten: number }>) => void;
+  reset: () => void;
 };
 
 const EMPTY: BotRecord = { wins: 0, losses: 0, beaten: 0, series: { wins: 0, losses: 0 } };
@@ -49,6 +52,21 @@ export const useBotProgress = create<BotProgressState>()(
         set((s) => ({ records: { ...s.records, [botId]: next } }));
         return { series, target, over };
       },
+      applyTotals: (totals) =>
+        set((s) => {
+          const records = { ...s.records };
+          for (const [id, t] of Object.entries(totals)) {
+            const prev = records[id] ?? EMPTY;
+            records[id] = {
+              ...prev,
+              wins: Math.max(prev.wins, t.wins),
+              losses: Math.max(prev.losses, t.losses),
+              beaten: Math.max(prev.beaten, t.beaten),
+            };
+          }
+          return { records };
+        }),
+      reset: () => set({ records: {} }),
     }),
     {
       name: 'bot-progress',

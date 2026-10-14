@@ -193,3 +193,26 @@ export function StarIcon({ color, size = 22 }: IconProps) {
     </Svg>
   );
 }
+
+/** Account and sync: a cloud. */
+export function CloudIcon({ color, size = 22 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <Path
+        d="M7 18.5h10.2a4.3 4.3 0 0 0 .6-8.56A6 6 0 0 0 6.3 9.1 4.7 4.7 0 0 0 7 18.5Z"
+        stroke={color}
+        {...stroke}
+      />
+    </Svg>
+  );
+}
+
+/** Privacy: a shield. */
+export function ShieldIcon({ color, size = 22 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <Path d="M12 3.2 5 6v5.6c0 4.3 2.9 7.6 7 9.2 4.1-1.6 7-4.9 7-9.2V6l-7-2.8Z" stroke={color} {...stroke} />
+      <Path d="m9 12 2.2 2.2L15.4 10" stroke={color} {...stroke} />
+    </Svg>
+  );
+}

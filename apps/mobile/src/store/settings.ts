@@ -13,6 +13,9 @@ type SettingsState = {
   haptics: boolean;
   /** The bet sizing tab above the action buttons is expanded. */
   sizingOpen: boolean;
+  /** When the player confirmed being 18 or older on the first launch, ms since 1970. */
+  ageConfirmedAt: number | null;
+  confirmAge: () => void;
   setLanguage: (language: LanguagePreference) => void;
   setTheme: (theme: ThemePreference) => void;
   setHaptics: (on: boolean) => void;
@@ -27,6 +30,8 @@ export const useSettings = create<SettingsState>()(
       theme: 'neon',
       haptics: true,
       sizingOpen: true,
+      ageConfirmedAt: null,
+      confirmAge: () => set({ ageConfirmedAt: Date.now() }),
       setLanguage: (language) => set({ language }),
       setTheme: (theme) => set({ theme }),
       setHaptics: (haptics) => set({ haptics }),
@@ -36,7 +41,13 @@ export const useSettings = create<SettingsState>()(
       name: 'settings',
       version: 1,
       storage: createJSONStorage(() => kvStorage),
-      partialize: ({ language, theme, haptics, sizingOpen }) => ({ language, theme, haptics, sizingOpen }),
+      partialize: ({ language, theme, haptics, sizingOpen, ageConfirmedAt }) => ({
+        language,
+        theme,
+        haptics,
+        sizingOpen,
+        ageConfirmedAt,
+      }),
     },
   ),
 );

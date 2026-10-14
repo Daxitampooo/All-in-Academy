@@ -64,12 +64,7 @@ export const PrivacySchema = z.object({
 
 export type Privacy = z.infer<typeof PrivacySchema>;
 
-export const DEFAULT_PRIVACY: Privacy = {
-  profileVisibility: 'everyone',
-  messages: 'friends',
-  friendRequests: 'everyone',
-  showOnline: true,
-};
+export { DEFAULT_PRIVACY } from './profile-defaults';
 
 /** The signed-in account as the app sees it. */
 export type Me = {
