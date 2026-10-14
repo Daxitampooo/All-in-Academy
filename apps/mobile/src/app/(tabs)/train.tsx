@@ -23,8 +23,9 @@ const drills: Row[] = [
   { id: 'pushfold', accent: 'magenta', href: '/drill/pushfold', pro: true },
 ];
 
-/** Analysis tools: Pro, and closed while a ranked match is on (ranked play comes with the server). */
+/** Analysis tools: the poker calculator is free, the rest is Pro and closes while a ranked match is on. */
 const tools: Row[] = [
+  { id: 'odds', accent: 'amber', href: '/odds' },
   { id: 'equity', accent: 'cyan', href: '/tools/equity', pro: true },
   { id: 'icm', accent: 'amber', href: '/tools/icm', pro: true },
   { id: 'pushfold', accent: 'magenta', href: '/tools/pushfold', pro: true },

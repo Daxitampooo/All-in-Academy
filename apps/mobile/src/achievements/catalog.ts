@@ -18,6 +18,8 @@ export type AchievementInputs = {
   cleanAnalyses: number;
   drillRight: number;
   preflopBestStreak: number;
+  /** Longest day streak. */
+  bestDayStreak: number;
   /** The table look or the avatar differs from the defaults. */
   customized: boolean;
 };
@@ -57,6 +59,7 @@ export const ACHIEVEMENTS: Achievement[] = [
   { id: 'river-master', rarity: 'rare', target: 25, progress: (s) => s.showdownWins },
   { id: 'cool-head', rarity: 'rare', target: 10, progress: (s) => s.cleanAnalyses },
   { id: 'veteran', rarity: 'rare', target: 1000, progress: (s) => s.hands },
+  { id: 'week-streak', rarity: 'rare', target: 7, progress: (s) => s.bestDayStreak },
 
   { id: 'regular', rarity: 'epic', target: 5, progress: (s) => league(s, 'regulars') },
   { id: 'pro', rarity: 'epic', target: 3, progress: (s) => league(s, 'pros') },
@@ -69,6 +72,7 @@ export const ACHIEVEMENTS: Achievement[] = [
   },
   { id: 'iron-nerves', rarity: 'epic', target: 20, progress: (s) => s.preflopBestStreak },
   { id: 'luck-tamer', rarity: 'epic', target: 1, progress: (s) => bot(s, 'lekha') },
+  { id: 'no-days-off', rarity: 'epic', target: 30, progress: (s) => s.bestDayStreak },
 
   { id: 'master', rarity: 'legendary', target: botsInLeague('masters').length, progress: (s) => league(s, 'masters') },
   { id: 'neon-out', rarity: 'legendary', target: 1, progress: (s) => bot(s, 'neon') },

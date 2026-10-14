@@ -216,3 +216,19 @@ export function ShieldIcon({ color, size = 22 }: IconProps) {
     </Svg>
   );
 }
+
+/** Day streak: a flame. Filled once today counts. */
+export function FlameIcon({ color, size = 24, filled }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <Path
+        d="M12 21c-3.9 0-6.6-2.6-6.6-6.2 0-3.3 2.2-5.3 3.6-7.2.4 1.6 1.2 2.7 2.3 3.2-.2-3.3 1.2-5.9 3.6-7.6-.1 2.6 1 4.3 2.4 6 1.1 1.4 1.9 3 1.9 5.2C19.2 18.2 16.3 21 12 21Z"
+        stroke={color}
+        fill={filled ? color : 'none'}
+        fillOpacity={filled ? 0.25 : 0}
+        {...stroke}
+      />
+      <Path d="M12 18.4c-1.5 0-2.6-1-2.6-2.4 0-1.3.9-2.2 1.7-3.1.3 1 .9 1.5 1.6 1.7.9.4 1.9 1 1.9 2.1 0 1-1 1.7-2.6 1.7Z" stroke={color} {...stroke} />
+    </Svg>
+  );
+}

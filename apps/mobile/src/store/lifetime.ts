@@ -3,6 +3,8 @@ import { createJSONStorage, persist } from 'zustand/middleware';
 
 import { kvStorage } from '@/lib/storage';
 
+import { useStreak } from './streak';
+
 /** Counters over the player's whole time in the app, for achievements. They only go up. */
 type LifetimeState = {
   hands: number;
@@ -41,7 +43,11 @@ export const useLifetime = create<LifetimeState>()(
       preflopBestStreak: 0,
       addHand: (won) => set((s) => ({ hands: s.hands + 1, showdownWins: s.showdownWins + (won ? 1 : 0) })),
       addAnalysis: (clean) => set((s) => ({ analyses: s.analyses + 1, cleanAnalyses: s.cleanAnalyses + (clean ? 1 : 0) })),
-      addDrillAnswer: (right) => set((s) => (right ? { drillRight: s.drillRight + 1 } : s)),
+      addDrillAnswer: (right) => {
+        // Every trainer answer is a task for the day streak.
+        useStreak.getState().addAnswer();
+        set((s) => (right ? { drillRight: s.drillRight + 1 } : s));
+      },
       notePreflopStreak: (streak) => set((s) => (streak > s.preflopBestStreak ? { preflopBestStreak: streak } : s)),
       applyTotals: (totals) =>
         set((s) => {
