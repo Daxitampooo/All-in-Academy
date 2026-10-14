@@ -11,10 +11,9 @@ import { Screen } from '@/components/Screen';
 import { ToggleRow } from '@/components/ToggleRow';
 import { CATALOG, LOOK_CATEGORIES, type LookCategory, type LookItem, type Unlock } from '@/looks/catalog';
 import { effectiveSelection, isUnlocked, officialLook, resolveLook, type LookSelection } from '@/looks/resolve';
-import { beatenById, useBotProgress } from '@/store/botProgress';
+import { useUnlockProgress } from '@/looks/useUnlockProgress';
 import { unlockText as describeUnlock } from '@/profile/unlockText';
 import { useLook } from '@/store/look';
-import { usePro } from '@/store/pro';
 import { useTheme } from '@/theme/ThemeProvider';
 import { radius, space, withAlpha } from '@/theme/tokens';
 
@@ -24,13 +23,12 @@ export default function LooksScreen() {
   const { t } = useTranslation();
   const { colors, name: paletteName } = useTheme();
   const { selected, fourColor, choose, setFourColor } = useLook();
-  const beaten = beatenById(useBotProgress((s) => s.records));
-  const pro = usePro();
+  const progress = useUnlockProgress();
   const [category, setCategory] = useState<LookCategory>('felt');
   const [tried, setTried] = useState<Tried | null>(null);
   const [official, setOfficial] = useState(false);
 
-  const worn = useMemo(() => effectiveSelection(selected, beaten, pro), [beaten, pro, selected]);
+  const worn = useMemo(() => effectiveSelection(selected, progress), [progress, selected]);
   const lookFor = (selection: LookSelection) => resolveLook(selection, fourColor, paletteName);
   const shown = tried ? { ...worn, [tried.category]: tried.id } : worn;
   const previewLook = official ? officialLook(fourColor) : lookFor(shown);
@@ -39,11 +37,11 @@ export default function LooksScreen() {
 
   const itemName = (item: LookItem) => t(`looks.items.${item.category}.${item.id}`);
   const triedItem = tried ? CATALOG[tried.category].find((i) => i.id === tried.id) : undefined;
-  const triedLocked = !!triedItem && !isUnlocked(triedItem.unlock, beaten, pro);
+  const triedLocked = !!triedItem && !isUnlocked(triedItem.unlock, progress);
 
   const press = (item: LookItem) => {
     setOfficial(false);
-    if (isUnlocked(item.unlock, beaten, pro)) {
+    if (isUnlocked(item.unlock, progress)) {
       choose(item.category, item.id);
       setTried(null);
     } else {
@@ -100,7 +98,7 @@ export default function LooksScreen() {
 
       <View style={styles.grid}>
         {CATALOG[category].map((item) => {
-          const unlocked = isUnlocked(item.unlock, beaten, pro);
+          const unlocked = isUnlocked(item.unlock, progress);
           const isWorn = worn[category] === item.id;
           const status = isWorn ? t('looks.worn') : unlocked ? null : item.unlock.kind === 'pro' ? t('looks.proShort') : unlockText(item.unlock);
           return (

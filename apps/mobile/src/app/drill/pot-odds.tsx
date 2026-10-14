@@ -8,6 +8,7 @@ import { Button } from '@/components/Button';
 import { addAnswer, EMPTY_SCORE, ScoreBar } from '@/components/drills/ScoreBar';
 import { useDrillRng } from '@/components/drills/useDrillRng';
 import { Screen } from '@/components/Screen';
+import { useLifetime } from '@/store/lifetime';
 import { formatChips } from '@/lib/format';
 
 export default function PotOddsDrill() {
@@ -27,6 +28,7 @@ export default function PotOddsDrill() {
         answer={q.answer}
         explain={t('drills.potOdds.explain', { bet: formatChips(q.bet), pot: formatChips(q.pot), total: formatChips(q.pot + 2 * q.bet), need: q.need })}
         onAnswer={(right) => {
+          useLifetime.getState().addDrillAnswer(right);
           setScore((s) => addAnswer(s, right));
           setAnswered(true);
         }}

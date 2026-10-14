@@ -17,6 +17,12 @@ export type ProfileFields = {
 
 type ProfileState = ProfileFields & {
   avatar: AvatarSpec;
+  /** Id of the achievement whose title is shown under the nickname. */
+  title: string | null;
+  /** Show the title at the table. */
+  showTitle: boolean;
+  setTitle: (id: string | null) => void;
+  setShowTitle: (on: boolean) => void;
   saveFields: (fields: ProfileFields) => void;
   saveAvatar: (avatar: AvatarSpec) => void;
 };
@@ -34,6 +40,10 @@ export const useProfile = create<ProfileState>()(
       favoriteHand: null,
       style: null,
       avatar: DEFAULT_AVATAR,
+      title: null,
+      showTitle: true,
+      setTitle: (title) => set({ title }),
+      setShowTitle: (showTitle) => set({ showTitle }),
       saveFields: (fields) => set(fields),
       saveAvatar: (avatar) => set({ avatar }),
     }),
@@ -41,7 +51,16 @@ export const useProfile = create<ProfileState>()(
       name: 'profile',
       version: 1,
       storage: createJSONStorage(() => kvStorage),
-      partialize: ({ nickname, about, country, favoriteHand, style, avatar }) => ({ nickname, about, country, favoriteHand, style, avatar }),
+      partialize: ({ nickname, about, country, favoriteHand, style, avatar, title, showTitle }) => ({
+        nickname,
+        about,
+        country,
+        favoriteHand,
+        style,
+        avatar,
+        title,
+        showTitle,
+      }),
     },
   ),
 );

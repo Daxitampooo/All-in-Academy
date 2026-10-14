@@ -3,8 +3,8 @@ import type { Palette } from '@/theme/tokens';
 
 /**
  * Table cosmetics. Everything here is visual only and only the player sees it on their own screen; it
- * never changes the game. Some items are free, some open with progress (for now: beating bots; the
- * achievements of stage 6 will take over), some come with Pro.
+ * never changes the game. Some items are free, some open with progress (beating bots, achievements),
+ * some come with Pro.
  */
 
 export type LookCategory = 'felt' | 'room' | 'back' | 'deck' | 'chips' | 'neon';
@@ -17,6 +17,8 @@ export type Unlock =
   | { kind: 'league'; league: LeagueId; count: number }
   /** Beat one particular bot. */
   | { kind: 'bot'; botId: string }
+  /** Earn an achievement. */
+  | { kind: 'achievement'; id: string }
   | { kind: 'pro' };
 
 export type FeltPattern = 'none' | 'grain' | 'hex' | 'grid' | 'aurora';
@@ -90,7 +92,7 @@ export const ROOMS = items('room', [
   { id: 'void', unlock: FREE, style: (p) => ({ top: p.bg, bottom: p.bg, line: p.border, decor: 'none' }) },
   { id: 'synth', unlock: FREE, dark: true, style: () => ({ top: '#07070D', bottom: '#1A0830', line: '#FF2BD6', decor: 'grid' }) },
   { id: 'city', unlock: { kind: 'league', league: 'amateurs', count: 2 }, dark: true, style: () => ({ top: '#050814', bottom: '#101A33', line: '#00F0FF', decor: 'city' }) },
-  { id: 'stars', unlock: { kind: 'league', league: 'regulars', count: 3 }, dark: true, style: () => ({ top: '#03030A', bottom: '#0B0B22', line: '#EDEDF7', decor: 'stars' }) },
+  { id: 'stars', unlock: { kind: 'achievement', id: 'river-master' }, dark: true, style: () => ({ top: '#03030A', bottom: '#0B0B22', line: '#EDEDF7', decor: 'stars' }) },
   { id: 'sunset', unlock: PRO, dark: true, style: () => ({ top: '#12051C', bottom: '#3A0A2E', line: '#FF8A3D', decor: 'grid' }) },
   { id: 'deep', unlock: PRO, dark: true, style: () => ({ top: '#020B12', bottom: '#04233A', line: '#3DFFC5', decor: 'waves' }) },
 ]);
@@ -99,7 +101,7 @@ export const BACKS = items('back', [
   { id: 'neon', unlock: FREE, style: (p) => ({ base: p.surfaceRaised, line: p.cyan, accent: p.magenta, pattern: 'neon' }) },
   { id: 'red', unlock: FREE, style: () => ({ base: '#B3122E', line: '#FFFFFF', accent: '#FFD0D8', pattern: 'lattice' }) },
   { id: 'blue', unlock: FREE, style: () => ({ base: '#1546A8', line: '#FFFFFF', accent: '#CFE0FF', pattern: 'lattice' }) },
-  { id: 'stripes', unlock: { kind: 'league', league: 'novices', count: 3 }, style: () => ({ base: '#11111C', line: '#B6FF3B', accent: '#00F0FF', pattern: 'stripes' }) },
+  { id: 'stripes', unlock: { kind: 'achievement', id: 'warm-up' }, style: () => ({ base: '#11111C', line: '#B6FF3B', accent: '#00F0FF', pattern: 'stripes' }) },
   { id: 'club', unlock: { kind: 'league', league: 'amateurs', count: 3 }, style: () => ({ base: '#0B1420', line: '#00F0FF', accent: '#FF2BD6', pattern: 'club' }) },
   { id: 'gold', unlock: PRO, style: () => ({ base: '#1C1404', line: '#FFC23D', accent: '#FFE066', pattern: 'lattice' }) },
   { id: 'holo', unlock: PRO, style: () => ({ base: '#0E0E1A', line: '#00F0FF', accent: '#FF2BD6', pattern: 'holo' }) },
@@ -138,7 +140,7 @@ export const CHIPS = items('chips', [
   { id: 'cyan', unlock: FREE, style: (p) => ({ main: p.cyan, edge: p.cardFace, pattern: 'dashed' }) },
   { id: 'classic', unlock: FREE, style: () => ({ main: '#C8102E', edge: '#FFFFFF', pattern: 'stripes' }) },
   { id: 'lime', unlock: { kind: 'league', league: 'amateurs', count: 1 }, style: (p) => ({ main: p.lime, edge: p.onAccent, pattern: 'solid' }) },
-  { id: 'magenta', unlock: { kind: 'league', league: 'regulars', count: 2 }, style: (p) => ({ main: p.magenta, edge: p.cardFace, pattern: 'stripes' }) },
+  { id: 'magenta', unlock: { kind: 'achievement', id: 'cool-head' }, style: (p) => ({ main: p.magenta, edge: p.cardFace, pattern: 'stripes' }) },
   { id: 'gold', unlock: PRO, style: () => ({ main: '#E8B32E', edge: '#3A2A05', pattern: 'stripes' }) },
   { id: 'onyx', unlock: PRO, style: () => ({ main: '#1B1B26', edge: '#00F0FF', pattern: 'dashed' }) },
 ]);

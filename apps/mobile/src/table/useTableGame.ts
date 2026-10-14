@@ -20,6 +20,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { botIsReady, botsInLeague, type LeagueId } from '@/bots/catalog';
 import { useHands } from '@/store/hands';
+import { useLifetime } from '@/store/lifetime';
 // The only place outside the training module allowed to use it (checked in CI): offline practice matches.
 import {
   createTrainingBot,
@@ -174,6 +175,9 @@ function settle(id: string, hand: HandState, byEquity: boolean, rng: Rng, traine
 /** Keeps a finished hand in "My hands". */
 function saveHand(record: HandRecord, matchId: string, mode: TableMode, seats: SeatInfo[]) {
   const hand = record.hand;
+  const hero = hand.players[HERO]!;
+  const showdown = hand.events.some((e) => e.type === 'showdown');
+  useLifetime.getState().addHand(showdown && !hero.folded && record.won[HERO]! > 0);
   useHands.getState().add({
     id: record.id,
     matchId,
