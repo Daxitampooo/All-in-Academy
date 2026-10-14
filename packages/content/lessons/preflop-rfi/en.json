@@ -1,0 +1,74 @@
+{
+  "title": "Opening by position",
+  "summary": "Which hands to raise first from each 6-max seat.",
+  "blocks": {
+    "rfi": {
+      "text": "An **open-raise** (RFI, raise first in) means being the first to enter the pot with a raise after everyone before you folded. It's the core of preflop play:\n- A raise takes the **initiative** and can win the blinds right away.\n- Size: **2–2.5 BB**, about **3 BB** from the small blind against the big blind.\n- **Don't open-limp** (just call the big blind): you can't win the pot right away and you let the blinds in cheaply."
+    },
+    "utg": {
+      "caption": "UTG: pairs, strong suited broadways, AJo+ and KQo."
+    },
+    "hj": {
+      "caption": "HJ: adds A8s+, suited connectors and ATo, KJo, QJo."
+    },
+    "co": {
+      "caption": "CO: every suited ace, more suited kings and connectors."
+    },
+    "btn": {
+      "caption": "BTN: the widest range, with only the blinds behind."
+    },
+    "sb": {
+      "caption": "SB: wide, but out of position against the big blind, so a bit tighter than the button."
+    },
+    "use": {
+      "text": "How to use these charts:\n- Remember the **anchors**: the cut-off for pairs, suited aces and offsuit broadways in each seat.\n- Against very aggressive blinds open a little tighter, against passive ones wider.\n- These are **simplified teaching ranges**, not exact solver output. They're a good start, and the preflop trainer will help you learn them."
+    },
+    "q-a9o": {
+      "q": "A9o, everyone folds to you in UTG. What do you do?",
+      "options": [
+        "Raise",
+        "Fold",
+        "Limp"
+      ],
+      "explain": "A9o isn't in the UTG range: five players are behind you and you will often be dominated by better aces."
+    },
+    "q-kts": {
+      "q": "KTs in the cutoff, folded to you. What do you do?",
+      "options": [
+        "Raise",
+        "Fold",
+        "Limp"
+      ],
+      "explain": "KTs is in the CO range: a suited broadway that plays well in position."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "What is a normal open-raise size from the BTN?",
+      "options": [
+        "2–2.5 BB",
+        "5 BB",
+        "1 BB (a limp)"
+      ],
+      "explain": "The 6-max standard is 2–2.5 BB; you go bigger only over limpers."
+    },
+    "t2": {
+      "q": "Which seat opens the widest range?",
+      "options": [
+        "UTG",
+        "HJ",
+        "BTN"
+      ],
+      "explain": "On the button only the blinds are behind you and you're in position after the flop: the widest range."
+    },
+    "t3": {
+      "q": "Why don't players open-limp?",
+      "options": [
+        "It's not allowed",
+        "A limp can't win the pot right away and lets the blinds in cheaply",
+        "A limp costs more than a raise"
+      ],
+      "explain": "A raise can win the blinds uncontested and takes the initiative. A limp does neither."
+    }
+  }
+}

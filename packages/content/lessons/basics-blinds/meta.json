@@ -1,0 +1,49 @@
+{
+  "id": "basics-blinds",
+  "module": "basics",
+  "level": "beginner",
+  "free": true,
+  "minutes": 5,
+  "pass": 0.67,
+  "blocks": [
+    {
+      "id": "stakes",
+      "type": "text"
+    },
+    {
+      "id": "ante",
+      "type": "text"
+    },
+    {
+      "id": "sidepots",
+      "type": "text"
+    },
+    {
+      "id": "q-side",
+      "type": "quiz",
+      "answer": 1,
+      "options": 4
+    },
+    {
+      "id": "split",
+      "type": "text"
+    }
+  ],
+  "test": [
+    {
+      "id": "t1",
+      "answer": 1,
+      "options": 3
+    },
+    {
+      "id": "t2",
+      "answer": 0,
+      "options": 3
+    },
+    {
+      "id": "t3",
+      "answer": 2,
+      "options": 3
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "title": "Combinatorics and blockers",
+  "summary": "How many combos a hand has on a board, and how your cards remove them.",
+  "blocks": {
+    "count": {
+      "text": "How many combos a hand has when some cards are already seen:\n- **A pair**: with n cards of that rank left, n × (n − 1) / 2. All four left: 6 combos; one on the board: 3.\n- **Two different cards**: n₁ × n₂. AK with no aces or kings seen: 4 × 4 = 16; with one ace on the board: 3 × 4 = 12."
+    },
+    "sets": {
+      "labels": [
+        "Sets on this flop: KK, 88 and 33, 3 combos each, 9 in all"
+      ]
+    },
+    "blockers": {
+      "text": "**Blockers** are cards you hold, so your opponent can't. Holding an ace means fewer aces for them:\n- AA: 6 combos become **3**.\n- AK: 16 combos become **12**.\n\nBlockers help you choose bluffs: with the ace of the suit on a three-flush board, your opponent can't hold the nut flush and folds more often."
+    },
+    "use": {
+      "text": "Combinatorics tells you what your opponent holds more often. Example: on K-8-3 they bet big. They have 9 set combos, but 12 of AK and 12 of KQ (if you don't hold a king). So \"they bet because they have a set\" is less likely than it feels."
+    },
+    "q-aa": {
+      "q": "You hold As Kd. How many combos of AA can your opponent have?",
+      "options": [
+        "3",
+        "6",
+        "4"
+      ],
+      "explain": "Three aces are left: 3 × 2 / 2 = 3 combos."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "How many combos of AK are there with one ace on the board and no kings seen?",
+      "options": [
+        "16",
+        "12",
+        "9"
+      ],
+      "explain": "3 aces and 4 kings are left: 3 × 4 = 12."
+    },
+    "t2": {
+      "q": "How many combos of a set of eights are there on a K-8-3 flop?",
+      "options": [
+        "6",
+        "1",
+        "3"
+      ],
+      "explain": "One eight is on the board and three are left: 3 × 2 / 2 = 3."
+    },
+    "t3": {
+      "q": "Why is the ace of the suit a good blocker for a bluff on a three-flush board?",
+      "options": [
+        "Your opponent can't hold the nut flush",
+        "It makes your flush",
+        "It changes nothing"
+      ],
+      "explain": "With the ace in your hand they can't have the best flush, so they fold more often."
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "6max-100bb-rfi-UTG",
+  "format": "6max",
+  "stackBb": 100,
+  "spot": {
+    "type": "RFI",
+    "hero": "UTG"
+  },
+  "actions": {
+    "raise": {
+      "sizeBb": 2.5,
+      "range": "22+, ATs+, A5s-A4s, KTs+, QTs+, JTs, T9s, 98s, AJo+, KQo"
+    }
+  },
+  "free": true,
+  "source": "simplified-educational"
+}

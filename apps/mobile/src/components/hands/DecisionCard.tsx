@@ -1,7 +1,10 @@
 import type { DecisionReview, Grade } from '@pokerall/coach';
+import { COACH_LESSONS, lessonById } from '@pokerall/content';
+import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Pressable, StyleSheet, View } from 'react-native';
 
+import { lessonText, useContentLocale } from '@/academy/locale';
 import { AppText } from '@/components/AppText';
 import { formatDecimal } from '@/lib/format';
 import { useTheme } from '@/theme/ThemeProvider';
@@ -30,6 +33,9 @@ export function DecisionCard({ review, title, onShow, selected }: Props) {
   const { colors } = useTheme();
   const color = colors[GRADE_COLOR[review.grade]];
   const params = textParams(review);
+  const locale = useContentLocale();
+  const lessonId = COACH_LESSONS[review.lesson];
+  const lesson = lessonId ? lessonById(lessonId) : undefined;
   return (
     <Pressable
       onPress={onShow}
@@ -74,11 +80,22 @@ export function DecisionCard({ review, title, onShow, selected }: Props) {
             </AppText>
           ) : null}
         </View>
-        <View style={[styles.lesson, { borderColor: colors.border }]}>
-          <AppText variant="caption" tone="muted">
-            {t('coach.lesson', { name: t(`coach.lessons.${review.lesson}`) })}
-          </AppText>
-        </View>
+        {lesson ? (
+          <Pressable
+            onPress={() => router.push({ pathname: '/lesson/[id]', params: { id: lesson.id } })}
+            accessibilityRole="link"
+            style={({ pressed }) => [styles.lesson, styles.lessonLink, { borderColor: colors.cyan, backgroundColor: pressed ? withAlpha(colors.cyan, 0.15) : 'transparent' }]}>
+            <AppText variant="caption" strong tone="cyan">
+              {t('coach.lessonOpen', { name: lessonText(lesson, locale).title })}
+            </AppText>
+          </Pressable>
+        ) : (
+          <View style={[styles.lesson, { borderColor: colors.border }]}>
+            <AppText variant="caption" tone="muted">
+              {t('coach.lesson', { name: t(`coach.lessons.${review.lesson}`) })}
+            </AppText>
+          </View>
+        )}
       </View>
     </Pressable>
   );
@@ -117,6 +134,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: space.md,
+  },
+  lessonLink: {
+    borderStyle: 'solid',
   },
   lesson: {
     alignSelf: 'flex-start',

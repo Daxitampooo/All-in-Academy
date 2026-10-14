@@ -1,0 +1,16 @@
+{
+  "id": "demo-notation",
+  "format": "6max",
+  "stackBb": 100,
+  "spot": {
+    "type": "demo",
+    "hero": "any"
+  },
+  "actions": {
+    "raise": {
+      "range": "77+, ATs+, KJo+"
+    }
+  },
+  "free": true,
+  "source": "simplified-educational"
+}

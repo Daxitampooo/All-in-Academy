@@ -1,0 +1,53 @@
+{
+  "title": "Limpers and the iso-raise",
+  "summary": "How to play when someone has already limped.",
+  "blocks": {
+    "limpers": {
+      "text": "A limper is a player who just called the big blind. They usually hold a medium hand they didn't want to raise or fold. Against limpers, the best play with good hands is an **iso-raise**: a raise to play heads-up, in position, against the limper's weak range."
+    },
+    "size": {
+      "text": "Iso-raise size: **3 BB + 1 BB per limper**. Out of position (from the blinds) add one more BB.\n\nExample: two players limped and you're on the button: raise to 3 + 2 = 5 BB. From the small blind in the same spot: 6 BB."
+    },
+    "overlimp": {
+      "text": "What to do with other hands:\n- **Strong hands** (eights and up, good aces, broadways): iso-raise.\n- **Small pairs and suited connectors**: you can overlimp in position, see a cheap flop and try to hit a set or a straight.\n- **Weak offsuit hands**: fold.\n- In the **big blind** after limps, checking is free, but raise your strong hands."
+    },
+    "q-size": {
+      "q": "Two players limp and you have AQo on the button. How big is the iso-raise?",
+      "options": [
+        "To 3 BB",
+        "To 5 BB",
+        "To 10 BB"
+      ],
+      "explain": "3 BB + 1 BB for each of the two limpers = 5 BB."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "Why iso-raise?",
+      "options": [
+        "To play heads-up against a weak limper, in position",
+        "To see the flop cheaper",
+        "To show weakness"
+      ],
+      "explain": "An iso-raise cuts out the others and leaves you against the limper's weak range, usually in position."
+    },
+    "t2": {
+      "q": "One limper, you're in the small blind with TT. How big is the raise?",
+      "options": [
+        "To 3 BB",
+        "To 4 BB",
+        "To 5 BB"
+      ],
+      "explain": "3 BB + 1 BB for the limper + 1 BB for being out of position = 5 BB."
+    },
+    "t3": {
+      "q": "What do you do with 65s on the button after two limps?",
+      "options": [
+        "Always raise",
+        "Overlimp: a cheap flop in position",
+        "Always fold"
+      ],
+      "explain": "A suited connector in position plays well in a multiway pot, with chances to make a straight or flush."
+    }
+  }
+}

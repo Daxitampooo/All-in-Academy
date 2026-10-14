@@ -34,36 +34,125 @@
   },
   "academy": {
     "title": "Academy",
-    "subtitle": "Short lessons with interactive charts and a quiz at the end.",
-    "tracks": {
+    "subtitle": "Short lessons with interactive diagrams and a test at the end. Everything works offline.",
+    "overall": "Lessons passed: {{done}} of {{total}}",
+    "start": "Start with the first lesson",
+    "continue": "Continue",
+    "allDone": "Every lesson available is passed. New modules are on the way.",
+    "levelHint": {
+      "beginner": "From scratch",
+      "intermediate": "For practice",
+      "advanced": "For strong players"
+    },
+    "modules": {
       "basics": {
         "title": "Basics",
-        "body": "Hand rankings, rules, streets, blinds and antes."
+        "body": "Hold'em rules, hand rankings, blinds and antes, reading the board."
       },
       "positions": {
         "title": "Positions",
-        "body": "Every seat at 6-max and 9-max tables, and why acting last wins more."
+        "body": "Names of the seats and why playing in position wins more."
       },
-      "ranges": {
-        "title": "Ranges",
-        "body": "The 13×13 grid, opening ranges for each position, combos and blockers."
-      },
-      "sizing": {
-        "title": "Bet sizing",
-        "body": "Preflop opens and 3-bets, c-bet sizes for dry and wet boards."
+      "preflop": {
+        "title": "Preflop",
+        "body": "Starting hands, opening by position, limpers, 3-bets and blind defence."
       },
       "math": {
-        "title": "Poker math",
-        "body": "Outs, pot odds, equity, EV and minimum defense frequency."
+        "title": "Math",
+        "body": "Outs, pot odds, EV, implied odds and counting combos."
       },
-      "strategy": {
-        "title": "Strategy",
-        "body": "Board texture, bluffing, ICM and adjusting to opponents."
+      "postflop": {
+        "title": "Postflop",
+        "body": "Board texture, c-bets, value bets, bluffs and check-raises."
       },
-      "glossary": {
-        "title": "Glossary",
-        "body": "Every poker term explained in English and Russian."
+      "reads": {
+        "title": "Reading opponents",
+        "body": "Player types, stats and how to exploit each type."
+      },
+      "mindset": {
+        "title": "Mindset and bankroll",
+        "body": "Tilt, variance, bankroll management and reviewing sessions."
+      },
+      "theory": {
+        "title": "Theory",
+        "body": "Ranges, MDF, polarization, GTO versus exploit."
+      },
+      "tournaments": {
+        "title": "Tournaments",
+        "body": "Tournament stages, push/fold, ICM, the bubble and the final table."
+      },
+      "cash": {
+        "title": "Cash games",
+        "body": "Deep stacks, rake and table selection."
+      },
+      "shorthanded": {
+        "title": "Heads-up and 6-max",
+        "body": "Wide ranges and aggression at short tables."
       }
+    },
+    "lessonsDone": "Lessons: {{done}} of {{total}}",
+    "partPro": "Some lessons are Pro",
+    "pro": "Pro",
+    "notFound": "No such lesson.",
+    "minutes_one": "{{count}} minute",
+    "minutes_other": "{{count}} minutes",
+    "best": "Best score: {{pct}}%",
+    "passedBadge": "Passed",
+    "proLesson": "This lesson comes with Pro",
+    "proLessonBody": "Above is the start of the lesson. All of it opens with the Pro subscription, which arrives with accounts.",
+    "quiz": "Question",
+    "right": "Right!",
+    "wrong": "Not quite.",
+    "test": {
+      "title": "Test",
+      "intro": "{{count}} questions. To pass the lesson, get at least {{pct}}% right.",
+      "question": "Question {{n}} of {{total}}",
+      "continue": "Next",
+      "finish": "See the result",
+      "passed": "Lesson passed!",
+      "failed": "Not passed yet",
+      "score": "Right answers: {{right}} of {{total}}",
+      "need": "You need at least {{pct}}%. Read the lesson again and retry.",
+      "next": "Next: {{title}}",
+      "again": "Take the test again"
+    },
+    "blocks": {
+      "chance": "{{pct}}% of hands"
+    },
+    "range": {
+      "share": "{{action}}: {{pct}}% of hands",
+      "cell": "{{action}} {{pct}}%",
+      "tapHint": "Tap a cell to see the hand and its frequencies."
+    },
+    "actions": {
+      "raise": "Raise",
+      "3bet": "3-bet",
+      "call": "Call",
+      "allin": "All-in",
+      "limp": "Limp",
+      "fold": "Fold"
+    },
+    "potOdds": {
+      "sizes": {
+        "quarter": "¼ pot",
+        "third": "⅓ pot",
+        "half": "½ pot",
+        "twoThirds": "⅔ pot",
+        "threeQuarters": "¾ pot",
+        "pot": "Pot",
+        "overbet": "1.5 pots",
+        "double": "2 pots"
+      },
+      "result": "Equity needed: {{need}}%",
+      "legend": "Pot {{pot}} + bet {{bet}} + your call {{bet}} = {{total}}",
+      "formula": "Call {{bet}} / final pot {{total}}"
+    },
+    "glossary": {
+      "title": "Glossary",
+      "body": "Poker terms in English and Russian, with search and links to lessons.",
+      "search": "Find a term",
+      "nothing": "Nothing found.",
+      "lesson": "Lesson: {{title}}"
     }
   },
   "train": {
@@ -72,15 +161,23 @@
     "drills": {
       "preflop": {
         "title": "Preflop trainer",
-        "body": "Get a hand and a position, choose fold, call or raise, see the correct play."
+        "body": "A seat and a hand: open-raise or fold. Missed hands come back until you get them right."
       },
       "potOdds": {
         "title": "Pot odds quiz",
-        "body": "Decide whether a call is profitable before the timer runs out."
+        "body": "A pot and a bet: how much equity a call needs to pay."
       },
       "daily": {
         "title": "Daily challenge",
         "body": "Ten new spots every day and a leaderboard for the best score."
+      },
+      "outs": {
+        "title": "Count the outs",
+        "body": "A flop with a draw: how many cards make a straight or a flush, and your odds."
+      },
+      "showdown": {
+        "title": "Which hand wins",
+        "body": "Two hands and a board: who takes the pot, and when it is a split."
       }
     }
   },
@@ -1730,7 +1827,8 @@
       "raiseOk": "The raise is justified: your equity (≈{{eq}}%) would cover a call anyway.",
       "raiseBluff": "A bluff raise with a weak hand (≈{{eq}}%) is expensive: players who bet rarely fold.",
       "missedRaise": "With a hand this strong (≈{{eq}}%) on the river, raise: a call leaves value behind."
-    }
+    },
+    "lessonOpen": "Open the lesson: {{name}}"
   },
   "handNames": {
     "high-card": "High card",
@@ -1744,5 +1842,51 @@
     "quads": "Quads",
     "straight-flush": "Straight flush",
     "royal-flush": "Royal flush"
+  },
+  "drills": {
+    "score": "Right: {{right}} of {{total}}",
+    "streak": "Streak: {{n}}",
+    "left": "Left today: {{left}} of {{total}}",
+    "next": "Next",
+    "right": "Right!",
+    "wrong": "Wrong",
+    "repeatNote": "This hand comes back in a few questions until you get it right.",
+    "limitTitle": "Today's free hands are used up",
+    "limitBody": "Free gives {{total}} hands a day, new ones after midnight. Pot odds, outs and showdown quizzes have no limit. Pro has no limit in any trainer.",
+    "preflop": {
+      "title": "Preflop trainer",
+      "subtitle": "6-max, 100 BB. Folded to you: open-raise or fold?",
+      "situation": "You are in the {{seat}}, folded to you.",
+      "fold": "Fold",
+      "raise": "Raise 2.5 BB",
+      "mixed": "A borderline hand: both moves are fine",
+      "explain": "From the {{seat}} about {{share}}% of hands are opened. {{hand}} in the reference range: raised {{pct}}% of the time."
+    },
+    "potOdds": {
+      "title": "Pot odds quiz",
+      "subtitle": "How much equity a call needs to pay.",
+      "question": "The pot is {{pot}} and the opponent bets {{bet}}. How much equity does a call need?",
+      "explain": "Call {{bet}} / final pot ({{pot}} + 2 × {{bet}} = {{total}}) ≈ {{need}}%."
+    },
+    "outs": {
+      "title": "Count the outs",
+      "subtitle": "Flop, you have a draw. How many cards make a straight or a flush?",
+      "hand": "Your hand",
+      "flop": "Flop",
+      "question": "How many outs to a straight or a flush?",
+      "explain": "{{outs}} outs. Chance to hit on the turn ≈{{turn}}%, by the river ≈{{river}}%. Rule of 2 and 4: ×2 ≈ {{rule2}}%, ×4 ≈ {{rule4}}%.",
+      "list_one": "{{count}} out:",
+      "list_other": "{{count}} outs:"
+    },
+    "showdown": {
+      "title": "Which hand wins",
+      "subtitle": "Showdown on a full board: who takes the pot?",
+      "board": "Board",
+      "hand": "Hand {{n}}",
+      "split": "Split",
+      "question": "Who wins?",
+      "explain": "Hand {{n}} wins: {{winner}} against \"{{loser}}\".",
+      "explainSplit": "A split: both have the same best five ({{name}})."
+    }
   }
 }

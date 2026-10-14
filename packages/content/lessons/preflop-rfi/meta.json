@@ -1,0 +1,72 @@
+{
+  "id": "preflop-rfi",
+  "module": "preflop",
+  "level": "intermediate",
+  "free": true,
+  "minutes": 7,
+  "pass": 0.67,
+  "blocks": [
+    {
+      "id": "rfi",
+      "type": "text"
+    },
+    {
+      "id": "utg",
+      "type": "range",
+      "range": "6max-100bb-rfi-UTG"
+    },
+    {
+      "id": "hj",
+      "type": "range",
+      "range": "6max-100bb-rfi-HJ"
+    },
+    {
+      "id": "co",
+      "type": "range",
+      "range": "6max-100bb-rfi-CO"
+    },
+    {
+      "id": "btn",
+      "type": "range",
+      "range": "6max-100bb-rfi-BTN"
+    },
+    {
+      "id": "sb",
+      "type": "range",
+      "range": "6max-100bb-rfi-SB"
+    },
+    {
+      "id": "use",
+      "type": "text"
+    },
+    {
+      "id": "q-a9o",
+      "type": "quiz",
+      "answer": 1,
+      "options": 3
+    },
+    {
+      "id": "q-kts",
+      "type": "quiz",
+      "answer": 0,
+      "options": 3
+    }
+  ],
+  "test": [
+    {
+      "id": "t1",
+      "answer": 0,
+      "options": 3
+    },
+    {
+      "id": "t2",
+      "answer": 2,
+      "options": 3
+    },
+    {
+      "id": "t3",
+      "answer": 1,
+      "options": 3
+    }
+  ]
+}

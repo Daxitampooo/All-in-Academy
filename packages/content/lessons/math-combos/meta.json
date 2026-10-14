@@ -1,0 +1,52 @@
+{
+  "id": "math-combos",
+  "module": "math",
+  "level": "intermediate",
+  "free": false,
+  "minutes": 7,
+  "pass": 0.67,
+  "blocks": [
+    {
+      "id": "count",
+      "type": "text"
+    },
+    {
+      "id": "sets",
+      "type": "cards",
+      "rows": [
+        "| Kh 8h 3c"
+      ]
+    },
+    {
+      "id": "blockers",
+      "type": "text"
+    },
+    {
+      "id": "use",
+      "type": "text"
+    },
+    {
+      "id": "q-aa",
+      "type": "quiz",
+      "answer": 0,
+      "options": 3
+    }
+  ],
+  "test": [
+    {
+      "id": "t1",
+      "answer": 1,
+      "options": 3
+    },
+    {
+      "id": "t2",
+      "answer": 2,
+      "options": 3
+    },
+    {
+      "id": "t3",
+      "answer": 0,
+      "options": 3
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "title": "Positions at the table",
+  "summary": "The names of the seats at 6-max and 9-max tables.",
+  "blocks": {
+    "intro": {
+      "text": "Positions are counted from the button, not from the player: after every hand all positions move one seat. The names below are what players use worldwide."
+    },
+    "six": {
+      "caption": "6-max: UTG (under the gun), HJ (hijack), CO (cutoff), BTN (button), SB and BB (the blinds)."
+    },
+    "nine": {
+      "caption": "9-max: UTG+1, MP (middle position) and LJ (lojack) come before the hijack."
+    },
+    "groups": {
+      "text": "Positions fall into groups:\n- **Early**: UTG, UTG+1, with many players still to act behind you.\n- **Middle**: MP, LJ, HJ.\n- **Late**: CO and BTN, with only the blinds behind you.\n- **The blinds**: SB and BB, who have chips in already but act first after the flop."
+    },
+    "hu": {
+      "caption": "Heads-up: the button is also the small blind. It acts first before the flop and last after it."
+    },
+    "q-last": {
+      "q": "Who acts last after the flop if everyone is still in?",
+      "options": [
+        "UTG",
+        "The small blind",
+        "The big blind",
+        "The button"
+      ],
+      "explain": "After the flop the first player left of the button starts and the button acts last. That's why it is the best seat at the table."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "At 6-max, which seat is directly to the right of the button?",
+      "options": [
+        "HJ",
+        "CO",
+        "UTG"
+      ],
+      "explain": "The 6-max order is UTG, HJ, CO, BTN, SB, BB. The cutoff sits right before the button."
+    },
+    "t2": {
+      "q": "Which group is UTG in?",
+      "options": [
+        "Early positions",
+        "Late positions",
+        "The blinds"
+      ],
+      "explain": "UTG acts first preflop with the most players behind: an early position."
+    },
+    "t3": {
+      "q": "Heads-up, who acts first before the flop?",
+      "options": [
+        "The big blind",
+        "Both at once",
+        "The button, who is also the small blind"
+      ],
+      "explain": "Heads-up, the button posts the small blind and acts first before the flop, then last after it."
+    }
+  }
+}

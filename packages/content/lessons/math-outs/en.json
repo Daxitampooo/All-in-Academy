@@ -1,0 +1,61 @@
+{
+  "title": "Outs and the rule of 2 and 4",
+  "summary": "How many cards improve your hand and how to estimate your chances fast.",
+  "blocks": {
+    "outs": {
+      "text": "**Outs** are the unseen cards that will most likely make your hand the best one. The common cases:\n- **Flush draw** (four cards of a suit): 13 − 4 = **9 outs**.\n- **Open-ended straight draw** (OESD, four in a row): **8 outs**, four on each end.\n- **Gutshot** (missing a card in the middle): **4 outs**.\n- **Two overcards** to the board: up to **6 outs**, but dirty ones.\n- **Combo draw** (flush plus straight): up to **15 outs**."
+    },
+    "draws": {
+      "labels": [
+        "Flush draw: 9 outs (any heart)",
+        "Open-ended straight draw: 8 outs (any 5 or 10)",
+        "Gutshot: 4 outs (any 10)",
+        "Combo draw: 15 outs (9 hearts + 3 queens and 3 sevens that are not hearts)"
+      ]
+    },
+    "rule": {
+      "text": "The **rule of 2 and 4** turns outs into percentages:\n- On the **flop**, when you will see both remaining cards (say, someone is all-in): outs × **4**.\n- With one card to come (flop to turn, or turn to river): outs × **2**.\n\nA flush draw on the flop: 9 × 4 ≈ 36% (exactly 35%). On the turn: 9 × 2 ≈ 18% (exactly 19.6%).\n\nWith many outs the rule of 4 overshoots: subtract (outs − 8). For 15 outs: 60 − 7 = 53% (exactly 54%)."
+    },
+    "q-turn": {
+      "q": "You have an open-ended straight draw on the turn. Your chance to hit on the river is about?",
+      "options": [
+        "8%",
+        "16%",
+        "32%"
+      ],
+      "explain": "8 outs × 2 = 16% (exactly 8/46 ≈ 17.4%). Only one card is left, so ×2, not ×4."
+    },
+    "dirty": {
+      "text": "Not all outs are clean. A card may give you a hand but make your opponent's even stronger: your straight loses to a flush when three cards of a suit are on the board. Count such outs partly or not at all. Overcards are especially dirty: pairing your ace only helps when your opponent doesn't hold a better pair."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "How many outs does a flush draw have?",
+      "options": [
+        "4",
+        "8",
+        "9"
+      ],
+      "explain": "A suit has 13 cards, four are already seen: 9 are left."
+    },
+    "t2": {
+      "q": "A flush draw on the flop, and your opponent moves all-in. Your chance to make the flush by the river is about?",
+      "options": [
+        "35%",
+        "18%",
+        "9%"
+      ],
+      "explain": "Turn and river are both to come: 9 × 4 ≈ 36%, exactly 35%."
+    },
+    "t3": {
+      "q": "How many outs does a gutshot have?",
+      "options": [
+        "2",
+        "4",
+        "8"
+      ],
+      "explain": "You need one specific rank, and there are four of it in the deck."
+    }
+  }
+}

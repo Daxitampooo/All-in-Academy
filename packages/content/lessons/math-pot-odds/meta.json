@@ -1,0 +1,50 @@
+{
+  "id": "math-pot-odds",
+  "module": "math",
+  "level": "intermediate",
+  "free": true,
+  "minutes": 7,
+  "pass": 0.67,
+  "blocks": [
+    {
+      "id": "odds",
+      "type": "text"
+    },
+    {
+      "id": "calc",
+      "type": "potOdds",
+      "bet": 0.5
+    },
+    {
+      "id": "table",
+      "type": "text"
+    },
+    {
+      "id": "compare",
+      "type": "text"
+    },
+    {
+      "id": "q-pot",
+      "type": "quiz",
+      "answer": 2,
+      "options": 4
+    }
+  ],
+  "test": [
+    {
+      "id": "t1",
+      "answer": 1,
+      "options": 3
+    },
+    {
+      "id": "t2",
+      "answer": 0,
+      "options": 3
+    },
+    {
+      "id": "t3",
+      "answer": 2,
+      "options": 3
+    }
+  ]
+}

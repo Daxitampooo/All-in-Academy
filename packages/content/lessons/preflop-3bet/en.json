@@ -1,0 +1,56 @@
+{
+  "title": "3-bets and 4-bets",
+  "summary": "Why re-raise, with which hands and how big.",
+  "blocks": {
+    "why": {
+      "text": "A **3-bet** re-raises an open-raise, a **4-bet** re-raises a 3-bet. You re-raise for two reasons:\n- **Value**: with QQ+ or AK you are ahead of your opponent's range and want a bigger pot.\n- **As a bluff**: your opponent will often fold, and when they call your hand still has chances. Bluffs use hands with blockers and playability: A5s-A2s, suited connectors.\n\nHands in the middle (medium pairs, AJo, KQo) usually just call."
+    },
+    "size": {
+      "text": "Sizes:\n- **3-bet in position**: about **3×** the open: to 7.5 BB over a 2.5 BB open.\n- **3-bet out of position**: about **4×**: to 10 BB.\n- **4-bet**: about **2.2–2.5×** the 3-bet: to 17–19 BB over a 7.5 BB 3-bet.\n\nOut of position you go bigger so your opponent sees fewer flops with the positional edge."
+    },
+    "btn-vs-co": {
+      "caption": "Button against a cutoff open: pink is a 3-bet, blue a call."
+    },
+    "vs3bet": {
+      "text": "Facing a 3-bet:\n- **Value 4-bet**: QQ+, AK.\n- **Call**: medium and high pairs, AQs, suited broadways, especially in position.\n- **Bluff 4-bet**: rarely, with ace blockers such as A5s.\n- Everything else **folds**: your open was wide, and most of it can't profitably continue."
+    },
+    "q-size": {
+      "q": "The cutoff opens to 2.5 BB and you have KK in the big blind. How big is the 3-bet?",
+      "options": [
+        "To 5 BB",
+        "To 7.5 BB",
+        "To 10 BB"
+      ],
+      "explain": "Out of position a 3-bet is about 4× the open: 2.5 × 4 = 10 BB."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "Which hand is the better 3-bet bluff?",
+      "options": [
+        "A5s",
+        "AJo",
+        "72o"
+      ],
+      "explain": "A5s blocks aces (fewer AA and AK for your opponent) and can make straights and flushes when called."
+    },
+    "t2": {
+      "q": "You're on the button and the CO opens to 2.5 BB. How big is your 3-bet in position?",
+      "options": [
+        "To 5 BB",
+        "To 7.5 BB",
+        "To 12 BB"
+      ],
+      "explain": "In position a 3-bet is about 3× the open: 2.5 × 3 = 7.5 BB."
+    },
+    "t3": {
+      "q": "What do you usually do with KJo facing a 3-bet?",
+      "options": [
+        "4-bet",
+        "Call",
+        "Fold"
+      ],
+      "explain": "KJo is often dominated by a 3-betting range (AK, AJ, KQ) and plays badly: usually a fold."
+    }
+  }
+}

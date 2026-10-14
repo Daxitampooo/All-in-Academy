@@ -1,0 +1,17 @@
+{
+  "id": "6max-100bb-rfi-CO",
+  "format": "6max",
+  "stackBb": 100,
+  "spot": {
+    "type": "RFI",
+    "hero": "CO"
+  },
+  "actions": {
+    "raise": {
+      "sizeBb": 2.3,
+      "range": "22+, A2s+, K7s+, Q8s+, J8s+, T8s+, 97s+, 86s+, 76s, 65s, A9o+, KTo+, QTo+, JTo"
+    }
+  },
+  "free": true,
+  "source": "simplified-educational"
+}

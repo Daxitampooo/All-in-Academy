@@ -1,0 +1,80 @@
+{
+  "id": "basics-hands",
+  "module": "basics",
+  "level": "beginner",
+  "free": true,
+  "minutes": 6,
+  "pass": 0.67,
+  "blocks": [
+    {
+      "id": "intro",
+      "type": "text"
+    },
+    {
+      "id": "ranking",
+      "type": "handRanking"
+    },
+    {
+      "id": "kicker",
+      "type": "text"
+    },
+    {
+      "id": "kickers",
+      "type": "cards",
+      "rows": [
+        "As Kd | Ac 7h 4s 9d 2c",
+        "Ah Qc | Ac 7h 4s 9d 2c"
+      ]
+    },
+    {
+      "id": "wheel",
+      "type": "text"
+    },
+    {
+      "id": "wheel-cards",
+      "type": "cards",
+      "rows": [
+        "| Ad 2c 3h 4s 5d",
+        "| Ts Jc Qd Kh Ah"
+      ]
+    },
+    {
+      "id": "ties",
+      "type": "text"
+    },
+    {
+      "id": "q-flush",
+      "type": "quiz",
+      "answer": 1,
+      "options": 3
+    },
+    {
+      "id": "q-board-pairs",
+      "type": "quiz",
+      "answer": 0,
+      "options": 3
+    }
+  ],
+  "test": [
+    {
+      "id": "t1",
+      "answer": 0,
+      "options": 3
+    },
+    {
+      "id": "t2",
+      "answer": 1,
+      "options": 3
+    },
+    {
+      "id": "t3",
+      "answer": 2,
+      "options": 3
+    },
+    {
+      "id": "t4",
+      "answer": 1,
+      "options": 3
+    }
+  ]
+}

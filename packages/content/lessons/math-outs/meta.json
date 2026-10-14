@@ -1,0 +1,55 @@
+{
+  "id": "math-outs",
+  "module": "math",
+  "level": "intermediate",
+  "free": true,
+  "minutes": 7,
+  "pass": 0.67,
+  "blocks": [
+    {
+      "id": "outs",
+      "type": "text"
+    },
+    {
+      "id": "draws",
+      "type": "cards",
+      "rows": [
+        "Ah 5h | Kh 9h 2c",
+        "9c 8d | 7s 6h 2c",
+        "9c 8d | Js 7h 2c",
+        "Jh Th | 9h 8h 2c"
+      ]
+    },
+    {
+      "id": "rule",
+      "type": "text"
+    },
+    {
+      "id": "q-turn",
+      "type": "quiz",
+      "answer": 1,
+      "options": 3
+    },
+    {
+      "id": "dirty",
+      "type": "text"
+    }
+  ],
+  "test": [
+    {
+      "id": "t1",
+      "answer": 2,
+      "options": 3
+    },
+    {
+      "id": "t2",
+      "answer": 0,
+      "options": 3
+    },
+    {
+      "id": "t3",
+      "answer": 1,
+      "options": 3
+    }
+  ]
+}

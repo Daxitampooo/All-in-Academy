@@ -1,0 +1,60 @@
+{
+  "id": "basics-board",
+  "module": "basics",
+  "level": "beginner",
+  "free": true,
+  "minutes": 5,
+  "pass": 0.67,
+  "blocks": [
+    {
+      "id": "best5",
+      "type": "text"
+    },
+    {
+      "id": "one-card",
+      "type": "cards",
+      "rows": [
+        "Ah 3c | Kh 9h 6h 2h Jd",
+        "7s 7d | 8c 9d Tc Jh Qs"
+      ]
+    },
+    {
+      "id": "nuts",
+      "type": "text"
+    },
+    {
+      "id": "nuts-example",
+      "type": "cards",
+      "rows": [
+        "| Ks Qs 7d 4s 2c"
+      ]
+    },
+    {
+      "id": "q-nuts",
+      "type": "quiz",
+      "answer": 2,
+      "options": 3
+    },
+    {
+      "id": "counterfeit",
+      "type": "text"
+    }
+  ],
+  "test": [
+    {
+      "id": "t1",
+      "answer": 0,
+      "options": 3
+    },
+    {
+      "id": "t2",
+      "answer": 1,
+      "options": 3
+    },
+    {
+      "id": "t3",
+      "answer": 2,
+      "options": 3
+    }
+  ]
+}

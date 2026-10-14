@@ -1,0 +1,57 @@
+{
+  "title": "Blinds, antes and the pot",
+  "summary": "Forced bets, side pots and why everything is counted in BB.",
+  "blocks": {
+    "stakes": {
+      "text": "Stakes are named by the blinds: \"50/100\" means a small blind of 50 and a big blind of 100. To compare games at different stakes, everything is counted in **big blinds (BB)**: a 10,000 stack with a 100 big blind is 100 BB, a bet of 300 is 3 BB.\n\n100 BB is the standard stack in cash games. In tournaments the blinds go up, so stacks in BB get shorter over time."
+    },
+    "ante": {
+      "text": "An **ante** is a small forced bet from every player before the deal (in tournaments the big blind often pays it for everyone). Antes make the pot bigger before anyone acts, so stealing the blinds pays more and players open wider."
+    },
+    "sidepots": {
+      "text": "When a player goes all-in for less than the others are betting, they can only win the part of the pot they matched: the **main pot**. Whatever the others put in beyond that goes to a **side pot** that only they can win.\n\nExample: A is all-in for 2,000, B and C put in 5,000 each. The main pot is 6,000 (2,000 from each) and any of the three can win it. The side pot is 6,000 (3,000 from B and from C) and only B and C play for it."
+    },
+    "q-side": {
+      "q": "A is all-in for 1,000, B and C put in 4,000 each. How big is the side pot?",
+      "options": [
+        "3,000",
+        "6,000",
+        "9,000",
+        "12,000"
+      ],
+      "explain": "The main pot is 1,000 from each of the three (3,000). On top of that B and C put in 3,000 each: a 6,000 side pot."
+    },
+    "split": {
+      "text": "In a **split pot** the pot is shared equally between equal hands. If the chips don't divide evenly, the odd chip goes to the first winner left of the button."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "Blinds are 50/100 and the stack is 6,000. How many BB is that?",
+      "options": [
+        "6 BB",
+        "60 BB",
+        "600 BB"
+      ],
+      "explain": "6,000 / 100 = 60 big blinds."
+    },
+    "t2": {
+      "q": "A player is all-in with a short stack. Which pot can they win?",
+      "options": [
+        "Only the main pot",
+        "The main pot and the side pot",
+        "Only the side pot"
+      ],
+      "explain": "You can only win the part you matched. The side pot is for the players who put in more."
+    },
+    "t3": {
+      "q": "What is the ante for?",
+      "options": [
+        "To limit bets",
+        "To replace the blinds",
+        "To make the pot bigger before anyone acts"
+      ],
+      "explain": "Antes add chips before the deal, so the pot is worth fighting for and the game gets more active."
+    }
+  }
+}

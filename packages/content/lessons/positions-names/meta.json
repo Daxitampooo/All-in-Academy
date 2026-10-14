@@ -1,0 +1,79 @@
+{
+  "id": "positions-names",
+  "module": "positions",
+  "level": "beginner",
+  "free": true,
+  "minutes": 5,
+  "pass": 0.67,
+  "blocks": [
+    {
+      "id": "intro",
+      "type": "text"
+    },
+    {
+      "id": "six",
+      "type": "table",
+      "seats": 6,
+      "highlight": [
+        "UTG",
+        "HJ",
+        "CO",
+        "BTN",
+        "SB",
+        "BB"
+      ]
+    },
+    {
+      "id": "nine",
+      "type": "table",
+      "seats": 9,
+      "highlight": [
+        "UTG",
+        "UTG+1",
+        "MP",
+        "LJ",
+        "HJ",
+        "CO",
+        "BTN",
+        "SB",
+        "BB"
+      ]
+    },
+    {
+      "id": "groups",
+      "type": "text"
+    },
+    {
+      "id": "hu",
+      "type": "table",
+      "seats": 2,
+      "highlight": [
+        "BTN",
+        "BB"
+      ]
+    },
+    {
+      "id": "q-last",
+      "type": "quiz",
+      "answer": 3,
+      "options": 4
+    }
+  ],
+  "test": [
+    {
+      "id": "t1",
+      "answer": 1,
+      "options": 3
+    },
+    {
+      "id": "t2",
+      "answer": 0,
+      "options": 3
+    },
+    {
+      "id": "t3",
+      "answer": 2,
+      "options": 3
+    }
+  ]
+}

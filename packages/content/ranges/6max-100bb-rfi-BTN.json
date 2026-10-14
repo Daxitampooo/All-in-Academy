@@ -1,0 +1,17 @@
+{
+  "id": "6max-100bb-rfi-BTN",
+  "format": "6max",
+  "stackBb": 100,
+  "spot": {
+    "type": "RFI",
+    "hero": "BTN"
+  },
+  "actions": {
+    "raise": {
+      "sizeBb": 2.2,
+      "range": "22+, A2s+, K2s+, Q4s+, J6s+, T6s+, 96s+, 85s+, 75s+, 64s+, 54s, A2o+, K7o+, Q9o+, J9o+, T9o, 98o"
+    }
+  },
+  "free": true,
+  "source": "simplified-educational"
+}

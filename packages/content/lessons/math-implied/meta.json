@@ -1,0 +1,45 @@
+{
+  "id": "math-implied",
+  "module": "math",
+  "level": "intermediate",
+  "free": false,
+  "minutes": 6,
+  "pass": 0.67,
+  "blocks": [
+    {
+      "id": "implied",
+      "type": "text"
+    },
+    {
+      "id": "example",
+      "type": "text"
+    },
+    {
+      "id": "reverse",
+      "type": "text"
+    },
+    {
+      "id": "q-implied",
+      "type": "quiz",
+      "answer": 1,
+      "options": 3
+    }
+  ],
+  "test": [
+    {
+      "id": "t1",
+      "answer": 0,
+      "options": 3
+    },
+    {
+      "id": "t2",
+      "answer": 2,
+      "options": 3
+    },
+    {
+      "id": "t3",
+      "answer": 1,
+      "options": 3
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "title": "EV: the expected value of a decision",
+  "summary": "How to work out what a decision wins on average.",
+  "blocks": {
+    "ev": {
+      "text": "**EV** (expected value) is what a decision wins on average if you repeat it many times. Multiply each outcome by its probability and add them up.\n\n**EV of a call = equity × pot after the call − the call**\n\nExample: the pot is 100, the bet 50, your equity 30%. The call's EV = 0.3 × 200 − 50 = **+10**. Calling pays, even though you lose most of the time."
+    },
+    "fold": {
+      "text": "**The EV of a fold is 0.** The chips you already put in the pot are no longer yours, so there is nothing to \"protect\". Decisions are compared only by what they win or lose from now on."
+    },
+    "bluff": {
+      "text": "A bluff has its own rule. If you bet B into a pot of P with no chance of winning at showdown, the bluff pays when your opponent folds more often than\n\n**B / (P + B)**\n\nA bet of 75 into 100 has to make them fold more than 75 / 175 ≈ **43%** of the time."
+    },
+    "results": {
+      "text": "A good decision can lose the hand and a bad one can win it. That's **variance**. Over time the winner is whoever makes more positive-EV decisions. That's why the hand analysis in the app grades decisions, not results."
+    },
+    "q-ev": {
+      "q": "The pot is 100, the bet 100, your equity 40%. What is the call's EV?",
+      "options": [
+        "+20",
+        "−20",
+        "0"
+      ],
+      "explain": "0.4 × 300 − 100 = 120 − 100 = +20."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "What is the EV of a fold?",
+      "options": [
+        "Minus the chips you put in",
+        "Zero",
+        "The size of the pot"
+      ],
+      "explain": "After a fold you win or lose nothing more: EV 0. What you put in earlier is no longer yours."
+    },
+    "t2": {
+      "q": "A pot-sized bet as a bluff. How often must your opponent fold?",
+      "options": [
+        "More than 25%",
+        "More than 33%",
+        "More than 50%"
+      ],
+      "explain": "B / (P + B) = P / 2P = 50%."
+    },
+    "t3": {
+      "q": "You made a positive-EV call and lost. Was it a mistake?",
+      "options": [
+        "No, that's variance",
+        "Yes, since you lost",
+        "Depends on the amount"
+      ],
+      "explain": "Decisions are judged by EV, not by the result of one hand."
+    }
+  }
+}

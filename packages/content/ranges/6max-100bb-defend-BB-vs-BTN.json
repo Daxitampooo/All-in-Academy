@@ -1,0 +1,21 @@
+{
+  "id": "6max-100bb-defend-BB-vs-BTN",
+  "format": "6max",
+  "stackBb": 100,
+  "spot": {
+    "type": "vs-open",
+    "hero": "BB",
+    "villain": "BTN"
+  },
+  "actions": {
+    "raise": {
+      "sizeBb": 10,
+      "range": "TT+, AQs+, AKo, A5s-A4s, K9s:0.5, 76s:0.5"
+    },
+    "call": {
+      "range": "22-99, A6s-AJs, A3s-A2s, K2s-K8s, KTs+, Q4s+, J6s+, T6s+, 96s+, 85s+, 75s+, 64s+, 54s, A2o-AJo, AQo, K8o+, Q9o+, J9o+, T8o+, 98o, 87o, K9s:0.5, 76s:0.5"
+    }
+  },
+  "free": false,
+  "source": "simplified-educational"
+}
