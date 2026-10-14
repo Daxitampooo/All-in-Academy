@@ -8,11 +8,11 @@ import { QuizBlock } from './QuizBlock';
 import { RangeMatrix } from './RangeMatrix';
 import { RichText } from './RichText';
 
-/** One block of a lesson, drawn by its type with its texts. */
-export function LessonBlock({ block, text }: { block: BlockMeta; text: BlockText }) {
+/** One block of a lesson, drawn by its type with its texts. `onTerm` opens a tapped glossary term. */
+export function LessonBlock({ block, text, onTerm }: { block: BlockMeta; text: BlockText; onTerm?: (id: string) => void }) {
   switch (block.type) {
     case 'text':
-      return <RichText text={text.text ?? ''} />;
+      return <RichText text={text.text ?? ''} onTerm={onTerm} />;
     case 'handRanking':
       return <HandRankingBlock caption={text.caption} />;
     case 'cards':

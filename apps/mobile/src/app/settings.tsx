@@ -22,7 +22,7 @@ export default function SettingsScreen() {
   const { t } = useTranslation();
   const { colors } = useTheme();
   const { language, theme, haptics, setLanguage, setTheme, setHaptics } = useSettings();
-  const { level, tableHints, coach, setLevel, setTableHints, setCoach } = useSettings();
+  const { level, tableHints, coach, lessonTerms, setLevel, setTableHints, setCoach, setLessonTerms } = useSettings();
   const me = useAccount((s) => s.me);
 
   const goBack = () => (router.canGoBack() ? router.back() : router.replace('/profile'));
@@ -58,6 +58,7 @@ export default function SettingsScreen() {
       />
       <ToggleRow title={t('settings.tableHints')} hint={t('settings.tableHintsHint')} value={tableHints} onChange={setTableHints} />
       <ToggleRow title={t('settings.coach')} hint={t('settings.coachHint')} value={coach} onChange={setCoach} />
+      <ToggleRow title={t('settings.lessonTerms')} hint={t('settings.lessonTermsHint')} value={lessonTerms} onChange={setLessonTerms} />
       <OptionGroup
         title={t('settings.language')}
         options={languageOptions.map((value) => ({ value, label: t(`settings.languages.${value}`) }))}
