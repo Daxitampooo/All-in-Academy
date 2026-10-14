@@ -12,3 +12,6 @@ apps/mobile/dist/
 
 # filled server settings
 deploy/.env
+
+# preflop equity generator chunks
+packages/poker-engine/scripts/.equity-part-*.json
