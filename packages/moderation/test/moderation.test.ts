@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { checkAbout, checkNickname, findProfanity, hasProfanity } from '../src';
+import { checkAbout, checkNickname, findProfanity, hasProfanity, nicknameKey } from '../src';
 
 describe('profanity', () => {
   it('finds swearing in Russian and English', () => {
@@ -67,5 +67,14 @@ describe('about', () => {
     expect(checkAbout('заходите на pokerroom.com')).toBe('link');
     expect(checkAbout('пишите в t.me/somechat')).toBe('link');
     expect(checkAbout('мой инст @pokerguy')).toBe('link');
+  });
+});
+
+describe('nicknameKey', () => {
+  it('treats case, separators and Cyrillic lookalikes as the same nickname', () => {
+    expect(nicknameKey('Neon_Fox')).toBe('neonfox');
+    expect(nicknameKey('NЕОN.fox')).toBe('neonfox');
+    expect(nicknameKey('Лиса')).toBe('лиca');
+    expect(nicknameKey('Fox-1')).not.toBe(nicknameKey('Fox-2'));
   });
 });

@@ -34,3 +34,31 @@ export function checkAbout(text: string): AboutProblem | null {
   if (LINK.test(text)) return 'link';
   return null;
 }
+
+/** Cyrillic letters that look like Latin ones, so "Nеon" written with a Cyrillic е can't pose as "Neon". */
+const LOOKALIKES: Record<string, string> = {
+  а: 'a',
+  в: 'b',
+  е: 'e',
+  ё: 'e',
+  к: 'k',
+  м: 'm',
+  н: 'h',
+  о: 'o',
+  р: 'p',
+  с: 'c',
+  т: 't',
+  у: 'y',
+  х: 'x',
+};
+
+/**
+ * The form nicknames are compared in for uniqueness: no case, no separators, Cyrillic lookalikes as Latin.
+ * "Neon_Fox", "neonfox" and "NЕОN.fox" are the same nickname.
+ */
+export function nicknameKey(nickname: string): string {
+  return [...nickname.trim().toLowerCase()]
+    .filter((ch) => !'_.-'.includes(ch))
+    .map((ch) => LOOKALIKES[ch] ?? ch)
+    .join('');
+}
