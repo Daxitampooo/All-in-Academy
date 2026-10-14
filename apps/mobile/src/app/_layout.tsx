@@ -15,6 +15,7 @@ import { Unbounded_700Bold } from '@expo-google-fonts/unbounded/700Bold';
 import { SyncManager } from '@/account/SyncManager';
 import { AchievementWatcher } from '@/achievements/AchievementWatcher';
 import { AgeGate } from '@/components/AgeGate';
+import { StreakToast } from '@/components/streak/StreakToast';
 import { LevelPicker } from '@/components/LevelPicker';
 // Importing i18n also initializes it before the first screen renders.
 import i18n, { deviceLanguage } from '@/i18n';
@@ -107,6 +108,7 @@ function Navigation() {
           <Stack.Screen name="drill/pushfold" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="drill/daily" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="drill/texture" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="odds" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="tools/equity" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="tools/icm" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="tools/pushfold" options={{ animation: 'slide_from_right' }} />
@@ -116,6 +118,7 @@ function Navigation() {
         </Stack>
       </View>
       <AchievementWatcher />
+      <StreakToast />
       <SyncManager />
       {!ageConfirmed ? <AgeGate /> : !levelChosen ? <LevelPicker /> : null}
     </ThemeProvider>

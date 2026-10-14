@@ -8,6 +8,7 @@ import { useHands } from '@/store/hands';
 import { LIFETIME_COUNTERS, useLifetime } from '@/store/lifetime';
 import { useLook } from '@/store/look';
 import { useProfile } from '@/store/profile';
+import { useStreak } from '@/store/streak';
 
 /**
  * Turns the phone's progress into a sync request and the server's answer back into the stores.
@@ -92,6 +93,7 @@ export function applySyncState(state: SyncState): void {
  */
 export function resetProgress({ hands, others }: { hands: boolean; others: boolean }): void {
   useLifetime.getState().reset();
+  useStreak.getState().reset();
   useBotProgress.getState().reset();
   useAchievementLog.getState().reset();
   useAcademy.getState().reset();

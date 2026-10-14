@@ -12,6 +12,7 @@ import { useBotProgress } from '@/store/botProgress';
 import { useLifetime } from '@/store/lifetime';
 import { useLook } from '@/store/look';
 import { useProfile } from '@/store/profile';
+import { useStreak } from '@/store/streak';
 import { useTheme } from '@/theme/ThemeProvider';
 import { radius, space, withAlpha } from '@/theme/tokens';
 
@@ -19,7 +20,7 @@ import { achievementById } from './catalog';
 import { RARITY_COLOR } from './rarity';
 import { useAchievements } from './useAchievements';
 
-const STORES = [useBotProgress, useAcademy, useLifetime, useLook, useProfile, useAchievementLog];
+const STORES = [useBotProgress, useAcademy, useLifetime, useLook, useProfile, useStreak, useAchievementLog];
 
 function subscribe(onChange: () => void) {
   const unsubs = STORES.map((s) => s.persist.onFinishHydration(onChange));

@@ -1,3 +1,4 @@
+import { longestStreak } from '@pokerall/shared/client';
 import { useMemo } from 'react';
 
 import { DEFAULT_LOOK, LOOK_CATEGORIES } from '@/looks/catalog';
@@ -8,6 +9,7 @@ import { useLifetime } from '@/store/lifetime';
 import { useLook } from '@/store/look';
 import { usePro } from '@/store/pro';
 import { useProfile } from '@/store/profile';
+import { useStreak } from '@/store/streak';
 
 import { ACHIEVEMENTS, type Achievement, type AchievementInputs } from './catalog';
 
@@ -21,6 +23,7 @@ export function useAchievements(): AchievementStatus[] {
   const selected = useLook((s) => s.selected);
   const avatar = useProfile((s) => s.avatar);
   const pro = usePro();
+  const days = useStreak((s) => s.days);
   return useMemo(() => {
     const inputs: AchievementInputs = {
       beaten: beatenById(records),
@@ -33,6 +36,7 @@ export function useAchievements(): AchievementStatus[] {
       cleanAnalyses: lifetime.cleanAnalyses,
       drillRight: lifetime.drillRight,
       preflopBestStreak: lifetime.preflopBestStreak,
+      bestDayStreak: longestStreak(days),
       customized:
         LOOK_CATEGORIES.some((c) => selected[c] !== DEFAULT_LOOK[c]) || JSON.stringify(avatar) !== JSON.stringify(DEFAULT_AVATAR),
     };
@@ -40,5 +44,5 @@ export function useAchievements(): AchievementStatus[] {
       const value = Math.min(achievement.target, achievement.progress(inputs));
       return { achievement, value, done: value >= achievement.target };
     });
-  }, [avatar, lessons, lifetime, pro, records, selected]);
+  }, [avatar, days, lessons, lifetime, pro, records, selected]);
 }

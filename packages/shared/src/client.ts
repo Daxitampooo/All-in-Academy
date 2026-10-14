@@ -7,3 +7,4 @@ export * from './merge';
 export type { IdentityKind, Locale, Tokens } from './auth';
 export type { Avatar, Me, Privacy, Profile, StoredProfile } from './profile';
 export { DEFAULT_PRIVACY } from './profile-defaults';
+export * from './streak';

@@ -1,3 +1,4 @@
+import { currentStreak, dayDone, longestStreak } from '@pokerall/shared/client';
 import { router, type Href } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Pressable, StyleSheet, View } from 'react-native';
@@ -12,9 +13,11 @@ import { Screen } from '@/components/Screen';
 import { PlayingCard } from '@/components/table/PlayingCard';
 import { countryName, flagOf } from '@/profile/countries';
 import { showCards } from '@/profile/hands';
+import { useToday } from '@/components/streak/useToday';
 import { useHandStats } from '@/hands/stats';
 import { useAccount } from '@/store/account';
 import { useBotProgress } from '@/store/botProgress';
+import { useStreak } from '@/store/streak';
 import { useProfile } from '@/store/profile';
 import { useTheme } from '@/theme/ThemeProvider';
 import { radius, space } from '@/theme/tokens';
@@ -25,6 +28,8 @@ export default function ProfileScreen() {
   const profile = useProfile();
   const records = useBotProgress((s) => s.records);
   const me = useAccount((s) => s.me);
+  const streakDays = useStreak((s) => s.days);
+  const today = useToday();
 
   const all = Object.values(records);
   const handStats = useHandStats();
@@ -39,6 +44,11 @@ export default function ProfileScreen() {
     { label: t('profile.stats.hands'), value: String(handStats.hands) },
     { label: t('analysis.stats.vpip.name'), value: percent(handStats.vpip) },
     { label: t('analysis.stats.pfr.name'), value: percent(handStats.pfr) },
+  ];
+  const streakStats = [
+    { label: t('profile.stats.streak'), value: String(currentStreak(streakDays, today)) },
+    { label: t('profile.stats.bestStreak'), value: String(longestStreak(streakDays)) },
+    { label: t('profile.stats.daysDone'), value: String(Object.keys(streakDays).filter((k) => dayDone(streakDays, k)).length) },
   ];
 
   const links: { label: string; hint: string; href: Href; icon: React.ReactNode }[] = [
@@ -109,7 +119,7 @@ export default function ProfileScreen() {
         </AppText>
       </View>
 
-      {[stats, playStats].map((row, r) => (
+      {[stats, playStats, streakStats].map((row, r) => (
         <View key={r} style={styles.stats}>
           {row.map((stat) => (
             <View key={stat.label} style={[styles.stat, { backgroundColor: colors.surface, borderColor: colors.border }]}>

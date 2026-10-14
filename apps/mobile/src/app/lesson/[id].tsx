@@ -13,6 +13,7 @@ import { LockIcon } from '@/components/icons';
 import { Screen } from '@/components/Screen';
 import { useAcademy } from '@/store/academy';
 import { usePro } from '@/store/pro';
+import { useStreak } from '@/store/streak';
 import { useTheme } from '@/theme/ThemeProvider';
 import { radius, space, withAlpha } from '@/theme/tokens';
 
@@ -73,7 +74,10 @@ export default function LessonScreen() {
           <LessonTest
             lesson={lesson}
             text={text}
-            onFinish={(score, passed) => recordTest(lesson.id, score, passed)}
+            onFinish={(score, passed) => {
+              recordTest(lesson.id, score, passed);
+              useStreak.getState().addLessonTest();
+            }}
             nextTitle={next ? lessonText(next, locale).title : null}
             onNext={() => next && router.replace({ pathname: '/lesson/[id]', params: { id: next.id } })}
           />

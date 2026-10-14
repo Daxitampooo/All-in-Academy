@@ -30,6 +30,11 @@
     "casual": {
       "title": "Casual tables",
       "body": "Play other people for free practice chips."
+    },
+    "odds": {
+      "title": "Poker calculator",
+      "body": "Deal cards onto a table yourself, street by street, and see each player’s chance to win the pot.",
+      "open": "Open"
     }
   },
   "academy": {
@@ -204,6 +209,10 @@
       "pushfold": {
         "title": "Push/fold charts",
         "body": "Who pushes and who calls with a short stack, by stack, seat, table size and ante."
+      },
+      "odds": {
+        "title": "Poker calculator",
+        "body": "A table where you deal the cards: every player’s chance to win the pot, street by street. Free."
       }
     },
     "dailyDone": "Today: {{right}} of {{total}}",
@@ -219,7 +228,10 @@
       "matches": "Bot matches",
       "wins": "Wins",
       "beaten": "Bots beaten",
-      "hands": "Hands played"
+      "hands": "Hands played",
+      "streak": "Day streak",
+      "bestStreak": "Best streak",
+      "daysDone": "Days counted"
     },
     "comingStats": "Rating, rank and tournaments arrive with online play.",
     "edit": "Edit profile",
@@ -2119,6 +2131,14 @@
       "academic": {
         "name": "Academic",
         "desc": "Pass every Academy lesson open to you."
+      },
+      "week-streak": {
+        "name": "Seven Straight",
+        "desc": "Keep a 7-day streak."
+      },
+      "no-days-off": {
+        "name": "No Days Off",
+        "desc": "Keep a 30-day streak."
       }
     }
   },
@@ -2362,6 +2382,56 @@
         "title": "Pro",
         "body": "A clean table without hints, analysis tools and stats."
       }
+    }
+  },
+  "odds": {
+    "title": "Poker calculator",
+    "subtitle": "Deal the cards yourself or tap any card to choose it. The chances to win the pot update after every card.",
+    "players": "Players",
+    "boardCard": "Board card {{n}}",
+    "seatCard": "Player {{n}} card",
+    "player": "P{{n}}",
+    "folded": "Fold",
+    "foldHint": "Folds this player",
+    "unfoldHint": "Brings the player back into the hand",
+    "boardRule": "The board is a flop (3 cards), a turn or a river, from the left.",
+    "needPlayers": "At least two players in the hand.",
+    "counting": "Counting…",
+    "street": {
+      "0": "Before the flop",
+      "3": "Flop",
+      "4": "Turn",
+      "5": "River: the hand is decided"
+    },
+    "next": {
+      "deal": "Deal the cards",
+      "flop": "Flop",
+      "turn": "Turn",
+      "river": "River",
+      "again": "New hand"
+    },
+    "clear": "Clear",
+    "help": "The percent is the share of the pot a player wins on average if the hand is played to the river with no more folds. Tap a player’s percent to fold them.",
+    "helpRandom": "Players without cards hold random hands. The percent is the share of the pot each wins on average by the river. Tap a player’s percent to fold them."
+  },
+  "streak": {
+    "title_one": "{{count}}-day streak",
+    "title_other": "{{count}}-day streak",
+    "start": "Start a day streak",
+    "today": "Today: {{done}} of {{goal}} tasks",
+    "best_one": "Best: {{count}} day",
+    "best_other": "Best: {{count}} days",
+    "left_one": "Solve {{count}} more task to count the day.",
+    "left_other": "Solve {{count}} more tasks to count the day.",
+    "keep_one": "Solve {{count}} more task today to keep your streak.",
+    "keep_other": "Solve {{count}} more tasks today to keep your streak.",
+    "doneToday": "Today counts. Come back tomorrow to keep the streak going.",
+    "how": "A task is any answer in a trainer or the daily challenge. A lesson test counts as {{lesson}} tasks.",
+    "openHint": "Opens the trainers",
+    "toast": {
+      "title": "Day counted!",
+      "body_one": "{{count}}-day streak",
+      "body_other": "{{count}}-day streak"
     }
   }
 }
