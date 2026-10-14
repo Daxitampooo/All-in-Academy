@@ -1,0 +1,51 @@
+{
+  "id": "postflop-texture",
+  "module": "postflop",
+  "level": "intermediate",
+  "free": true,
+  "minutes": 6,
+  "pass": 0.67,
+  "blocks": [
+    {
+      "id": "dry-wet",
+      "type": "text"
+    },
+    {
+      "id": "examples",
+      "type": "cards",
+      "rows": [
+        "| Ks 7d 2c",
+        "| Jh Th 8c",
+        "| 8s 8d 3c",
+        "| Qh 7h 3h"
+      ]
+    },
+    {
+      "id": "advantage",
+      "type": "text"
+    },
+    {
+      "id": "q-wet",
+      "type": "quiz",
+      "answer": 0,
+      "options": 3
+    }
+  ],
+  "test": [
+    {
+      "id": "t1",
+      "answer": 0,
+      "options": 3
+    },
+    {
+      "id": "t2",
+      "answer": 1,
+      "options": 3
+    },
+    {
+      "id": "t3",
+      "answer": 0,
+      "options": 3
+    }
+  ]
+}

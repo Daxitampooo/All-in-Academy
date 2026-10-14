@@ -1,0 +1,50 @@
+{
+  "title": "SPR and planning the hand",
+  "summary": "The stack-to-pot ratio tells you which hands can play for the whole stack.",
+  "blocks": {
+    "what": {
+      "text": "**SPR** (stack-to-pot ratio) is the effective stack divided by the pot on the flop. With 90 BB each and 10 BB in the pot, SPR = 9.\n\nSPR tells you how many streets of betting are left and how strong a hand must be to play for the whole stack."
+    },
+    "levels": {
+      "text": "Rough guides:\n- **SPR up to 3** (for example after a 3-bet): top pair with a good kicker is already a hand to play for stacks.\n- **SPR 4–10**: top pair is a hand for one or two bets; for the whole stack you need two pair, a set or better.\n- **SPR above 10** (limped pots, deep stacks): with one pair keep the pot small; sets, straights and flushes gain value, and so do small pairs and suited connectors."
+    },
+    "q-spr": {
+      "q": "Stacks of 100 BB, 22 BB in the pot after a 3-bet, 89 BB left each. Roughly what SPR on the flop?",
+      "options": [
+        "4",
+        "1",
+        "10"
+      ],
+      "explain": "89 / 22 ≈ 4: a low SPR, where top pair with a good kicker already plays for stacks."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "How is SPR calculated?",
+      "options": [
+        "Effective stack / pot on the flop",
+        "Pot / bet",
+        "Stack / big blind"
+      ],
+      "explain": "SPR is the effective stack divided by the pot on the flop."
+    },
+    "t2": {
+      "q": "At SPR 2 you have top pair with a good kicker. Usually…",
+      "options": [
+        "Only check-call to the river",
+        "It is a hand to play for stacks",
+        "Fold to any bet"
+      ],
+      "explain": "At a low SPR, top pair is strong enough to get all-in."
+    },
+    "t3": {
+      "q": "Which hands benefit from a high SPR?",
+      "options": [
+        "None",
+        "One pair",
+        "Sets, straights, flushes"
+      ],
+      "explain": "The deeper the stacks relative to the pot, the more the very strong hands can win."
+    }
+  }
+}

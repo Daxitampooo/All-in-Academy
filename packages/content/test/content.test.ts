@@ -54,6 +54,12 @@ function checkRow(row: string) {
 }
 
 describe('lessons', () => {
+  it('the generated file lists match the folders (run `pnpm gen` after adding one)', () => {
+    const folders = Object.keys(import.meta.glob('../lessons/*/meta.json')).map((p) => p.split('/')[2]!);
+    expect(LESSON_FILES.map((f) => f.meta.id).sort()).toEqual(folders.sort());
+    expect(RANGE_FILES.length).toBe(Object.keys(import.meta.glob('../ranges/*.json')).length);
+  });
+
   it('every lesson file has a valid structure and complete texts in both languages', () => {
     for (const { meta: m, en, ru } of LESSON_FILES) {
       meta.parse(m);

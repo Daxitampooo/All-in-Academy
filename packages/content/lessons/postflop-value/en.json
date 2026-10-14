@@ -1,0 +1,58 @@
+{
+  "title": "Value betting",
+  "summary": "Betting to get called by worse: sizing, thin value, the river.",
+  "blocks": {
+    "idea": {
+      "text": "A **value bet** is a bet that gets called by worse hands more often than by better ones. The key question before betting: \"Which of the opponent's hands will call?\" If they are mostly worse, bet.\n\nA common beginner mistake is checking strong hands \"so as not to scare them off\". Most of the profit in poker comes from value bets, not bluffs."
+    },
+    "size": {
+      "text": "Value bet sizing:\n- Against a **calling station**, bet big (¾ pot or more): they call with almost anything.\n- Against a **careful** player, bet smaller (⅓–½ pot) so worse hands still call.\n- The **stronger your hand** and the more hands the opponent is willing to call with, the bigger the bet."
+    },
+    "thin": {
+      "labels": [
+        "A pair of aces with a weak kicker on the river: thin value against a passive opponent"
+      ]
+    },
+    "thin-text": {
+      "text": "**Thin value** is a bet with a medium hand that beats most of the hands that call but loses to some. The example above: a pair of aces with a ten gets called by A9, A7, eights and sixes, and loses to AK and AQ. If worse hands call more often than better ones, the bet makes money. Thin value works best in position and against passive players, who rarely raise as a bluff."
+    },
+    "q-river": {
+      "q": "River, you have the nut flush, and a calling station checks to you. What is better?",
+      "options": [
+        "A big bet",
+        "A minimum bet",
+        "Check so as not to scare them"
+      ],
+      "explain": "A calling station pays with one pair, so bet big with the nuts."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "When is a bet a value bet?",
+      "options": [
+        "When worse hands call more often than better ones",
+        "When you have the nuts",
+        "When the opponent will fold"
+      ],
+      "explain": "A value bet gets called by worse hands more often than by better ones."
+    },
+    "t2": {
+      "q": "Against whom should a value bet be bigger?",
+      "options": [
+        "A calling station",
+        "A nit",
+        "Anyone"
+      ],
+      "explain": "A calling station calls wide, so big bets earn more against them."
+    },
+    "t3": {
+      "q": "What matters most for thin value?",
+      "options": [
+        "Worse hands calling more often than better ones",
+        "Betting out of position",
+        "Having the nuts"
+      ],
+      "explain": "A thin bet makes money when most of the calling hands are worse."
+    }
+  }
+}

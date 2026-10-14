@@ -201,10 +201,54 @@
   },
   "tilt": {
     "term": "Tilt",
-    "definition": "Playing on emotion after bad luck, usually worse than normal."
+    "definition": "When emotions start making decisions for the player."
   },
   "bankroll": {
     "term": "Bankroll",
     "definition": "The chips or money set aside for playing. In this app, only play chips."
+  },
+  "texture": {
+    "term": "Board texture",
+    "definition": "How connected the board cards are: dry boards have few draws, wet ones many."
+  },
+  "spr": {
+    "term": "SPR",
+    "definition": "Stack-to-pot ratio on the flop: tells you which hands can play for the whole stack."
+  },
+  "thin-value": {
+    "term": "Thin value",
+    "definition": "A bet with a medium hand that gets called mostly by worse hands, sometimes by better ones."
+  },
+  "tag": {
+    "term": "TAG",
+    "definition": "Tight-aggressive player: plays few hands but bets and raises actively."
+  },
+  "lag": {
+    "term": "LAG",
+    "definition": "Loose-aggressive player: many hands and a lot of pressure."
+  },
+  "nit": {
+    "term": "Nit",
+    "definition": "A very tight player who waits for strong hands; their bets almost always mean strength."
+  },
+  "calling-station": {
+    "term": "Calling station",
+    "definition": "A loose-passive player who calls too often and rarely raises."
+  },
+  "vpip": {
+    "term": "VPIP",
+    "definition": "The share of hands where a player voluntarily puts chips in before the flop."
+  },
+  "pfr": {
+    "term": "PFR",
+    "definition": "The share of hands where a player raises before the flop."
+  },
+  "exploit": {
+    "term": "Exploit",
+    "definition": "A deviation from baseline strategy that punishes a specific opponent's mistakes."
+  },
+  "leak": {
+    "term": "Leak",
+    "definition": "A repeated mistake that steadily costs chips."
   }
 }

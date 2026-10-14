@@ -12,6 +12,6 @@ Academy content as data, with typed accessors and no UI:
 - `src/academy.ts` — levels → modules → lessons, `lessonById`, `nextLesson`, `rangeActions`, `glossary`,
   and `COACH_LESSONS`, which maps hand-analysis lesson ids to real lessons.
 
-Adding a lesson: create the folder with the three files, add its imports to `src/lessonFiles.ts` (Metro
-needs static imports) and its id to `LESSON_ORDER` in `src/academy.ts`. `pnpm test` checks the structure
+Adding a lesson: create the folder with the three files, run `pnpm gen` (it rewrites `src/lessonFiles.ts`
+and `src/rangeFiles.ts`: Metro needs static imports) and add the id to `LESSON_ORDER` in `src/academy.ts`. `pnpm test` checks the structure
 with zod, that both languages have every text, that card rows are real cards and every range parses.

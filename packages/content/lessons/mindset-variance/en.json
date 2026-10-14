@@ -1,0 +1,56 @@
+{
+  "title": "Variance and EV",
+  "summary": "Why correct play can lose, and how to judge decisions.",
+  "blocks": {
+    "idea": {
+      "text": "**Variance** is how results scatter around what is expected. In poker luck decides a single hand and even a session, but in the long run the player with better **EV** (expected value) decisions wins.\n\nExample: AA against KK before the flop wins about **82%** of the time. So in roughly one hand out of five the aces lose, and that is normal, not \"unfair\"."
+    },
+    "judge": {
+      "text": "How to judge your play:\n- Judge **decisions**, not results. A good call can lose and a bad one can win.\n- Look at **all-in EV**: how much you should have won by the odds when the chips went in. The hand analysis shows it.\n- Draw conclusions from a **large sample**: hundreds and thousands of hands, not one evening."
+    },
+    "beat": {
+      "labels": [
+        "Aces: 82% before the flop",
+        "The kings got there: it happens about 18% of the time"
+      ]
+    },
+    "q-ev": {
+      "q": "You called an all-in with 60% equity and lost. How do you rate the call?",
+      "options": [
+        "A mistake: you lost",
+        "It does not matter",
+        "Correct: it wins chips in the long run"
+      ],
+      "explain": "A decision with 60% equity where 50% was needed is profitable even if this hand was lost."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "What is variance?",
+      "options": [
+        "A mistake in play",
+        "Results scattering around what is expected",
+        "A kind of bet"
+      ],
+      "explain": "Variance is the swing in results caused by the luck of the cards."
+    },
+    "t2": {
+      "q": "What is the best way to judge your play?",
+      "options": [
+        "The result of one evening",
+        "One big hand",
+        "Decision quality over a large sample"
+      ],
+      "explain": "Short-term results say almost nothing about the quality of play."
+    },
+    "t3": {
+      "q": "AA against KK before the flop. How often do the kings win?",
+      "options": [
+        "Never",
+        "Half the time",
+        "About 18% of the time"
+      ],
+      "explain": "The aces win about 82%, the kings about 18%."
+    }
+  }
+}

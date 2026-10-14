@@ -1,0 +1,58 @@
+{
+  "title": "Board texture",
+  "summary": "Dry and wet boards: whom the flop suits better.",
+  "blocks": {
+    "dry-wet": {
+      "text": "**Board texture** is how connected the cards on the table are. It decides how many made hands and draws players have and how to bet.\n\n- A **dry** board: different suits, ranks far apart, for example K♠ 7♦ 2♣. Few draws: whoever is ahead now usually stays ahead.\n- A **wet** board: suits and ranks connect, for example J♥ T♥ 8♣. Lots of straight and flush draws, and the balance shifts card by card."
+    },
+    "examples": {
+      "labels": [
+        "Dry: K-7-2 rainbow",
+        "Wet: J-T-8 with two hearts",
+        "Paired: 8-8-3",
+        "Monotone: three hearts"
+      ]
+    },
+    "advantage": {
+      "text": "**Range advantage** is which player has more strong hands on this board. The preflop raiser holds more high cards and pairs (AA, KK, AK), so boards with an ace or a king, like K♠ 7♦ 2♣, favor them. A big blind call holds more middling and small hands, so boards like 8♠ 7♦ 6♣ suit it more often.\n\n**Nut advantage** is who has more of the very strongest hands (sets, straights). It lets that player bet big."
+    },
+    "q-wet": {
+      "q": "Which board is the wettest?",
+      "options": [
+        "9♥ 8♥ 6♣",
+        "K♣ K♦ 4♠",
+        "A♠ 7♦ 2♣"
+      ],
+      "explain": "9-8-6 with two hearts gives lots of straight draws (T7, 75, JT) and flush draws, so it is wet."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "Why is the next card less scary on a dry board?",
+      "options": [
+        "Few draws: the hand ahead now usually stays ahead",
+        "You cannot bet on a dry board",
+        "A dry board always means a split"
+      ],
+      "explain": "A dry board has almost no draws, so later cards rarely change who is ahead."
+    },
+    "t2": {
+      "q": "Board A♠ K♦ 4♣. Who usually has the range advantage?",
+      "options": [
+        "Nobody",
+        "The preflop raiser",
+        "The big blind caller"
+      ],
+      "explain": "The raiser holds more aces and kings (AA, KK, AK, AQ), so a high board is theirs."
+    },
+    "t3": {
+      "q": "What is the board Q♥ 7♥ 3♥ called?",
+      "options": [
+        "Monotone",
+        "Dry",
+        "Paired"
+      ],
+      "explain": "Three cards of one suit make a monotone board: anyone with a heart already has a flush draw."
+    }
+  }
+}

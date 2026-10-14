@@ -1,0 +1,41 @@
+{
+  "id": "mindset-review",
+  "module": "mindset",
+  "level": "intermediate",
+  "free": true,
+  "minutes": 5,
+  "pass": 0.67,
+  "blocks": [
+    {
+      "id": "why",
+      "type": "text"
+    },
+    {
+      "id": "how",
+      "type": "text"
+    },
+    {
+      "id": "q-review",
+      "type": "quiz",
+      "answer": 1,
+      "options": 3
+    }
+  ],
+  "test": [
+    {
+      "id": "t1",
+      "answer": 0,
+      "options": 3
+    },
+    {
+      "id": "t2",
+      "answer": 1,
+      "options": 3
+    },
+    {
+      "id": "t3",
+      "answer": 0,
+      "options": 3
+    }
+  ]
+}

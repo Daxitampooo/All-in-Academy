@@ -1,0 +1,50 @@
+{
+  "title": "How to review your hands",
+  "summary": "Reviewing after play is the fastest way to improve.",
+  "blocks": {
+    "why": {
+      "text": "At the table there is no time to think long. After playing you can calmly go over your decisions and find repeated mistakes, **leaks**. One fixed leak is often worth more than dozens of hours played."
+    },
+    "how": {
+      "text": "How to review:\n- While playing, flag tough hands **\"to review\"**.\n- Start with **big pots** and close decisions, not with every hand.\n- In the replayer, stop before each of your decisions and ask: \"What did I know at this point? Which hands could the opponent have?\"\n- Look at the **hand analysis**: where a decision is marked as an inaccuracy or a mistake, and why.\n- Write down **one leak** and work on it in the next sessions, rather than everything at once."
+    },
+    "q-review": {
+      "q": "Which hands should a review start with?",
+      "options": [
+        "All of them from the first",
+        "Big pots and close decisions",
+        "Only the ones you won"
+      ],
+      "explain": "Big pots and tough decisions affect results the most."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "What is a leak?",
+      "options": [
+        "A repeated mistake in your game",
+        "A strong hand",
+        "A river bet"
+      ],
+      "explain": "A leak is a habitual mistake that steadily costs chips."
+    },
+    "t2": {
+      "q": "What is the key question when reviewing a decision?",
+      "options": [
+        "What cards did the opponent really have?",
+        "What did I know then, and which hands could the opponent have?",
+        "Did I win the pot?"
+      ],
+      "explain": "A decision is judged by the information available when it was made."
+    },
+    "t3": {
+      "q": "How many leaks should you work on at once?",
+      "options": [
+        "One at a time",
+        "None",
+        "All of them"
+      ],
+      "explain": "Working on one leak at a time gives a visible result instead of spreading thin."
+    }
+  }
+}
