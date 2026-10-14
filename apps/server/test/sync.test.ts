@@ -8,7 +8,7 @@ beforeAll(async () => {
   t = await setup();
 });
 afterAll(async () => {
-  await t.close();
+  await t?.close();
 });
 
 const PHONE = 'phone-aaaaaaaaaaaaaaaa';

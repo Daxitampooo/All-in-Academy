@@ -4,6 +4,6 @@
   "tasks": {
     "typecheck": {},
     "lint": {},
-    "test": { "outputs": [] }
+    "test": { "outputs": [], "passThroughEnv": ["TEST_DATABASE_URL"] }
   }
 }

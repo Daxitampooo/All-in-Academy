@@ -9,7 +9,7 @@ beforeAll(async () => {
   t = await setup();
 });
 afterAll(async () => {
-  await t.close();
+  await t?.close();
 });
 
 async function rowsFor(userId: string): Promise<Record<string, number>> {
