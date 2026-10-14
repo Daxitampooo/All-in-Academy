@@ -171,7 +171,7 @@
       },
       "daily": {
         "title": "Daily challenge",
-        "body": "Ten new spots every day and a leaderboard for the best score."
+        "body": "Ten new spots every day, the same for every player. The first run of the day counts; the leaderboard comes with online play."
       },
       "outs": {
         "title": "Count the outs",
@@ -184,6 +184,10 @@
       "pushfold": {
         "title": "Push/fold trainer",
         "body": "A short stack, a seat and a hand: all-in or fold, and call or fold against a push. Checked against the push/fold chart."
+      },
+      "texture": {
+        "title": "Board texture and c-bet",
+        "body": "The button opened, the big blind called. Whose flop is it, and which c-bet fits?"
       }
     },
     "toolsTitle": "Analysis tools",
@@ -201,7 +205,9 @@
         "title": "Push/fold charts",
         "body": "Who pushes and who calls with a short stack, by stack, seat, table size and ante."
       }
-    }
+    },
+    "dailyDone": "Today: {{right}} of {{total}}",
+    "dailyNew": "New spots today"
   },
   "profile": {
     "title": "Profile",
@@ -1941,6 +1947,67 @@
       "callCaption": "{{seat}} calling {{hero}}’s {{stack}} BB push.",
       "preparing": "Dealing the next hand…",
       "anteOn": "Ante 12.5% BB"
+    },
+    "daily": {
+      "title": "Daily challenge",
+      "subtitle": "{{date}}: ten spots, the same for everyone. The first run counts.",
+      "practiceSubtitle": "Another run: for practice, not counted.",
+      "practiceDone": "Practice run: {{right}} of {{total}}",
+      "back": "Back to the results",
+      "today": "Today",
+      "score": "{{right}} of {{total}}",
+      "comeBack": "New spots tomorrow.",
+      "best": "Best result",
+      "streak": "Days in a row",
+      "history": "Last days",
+      "leaderboard": "The leaderboard comes with online play: results will be compared with other players.",
+      "practice": "Play again for practice",
+      "counter": "Spot {{n}} of {{total}}",
+      "finish": "See the result",
+      "rules": "Each answer counts at once: think before you tap.",
+      "preflopQuestion": "Raise or fold?"
+    },
+    "texture": {
+      "title": "Board texture and c-bet",
+      "subtitle": "Button against big blind, single-raised pot.",
+      "pro": "Train reading flops: who the board suits and which c-bet the preflop raiser uses.",
+      "spot": "The button opened to 2.5 BB, the big blind called. The flop:",
+      "wet": "wet",
+      "dry": "dry",
+      "suits": {
+        "rainbow": "rainbow",
+        "twoTone": "two of a suit",
+        "monotone": "one suit"
+      },
+      "connected": "connected",
+      "paired": "paired",
+      "board": "The flop is {{words}}, top card {{top}}.",
+      "why": {
+        "raiser": "High cards suit the button: it opens many aces, kings and broadways.",
+        "caller": "Low connected cards suit the big blind: it defends many small pairs and connectors.",
+        "even": "A middle flop: neither range is much stronger here."
+      },
+      "plan": {
+        "small": "The usual plan: a small c-bet (25–33% pot) with most of the range.",
+        "big": "The usual plan: bet less often but bigger (60–75% pot), charging draws.",
+        "check": "The usual plan: check more often and bet mostly strong hands."
+      },
+      "question": {
+        "advantage": "Whose range does this flop suit better?",
+        "cbet": "Which c-bet plan fits the button here?"
+      },
+      "options": {
+        "advantage": {
+          "raiser": "The button (raiser)",
+          "caller": "The big blind (caller)",
+          "even": "About even"
+        },
+        "cbet": {
+          "small": "Small, with most hands",
+          "big": "Bigger, less often",
+          "check": "Mostly check"
+        }
+      }
     }
   },
   "achievements": {
