@@ -105,6 +105,8 @@ function Navigation() {
           <Stack.Screen name="drill/outs" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="drill/showdown" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="drill/pushfold" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="drill/daily" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="drill/texture" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="tools/equity" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="tools/icm" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="tools/pushfold" options={{ animation: 'slide_from_right' }} />

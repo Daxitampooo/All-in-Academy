@@ -8,18 +8,13 @@ import { AppText } from '@/components/AppText';
 import { BackButton } from '@/components/BackButton';
 import { Button } from '@/components/Button';
 import { addAnswer, EMPTY_SCORE, ScoreBar } from '@/components/drills/ScoreBar';
+import { hitChance } from '@/components/drills/odds';
 import { useDrillRng } from '@/components/drills/useDrillRng';
 import { Screen } from '@/components/Screen';
 import { useLifetime } from '@/store/lifetime';
 import { PlayingCard } from '@/components/table/PlayingCard';
 import { useTheme } from '@/theme/ThemeProvider';
 import { radius, space } from '@/theme/tokens';
-
-/** Chance to hit one of `outs` cards with one card to come (47 unseen) or two. */
-function hitChance(outs: number, cards: 1 | 2): number {
-  if (cards === 1) return outs / 47;
-  return 1 - ((47 - outs) / 47) * ((46 - outs) / 46);
-}
 
 export default function OutsDrill() {
   const { t } = useTranslation();
