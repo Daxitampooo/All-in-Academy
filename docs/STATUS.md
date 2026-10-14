@@ -109,7 +109,7 @@
 1. `scripts/fetch-deps.sh` — скачать `node_modules` для текущего `pnpm-lock.yaml`.
 2. Если менял `package.json`: закоммитить и запушить, дождаться workflow `ci` (он закоммитит lockfile и выложит архив), сделать `git pull` и снова `scripts/fetch-deps.sh`.
 3. Проверки: `pnpm typecheck`, `pnpm lint`, `pnpm check:locales`.
-4. Превью: `cd apps/mobile && CI=1 EXPO_OFFLINE=1 npx expo export --platform web --output-dir dist`, затем `node scripts/build-preview.mjs <файл>` и публикация файла как артефакта.
+4. Превью: `cd apps/mobile && CI=1 EXPO_OFFLINE=1 npx expo export --platform web --output-dir dist`, затем `node scripts/build-preview.mjs <файл>` и публикация файла как артефакта. Если перед этим собирал с `EXPO_PUBLIC_API_URL` (проверка с локальным сервером), добавь `--clear`: кэш Metro запоминает адрес сервера.
 5. Логи упавшего CI: аннотации check-run (`gh api repos/<repo>/check-runs/<id>/annotations`).
 
 ## Заметки
