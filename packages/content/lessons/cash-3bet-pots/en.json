@@ -1,0 +1,53 @@
+{
+  "title": "Playing 3-bet pots",
+  "summary": "Low SPR, the 3-bettor’s range advantage and how the caller defends.",
+  "blocks": {
+    "spr": {
+      "text": "In a 3-bet pot the flop SPR is usually **3–5**. For example: open 2.5 BB, 3-bet to 9 BB, call. The pot is about 19.5 BB, each player has 91 BB left, SPR ≈ 4.7. At this SPR top pair with a good kicker often already plays for the whole stack."
+    },
+    "aggressor": {
+      "text": "The **3-bettor** holds the range advantage: more AA, KK and AK. On ace- and king-high boards it bets often and small, **25–33% pot**. On low connected boards (7♠ 6♦ 5♣) the caller is strong too, so the 3-bettor checks more there."
+    },
+    "caller": {
+      "text": "The **caller** in position defends with floats and raises; out of position, with check-calls and check-raises. To avoid folding too often to a small c-bet, remember MDF: against a ⅓-pot bet you continue with about **75%** of your range.\n\nThe trap: in a 3-bet pot you can't \"fold top pair to one bet\" the way you might in a single-raised pot. The stack is small relative to the pot, and the hand strength needed to go all-in is lower."
+    },
+    "q-spr": {
+      "q": "Open 2.5 BB, 3-bet to 9 BB, call, the blinds fold. The pot is about 19.5 BB, stacks 91 BB. The SPR is about…",
+      "options": [
+        "4.7",
+        "10",
+        "1"
+      ],
+      "explain": "91 / 19.5 ≈ 4.7: a low SPR, typical of 3-bet pots."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "Who usually has the range advantage on A♠ 8♦ 3♣ in a 3-bet pot?",
+      "options": [
+        "The 3-bettor",
+        "The caller",
+        "Nobody"
+      ],
+      "explain": "The 3-bettor holds more aces and big pairs."
+    },
+    "t2": {
+      "q": "Against a ⅓-pot c-bet, MDF is about…",
+      "options": [
+        "33%",
+        "75%",
+        "50%"
+      ],
+      "explain": "1 / (1 + ⅓) = 75%."
+    },
+    "t3": {
+      "q": "Why does top pair stack off more often in a 3-bet pot?",
+      "options": [
+        "The opponent always bluffs",
+        "The pot is smaller",
+        "The SPR is low"
+      ],
+      "explain": "With little behind relative to the pot, one strong pair is enough to get it in."
+    }
+  }
+}

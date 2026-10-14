@@ -1,0 +1,53 @@
+{
+  "title": "Stacks in big blinds",
+  "summary": "Blinds grow in a tournament: how stack depth changes the plan and what antes do.",
+  "blocks": {
+    "bb": {
+      "text": "In a tournament the blinds keep growing, so a stack is measured in **big blinds** (BB), not chips. 20,000 chips at 500/1,000 blinds is 20 BB, and it has to be played as 20 BB, however many chips you started with."
+    },
+    "zones": {
+      "text": "Reference points by stack:\n- **40 BB and more**: normal play with opens, 3-bets and postflop.\n- **20–40 BB**: fewer flat calls and speculative hands, more 3-bets you can follow with all-in.\n- **10–20 BB**: open or **3-bet all-in**; calling opens with small pairs and connectors loses its point, there are no implied odds.\n- **Below 10–12 BB**: **push/fold**, all-in or fold."
+    },
+    "ante": {
+      "text": "The **ante** grows the pot before anyone acts. With a big blind ante (the usual format) the pot already holds 2.5 BB: 0.5 + 1 + 1. Stealing it pays more, so opens get wider and smaller, **2–2.2 BB**. The big blind defends wider too: the pot gives it great pot odds."
+    },
+    "q-bb": {
+      "q": "Blinds 1,000/2,000, you have 30,000 chips. How many big blinds is that?",
+      "options": [
+        "15 BB",
+        "30 BB",
+        "60 BB"
+      ],
+      "explain": "30,000 / 2,000 = 15 BB: time to think about 3-bet all-ins."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "Why are tournament stacks measured in big blinds?",
+      "options": [
+        "It looks nicer",
+        "Blinds grow, and what matters is how many bets you have left",
+        "Chips mean nothing in a tournament"
+      ],
+      "explain": "The same chips are a deep stack early and a short one later."
+    },
+    "t2": {
+      "q": "How do antes change the game?",
+      "options": [
+        "The pot is bigger: opens get wider and smaller",
+        "Only premium hands can be played",
+        "Nothing changes"
+      ],
+      "explain": "More money in the pot makes every steal more profitable."
+    },
+    "t3": {
+      "q": "At about what stack does push/fold usually start?",
+      "options": [
+        "50 BB",
+        "30 BB",
+        "10–12 BB"
+      ],
+      "explain": "Below 10–12 BB a normal open leaves no good answer to a 3-bet."
+    }
+  }
+}

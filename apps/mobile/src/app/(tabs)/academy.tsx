@@ -65,7 +65,9 @@ export default function AcademyScreen() {
             const { done, total } = moduleProgress(id);
             const ready = total > 0;
             const accent = colors[LEVEL_COLOR[level.id]!];
-            const anyPro = ready && MODULES.find((m) => m.id === id)!.lessons.some((l) => !lessonById(l)!.free);
+            const moduleLessons = MODULES.find((m) => m.id === id)!.lessons.map((l) => lessonById(l)!);
+            const anyPro = ready && moduleLessons.some((l) => !l.free);
+            const allPro = ready && moduleLessons.every((l) => !l.free);
             return (
               <Pressable
                 key={id}
@@ -83,7 +85,7 @@ export default function AcademyScreen() {
                     ) : (
                       <Badge label={t('common.soon')} />
                     )}
-                    {anyPro ? <Badge label={t('academy.partPro')} tone="amber" /> : null}
+                    {anyPro ? <Badge label={t(allPro ? 'academy.allPro' : 'academy.partPro')} tone="amber" /> : null}
                   </View>
                   {ready ? (
                     <View style={[styles.track, { backgroundColor: colors.surfaceRaised }]}>

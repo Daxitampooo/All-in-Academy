@@ -1,0 +1,17 @@
+{
+  "id": "hu-10bb-call-BB",
+  "format": "hu",
+  "stackBb": 10,
+  "spot": {
+    "type": "vs-push",
+    "hero": "BB",
+    "villain": "SB"
+  },
+  "actions": {
+    "call": {
+      "range": "22+, A2s+, A2o+, K2s+, K7o+, Q8s+, QTo+, J9s+, JTo, T9s"
+    }
+  },
+  "free": false,
+  "source": "simplified-educational"
+}

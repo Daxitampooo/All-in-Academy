@@ -1,0 +1,56 @@
+{
+  "title": "Geometric bet sizing",
+  "summary": "The same share of the pot on every street, so the whole stack is in by the river.",
+  "blocks": {
+    "idea": {
+      "text": "**Geometric sizing** is the same share of the pot on every street, chosen so that the last bet puts the whole stack in. A strong hand wins the most this way, and the opponent never gets a cheap street to draw on."
+    },
+    "formula": {
+      "text": "Pot P, effective stack S, streets left to bet N. The share of the pot per street:\n\n**f = ((1 + 2S / P)^(1/N) − 1) / 2**\n\nCheck: pot 10, stacks 95, three streets. (1 + 19)^(1/3) ≈ 2.71, so f ≈ 0.86. You bet 86% pot on the flop, turn and river: the pot grows 10 → 27 → 74 → 200, and the river bet is all-in."
+    },
+    "table": {
+      "text": "Reference points for three streets:\n- SPR ≈ 4.5 (a 3-bet pot): about 58% pot per street.\n- SPR ≈ 9.5 (a normal pot, 100 BB stacks): about 86%.\n- SPR ≈ 16: more than the pot every street; without overbets the stack doesn't go in over three streets.\n\nOver two streets (turn and river) at SPR 4.5 you need about 108% pot."
+    },
+    "when": {
+      "text": "When geometry fits: you have a strong hand or a polarized range and want the whole stack in by the river. When it doesn't: a medium hand, a merged range, a multiway pot. There pot control matters more."
+    },
+    "q-geo": {
+      "q": "Pot 20 BB, stacks 90 BB, three streets ahead. What is the geometric bet?",
+      "options": [
+        "About 25% pot",
+        "About 150% pot",
+        "About 58% pot"
+      ],
+      "explain": "SPR is 4.5: (1 + 9)^(1/3) ≈ 2.15, f ≈ 0.58."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "Why use geometric sizing?",
+      "options": [
+        "To make bets grow at random",
+        "To get the whole stack in by the river with the same share each street",
+        "To keep the pot small"
+      ],
+      "explain": "Equal shares of the pot grow it so that the last bet is exactly all-in."
+    },
+    "t2": {
+      "q": "With the same number of streets, a bigger SPR means the share per street is…",
+      "options": [
+        "smaller",
+        "the same",
+        "bigger"
+      ],
+      "explain": "More stack relative to the pot has to go in over the same streets."
+    },
+    "t3": {
+      "q": "Which hand suits geometric sizing best?",
+      "options": [
+        "The nuts or a polarized range",
+        "A medium pair",
+        "A hand that wants to check-call"
+      ],
+      "explain": "Geometry is for hands that want the whole stack in."
+    }
+  }
+}

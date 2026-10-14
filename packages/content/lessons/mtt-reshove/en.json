@@ -1,0 +1,56 @@
+{
+  "title": "3-bet all-in with 15–25 BB",
+  "summary": "The reshove: taking the dead money when a late position opens.",
+  "blocks": {
+    "idea": {
+      "text": "With 15–25 BB, calling an open and playing out of position is unprofitable, and a normal 3-bet eats a third of your stack. The best tool is the **3-bet all-in** (a reshove): the opponent opens, you put it all in."
+    },
+    "dead": {
+      "text": "Why it pays: the pot already holds **dead money**, the opener's raise, the blinds and the ante. Example: CO opens to 2.2 BB, you have 20 BB on the button. The pot is 2.2 + 0.5 + 1 + 1 (ante) = 4.7 BB. Every time CO folds, you win almost a quarter of your stack without a showdown."
+    },
+    "range": {
+      "caption": "Button against a CO open, 20 BB: a simplified reshove range."
+    },
+    "who": {
+      "text": "The later the opener's seat, the wider the open and the more often it folds to an all-in. Against a CO or button open the reshove goes with 66+, A9s+, ATo+, KQ and also A5s–A4s (they block aces). Against an UTG open it is much tighter.\n\nHands that play well all-in are pairs and aces: they keep good equity even when called. Suited connectors like 87s are better as flat calls with deep stacks, not as reshoves."
+    },
+    "q-aj": {
+      "q": "You have 18 BB on the button, CO opens to 2.2 BB. What is usually best with AJo?",
+      "options": [
+        "Fold",
+        "Call",
+        "3-bet all-in"
+      ],
+      "explain": "AJo is strong against a CO open, plays well all-in, and calling leaves an awkward stack."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "What is the dead money in a reshove?",
+      "options": [
+        "Chips in the pot you take when the opponent folds",
+        "Chips that can’t be won",
+        "Only the big blind’s ante"
+      ],
+      "explain": "The open, blinds and ante are already in: a fold hands them to you."
+    },
+    "t2": {
+      "q": "Against whose open is the reshove wider?",
+      "options": [
+        "UTG",
+        "The button",
+        "It doesn’t depend on the seat"
+      ],
+      "explain": "A late open is wider and folds more often."
+    },
+    "t3": {
+      "q": "Which hands suit a reshove best?",
+      "options": [
+        "Suited connectors",
+        "Any two cards",
+        "Pairs and aces"
+      ],
+      "explain": "They keep good equity when the opener calls."
+    }
+  }
+}

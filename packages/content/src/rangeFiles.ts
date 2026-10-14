@@ -8,6 +8,9 @@ import rn6max100bbRfiCO from '../ranges/6max-100bb-rfi-CO.json';
 import rn6max100bbRfiHJ from '../ranges/6max-100bb-rfi-HJ.json';
 import rn6max100bbRfiSB from '../ranges/6max-100bb-rfi-SB.json';
 import rn6max100bbRfiUTG from '../ranges/6max-100bb-rfi-UTG.json';
+import rn6max20bbReshoveBTNVsCO from '../ranges/6max-20bb-reshove-BTN-vs-CO.json';
 import rdemoNotation from '../ranges/demo-notation.json';
+import rhu10bbCallBB from '../ranges/hu-10bb-call-BB.json';
+import rhu10bbPushSB from '../ranges/hu-10bb-push-SB.json';
 
-export const RANGE_FILES: RangeSpec[] = [rn6max100bb3betBTNVsCO, rn6max100bbDefendBBVsBTN, rn6max100bbRfiBTN, rn6max100bbRfiCO, rn6max100bbRfiHJ, rn6max100bbRfiSB, rn6max100bbRfiUTG, rdemoNotation] as RangeSpec[];
+export const RANGE_FILES: RangeSpec[] = [rn6max100bb3betBTNVsCO, rn6max100bbDefendBBVsBTN, rn6max100bbRfiBTN, rn6max100bbRfiCO, rn6max100bbRfiHJ, rn6max100bbRfiSB, rn6max100bbRfiUTG, rn6max20bbReshoveBTNVsCO, rdemoNotation, rhu10bbCallBB, rhu10bbPushSB] as RangeSpec[];

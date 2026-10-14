@@ -1,0 +1,56 @@
+{
+  "title": "Button against the big blind",
+  "summary": "The most common 6-max spot: who opens what, who defends what and who the flop favors.",
+  "blocks": {
+    "why": {
+      "text": "The most common 6-max spot: everyone folds to the button, it opens, the big blind defends. The button has position on every street; the big blind has a discount, it already put in 1 BB."
+    },
+    "btn": {
+      "caption": "Button open: about 44% of hands."
+    },
+    "bb": {
+      "caption": "Big blind against a button open: 3-bet and call."
+    },
+    "postflop": {
+      "text": "After the flop:\n- On high dry boards (K♠ 7♦ 2♣, A♥ 8♣ 3♦) the button has the range advantage: small, frequent c-bets.\n- On low and middle connected boards (8♠ 7♦ 6♣, 6♥ 5♥ 4♠) the big blind is strong: it has more two pair, sets and straights. The button checks more, the big blind check-raises more.\n- Out of position the big blind realizes less equity, so on wet boards it should defend with check-raises too, not only calls."
+    },
+    "q-board": {
+      "q": "Flop 6♥ 5♥ 4♠, the button opened and the big blind called. Who has the nut advantage?",
+      "options": [
+        "Nobody",
+        "The big blind",
+        "The button"
+      ],
+      "explain": "The big blind defends with many low and connected hands (87, 75, 64, 54, small pairs), while much of the button's range is high cards that missed this board."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "Why does the big blind defend wide against the button?",
+      "options": [
+        "It already put in 1 BB and gets good pot odds",
+        "It has position",
+        "The button always bluffs"
+      ],
+      "explain": "The discount on the call makes many hands profitable to defend."
+    },
+    "t2": {
+      "q": "On which flop is a small, frequent c-bet easiest for the button?",
+      "options": [
+        "8♠ 7♦ 6♣",
+        "K♠ 7♦ 2♣",
+        "6♥ 5♥ 4♠"
+      ],
+      "explain": "A high dry board favors the opener’s range."
+    },
+    "t3": {
+      "q": "About how much of the deck does the button open in the simplified range?",
+      "options": [
+        "10%",
+        "90%",
+        "About 44%"
+      ],
+      "explain": "Late position and only the blinds behind: almost half of all hands."
+    }
+  }
+}

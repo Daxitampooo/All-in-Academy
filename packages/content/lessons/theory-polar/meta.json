@@ -1,0 +1,54 @@
+{
+  "id": "theory-polar",
+  "module": "theory",
+  "level": "advanced",
+  "free": false,
+  "minutes": 7,
+  "pass": 0.67,
+  "blocks": [
+    {
+      "id": "what",
+      "type": "text"
+    },
+    {
+      "id": "size",
+      "type": "text"
+    },
+    {
+      "id": "example",
+      "type": "cards",
+      "rows": [
+        "Kd Kc | Kh Th 6c 3d 2s",
+        "Qh Jh | Kh Th 6c 3d 2s",
+        "Ts 9s | Kh Th 6c 3d 2s"
+      ]
+    },
+    {
+      "id": "ratio",
+      "type": "text"
+    },
+    {
+      "id": "q-ratio",
+      "type": "quiz",
+      "answer": 2,
+      "options": 3
+    }
+  ],
+  "test": [
+    {
+      "id": "t1",
+      "answer": 1,
+      "options": 3
+    },
+    {
+      "id": "t2",
+      "answer": 0,
+      "options": 3
+    },
+    {
+      "id": "t3",
+      "answer": 2,
+      "options": 3
+    }
+  ]
+}

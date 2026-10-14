@@ -1,0 +1,56 @@
+{
+  "title": "MDF and alpha",
+  "summary": "How often a bluff must work, and how much of your range to defend against a bet.",
+  "blocks": {
+    "what": {
+      "text": "**Alpha** is how often your opponent must fold for a bluff to profit right away: **bet / (pot + bet)**.\n\n**MDF** (minimum defense frequency) is the other side: the share of your range to continue with (call or raise) so that your opponent's bluffs don't profit automatically: **pot / (pot + bet)**, which is 1 − alpha."
+    },
+    "sizes": {
+      "text": "By bet size:\n- ⅓ pot: alpha 25%, MDF 75%.\n- ½ pot: alpha 33%, MDF 67%.\n- ¾ pot: alpha 43%, MDF 57%.\n- Pot: alpha 50%, MDF 50%.\n- 2× pot overbet: alpha 67%, MDF 33%.\n\nThe bigger the bet, the more often the bluff has to work and the less of your range you need to defend."
+    },
+    "range": {
+      "text": "MDF is about your **range**, not one hand. Against a pot-sized bet, defending 50% means: take every hand you reach this street with and continue with the best half. The worse half folds without regret.\n\nExample: on the river you have 40 combos. Against a pot bet, defend about the 20 strongest: value hands and the best **bluff catchers**, hands that only beat bluffs."
+    },
+    "caveats": {
+      "text": "When to step away from MDF:\n- The opponent **rarely bluffs** (a nit, a passive player): fold more. MDF protects against bluffs that aren't there.\n- The opponent **bluffs a lot** (a maniac): defend wider than MDF, call even with weak bluff catchers.\n- **Against several opponents** the defense is shared: each of you can continue less often.\n- On the **flop and turn** part of the defense is draws, which have equity, not only made hands.\n\nMDF is a starting point against an unknown opponent, not a law."
+    },
+    "q-mdf": {
+      "q": "Your opponent bets ¾ pot on the river. How much of your range should you defend by MDF?",
+      "options": [
+        "75%",
+        "About 57%",
+        "About 43%"
+      ],
+      "explain": "MDF = pot / (pot + bet) = 1 / 1.75 ≈ 57%."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "You bluff ½ pot. How often must your opponent fold for the bluff to profit?",
+      "options": [
+        "50%",
+        "33%",
+        "67%"
+      ],
+      "explain": "Alpha = 0.5 / 1.5 ≈ 33%."
+    },
+    "t2": {
+      "q": "MDF against a 2× pot overbet:",
+      "options": [
+        "67%",
+        "50%",
+        "33%"
+      ],
+      "explain": "1 / (1 + 2) ≈ 33%: the bigger the bet, the less of your range you need to defend."
+    },
+    "t3": {
+      "q": "Your opponent almost never bluffs the river. How do you adjust?",
+      "options": [
+        "Defend wider than MDF",
+        "Fold more often than MDF says",
+        "Change nothing"
+      ],
+      "explain": "MDF protects against bluffs. Without them, extra calls only lose chips."
+    }
+  }
+}

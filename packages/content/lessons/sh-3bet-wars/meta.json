@@ -1,0 +1,50 @@
+{
+  "id": "sh-3bet-wars",
+  "module": "shorthanded",
+  "level": "advanced",
+  "free": false,
+  "minutes": 7,
+  "pass": 0.67,
+  "blocks": [
+    {
+      "id": "why",
+      "type": "text"
+    },
+    {
+      "id": "kinds",
+      "type": "text"
+    },
+    {
+      "id": "range",
+      "type": "range",
+      "range": "6max-100bb-3bet-BTN-vs-CO"
+    },
+    {
+      "id": "vs3bet",
+      "type": "text"
+    },
+    {
+      "id": "q-4bet",
+      "type": "quiz",
+      "answer": 1,
+      "options": 3
+    }
+  ],
+  "test": [
+    {
+      "id": "t1",
+      "answer": 0,
+      "options": 3
+    },
+    {
+      "id": "t2",
+      "answer": 1,
+      "options": 3
+    },
+    {
+      "id": "t3",
+      "answer": 2,
+      "options": 3
+    }
+  ]
+}

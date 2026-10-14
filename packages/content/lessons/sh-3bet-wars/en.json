@@ -1,0 +1,56 @@
+{
+  "title": "3-bet wars",
+  "summary": "Linear and polarized 3-bets, answering 3-bets in and out of position, and 4-bet bluffs.",
+  "blocks": {
+    "why": {
+      "text": "In 6-max late opens are wide, so 3-bets are frequent, and 4-bets follow. To avoid becoming an easy target you have to 3-bet with some bluffs and also defend against 3-bets."
+    },
+    "kinds": {
+      "text": "Two kinds of 3-bet:\n- **Linear** (merged): the best hands in a row, QQ+, AK, AQ, KQs, JJ–TT. Good against a player who calls 3-bets a lot.\n- **Polarized**: strong hands plus bluffs like A5s, A4s, 76s, 65s; medium hands (AJo, KJs) call. Good in position against CO and button opens."
+    },
+    "range": {
+      "caption": "Button against a CO open: a polarized 3-bet (pink) and calls (blue)."
+    },
+    "vs3bet": {
+      "text": "Facing a 3-bet:\n- **In position** call wider: pairs, suited broadways and aces, connectors; 4-bet QQ+, AK and a few bluffs.\n- **Out of position** call tighter: a 3-bet pot without position is hard to play.\n- The best **4-bet bluffs** are A5s–A4s: the ace blocks the opponent's AA and AK, and when called the hand still has equity."
+    },
+    "q-4bet": {
+      "q": "Which hand suits a 4-bet bluff best?",
+      "options": [
+        "22",
+        "A5s",
+        "KJo"
+      ],
+      "explain": "The ace blocks AA and AK; when called, A5s can still make a straight or a flush."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "A polarized 3-bet is made of…",
+      "options": [
+        "Strong hands and bluffs",
+        "Only medium hands",
+        "Only pairs"
+      ],
+      "explain": "Medium hands call instead."
+    },
+    "t2": {
+      "q": "Why is A5s a good 4-bet bluff?",
+      "options": [
+        "It is the nuts",
+        "The ace blocks the opponent’s AA and AK",
+        "The five blocks straights"
+      ],
+      "explain": "Blocking the hands that continue makes the bluff work more often."
+    },
+    "t3": {
+      "q": "Facing a 3-bet out of position, calls are usually…",
+      "options": [
+        "Wider than in position",
+        "The same",
+        "Tighter than in position"
+      ],
+      "explain": "Out of position you realize less equity in a bloated pot."
+    }
+  }
+}

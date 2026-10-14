@@ -1,0 +1,53 @@
+{
+  "title": "Multiway pots",
+  "summary": "Three or more players after the flop: fewer bluffs, stronger value, the nut draws gain.",
+  "blocks": {
+    "why": {
+      "text": "A **multiway** pot has three or more players after the flop. Every extra opponent is one more range that may have hit. Against two players the chance that someone has a pair or better is roughly twice as high as against one."
+    },
+    "changes": {
+      "text": "What changes:\n- **Fewer bluffs**: to win the pot everyone has to fold. If each folds 50% of the time, both fold together only 25%.\n- **Stronger value**: top pair with a weak kicker against three players is more often a check.\n- **Fewer c-bets**, mostly with strong hands and strong draws.\n- **Nut draws** gain value: the ace-high flush draw wins big pots, a smaller flush can lose to a bigger one."
+    },
+    "mdf": {
+      "text": "In a multiway pot MDF is shared: if someone bets pot into two players, together you need to defend about 50%, not 50% each. Each player can continue less often, especially the one who acts first."
+    },
+    "q-fold": {
+      "q": "You bluff into two opponents, each folds 60% of the time. How often do both fold?",
+      "options": [
+        "120%",
+        "60%",
+        "36%"
+      ],
+      "explain": "0.6 × 0.6 = 0.36: the bluff works only about a third of the time."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "Why bluff less in multiway pots?",
+      "options": [
+        "Every opponent has to fold",
+        "Bluffs are not allowed",
+        "The pots are smaller"
+      ],
+      "explain": "Fold chances multiply and drop fast."
+    },
+    "t2": {
+      "q": "Which draws are especially valuable multiway?",
+      "options": [
+        "Gutshots",
+        "Nut draws",
+        "Any backdoors"
+      ],
+      "explain": "When they hit they win, and multiway pots get big."
+    },
+    "t3": {
+      "q": "Top pair with a weak kicker against three opponents is usually…",
+      "options": [
+        "A hand for three streets of value",
+        "A bluff",
+        "A hand to check carefully"
+      ],
+      "explain": "Someone often has a better kicker or two pair."
+    }
+  }
+}

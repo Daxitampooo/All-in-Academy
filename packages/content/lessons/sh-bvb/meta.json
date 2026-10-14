@@ -1,0 +1,45 @@
+{
+  "id": "sh-bvb",
+  "module": "shorthanded",
+  "level": "advanced",
+  "free": false,
+  "minutes": 6,
+  "pass": 0.67,
+  "blocks": [
+    {
+      "id": "spot",
+      "type": "text"
+    },
+    {
+      "id": "sb",
+      "type": "text"
+    },
+    {
+      "id": "bb",
+      "type": "text"
+    },
+    {
+      "id": "q-k9",
+      "type": "quiz",
+      "answer": 0,
+      "options": 3
+    }
+  ],
+  "test": [
+    {
+      "id": "t1",
+      "answer": 0,
+      "options": 3
+    },
+    {
+      "id": "t2",
+      "answer": 1,
+      "options": 3
+    },
+    {
+      "id": "t3",
+      "answer": 2,
+      "options": 3
+    }
+  ]
+}

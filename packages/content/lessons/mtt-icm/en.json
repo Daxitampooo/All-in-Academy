@@ -1,0 +1,56 @@
+{
+  "title": "ICM and the bubble",
+  "summary": "Why chips are not places: how the Independent Chip Model changes calls near the money and at the final table.",
+  "blocks": {
+    "idea": {
+      "text": "In a tournament chips are not prizes. Chips you win add less than chips you lose take away: lose everything and you are out with no chance of any place. **ICM** (Independent Chip Model) turns stacks into shares of the prize pool.\n\nPokerALL tournaments are played without real money, but ICM works the same: what counts is the place, not the chips."
+    },
+    "example": {
+      "text": "Example: three players, prizes 50% / 30% / 20%. Stacks 5,000, 3,000 and 2,000. The leader has half the chips, but by ICM his share is **38.4%** of the prizes; the second gets 32.8%, the third 28.9%. The short stack gets more than his 20% of the chips: third place is already his."
+    },
+    "bubble": {
+      "text": "The **bubble** is the moment just before the paid places. Example: four players, three are paid, stacks 4,000, 3,000, 2,000 and 1,000. The leader goes all-in against the second stack (3,000). Without ICM a call would need 50% equity. By ICM the second stack needs about **73%**: losing means busting with nothing, while the short stack may bust on its own soon.\n\nThe ratio of what you lose to what you win by ICM is the **bubble factor**. Here it is about 2.7."
+    },
+    "pressure": {
+      "text": "What follows:\n- The **big stack** presses: it bets more often because medium stacks pay a lot to call.\n- **Medium stacks** are the most careful, especially against bigger stacks.\n- The **short stack** can take risks: it has little to lose by ICM, and a double-up raises its share a lot.\n- At the **final table** every place is a step up in prizes, so ICM matters in every hand."
+    },
+    "q-share": {
+      "q": "Three players, prizes 50/30/20. You have 50% of the chips. Your ICM share is…",
+      "options": [
+        "More than 50%",
+        "Exactly 50%",
+        "Less than 50%"
+      ],
+      "explain": "Even with the most chips you can only win first prize once; the others are guaranteed a share too."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "What does ICM do?",
+      "options": [
+        "Turns stacks into shares of the prizes",
+        "Counts a hand’s equity",
+        "Sets the blinds"
+      ],
+      "explain": "It values a stack by its chances of each place."
+    },
+    "t2": {
+      "q": "How does a bubble factor above 1 change calling an all-in?",
+      "options": [
+        "You can call wider",
+        "You need more equity than pot odds say",
+        "Nothing changes"
+      ],
+      "explain": "Losing costs more than winning gains, so the call needs a stronger hand."
+    },
+    "t3": {
+      "q": "Who usually profits from pressing on the bubble?",
+      "options": [
+        "A medium stack against the leader",
+        "The short stack against everyone",
+        "The chip leader"
+      ],
+      "explain": "Others pay a high ICM price to call the leader’s all-ins."
+    }
+  }
+}

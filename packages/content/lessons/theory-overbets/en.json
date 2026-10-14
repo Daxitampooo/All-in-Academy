@@ -1,0 +1,60 @@
+{
+  "title": "Nut advantage and overbets",
+  "summary": "Who holds the strongest hands on a board, and when a bet bigger than the pot works best.",
+  "blocks": {
+    "recap": {
+      "text": "The board texture lesson had two ideas: **range advantage** (whose hands are stronger on average) and **nut advantage** (who has more of the very strongest combos). They point to different bets:\n- Range advantage → bet **often and small**.\n- Nut advantage → bet **less often but big**, up to an overbet."
+    },
+    "capped": {
+      "text": "A **capped** range has almost no nuts. Example: you open on the button, the big blind calls, you bet the flop and it calls. A flop call usually means few of the strongest hands (sets, two pair): with those the big blind often check-raises.\n\nWhen the opponent is capped and you have the nuts in your range, an **overbet** (more than the pot) presses on medium hands harder than any normal bet: calling is too expensive for a pair, folding gives up the pot."
+    },
+    "example": {
+      "labels": [
+        "Value overbet: top two pair",
+        "Semi-bluff overbet: gutshot to the ten"
+      ],
+      "caption": "Turn after a flop bet and call: the button overbets its strongest hands and some draws."
+    },
+    "donk": {
+      "text": "The other way round: on low connected boards (7♠ 6♦ 5♣) the big blind has the nut advantage. It has more hands like 98, 76, 65, 54 and small pairs, which make straights, two pair and sets here. There it can bet first (a **donk bet**) or check-raise, and the preflop raiser should check more often."
+    },
+    "q-overbet": {
+      "q": "Turn: your opponent is capped after calling the flop, and you have the nuts. Which size presses hardest?",
+      "options": [
+        "Check",
+        "A 1.5× pot overbet",
+        "A ¼ pot bet"
+      ],
+      "explain": "A capped range holds many medium hands; an overbet makes calling with them as expensive as possible."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "A range advantage usually suggests…",
+      "options": [
+        "Betting often and small",
+        "Never betting",
+        "Only going all-in"
+      ],
+      "explain": "When your hands are stronger on average, a cheap bet with most of the range already wins a lot."
+    },
+    "t2": {
+      "q": "What does a \"capped\" range mean?",
+      "options": [
+        "It has many bluffs",
+        "It has almost none of the strongest hands",
+        "It is only pairs"
+      ],
+      "explain": "Capped means the top of the range is missing: the player would have raised the strongest hands earlier."
+    },
+    "t3": {
+      "q": "Who has the nut advantage on 7♠ 6♦ 5♣ in a button vs big blind pot?",
+      "options": [
+        "The button",
+        "Nobody",
+        "The big blind"
+      ],
+      "explain": "The big blind defends with many low connected hands (98, 76, 65, 54) and small pairs."
+    }
+  }
+}

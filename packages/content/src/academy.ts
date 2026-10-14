@@ -22,10 +22,10 @@ const LESSON_ORDER: Record<ModuleId, string[]> = {
   postflop: ['postflop-texture', 'postflop-cbet', 'postflop-value', 'postflop-bluff', 'postflop-checkraise', 'postflop-spr'],
   reads: ['reads-types', 'reads-stats', 'reads-exploit'],
   mindset: ['mindset-variance', 'mindset-tilt', 'mindset-review'],
-  theory: [],
-  tournaments: [],
-  cash: [],
-  shorthanded: [],
+  theory: ['theory-mdf', 'theory-polar', 'theory-overbets', 'theory-geometric', 'theory-river-bluffs'],
+  tournaments: ['mtt-stacks', 'mtt-pushfold', 'mtt-reshove', 'mtt-icm'],
+  cash: ['cash-deep', 'cash-3bet-pots', 'cash-multiway'],
+  shorthanded: ['sh-btn-bb', 'sh-bvb', 'sh-headsup', 'sh-3bet-wars'],
 };
 
 export const MODULES: ModuleMeta[] = LEVELS.flatMap((level) =>

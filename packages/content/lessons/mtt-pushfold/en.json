@@ -1,0 +1,59 @@
+{
+  "title": "Push/fold",
+  "summary": "With 10 BB or less: why all-in or fold beats a normal open, and how wide to push and call.",
+  "blocks": {
+    "why": {
+      "text": "At 10–12 BB a normal open breaks the stack: you put in 2.2 BB, face a 3-bet all-in, and calling with a weak hand is bad while folding gives up a fifth of your stack. Going **all-in right away** wins two ways: the opponent folds (**fold equity**) or you win the showdown."
+    },
+    "ev": {
+      "text": "EV of a push = **fold chance × pot** + **call chance × result of the all-in**. Example: small blind, 10 BB, the pot holds 1.5 BB. If the big blind folds 60% of the time, the folds alone bring 0.6 × 1.5 = 0.9 BB, and in the other 40% you still have equity against its calling range."
+    },
+    "push": {
+      "caption": "Small blind against the big blind, 10 BB: a simplified push range (about half of all hands)."
+    },
+    "call": {
+      "caption": "Big blind against a 10 BB push: a simplified calling range (about a third of all hands)."
+    },
+    "asym": {
+      "text": "Why pushes are wider than calls: the pusher has fold equity, the caller has none. To call an all-in you need a hand that beats the pushing range on its own. So the calling range is always narrower than the pushing range.\n\nThe shorter the stack, the wider the push: with 5 BB the small blind pushes almost everything."
+    },
+    "q-a7": {
+      "q": "You have 8 BB on the button, everyone folded to you. What is usually best with A7o?",
+      "options": [
+        "Open 2 BB and fold to a 3-bet",
+        "Limp",
+        "All-in"
+      ],
+      "explain": "At 8 BB an ace is a clear push: fold equity plus decent equity when called."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "Why are pushes wider than calls?",
+      "options": [
+        "The pusher has fold equity",
+        "Calling is not allowed",
+        "A push is always stronger"
+      ],
+      "explain": "Folds make a push profitable even with a weaker hand; a call wins only at showdown."
+    },
+    "t2": {
+      "q": "How does the push range change as the stack gets shorter?",
+      "options": [
+        "It gets narrower",
+        "It gets wider",
+        "It stays the same"
+      ],
+      "explain": "The blinds become a bigger share of the stack, and waiting costs more."
+    },
+    "t3": {
+      "q": "What makes up the EV of a push?",
+      "options": [
+        "Only the hand’s showdown chances",
+        "Only the opponent’s folds",
+        "The opponent’s folds and the all-in result when he calls"
+      ],
+      "explain": "Both parts count; that is why weak hands can push and must not call."
+    }
+  }
+}
