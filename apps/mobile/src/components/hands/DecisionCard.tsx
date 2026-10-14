@@ -13,7 +13,7 @@ import { radius, space, withAlpha, type ColorKey } from '@/theme/tokens';
 export const GRADE_COLOR: Record<Grade, ColorKey> = { good: 'lime', inaccuracy: 'amber', mistake: 'magenta' };
 
 /** Turns the numbers of a review into what the sentences show: percents, big blinds with the locale's decimal mark. */
-function textParams(review: DecisionReview): Record<string, string | number> {
+export function textParams(review: DecisionReview): Record<string, string | number> {
   const out: Record<string, string | number> = { ...review.params };
   if (typeof out.loss === 'number') out.loss = formatDecimal(out.loss);
   return out;
