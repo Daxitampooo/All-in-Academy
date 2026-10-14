@@ -1,0 +1,60 @@
+{
+  "title": "Deep stacks",
+  "summary": "With 150–200 BB behind: which hands gain value, which lose it, and set mining.",
+  "blocks": {
+    "what": {
+      "text": "Deep stacks are 150–200 BB and more. The more money behind, the more valuable hands that make the **nuts**, and the more dangerous hands that often end up **second best**."
+    },
+    "setmining": {
+      "text": "**Set mining** is calling with a pocket pair to hit a set. A pair flops a set about **1 time in 8.5** (11.8%). For the call to pay through later winnings, effective stacks should be about **15–20 times the call**: calling 3 BB needs 45–60 BB or more on both sides, and an opponent willing to pay off."
+    },
+    "hands": {
+      "text": "What gains value with deep stacks:\n- Small pairs and **suited connectors** (76s, 98s): they make straights, flushes and sets that can win a whole stack.\n- Suited aces (A5s): the nut flush.\n\nWhat loses value:\n- **Dominated** offsuit hands (KJo, QTo, A9o): when you pair, you often lose a big pot to the same high card with a better kicker.\n- **One pair**: at SPR 15+ top pair is a hand for pot control, not for three streets of bets."
+    },
+    "example": {
+      "labels": [
+        "Deep stacks love this: an open-ended straight draw plus a backdoor flush",
+        "Careful: top pair, but AK and KQ beat it"
+      ],
+      "caption": "Two flops with 200 BB stacks."
+    },
+    "q-set": {
+      "q": "Calling a 3 BB open with 44 to hit a set. At what effective stack is it usually justified?",
+      "options": [
+        "It doesn’t matter",
+        "15 BB",
+        "45–60 BB and more"
+      ],
+      "explain": "The rule of thumb is 15–20 times the call: you hit only 1 time in 8.5 and must win a lot when you do."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "How often does a pocket pair flop a set?",
+      "options": [
+        "About 1 time in 8.5",
+        "1 time in 2",
+        "1 time in 50"
+      ],
+      "explain": "About 11.8% of flops."
+    },
+    "t2": {
+      "q": "Which hands lose value with deep stacks?",
+      "options": [
+        "Suited connectors",
+        "Dominated offsuit hands like KJo",
+        "Pocket pairs"
+      ],
+      "explain": "They make second-best hands and lose big pots."
+    },
+    "t3": {
+      "q": "Top pair at SPR 15 and more is usually…",
+      "options": [
+        "A hand to stack off with",
+        "A bluff",
+        "A hand for pot control"
+      ],
+      "explain": "With so much behind, one pair rarely wants the whole stack in."
+    }
+  }
+}

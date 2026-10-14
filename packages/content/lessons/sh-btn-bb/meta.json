@@ -1,0 +1,51 @@
+{
+  "id": "sh-btn-bb",
+  "module": "shorthanded",
+  "level": "advanced",
+  "free": false,
+  "minutes": 7,
+  "pass": 0.67,
+  "blocks": [
+    {
+      "id": "why",
+      "type": "text"
+    },
+    {
+      "id": "btn",
+      "type": "range",
+      "range": "6max-100bb-rfi-BTN"
+    },
+    {
+      "id": "bb",
+      "type": "range",
+      "range": "6max-100bb-defend-BB-vs-BTN"
+    },
+    {
+      "id": "postflop",
+      "type": "text"
+    },
+    {
+      "id": "q-board",
+      "type": "quiz",
+      "answer": 1,
+      "options": 3
+    }
+  ],
+  "test": [
+    {
+      "id": "t1",
+      "answer": 0,
+      "options": 3
+    },
+    {
+      "id": "t2",
+      "answer": 1,
+      "options": 3
+    },
+    {
+      "id": "t3",
+      "answer": 2,
+      "options": 3
+    }
+  ]
+}

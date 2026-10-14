@@ -1,0 +1,49 @@
+{
+  "id": "mtt-icm",
+  "module": "tournaments",
+  "level": "advanced",
+  "free": false,
+  "minutes": 8,
+  "pass": 0.67,
+  "blocks": [
+    {
+      "id": "idea",
+      "type": "text"
+    },
+    {
+      "id": "example",
+      "type": "text"
+    },
+    {
+      "id": "bubble",
+      "type": "text"
+    },
+    {
+      "id": "pressure",
+      "type": "text"
+    },
+    {
+      "id": "q-share",
+      "type": "quiz",
+      "answer": 2,
+      "options": 3
+    }
+  ],
+  "test": [
+    {
+      "id": "t1",
+      "answer": 0,
+      "options": 3
+    },
+    {
+      "id": "t2",
+      "answer": 1,
+      "options": 3
+    },
+    {
+      "id": "t3",
+      "answer": 2,
+      "options": 3
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "title": "River bluffs: blockers and unblockers",
+  "summary": "Which hands make the best river bluffs and why your own cards matter.",
+  "blocks": {
+    "idea": {
+      "text": "The river is the last street: a bluff has no equity left. To choose which hands bluff, look at two things:\n- **Blockers**: your cards remove strong hands your opponent would call with.\n- **Unblockers**: your cards **don't** remove the weak hands your opponent would fold."
+    },
+    "example": {
+      "labels": [
+        "Bluff: the ace of hearts removes the nut flush",
+        "Check: a pair of nines beats bluffs"
+      ],
+      "caption": "Three hearts on the board: which hand should bluff?"
+    },
+    "unblock": {
+      "text": "An unblocker is the other side. A good bluff doesn't hold cards your opponent folds with. If he folds every missed spade draw and you hold spades, you remove his folds and the bluff works less often.\n\nOrder of choice: first hands with no showdown value; among them, those that block his strong hands; then those that don't block his weak ones."
+    },
+    "q-bluff": {
+      "q": "Board Q♥ 9♥ 5♣ 4♥ 2♠, you bluff the river. Which hand is the better bluff?",
+      "options": [
+        "9♠ 8♠",
+        "Q♣ 3♣",
+        "A♥ J♣"
+      ],
+      "explain": "A♥ J♣ has no showdown value and removes the nut flush. 9♠ 8♠ beats bluffs; Q♣ 3♣ is top pair."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "A good blocker for a river bluff removes your opponent’s…",
+      "options": [
+        "Weak hands that fold",
+        "Strong hands that call",
+        "Nothing: blockers don’t matter"
+      ],
+      "explain": "Fewer calling hands for him means your bluff works more often."
+    },
+    "t2": {
+      "q": "Why is a medium pair a poor river bluff?",
+      "options": [
+        "It beats part of the opponent’s bluffs; checking is better",
+        "It is too strong to call with",
+        "It has many outs"
+      ],
+      "explain": "A hand with showdown value wins by checking; bluff with hands that can’t win otherwise."
+    },
+    "t3": {
+      "q": "What is an unblocker?",
+      "options": [
+        "A card that makes the nuts",
+        "A card in your opponent’s hand",
+        "Your card that doesn’t remove the hands your opponent folds"
+      ],
+      "explain": "Unblockers leave the opponent’s folding range untouched."
+    }
+  }
+}

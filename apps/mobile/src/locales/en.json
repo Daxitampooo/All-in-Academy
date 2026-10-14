@@ -75,23 +75,24 @@
       },
       "theory": {
         "title": "Theory",
-        "body": "Ranges, MDF, polarization, GTO versus exploit."
+        "body": "MDF and alpha, polarized ranges, nut advantage and overbets, geometric sizing, river bluffs."
       },
       "tournaments": {
         "title": "Tournaments",
-        "body": "Tournament stages, push/fold, ICM, the bubble and the final table."
+        "body": "Stacks in big blinds and antes, push/fold, reshoves, ICM and the bubble."
       },
       "cash": {
         "title": "Cash games",
-        "body": "Deep stacks, rake and table selection."
+        "body": "Deep stacks and set mining, 3-bet pots, multiway pots."
       },
       "shorthanded": {
         "title": "Heads-up and 6-max",
-        "body": "Wide ranges and aggression at short tables."
+        "body": "Button against big blind, blind against blind, heads-up, 3-bet wars."
       }
     },
     "lessonsDone": "Lessons: {{done}} of {{total}}",
     "partPro": "Some lessons are Pro",
+    "allPro": "All lessons are Pro",
     "pro": "Pro",
     "notFound": "No such lesson.",
     "minutes_one": "{{count}} minute",

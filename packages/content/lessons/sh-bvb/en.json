@@ -1,0 +1,53 @@
+{
+  "title": "Blind against blind",
+  "summary": "Everyone folds to the small blind: the widest ranges and the small blind’s missing position.",
+  "blocks": {
+    "spot": {
+      "text": "Everyone folds to the small blind. Ranges here are the widest: nobody has shown strength, and the small blind plays against one player only. But after the flop the small blind is **out of position**, the main drawback of the spot."
+    },
+    "sb": {
+      "text": "Two approaches for the small blind:\n- **Raise or fold**: open 2.5–3 BB with about 40–50% of hands. Simple and aggressive, good against a passive big blind.\n- **Limp with a wide range**, plus raises with strong hands and some bluffs. Cheaper, but harder to play after the flop; against an aggressive big blind the limps often get raised."
+    },
+    "bb": {
+      "text": "As the big blind against a small blind raise you have **position** on every street and good pot odds, so defend very wide and 3-bet more: the small blind opens wide. Against a small blind limp **raise often**: an iso-raise to 3–4 BB with strong hands and some weak ones that want a fold."
+    },
+    "q-k9": {
+      "q": "The small blind limps, you are in the big blind with K9o. What is usually best?",
+      "options": [
+        "Raise",
+        "Check and fold to any bet",
+        "All-in"
+      ],
+      "explain": "K9o is well ahead of a wide limping range, and you have position after the flop."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "The small blind’s main drawback in blind against blind:",
+      "options": [
+        "It is out of position after the flop",
+        "It gets no pot odds",
+        "Its range is always narrow"
+      ],
+      "explain": "Every postflop street it acts first."
+    },
+    "t2": {
+      "q": "How does the big blind play against a small blind raise?",
+      "options": [
+        "Folds everything but premiums",
+        "Defends wide and 3-bets more",
+        "Always limps"
+      ],
+      "explain": "Position and pot odds make a wide defense profitable."
+    },
+    "t3": {
+      "q": "The small blind’s \"raise or fold\" strategy is…",
+      "options": [
+        "Limping any two cards",
+        "Only all-ins",
+        "Opening about 40–50% of hands without limps"
+      ],
+      "explain": "Every hand it plays, it plays with a raise."
+    }
+  }
+}

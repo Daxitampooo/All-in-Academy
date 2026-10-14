@@ -1,0 +1,53 @@
+{
+  "title": "Heads-up",
+  "summary": "One on one: very wide ranges, constant aggression and a pair worth more than at a full table.",
+  "blocks": {
+    "idea": {
+      "text": "In heads-up the button is also the small blind: it acts first before the flop and last after it. You pay a blind every hand, so waiting for a good hand doesn't work: ranges are very wide, and aggression decides."
+    },
+    "ranges": {
+      "text": "Reference points at 100 BB:\n- The **button** opens **70–85%** of hands to 2–2.5 BB. Only the weakest offsuit hands like 72o and 83o fold.\n- The **big blind** defends about **60–70%** against a 2–2.5 BB open and 3-bets many strong hands and some bluffs.\n- Any ace, any pair and two broadway cards are strong heads-up hands."
+    },
+    "postflop": {
+      "text": "After the flop:\n- Pairs are rare, so **high card and one pair** win often; don't fold them too easily.\n- Big blind check-raises and button **floats** are routine.\n- You play many hands against the same opponent: notice how often he folds and adjust (the Exploit lesson).\n\nHeads-up against the PokerALL bots is the best practice for this: in a series every hand counts."
+    },
+    "q-q4": {
+      "q": "Heads-up, 100 BB, you are on the button with Q4o. What is usually best?",
+      "options": [
+        "All-in",
+        "Open-raise",
+        "Fold: a weak hand"
+      ],
+      "explain": "Q4o is well inside a 70–85% heads-up opening range."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "Who acts first before the flop in heads-up?",
+      "options": [
+        "The button (also the small blind)",
+        "The big blind",
+        "They take turns"
+      ],
+      "explain": "Preflop the button acts first; after the flop it acts last."
+    },
+    "t2": {
+      "q": "About how much of the deck does the button open heads-up?",
+      "options": [
+        "20%",
+        "70–85%",
+        "100%"
+      ],
+      "explain": "Only the weakest offsuit hands fold."
+    },
+    "t3": {
+      "q": "Why is one pair worth more heads-up than at a full table?",
+      "options": [
+        "It is always the nuts",
+        "It is easier to bluff with",
+        "There is one opponent, and he rarely has a pair"
+      ],
+      "explain": "With one opponent the chance that he has better is much lower."
+    }
+  }
+}

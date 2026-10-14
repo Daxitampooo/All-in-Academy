@@ -1,0 +1,17 @@
+{
+  "id": "6max-20bb-reshove-BTN-vs-CO",
+  "format": "6max",
+  "stackBb": 20,
+  "spot": {
+    "type": "vs-open",
+    "hero": "BTN",
+    "villain": "CO"
+  },
+  "actions": {
+    "allin": {
+      "range": "66+, A9s+, A5s-A4s, KTs+, QJs, ATo+, KQo"
+    }
+  },
+  "free": false,
+  "source": "simplified-educational"
+}

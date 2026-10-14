@@ -1,0 +1,61 @@
+{
+  "title": "Polarized and merged ranges",
+  "summary": "Which hands bet big, which bet small, and how many bluffs a river bet holds.",
+  "blocks": {
+    "what": {
+      "text": "A **polarized** betting range is very strong hands plus bluffs, with nothing in between. A **merged** (linear) range is strong and medium hands in a row, with almost no bluffs.\n\nMedium hands beat bluffs and lose to strong hands. Betting them big makes little sense: only better hands call, worse ones fold."
+    },
+    "size": {
+      "text": "The bet size follows the shape of the range:\n- **Big bets and overbets** go with a polarized range: strong hands want the most money, bluffs want the most folds.\n- **Small bets (25–40% pot)** go with a merged range: you get paid by worse hands that call a little, and you protect a medium hand.\n\nThin value against a calling station is merged too: a small bet it calls with worse."
+    },
+    "example": {
+      "labels": [
+        "Value: a set",
+        "Bluff: a missed draw",
+        "Middle: second pair, check"
+      ],
+      "caption": "A polarized river bet: the set and the missed draw bet big, the second pair checks."
+    },
+    "ratio": {
+      "text": "How many bluffs a polarized river bet holds so that the opponent can't exploit it by calling or by folding. The bluff share among your bets is **bet / (pot + 2 × bet)**:\n- ⅓ pot: 20% bluffs (1 for every 4 value bets).\n- ½ pot: 25% (1 to 3).\n- ¾ pot: 30%.\n- Pot: 33% (1 to 2).\n- 2× pot: 40%.\n\nOn the flop and turn you can bluff more: those bluffs still have equity to improve."
+    },
+    "q-ratio": {
+      "q": "You bet pot on the river with 10 value combos. About how many bluffs keep the bet balanced?",
+      "options": [
+        "10",
+        "2",
+        "5"
+      ],
+      "explain": "With a pot-sized bet, bluffs are a third of the bets: 1 bluff for every 2 value hands, so 5 for 10."
+    }
+  },
+  "test": {
+    "t1": {
+      "q": "Which range usually bets big?",
+      "options": [
+        "Merged: strong and medium hands",
+        "Polarized: strong hands and bluffs",
+        "Only medium hands"
+      ],
+      "explain": "Big bets suit hands that want either the most money or the most folds."
+    },
+    "t2": {
+      "q": "Why is a medium pair rarely bet big on the river?",
+      "options": [
+        "Only better hands call, worse ones fold",
+        "It's too strong to bet",
+        "MDF forbids it"
+      ],
+      "explain": "A medium hand wins at showdown against bluffs; a big bet turns it into a bluff against better hands."
+    },
+    "t3": {
+      "q": "The bluff share of a polarized ½-pot river bet:",
+      "options": [
+        "50%",
+        "10%",
+        "25%"
+      ],
+      "explain": "0.5 / (1 + 2 × 0.5) = 25%: one bluff for three value hands."
+    }
+  }
+}

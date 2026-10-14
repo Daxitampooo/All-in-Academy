@@ -13,6 +13,15 @@ import basicsHandsRu from '../lessons/basics-hands/ru.json';
 import basicsRulesMeta from '../lessons/basics-rules/meta.json';
 import basicsRulesEn from '../lessons/basics-rules/en.json';
 import basicsRulesRu from '../lessons/basics-rules/ru.json';
+import cash3betPotsMeta from '../lessons/cash-3bet-pots/meta.json';
+import cash3betPotsEn from '../lessons/cash-3bet-pots/en.json';
+import cash3betPotsRu from '../lessons/cash-3bet-pots/ru.json';
+import cashDeepMeta from '../lessons/cash-deep/meta.json';
+import cashDeepEn from '../lessons/cash-deep/en.json';
+import cashDeepRu from '../lessons/cash-deep/ru.json';
+import cashMultiwayMeta from '../lessons/cash-multiway/meta.json';
+import cashMultiwayEn from '../lessons/cash-multiway/en.json';
+import cashMultiwayRu from '../lessons/cash-multiway/ru.json';
 import mathCombosMeta from '../lessons/math-combos/meta.json';
 import mathCombosEn from '../lessons/math-combos/en.json';
 import mathCombosRu from '../lessons/math-combos/ru.json';
@@ -37,6 +46,18 @@ import mindsetTiltRu from '../lessons/mindset-tilt/ru.json';
 import mindsetVarianceMeta from '../lessons/mindset-variance/meta.json';
 import mindsetVarianceEn from '../lessons/mindset-variance/en.json';
 import mindsetVarianceRu from '../lessons/mindset-variance/ru.json';
+import mttIcmMeta from '../lessons/mtt-icm/meta.json';
+import mttIcmEn from '../lessons/mtt-icm/en.json';
+import mttIcmRu from '../lessons/mtt-icm/ru.json';
+import mttPushfoldMeta from '../lessons/mtt-pushfold/meta.json';
+import mttPushfoldEn from '../lessons/mtt-pushfold/en.json';
+import mttPushfoldRu from '../lessons/mtt-pushfold/ru.json';
+import mttReshoveMeta from '../lessons/mtt-reshove/meta.json';
+import mttReshoveEn from '../lessons/mtt-reshove/en.json';
+import mttReshoveRu from '../lessons/mtt-reshove/ru.json';
+import mttStacksMeta from '../lessons/mtt-stacks/meta.json';
+import mttStacksEn from '../lessons/mtt-stacks/en.json';
+import mttStacksRu from '../lessons/mtt-stacks/ru.json';
 import positionsNamesMeta from '../lessons/positions-names/meta.json';
 import positionsNamesEn from '../lessons/positions-names/en.json';
 import positionsNamesRu from '../lessons/positions-names/ru.json';
@@ -85,12 +106,42 @@ import readsStatsRu from '../lessons/reads-stats/ru.json';
 import readsTypesMeta from '../lessons/reads-types/meta.json';
 import readsTypesEn from '../lessons/reads-types/en.json';
 import readsTypesRu from '../lessons/reads-types/ru.json';
+import sh3betWarsMeta from '../lessons/sh-3bet-wars/meta.json';
+import sh3betWarsEn from '../lessons/sh-3bet-wars/en.json';
+import sh3betWarsRu from '../lessons/sh-3bet-wars/ru.json';
+import shBtnBbMeta from '../lessons/sh-btn-bb/meta.json';
+import shBtnBbEn from '../lessons/sh-btn-bb/en.json';
+import shBtnBbRu from '../lessons/sh-btn-bb/ru.json';
+import shBvbMeta from '../lessons/sh-bvb/meta.json';
+import shBvbEn from '../lessons/sh-bvb/en.json';
+import shBvbRu from '../lessons/sh-bvb/ru.json';
+import shHeadsupMeta from '../lessons/sh-headsup/meta.json';
+import shHeadsupEn from '../lessons/sh-headsup/en.json';
+import shHeadsupRu from '../lessons/sh-headsup/ru.json';
+import theoryGeometricMeta from '../lessons/theory-geometric/meta.json';
+import theoryGeometricEn from '../lessons/theory-geometric/en.json';
+import theoryGeometricRu from '../lessons/theory-geometric/ru.json';
+import theoryMdfMeta from '../lessons/theory-mdf/meta.json';
+import theoryMdfEn from '../lessons/theory-mdf/en.json';
+import theoryMdfRu from '../lessons/theory-mdf/ru.json';
+import theoryOverbetsMeta from '../lessons/theory-overbets/meta.json';
+import theoryOverbetsEn from '../lessons/theory-overbets/en.json';
+import theoryOverbetsRu from '../lessons/theory-overbets/ru.json';
+import theoryPolarMeta from '../lessons/theory-polar/meta.json';
+import theoryPolarEn from '../lessons/theory-polar/en.json';
+import theoryPolarRu from '../lessons/theory-polar/ru.json';
+import theoryRiverBluffsMeta from '../lessons/theory-river-bluffs/meta.json';
+import theoryRiverBluffsEn from '../lessons/theory-river-bluffs/en.json';
+import theoryRiverBluffsRu from '../lessons/theory-river-bluffs/ru.json';
 
 export const LESSON_FILES: { meta: LessonMeta; en: LessonText; ru: LessonText }[] = [
   { meta: basicsBlindsMeta as LessonMeta, en: basicsBlindsEn, ru: basicsBlindsRu },
   { meta: basicsBoardMeta as LessonMeta, en: basicsBoardEn, ru: basicsBoardRu },
   { meta: basicsHandsMeta as LessonMeta, en: basicsHandsEn, ru: basicsHandsRu },
   { meta: basicsRulesMeta as LessonMeta, en: basicsRulesEn, ru: basicsRulesRu },
+  { meta: cash3betPotsMeta as LessonMeta, en: cash3betPotsEn, ru: cash3betPotsRu },
+  { meta: cashDeepMeta as LessonMeta, en: cashDeepEn, ru: cashDeepRu },
+  { meta: cashMultiwayMeta as LessonMeta, en: cashMultiwayEn, ru: cashMultiwayRu },
   { meta: mathCombosMeta as LessonMeta, en: mathCombosEn, ru: mathCombosRu },
   { meta: mathEvMeta as LessonMeta, en: mathEvEn, ru: mathEvRu },
   { meta: mathImpliedMeta as LessonMeta, en: mathImpliedEn, ru: mathImpliedRu },
@@ -99,6 +150,10 @@ export const LESSON_FILES: { meta: LessonMeta; en: LessonText; ru: LessonText }[
   { meta: mindsetReviewMeta as LessonMeta, en: mindsetReviewEn, ru: mindsetReviewRu },
   { meta: mindsetTiltMeta as LessonMeta, en: mindsetTiltEn, ru: mindsetTiltRu },
   { meta: mindsetVarianceMeta as LessonMeta, en: mindsetVarianceEn, ru: mindsetVarianceRu },
+  { meta: mttIcmMeta as LessonMeta, en: mttIcmEn, ru: mttIcmRu },
+  { meta: mttPushfoldMeta as LessonMeta, en: mttPushfoldEn, ru: mttPushfoldRu },
+  { meta: mttReshoveMeta as LessonMeta, en: mttReshoveEn, ru: mttReshoveRu },
+  { meta: mttStacksMeta as LessonMeta, en: mttStacksEn, ru: mttStacksRu },
   { meta: positionsNamesMeta as LessonMeta, en: positionsNamesEn, ru: positionsNamesRu },
   { meta: positionsWhyMeta as LessonMeta, en: positionsWhyEn, ru: positionsWhyRu },
   { meta: postflopBluffMeta as LessonMeta, en: postflopBluffEn, ru: postflopBluffRu },
@@ -115,4 +170,13 @@ export const LESSON_FILES: { meta: LessonMeta; en: LessonText; ru: LessonText }[
   { meta: readsExploitMeta as LessonMeta, en: readsExploitEn, ru: readsExploitRu },
   { meta: readsStatsMeta as LessonMeta, en: readsStatsEn, ru: readsStatsRu },
   { meta: readsTypesMeta as LessonMeta, en: readsTypesEn, ru: readsTypesRu },
+  { meta: sh3betWarsMeta as LessonMeta, en: sh3betWarsEn, ru: sh3betWarsRu },
+  { meta: shBtnBbMeta as LessonMeta, en: shBtnBbEn, ru: shBtnBbRu },
+  { meta: shBvbMeta as LessonMeta, en: shBvbEn, ru: shBvbRu },
+  { meta: shHeadsupMeta as LessonMeta, en: shHeadsupEn, ru: shHeadsupRu },
+  { meta: theoryGeometricMeta as LessonMeta, en: theoryGeometricEn, ru: theoryGeometricRu },
+  { meta: theoryMdfMeta as LessonMeta, en: theoryMdfEn, ru: theoryMdfRu },
+  { meta: theoryOverbetsMeta as LessonMeta, en: theoryOverbetsEn, ru: theoryOverbetsRu },
+  { meta: theoryPolarMeta as LessonMeta, en: theoryPolarEn, ru: theoryPolarRu },
+  { meta: theoryRiverBluffsMeta as LessonMeta, en: theoryRiverBluffsEn, ru: theoryRiverBluffsRu },
 ];

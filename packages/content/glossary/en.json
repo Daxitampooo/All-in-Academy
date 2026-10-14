@@ -250,5 +250,101 @@
   "leak": {
     "term": "Leak",
     "definition": "A repeated mistake that steadily costs chips."
+  },
+  "mdf": {
+    "term": "MDF",
+    "definition": "Minimum defense frequency: the share of your range to continue with against a bet so bluffs don’t profit automatically, pot / (pot + bet)."
+  },
+  "alpha": {
+    "term": "Alpha",
+    "definition": "How often a bluff must work to break even right away: bet / (pot + bet)."
+  },
+  "bluff-catcher": {
+    "term": "Bluff catcher",
+    "definition": "A hand that beats only bluffs: it calls to catch them, never bets for value."
+  },
+  "polarized": {
+    "term": "Polarized range",
+    "definition": "A range of very strong hands and bluffs with no medium hands; it suits big bets."
+  },
+  "merged": {
+    "term": "Merged range",
+    "definition": "Strong and medium hands in a row, with few bluffs; it suits small bets."
+  },
+  "range-advantage": {
+    "term": "Range advantage",
+    "definition": "Having stronger hands on average on a given board than your opponent."
+  },
+  "nut-advantage": {
+    "term": "Nut advantage",
+    "definition": "Having more of the very strongest combos on a given board than your opponent."
+  },
+  "overbet": {
+    "term": "Overbet",
+    "definition": "A bet bigger than the pot."
+  },
+  "capped": {
+    "term": "Capped range",
+    "definition": "A range with almost none of the strongest hands, usually after a passive line."
+  },
+  "donk-bet": {
+    "term": "Donk bet",
+    "definition": "A bet into the player who was the aggressor on the previous street."
+  },
+  "geometric-sizing": {
+    "term": "Geometric sizing",
+    "definition": "The same share of the pot every street, so the whole stack goes in by the river."
+  },
+  "unblocker": {
+    "term": "Unblocker",
+    "definition": "A card you hold that doesn’t remove the hands your opponent would fold."
+  },
+  "push-fold": {
+    "term": "Push/fold",
+    "definition": "Short-stack play where every hand is either all-in or a fold."
+  },
+  "fold-equity": {
+    "term": "Fold equity",
+    "definition": "The value a bet gets from the chance that the opponent folds."
+  },
+  "reshove": {
+    "term": "Reshove",
+    "definition": "A 3-bet all-in over an open, usually with 15–25 BB."
+  },
+  "dead-money": {
+    "term": "Dead money",
+    "definition": "Chips already in the pot from players who won’t fight for it: blinds, antes, an open that folds."
+  },
+  "icm": {
+    "term": "ICM",
+    "definition": "Independent Chip Model: turns tournament stacks into shares of the prize pool."
+  },
+  "bubble": {
+    "term": "Bubble",
+    "definition": "The moment just before the paid places in a tournament."
+  },
+  "bubble-factor": {
+    "term": "Bubble factor",
+    "definition": "How much more losing a pot costs than winning it gains, by ICM; above 1 calls need more equity."
+  },
+  "final-table": {
+    "term": "Final table",
+    "definition": "The last table of a tournament, where every place changes the prize."
+  },
+  "set-mining": {
+    "term": "Set mining",
+    "definition": "Calling with a small pocket pair mainly to hit a set and win a big pot."
+  },
+  "float": {
+    "term": "Float",
+    "definition": "Calling a bet in position with a weak hand to take the pot on a later street."
+  },
+  "multiway": {
+    "term": "Multiway pot",
+    "definition": "A pot with three or more players after the flop."
+  },
+  "heads-up": {
+    "term": "Heads-up",
+    "definition": "A game or pot with only two players."
   }
 }
