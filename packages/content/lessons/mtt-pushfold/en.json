@@ -9,10 +9,10 @@
       "text": "EV of a push = **fold chance × pot** + **call chance × result of the all-in**. Example: small blind, 10 BB, the pot holds 1.5 BB. If the big blind folds 60% of the time, the folds alone bring 0.6 × 1.5 = 0.9 BB, and in the other 40% you still have equity against its calling range."
     },
     "push": {
-      "caption": "Small blind against the big blind, 10 BB: a simplified push range (about half of all hands)."
+      "caption": "Small blind against the big blind, 10 BB: the push range (about 60% of hands), close to the push/fold equilibrium."
     },
     "call": {
-      "caption": "Big blind against a 10 BB push: a simplified calling range (about a third of all hands)."
+      "caption": "Big blind against a 10 BB push: the calling range (about 37% of hands)."
     },
     "asym": {
       "text": "Why pushes are wider than calls: the pusher has fold equity, the caller has none. To call an all-in you need a hand that beats the pushing range on its own. So the calling range is always narrower than the pushing range.\n\nThe shorter the stack, the wider the push: with 5 BB the small blind pushes almost everything."

@@ -9,7 +9,7 @@
   },
   "actions": {
     "call": {
-      "range": "22+, A2s+, A2o+, K2s+, K7o+, Q8s+, QTo+, J9s+, JTo, T9s"
+      "range": "22+, A2s+, A2o+, K2s+, K5o+, Q7s+, Q9o+, J8s+, JTo, T9s"
     }
   },
   "free": false,

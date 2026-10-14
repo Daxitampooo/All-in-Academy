@@ -101,6 +101,10 @@ function Navigation() {
           <Stack.Screen name="drill/pot-odds" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="drill/outs" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="drill/showdown" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="drill/pushfold" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="tools/equity" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="tools/icm" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="tools/pushfold" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="achievements" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="account" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="privacy" options={{ animation: 'slide_from_right' }} />

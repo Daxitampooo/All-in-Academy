@@ -131,7 +131,8 @@
       "call": "Call",
       "allin": "All-in",
       "limp": "Limp",
-      "fold": "Fold"
+      "fold": "Fold",
+      "range": "In range"
     },
     "potOdds": {
       "sizes": {
@@ -179,6 +180,26 @@
       "showdown": {
         "title": "Which hand wins",
         "body": "Two hands and a board: who takes the pot, and when it is a split."
+      },
+      "pushfold": {
+        "title": "Push/fold trainer",
+        "body": "A short stack, a seat and a hand: all-in or fold, and call or fold against a push. Checked against the push/fold chart."
+      }
+    },
+    "toolsTitle": "Analysis tools",
+    "toolsHint": "For working through hands after the game. They are part of Pro and close during ranked matches.",
+    "tools": {
+      "equity": {
+        "title": "Equity calculator",
+        "body": "Hands or ranges against each other, with a board and dead cards: exact count or Monte Carlo."
+      },
+      "icm": {
+        "title": "ICM calculator",
+        "body": "Stacks and prizes: each player’s share by ICM, and what equity an all-in call needs."
+      },
+      "pushfold": {
+        "title": "Push/fold charts",
+        "body": "Who pushes and who calls with a short stack, by stack, seat, table size and ante."
       }
     }
   },
@@ -1891,6 +1912,24 @@
       "question": "Who wins?",
       "explain": "Hand {{n}} wins: {{winner}} against \"{{loser}}\".",
       "explainSplit": "A split: both have the same best five ({{name}})."
+    },
+    "pushfold": {
+      "title": "Push/fold trainer",
+      "subtitle": "Short stack decisions, checked against the push/fold chart.",
+      "pro": "Train short-stack decisions: push or fold first in, call or fold against a push, with the chart and the EV of each choice.",
+      "pushSpot": "Everyone folds to you on the {{seat}}. Stack {{stack}}. Push or fold?",
+      "callSpot": "{{pusher}} pushes {{stack}}, everyone else folds. You are on the {{seat}}. Call or fold?",
+      "fold": "Fold",
+      "push": "All-in",
+      "call": "Call",
+      "close": "Almost no difference: both are fine",
+      "pushBetter": "Pushing wins {{ev}} BB more than folding.",
+      "callBetter": "Calling wins {{ev}} BB more than folding.",
+      "foldBetterPush": "Fold is better: pushing loses {{ev}} BB against folding.",
+      "foldBetterCall": "Fold is better: calling loses {{ev}} BB against folding.",
+      "callCaption": "{{seat}} calling {{hero}}’s {{stack}} BB push.",
+      "preparing": "Dealing the next hand…",
+      "anteOn": "Ante 12.5% BB"
     }
   },
   "achievements": {
@@ -2111,5 +2150,117 @@
     "showOnline": "Show friends when I'm online",
     "showOnlineHint": "Friends see a green dot next to your name.",
     "later": "Friends and messages come in the next stage; these settings will already apply then."
+  },
+  "tools": {
+    "proTitle": "A Pro tool",
+    "proBody": "Analysis tools are part of Pro. Pro will be available once the subscription is launched.",
+    "close": "Close",
+    "clearCard": "Remove card",
+    "suits": {
+      "0": "of clubs",
+      "1": "of diamonds",
+      "2": "of hearts",
+      "3": "of spades"
+    },
+    "range": {
+      "title": "Range",
+      "placeholder": "For example: 22+, A2s+, KTs+, AJo+",
+      "size": "{{combos}} combos · {{pct}}% of hands",
+      "bad": "Can’t read this range. Write hands like AKs, QJo, 77, ranges like 22+ or A2s-A5s.",
+      "hint": "Type a range or tap cells on the grid.",
+      "out": "Not in range",
+      "presets": "Ready ranges",
+      "preset": {
+        "premium": "QQ+ and AK",
+        "rfiUTG": "UTG open",
+        "rfiCO": "CO open",
+        "rfiBTN": "BTN open",
+        "threeBet": "BTN 3-bet vs CO",
+        "bbDefend": "BB call vs BTN",
+        "any": "Any two"
+      },
+      "done": "Done",
+      "clear": "Clear"
+    },
+    "equity": {
+      "title": "Equity calculator",
+      "subtitle": "Each player’s share of the pot over all runouts: hands or ranges, with a board and dead cards.",
+      "pro": "Count the equity of hands and ranges against each other, on any board and with dead cards.",
+      "needCards": "Pick two cards.",
+      "needRange": "Enter a range.",
+      "rangeBlocked": "Every hand of this range uses cards already on the table.",
+      "player": "Player {{n}}",
+      "remove": "Remove",
+      "cards": "Cards",
+      "range": "Range",
+      "pickCard": "Pick a card",
+      "tapRange": "Tap to enter a range",
+      "addPlayer": "Add a player",
+      "board": "Board",
+      "pickBoard": "Board card",
+      "boardRule": "The board is a flop (3 cards), a turn (4) or a river (5), filled from the left.",
+      "dead": "Dead cards",
+      "addDead": "Dead card",
+      "counting": "Counting…",
+      "calculate": "Calculate",
+      "exact": "Exact: all {{n}} runouts",
+      "sampled": "Monte Carlo: {{n}} runouts",
+      "note": "Equity is the share of the pot a hand wins on average if all the cards are dealt out. It ignores the betting that is still to come.",
+      "winTie": "Wins {{win}}% · splits {{tie}}%"
+    },
+    "icm": {
+      "title": "ICM calculator",
+      "subtitle": "Tournament stacks turned into shares of the prizes, and what an all-in call needs by ICM.",
+      "pro": "See each player’s share of the prizes by ICM and how much equity an all-in call needs near the money.",
+      "playerShort": "P{{n}}",
+      "payouts": "Prizes by place",
+      "preset": {
+        "top3": "50 / 30 / 20",
+        "top2": "65 / 35",
+        "winner": "Winner takes all",
+        "top9": "9 places"
+      },
+      "place": "Place {{n}}",
+      "addPlace": "Add a place",
+      "removePlace": "Remove a place",
+      "payoutsHint": "Prizes in percent or points: only the proportions matter.",
+      "stacks": "Stacks",
+      "player": "Player {{n}}",
+      "chips": "chips {{pct}}",
+      "share": "ICM {{pct}}",
+      "addPlayer": "Add a player",
+      "removePlayer": "Remove a player",
+      "invalid": "Enter numbers: stacks and prizes of 0 or more.",
+      "callTitle": "Calling an all-in",
+      "callHint": "Your stack calls the all-in of another player. Dead money: blinds and antes already in the pot.",
+      "hero": "You",
+      "villain": "All-in from",
+      "dead": "Dead money",
+      "samePlayer": "Pick two different players.",
+      "need": "The call needs {{icm}} equity by ICM (chips alone: {{chips}}).",
+      "factor": "Bubble factor: {{factor}}",
+      "reset": "Start over",
+      "note": "ICM by the Malmuth–Harville model: the chance to take each place is proportional to the stack."
+    },
+    "pushfold": {
+      "title": "Push/fold charts",
+      "subtitle": "Equilibrium push and call ranges for short stacks.",
+      "pro": "Push/fold charts for any stack, seat, table size and ante, and the trainer that checks your decisions against them.",
+      "players": "Players at the table",
+      "seat": "Your seat (everyone folded to you)",
+      "stack": "Effective stack",
+      "bb": "{{n}} BB",
+      "ante": "Ante per player",
+      "noAnte": "No ante",
+      "antePct": "{{pct}}% BB",
+      "pushTitle": "{{seat}}: push {{pct}}% of hands",
+      "pushCaption": "{{seat}} pushes {{stack}} BB when everyone has folded to it.",
+      "caller": "Calling seat",
+      "callTitle": "{{seat}} calls {{hero}}’s push: {{pct}}% of hands",
+      "callCaption": "Calls against the push range above, when everyone in between has folded.",
+      "solving": "Working out the chart…",
+      "drill": "Open the push/fold trainer",
+      "note": "A simplified model, as in most push/fold charts: equal stacks, and only one player calls a push. The ranges are close to the equilibrium of that model, not a full tournament solver."
+    }
   }
 }

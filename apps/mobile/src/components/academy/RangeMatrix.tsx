@@ -17,6 +17,7 @@ export const ACTION_COLOR: Record<string, ColorKey> = {
   allin: 'amber',
   call: 'cyan',
   limp: 'lime',
+  range: 'cyan',
 };
 
 type Props = {
@@ -27,10 +28,14 @@ type Props = {
   mark?: string;
   /** Called with the class of a tapped cell. */
   onCell?: (cls: string) => void;
+  /** Editing mode: a tap toggles the cell, so no details panel opens. */
+  editing?: boolean;
+  /** Legend for hands outside every action; "Fold" by default. */
+  emptyLabel?: string;
 };
 
 /** The 13×13 grid: pairs on the diagonal, suited above, offsuit below. Mixed hands show split cells. */
-export function RangeMatrix({ actions, caption, mark, onCell }: Props) {
+export function RangeMatrix({ actions, caption, mark, onCell, editing = false, emptyLabel }: Props) {
   const { t } = useTranslation();
   const { colors } = useTheme();
   const [width, setWidth] = useState(0);
@@ -61,7 +66,7 @@ export function RangeMatrix({ actions, caption, mark, onCell }: Props) {
                     <Pressable
                       key={cls}
                       onPress={() => {
-                        setPicked(cls === picked ? null : cls);
+                        if (!editing) setPicked(cls === picked ? null : cls);
                         onCell?.(cls);
                       }}
                       accessibilityLabel={cls}
@@ -108,10 +113,10 @@ export function RangeMatrix({ actions, caption, mark, onCell }: Props) {
         ))}
         <View style={styles.legendItem}>
           <View style={[styles.swatch, { backgroundColor: colors.surfaceRaised, borderWidth: 1, borderColor: colors.border }]} />
-          <AppText variant="caption">{t('academy.actions.fold')}</AppText>
+          <AppText variant="caption">{emptyLabel ?? t('academy.actions.fold')}</AppText>
         </View>
       </View>
-      {info ? (
+      {editing ? null : info ? (
         <View style={[styles.info, { backgroundColor: withAlpha(colors.cyan, 0.08), borderColor: withAlpha(colors.cyan, 0.4) }]}>
           <AppText variant="label" strong>
             {info.cls}
